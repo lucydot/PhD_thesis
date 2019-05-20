@@ -1,0 +1,360 @@
+\begin{savequote}[8cm]
+It's simple mathematics.
+  \qauthor{--- Mos Def, "Mathematics"}
+\end{savequote}
+
+\chapter{\label{ch:3-methods}Methods}
+
+\minitoc
+
+%% Books:
+
+% For a really nice explanation of solid state QM basics - bloch waves, an electron in a crystal potential etc, see Lundstrom "fundamentals of carrier transport"
+
+\section{Introduction} 
+
+\section{Density Functional Theory (DFT)}
+\subsection{DFT in theory}
+
+%- History:
+% Kohn x 2 of course,
+% Cohen 1979: Total energy possible from electronic structure
+
+\subsubsection{The Schrodinger equation}
+
+% Full Dirac solution too complicated -> need approximations
+
+% image: schorodinger panited in defects NV diamond
+
+\subsubsection{The Born-Oppenheimer approximation}
+
+% Adiabatic assumption leads to the born oppenheimer approximation.
+
+%\subsubsection{Hartree-Fock methods}
+
+\subsubsection{The Hohenberg-Kohn theorem}
+
+% Cohen 1979?
+
+% - Nice schematic for the idea underlying DFT that an interaction can be replaced by a potential: two atoms with arrow indicating interaction vs two atoms with a periodic potentail peak between them.
+
+% - For interesting current perspective on DFT (and a bit on TDDFT): Perspective: Kohn-Sham density functional theory descending a staircase Haoyu S. Yu, Shaohong L. Li, and Donald G. Truhlar
+
+
+
+\subsection{DFT in practice}
+
+\subsubsection{Exchange-correlation functionals}
+
+% - incl. hybrid functionals and need for accurate band gap
+
+% - DFT now achieves a precision which is better than experiment (http://davidbowler.github.io/AtomisticSimulations//blog/dft-reliability) or the paper direct on reproducibility in DFT
+
+% - However, since 2000 functionals have been better at giving total energy but they don’t give accurate density: straying away from ab-initio into a fitting exercise: DFT is straying from the path towards an exact functional
+
+% - Self interaction correction in DFT (accuracy): http://davidbowler.github.io/AtomisticSimulations/blog/self-interaction
+
+% - hybrid functionals(as states delocalised) to overcome the self interaction error(Koopmans theorem) .
+
+% DFT was not designed to calculate band gaps.
+
+\subsubsection{Symmetry and basis sets}
+
+% - Molecules are finite systems. We deal with infinite periodic system. Molecules have discrete staets, condensed matter has band structure. As such there are different bodies of theory to deal with molecules (organic chemistry) and periodic solids (solid state theory, inorganics).
+
+% - The idea of a bloch wave is key as introduces concept of k-space. It is capturing long range and short range behaviour
+% - incl. plane wave cutoff. ENCUT. This is the cutoff for electronic structure (the u in the form for electron eigenstates). How you represent u is dependaant on the code: place waves or gaussiands etc. VASP uses plane waves
+
+% - core electrons
+
+% - Plane waves are used for extended as inherently periodic, gaussian basis is used for nanoparticles as inherently localized.
+
+% - Sudden changes are hard to capture: a simple top hat in real space needs infinite summation in reciprocal space.
+% So fourier decomposition is good if density does not change suddenly: which is why problems for describing the region around nucleus, tightly bound electrons.
+
+% - K-point grid density. All codes use this.  This is the k that sits with the exponential.
+
+% - Test convergecnce specificlaly for the quantaties of importance to your planned calculation. For example forces converge faser than energy as for forces density in region of the nuclues is unimportnat
+
+% - K-point grids and the commensurate grids for supercells.
+
+% - See: Designing meaningful density functional theory calculation in materials science - a primer Anne E Mattson et al. Model. Sim. Mater. Sci Eng. 13 R1-R31 (2005). : for information about convergence and getting meaningful results.
+
+% - Doubles k-points reuired as k and –k now no longer equivalent
+
+\subsubsection{The self consistent cycle}
+
+% - DFT is a ground state theory. Beyond - TDDFT 
+
+% - Through cancellation of errors, energy differences converge much faster than ground state energies (see this with band gap converging much faster than VBM and CBM in EP coupling calcs)
+
+
+\subsection{The limits of DFT}
+
+
+% - See many body approach to electronic excitation 2015 for nice schemtatic. Perfect in principle, imperfect in practice.
+% - ground state theory (TDDFT) . Time-dependent density functional theory, which is an extension of DFT to treat time-dependent problems and excited states.
+
+% - athermal (phonons)
+% - molecular mechanics
+
+% - Every ab initio calculation is an approximate one. Distinguish physical approcimations (Born-Opp, level of theory and XC functional) from convergable, numerical approximations (basis set, cutoff energy, fft grid, tolerance levels for energy/forces,system size)
+
+% - Dynamical insight: movement of halides and cation for example which have been incorporated into drift-diffusion models. Defects may accumulate in certain areas creating regions of charge.
+
+% - Linked to Koopman’s linearity:E(N) – E(N-1) = En
+% Self interaction important to consider when considering the trapping of electrons and holes
+% Localised states means large self interaction error and so hybrid DFT (of DFT+U) is required.
+% See Janak 1978. 
+% Nice graph with bowed DFT E vs electron number and fock electron vs electron number which when added together give the actual linear result
+
+% - computational expense: limitations on size: See review of materials models which Alison Walker mentions. Mesoscopic bridges the atomistic with the drift diffusion models. Meso is often monte carlo, tranjectory tpe calculations. Cells are too big for atomistic (1 cm squared). Efficiecny depends upon J-V curves which can only be modelled at scale of fill device. The electrostatics is incredible important which linked ot build up of charges at SC nd OC. Grain boundaries and recombination at intercaes.
+
+\subsubsection{physical}
+
+%% approximations in the actual theory
+
+\subsubsection{numerical}
+
+%% approximations when implemented?
+
+\subsubsection{computational}
+
+% - history of computers section at science museum for HPC section
+% - put the amount of computer time and carbon burnt here?
+
+\clearpage
+
+\section{Calculating the properties of defects in semiconductors}
+
+%% Books: 
+% We are interested in calculating the electronic structure properties which lead to a description of the defects (trap density, binding energy, trap level, capture cross section).
+
+%Mott and Littleton, 1938 - predict concentrations from the defect itself. And predict the conductivity.
+% - THey are demainding and computational expensive .n To avoid computationally expensive defect calculations descriptors have been built on the idea of ‘defect tolerant’ materials: http://pubs.acs.org/doi/pdf/10.1021/acs.nanolett.5b04513
+
+\subsection{Classifying defects}
+
+% - many possible defects
+
+% - many possible point defects
+
+% - may be able to say defect is there experimentally but another step to identify which it is. Admittance spectroscopy, DLTS. 
+
+% - defect levels deend on temperature. DLTS assumes T-independant scattering cross sction, not accurate,
+
+\subsection{The energetics of defect formation}
+
+% - calculating concentrations is difficult because it is exponentially sensitive to the formation energy. The other problem is that is dependant upon the chemical potential which is difficult to monito
+
+% - History:
+
+% - 1912 Born and Karman . PBC (first lattice dynamics paper)
+
+% - 1925 Frenkel – formation of frenkel pair (first defects paper)
+
+% - 1922 Jost – probability of forming defects. Tied into experimental work popular at the time, looking at how a material can be an ionic conductor when it is electrically insulating
+
+% - 1938 Mott – the Mott-Littleton approach for calculating defects
+
+% - defect energies theoretical founsations - mott littleton (1938)  - a way to calculate E the defecct energy as knew the hopping rate expression, but didnt know E. only experimental input is dielectric constant.see special 1988 issue.
+
+% - Fermi level pinning (?) / defect concentration: Happens in TCO’s such as FTO. Above a certain concentration there are no more holes. This could happen when there are defect complexes which compensate each other.
+
+% - This is a compensation mechanism. We try to adjust the fermi level of the system by introducing impurities. However above/below a certain energy level there is spontaneous formation of defects (defects which have a negative energy of formation). These defects compensate for the impurity and in this way the fermi level is pinned.
+
+
+% - There is a linear dependance on the product of charge and fermi energy. This means that the slope of the formation energy when plotted against fermi energy gives the charge state. It also means that neutral charge states are flat
+
+% - Calculable and observable table:
+% Delta E : heat of formation / concentrations
+% Defect ionisation – optical – instanataneour: PL, optical absorption / photoconductivity
+% Defect ionisation , thermal, after relaxation: DLTS / thermally stimuated conductuvtiy
+% Defect vibrational modes: IR/raman spectra and recombination rates
+
+
+
+\subsection{The supercell method}
+
+% - Finite size effects (supercell)
+
+% - Other method - embedding. 
+
+% - Defect levels are very sensitive to the level of theory used (see schematic under visuals) - important to use correct one.
+
+% - Leslie nad Gillan - charged defects in supercells first paper. their correction gives a size dependance on the size of supercell (it is a monopole expansion and known as Markov Payne correction).
+
+% - The supercell method leads to some unphysical results for both electronic and vibrational properties. The defect will perturb the lattice. The SC method captures localised defect effects well – but the delocalised defects (possibly in the band) are not captured as there is an enforced periodicity. The only way around this is to use greens functions method (phonons) or QM/MM approach (electrons).
+
+
+\subsubsection{Supercell corrections}
+
+%-one charge correction is the process of getting a meaningful fermi energy (shift in potential energy -core level shift)
+%-coulomb charge correction: MP correction or LZ (which accounts for Moss Burstein filling)
+
+% - for a really good explanation see Suzys group talk (Monday the 10th september 2018) and https://aip.scitation.org/doi/10.1063/1.5029818 which it was based upon.
+
+% Spurious charge nteractions as a sresult of the SC approach. For example, 1. periodic-periodic defect-defect interaction and 2. defect-background charge interactions.
+% - Leslie Giliian point charge correction
+% - MP point charge but the defect charge distribtiion is ill defined.
+% - FNV point charge correction indirectly calculates the MP. Pascalrello
+% - Oba correction.
+\section{Calculating the properties of vibrations in crystals}
+
+%%: Books
+
+% - Stationary atoms would conflict with the H.U.P which tells use that we cannot know the both the position and momentum of a particle exactly. At T=0 there is zero point motion.  Evidence for this in the zero point motion renormalization. 
+
+% - As temperature increases the motion increases in amplitude with thermal energy. We know this affects electrical and optical properties – look at the peak shift in energy and peak broadening ith temperature.
+
+% - For small amplitudes we consider a simple harmonic motion.
+
+% - At larger amplitudes we must consider anharmonic motion.
+
+% - The motions are determined by atomic forces. For a 1D system with a single mass or with two masses (lattice with basis) we can solve analytically. Otherwise these can be determined through DFT calculations, producing a force constant matrix. 
+
+% - Acoustic  waves, or sound waves. For each frequency and direction there are three waves each with different polarization (one longitudinal, two transverse)
+
+% - Acoustic waves are called acoustic as they approach speed of sound (linear dispersion) at long wavelength (small k). Optical are called optical as as k tends to 0 there is coupling with electromagnetic waves.
+% In 3D crystal with one atom per unit cell there are 3N modes (N unit cells). N modes per lattice branch. Two transverse one longitudinal.
+% In 3D crystal with two atoms per unit cell there are 2 x 3N modes (acoustic and optical).
+
+
+% - Uncoupled oscillations = normal modes. Each k has a definite w and oscillates independantly of other modes.
+
+% - Adding 2pi/a to k does not alter the atomic displacements or group velocity: it does not affect any physical observable of the system. Can consider all possibilities in a 2pi/a region.
+
+% - At pi/a there is bragg reflection (simply take braggs law). These create standing waves: the wave is dispersionless (no velocity! Standing!)
+% In long wavelength limit the waves are disperionlessness.
+
+% - For two types of atom: There are two roots to the equation connecting w and k.
+% No matter how many atoms there is still periodicity of 2pi/a.
+% There are now 2N normal modes. (N number of unit cell). A is unit cell length.
+
+% - model for vibrations (harmonic approximation) ---> vib freq and displacement patterns (vibrational spectra) and from that IR/raman, free energies (T) - phase change. all stuff you couldnt get with standard electronic structure
+
+% - Partition function ---> bridge function kTlnZ (bridges micro and macro thermodyamics) to get helmholtz free energy. need vibrations to get temperature dependant energy and stability as a function of temperature.
+
+% - Table with the approximation and the properties you can get....
+
+% - Start with the full Xtal hamiltonian  adiabatic approximation to account for ifferent time scales  Taylor expansion  we are now viewing the chemical bonds as springs with a particular force constant.  (nice point for a sketch)
+
+% - Other interactions could be accounted fotr at this point. For example, there could be a magnetic interaction expanded in terms of spins. Heisenberg interaction would ensure that J is diagonal. Force constant woulc be renormalised by these magnetic interactions
+
+% - There are a multitude of ways to calculate these force constants: explicitly (finite difference, DFPT for 3rd or 4th orders), empirical potentials (TDEP), compressive sensing lattice dynamics or beyond perturbation (AIMD,PIMD,SCAILD, variational methodslike SSCHA developed by Ion Errea).
+
+% - See Schematic idea for perturbative and non-perturbative regime.
+
+% - Basically see p. 62 of stonehams defect and defect Processes in non-metallic solids for a great lo-down (molecules section!)
+
+% - Adiabatic approximation: Can thin of electronic wavefunction for eignstate of nuclei fixed in position.
+
+% - So far this has been fully classical. To make quantum we expect lattice vibration of frequency will be like simple harmonic oscillator and so will be restricted to certain energy values En=(n+1/2)hbaromega.
+% The phonons of energy hbar omega have exact energy so cannot be localised in space: formed of delocalised plane waves
+% But can construct localized packet using modes of different fequency. Can then treat phonons as localised particles. E = hbar omega. K is the crystal momentum .
+% Phonons are bosons, not conserved. They can be created and destroyed. 
+
+% - There are 3 major assumptions underlying standard phonon theory: 1) hat the equilibrium positions in a crystal are the minima of the born-oppenheimer potenetial energy surface where electron and nuclear motion are decoupled. May not be same as average position form the full electron-nuclear wavefunction . This is the adiabatic approximation. 2) harmonic approximation (cubed terms higher are ignored) 3) dipole approximation : higher multipole expansion are ignored
+
+% - What information can we get from phonons? 
+% Thermodynamic quantities at low temperature: heat capacity, entropy, free energy, zero-point,
+% Phase transitions from the Gibbs free energy,
+% Conductivity,
+% Infromation about lattice instabilities in the form of imaginary frequencies,
+% Elastic tensor from the q to zero limit of phonon dispersion,
+% Thermal expansion coefficient,
+% Temperature dependence of the band gap,
+% Electron phonon coupling,
+% Static polarization
+
+% - Experimental evidence:
+% Measured directly with inelastic scattering,
+% IR and Raman spectroscopy
+
+% - Extent of Anharmonicity depends upon how much of the potential energy space you are exploring ((tie in with perturbative and non-perturbative regime skethc). At low T you may be exploring harmonic potentil like minima, at High T you may be beyond this minima
+
+
+\subsection{The harmonic approximation}
+
+% - a potential energy surface and a bit highlighted with harmonic section (see schematics under visuals)
+
+% - Taylor expansion of the crystal potential.
+
+% - harmonic: truncate at second. potential energy is quadratic ---> linear restoring force. Near Q=0 they are good enough.
+
+% - harmonic approximation expects the energy to increase as you push along the mode.imaginary frequency because $w^2$ is negative.
+% dynamic stablity if all positive
+
+% - quasi-harmonic:properties as a function of volume.helmholtz as function of temeparture  - at some point it is favourable to have a different volume . Free energy as function volume for several tempatures and the fit an equation of state. 
+
+% - Then you can get the bulk modulus, heat capacity constant pressure, gibbs free, gruneisan, volumetric thermal expansion.use to get properties at finite T - use the structure which minimises for a particular temp.
+
+% - Thermal expansion coefficients, system anharmonicity (e.g. modal grun parameters) and the temperature-dependence of other properties can be calculated in the quasi-harmonic approximation (QHA). 
+% Here the lattice dynamics is harmonic at a given temperature; however, the cell volume is scaled by thermal expansion to give the first-order contribution of finite temperature effects. 
+
+\subsection{Anharmonicity}
+
+% - anharmonicity schematic under visuals: Si, PbTe, SrTiO3
+
+% - anharmonicity double well schematic for perovskites, compared to single well schematic, and with posiion of electron indicated and renormalisation that can be used above the curie temperature (see schematic under visuals).
+
+% - Double hat in SnSe and its seen in lots of things incl. octahedral rotations.
+
+% - for patching you have to get the dynamical matrix for the soft mode calcultions, then manually change the entres for the renoarmlaised freucies, then work backards to get the force constant matrix, then re-generate the dynamical matrix and diagonalise.
+
+% - harmonic freq that reproduces the anharmonic partition funciton.
+
+% - All the macro thermodynamic observables have to go via the partition function anyhow.
+
+% - Jacobs ladder of anharmonicity: harmonic/quasi-harmonic/anharmonic (3) / anharmonic Q4. The higher up you go,the more you can calculate.
+% 2: freq an eigenvectors / helmohltz free energy (constant volume)
+% spectral instensities
+% quasi 2: gibbs free, soft mode, finite T structure/prop
+% 3: phonon linewidths / spectral lifetimes
+% 4: anharmonic frequency shifts
+
+% - anharmonicity and thermal conductivity
+
+% - The thermal conductivity as calculated in phono3py depends upon the single mode relaxation time approximation (see togo’s theory paper on this). This is where the lifetime as of a single mode as calculated in phono3py is set as the relaxation time in the linearised boltzmann transport equation.
+% Under this assumption the thermal conductivity is then a summation over the product of heat capacity, mode velocity and relaxation time, which all come out of phono3py
+
+% - see Aron blog post on anharmonicity.
+
+% - harmonic approximation: lifetimes are infinite. Not true for processes involved with carrier capture, recombination and heat propagation.
+
+% - Anharmonicity most important when under high pressure or high temperature (bouchert) which is often the case for geophysical applications.
+
+% - To gauge anharmonicity can consider the 3-phonon scattering phase space: the phase space can be decreased with : large gap between acoustic and optical, isotopic pure heavy atoms, weak polarity, bunching of acoustic phonons….(Broido work)
+
+% - Navaneeth : assessing how higher order anharmonicity can aggect htermal conductivity. In Diamond the 4 phonon phase space is 10x that of 3-phonon. In Bas it is 100X that of 3-phonon phase space. We must then also consider the scattering strength (can only consider the scattering rate of those with a large phase space). The size of these phase spaces are huge. For example, Bas which is in the zincbelnde structure has 6 polarisations. If each done explicitly there would be $9x10^ 3$-phonon calculations, for 4-phonon processes there would be $2x10^12$!!!  So instead temperature-dependent ensembles are used (where all atoms are moved at the same time, calculated from explicit 2nd order force constant calculation) and then used to fit 3rd and 4th order force constants to.
+
+% - We can’t use DFPT when the perturbation is not small and there is strong, anharmonic behaviour. Use Ab-initio MD to capture this such asm the Green-Kubo method (fluctuation-dissipation theory) which relies upon the fact that thermal conductivity can be inferred from heat flux. [Heat flux is calculated from the stress tensor.] This gives a result which is anharmonic to all orders. The only restraint is that the system is in thermal equilibrium (linear response). Highly anharmonic motion is found in ZrO2, where there is very fast switching: like that seen in MAPI: severe violation of the harmonic principle, as seen in MAPI.
+
+% - Phonons from DFPT: http://journals.aps.org/rmp/pdf/10.1103/RevModPhys.73.515 - a good outline of the theory implemented in phono3py.
+
+\subsection{The finite displacement method}
+.
+% - Note that the  eigenvalue equation for the dynamical matrix is gotten from fourier transform
+% Of the taylor expansion of the crystal potential. For derivatives we exploit the hellman-feynam theorem and use finite differences (the alternative would be the DFPT / linear response (which is first order DFPT))
+
+% - See Jonathans talks
+
+% - force constant matrix . then construct dynamical matrix - -> wavevector. then diagonalise - the eigenvectors and eigenvalues. do a schematic for this process. then two ways to get to the dynamical matrix.
+
+% - Force constant via finite displacement - displace small and calculate force. Simple, general and can split into small jobs (parallelise). but need supercells. Maximum is 6N displacements but this is seriously reduced by symmetry.
+
+% - perturbation theory- dynamical matrix directly. no supercell and more accurate but constrained which functionals and pseudopotentials you need.
+
+% - Need good relaxation: don't skimp on the forces, cutoff or k-points.
+
+% - Once the dynamical matrix is built, the rest is post-processing.
+
+% - phonons can have a wavelength longer than the size of the supercell - need to capture the longer wavelength.
+
+% - PBEsol for reproducing lattice constants and phonons (Jonathan 2015 J.Chem. Phys)
+
+\section{Summary}
+
+
+
+
