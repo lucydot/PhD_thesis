@@ -13,8 +13,23 @@ It's simple mathematics.
 
 \section{Introduction} 
 
-\section{Density Functional Theory (DFT)}
+In this chapter I present the theory and methodology that has formed the basis for much of the work in this thesis. The chapter starts with an introduction to Density Functional Theory - in theory, and details around how this theory is implemented in a quantum mechanical calculation. In the second part of the chapter I outline how we can use DFT energies combined with a number of post-processing steps to predict defect formation energies and charge transition levels. The chapter ends with an introduction to the theory of lattice dynamics and how this is implemented to calculate the vibrational properties of a material. 
+% Am I talking about relativistic? Am I talking about spin?
+
+\section{Density Functional Theory}
+
+Density Functional Theory is the most commonly used method of electronic structure calculation in condensed matter physics and quantum chemistry. 
+Using Density Functional Theory we are able to predict the ground state properties of a material including electron density, total energy, equilibrium structure, vibrational frequencies and properties relating to the difference in total energies such as defect formation energies or surface energies. 
+As DFT is a ground state theory, we are not able to calculate properties relating to to excited states and, without further calculations (such as those outlined in Section \ref{sec:latticedynamics}), results do not incorporate the effects of temperature. 
+
+
+The basis was established in ..... and there are a growing number of codes that implement DFT and theories that extend DFT beyond the ground state (Alamode, Excited...).
+
+Although codes are increasingly designed as a blackbox, perhaps with the aim of being usable by non-experts, for many systems a solid knowledge of the underlying approximations and parameters are required for accurate results.
+% mention that it is getting easier to use? and that there are now codes that go beyond ground state DFT to eg: TDDFT.
 \subsection{DFT in theory}
+
+A note on the name. Functional: where you put in a function and a number comes out.
 
 %- History:
 % Kohn x 2 of course,
@@ -22,17 +37,59 @@ It's simple mathematics.
 
 \subsubsection{The Schrodinger equation}
 
-% Full Dirac solution too complicated -> need approximations
+The Schrodinger equation was discovered in ...., building on quantum mechanics. It is a master equation - if we can solve the schrodinger equation for an system, we know everything about the system.
 
-% image: schorodinger panited in defects NV diamond
+The Schrodinger equation can be written as:
+
+% explain wavefunctions and operators
+The operator for total energy is :
+
+
+So the full equation for a can be written as....
+If we can solve this N-electron SE for a N-electron wavefunction, then we will have access to all of the ground state properties of a system (?).
+Unfortunately, despite it's relatively simple appearance, we are not able to solve this equation for N>? directly.
+% look at the latest for full wavefunction methods.
+
+
+
+% Full Dirac solution too complicated -> need approximations
+%% Need to talk about the XC functional???
+
+
 
 \subsubsection{The Born-Oppenheimer approximation}
+
+Throughout the rest of this chapter we use the Born-Oppenheimer approximation, where we treat the atoms as considered heavy and fixed, so that we find the ground state of an electronic configuratin for a given atomic configuration.
 
 % Adiabatic assumption leads to the born oppenheimer approximation.
 
 %\subsubsection{Hartree-Fock methods}
 
+\subsubsection{Hartree-Fock}
+
+HF assumes the wavefunction is the product of two orbitals, but in reality the all electron wavefunction is a complex function of orbital.s
+Pauli exclusions --> antisymmetric wavefunctions --> exchange
+Correlation is defined as the error made by a HF calculation
+
 \subsubsection{The Hohenberg-Kohn theorem}
+
+A compromise can be made where, rather than solving for the wavefunction, we solve for the electron density. 
+The Hohenbery-Kohn theorem establisehd that the exact ground state density and energy of an N-electron system in an external potential can be found, given the right density functional. 
+
+Here, as in density approach, we have mapped an interacting system onto an easier to solve non-interacting system.
+The electron density  hav lower dimensionality than the N-electron wavefunction; the electron density scales as x, whilst a correlated N-electron wavefunction scales as y. (or N vs 3N) However, the electron density also contains less information.
+
+The exact density functional for total energy is not known.
+
+
+\subsubsection{The Kohn-Sham theorem}
+
+Kohn-Sham showed that to minimise the total energy, the occupation numbers of fictious one-electron wavefunctions can be optimised. The dimensionality is again reduced as there is no interaction, scales as y. 
+In this approach annal.y approximation is contained within the exchange-correlation functional, which must still be approximated.
+
+\subsubsection{Exchange-Correlation Functionals}
+
+
 
 % Cohen 1979?
 
@@ -45,6 +102,18 @@ It's simple mathematics.
 \subsection{DFT in practice}
 
 \subsubsection{Exchange-correlation functionals}
+
+% more accurate functionals are constructured by adding input parameters to the exchange correlation energy density.
+% The LDA approximation in the 1970s.
+% The GGA - gradient of the density
+% Meta GGAs - orbital kinetic energy density
+% Hybrid - exact exchange
+% RPA
+
+Local and semi-local (GGA) functionals fail when there are significant long range effects, as they have no info about electron density far from an electron.
+% but hybrid used for localised why is that?
+
+% Jacobs ladder.
 
 % - incl. hybrid functionals and need for accurate band gap
 
@@ -199,7 +268,7 @@ It's simple mathematics.
 % - MP point charge but the defect charge distribtiion is ill defined.
 % - FNV point charge correction indirectly calculates the MP. Pascalrello
 % - Oba correction.
-\section{Calculating the properties of vibrations in crystals}
+\section{Calculating the properties of vibrations in crystals} \label{sec:latticedynamics}
 
 %%: Books
 
