@@ -93,6 +93,9 @@
 %%%%% LW - SI units
 \usepackage{siunitx}
 
+%%%%% LW - paragraph settings
+\usepackage{parskip}
+
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
 \title{Defects and Distortions in  \\  Hybrid Halide Perovskites}
@@ -139,7 +142,10 @@
 % Leave this line alone; it gets things started for the real document.
 \setlength{\baselineskip}{\textbaselineskip}
 
+%%%%% LW - paragraph options
 
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.3\baselineskip}
 %%%%% CHOOSE YOUR SECTION NUMBERING DEPTH HERE
 % You have two choices.  First, how far down are sections numbered?  (Below that, they're named but
 % don't get numbers.)  Second, what level of section appears in the table of contents?  These don't have
@@ -245,9 +251,9 @@
 %%%%% CHAPTERS
 % Add or remove any chapters you'd like here, by file name (excluding '.tex'):
 \flushbottom
-\include{text/ch1-intro}
-\include{text/ch2-litreview}
-%\include{text/ch3-methods}
+%\include{text/ch1-intro}
+%\include{text/ch2-litreview}
+\include{text/ch3-methods}
 
 %%% DEBUGGIN'
 %\include{text/test}
