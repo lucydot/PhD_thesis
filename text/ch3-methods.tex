@@ -38,7 +38,7 @@ Although no one single text is followed, concepts for the underlying theory have
 \subsubsection{The Schr\"{o}dinger equation}
 
 The Schr\"{o}dinger equation describes the wavefunction $\Psi$ of a quantum mechanical system. The wavefunction is a fundamental postulate of quantum mechanics and it contains all the information for a given system. Once the Schr\"{o}dinger equation is solved, and a wavefunction is found, all the physical properties for that system follow. To take the simplest possible example, the time-independent non-relativistic Schr\"{o}dinger equation for a single particle can be written as:
-\begin{equation}
+\begin{equation} \label{singleparticle}
 \left[\frac{-\hbar^2}{2m}\nabla^2+V(\textbf{r})\right]\Psi(\textbf{r}) = E\Psi(\textbf{r})
 \end{equation}
 where the first term in the bracket corresponds to the kinetic energy and the second term corresponds to the potential energy. For a single particle in a simple potential, such as the ``particle in a box" system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). In this case, the Schr\"{o}dinger equation takes the form:
@@ -86,7 +86,7 @@ This formalism has the advantage that the electron density has a lower dimension
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/dimensions.png}
+  \includegraphics[resolution=450]{figures/ch3/dimensions.png}
   \caption[Dimensionality of variational objects]{To solve the Schr\"{o}dinger equation we can use a variational object with lower dimensionality and higher computational efficiency, although this will come at the cost of accuracy. This schematic is based on a discussion in Walter Kohn's Nobel Prize lecture.\autocite{Kohn1999}}
   \label{decouple}
 \end{figure}
@@ -105,8 +105,8 @@ To use Kohn-Sham DFT we must approximate the exchange-correlation functional, an
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/jacobsladder.png}
-  \caption[Jacob's ladder of exchange-correlation functionals]{}
+  \includegraphics[resolution=450]{figures/ch3/jladder.png}
+  \caption[Jacob's ladder of exchange-correlation functionals]{Jacob's ladder of exchange correlation functionals. On the right hand side are the various categories of exchange-correlation functionals and on the left hand side are the additional input variables included at each level of theory. As we move up the ladder the chemical accuracy increases, alongside computational expense.}
   \label{decouple}
 \end{figure}
 
@@ -145,13 +145,13 @@ Closest to heaven is the Random Phase Approximation, which uses all of the Kohn-
 % DFT was not designed to calculate band gaps.
 % - However, since 2000 functionals have been better at giving total energy but they don’t give accurate density: straying away from ab-initio into a fitting exercise: DFT is straying from the path towards an exact functional
 
-\subsubsection{Symmetry}
+\subsubsection{Exploiting symmetry}
 
 The material studied in this thesis, \ce{CH3NH3PbI3}, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach which is to model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that it's properties do not depend on size. We introduce Born-von Karman (periodic) boundary conditions so that the infinite crystal is built from a repeating array of unit cells. For a unit cell of length $L$, any physically significant function $\psi$ of the crystal must have the same value at the origin and $L$, or in 3D:
 
-$$ 
+\begin{equation}
 \psi([0 0 0]) = \psi([L 0 0]) =  \psi([ 0 L 0]) = \psi([0 0 L])
-$$
+\end{equation}
 
 where the square bracket denotes a vector on the basis of the three unit cell vectors (Figure \ref{translational}. Note that there are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal.
 
@@ -159,31 +159,39 @@ It is often the case that translational symmetry is broken in the real material,
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/translational.png}
-  \caption[]{} 
+  \includegraphics[resolution=450]{figures/ch3/supercell.png}
+  \caption[Translational symmetry and supercell construction]{An infinite crystal is built from a repeating unit cell of length $L$ (LHS). Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have wavelengths $>L$ (sine wave). A supercell of length $M=2L$ can be built to better model these effects (RHS). } 
   \label{translational}
 \end{figure}
+% copy and paste phonon mode across to supercell picture?
 
+When the Schrodinger equation is solved for a H atom the solution gives wavefunctions corresponding to the 1s, 2s, 2p, etc orbitals found in chemistry. For periodic systems, wavefunctions are formed by Bl\"{o}ch functions:\autocite{Hoffman1987}
 
-When the Schrodinger equation is solved for a H atom the solution gives wavefunctions corresponding to the 1s, 2s, 2p, etc orbitals found in chemistry. For periodic systems, wavefunctions are formed by Bl\:{o}ch functions:\autocite{Hoffman1987}
+\begin{equation} 
+\psi_{k} = u_ke^{i\textbf{k}\cdot\textbf{r}}
+\label{bloch}
+\end{equation}   %could do a sketch of the two parts and the resulting part, and the periodic potential
 
-$$
-\psi_nk(\textbf{r}) = u_k(\textbf{r})e^{i\textbf{k}\cdot\textbf{r}}
-$$
+where the Bl\"{o}ch function is formed from the product of a function $u_k$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $k$ is a crystal wave vector which forms a space known as reciprocal space; to understand the physical significance of $k$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$ (Figure \ref{bands}). The electron states can be described a linear combination of H 1s orbitals $u_n$ centred at each lattice point :
 
-where the Bl\:{o}ch function is formed from the product of a function $u_k$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $k$ is a crystal wave vector; to understand the physical significance of $k$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$. The electron states can be described a linear combination of H 1s orbitals $u_k$ centred at each lattice point :
+\begin{equation}
+\psi_k = \sum_nu_ne^{inkL}
+\end{equation}
 
-$$
-\psi_k = \sum_nu_ne^{iknL}
-$$
-
-$k=0$ corresponds to the most bonding state, and $k=\frac{\pi}{L}$ corresponds to the anti-bonding state
+$k=0$ corresponds to the low energy most bonding state, and $k=\frac{\pi}{L}$ corresponds to the high energy anti-bonding state
 \begin{align}
 \psi_0 &= \sum_nu_ne^0 = u_1 +u_2 +u_3 +u_4 \dots \\
 \psi_{\frac{\pi}{L}} &= \sum_nu_ne^{i\pi n} = u_1 -u_2+u_3-u_4 \dots
 \end{align}
+Between these two extremes there is a continuum of states forming an electronic band (Figure \ref{bands}). 
 
-Between these two extremes there is a continuum of states forming an electronic band (Figure \ref{bands}). The cystal vector $k$ fully determines the energy and so the energy can be plotted as a function of the $k$ vector. The $k$ vector forms a space known as reciprocal space. As a result of crystal symmetry, only $k$-vectors within a region of space known as the Brillouin Zone ($|k|<\frac{\pi}{a}$) need to be considered.
+Substituting Equation \ref{bloch} into Equation \ref{singleparticle} gives
+
+\begin{equation} \label{energyequation}
+\left[\frac{1}{2m}\left(\frac{\hbar}{i}\nabla+\hbark\right)^2+V(\textbf{r})\right]u_k = E(k)u_k
+\end{equation}
+
+For any $k$ we can solve Equation \ref{energyequation} with periodic boundary conditions to find the bandstructure $E(k)$. The bandstructure is often modelled as being parabolic around the maxima and minima, and the curvature determines the carrier effective mass which is explored in Chapter \ref{ch:4-effmass}. There are an infinite number of eigenvalues so the energy is labelled $E_n(k)$ where n labels the particular eigenvalue (band). As a result of crystal symmetry, $E_n(k)$ is periodic and only $k$-vectors within a region of space known as the Brillouin Zone ($|k|<\frac{\pi}{a}$) need to be considered. %I should cite the transport booked used, and include modelling as parabola to link to effective mass.
 
 \begin{figure}[h]
 \centering
@@ -192,18 +200,18 @@ Between these two extremes there is a continuum of states forming an electronic 
   \label{bands}
 \end{figure}
 
-\subsubsection{Plane Wave Basis Sets}   %valence bands and conductions bands?
+\subsubsection{Basis Sets}   %valence bands and conductions bands?
 
-In the previous example the lattice periodic part of a bloch function took the form of a H 1s orbital. For more complex systems, $u_k(r)$ can itself be expanded into a plane wave basis set whose wave vectors $G$ are reciprocal lattice vectors
+In the previous example the lattice periodic part of a bloch function took the form of a H 1s orbital. For more complex systems, $u_k$ can itself be expanded into a plane wave basis set whose wave vectors $G$ are reciprocal lattice vectors
 
 \begin{equation}
-u_nk(r) = \sum_Gc_{n\textbf{k},\textbf{G}}e^{i\textbf{G}\cdot\textbf{r}}.
+u_k = \sum_Gc_{\textbf{k},\textbf{G}}e^{i\textbf{G}\cdot\textbf{r}}.
 \end{equation}
 
 The complete expanded Kohn-Sham wavefunction can be expressed as
 
 \begin{equation} \label{KSeigenstates}
-\psi_k(r) = \sum_Gc_{\textbf{k},\textbf{G}}e^{i\textbf{k+G}\cdot\textbf{r}}
+\psi_k = \sum_Gc_{\textbf{k},\textbf{G}}e^{i(\textbf{k+G})\cdot\textbf{r}}
 \end{equation}
 
 A plane wave basis set is often used for extended systems as they are inherently peroidic. The software used for the DFT calculations in this thesis, \ce{VASP}\autocite{}, uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals can be used. This is implements in software such as \autcite{}.
@@ -217,17 +225,19 @@ Sudden changes in electron density are hard to capture using a plane wave basis 
 In this section the process of optimising the atomic and electronic structure of a system towards the ground-state (minimum energy) configuration is outlined. 
 
 In Section \ref{DFTtheory} (Figure \ref{decouple}) we saw that the potential $v_\textrm{ee}$ is dependant on electron density $\rho$, which is itself dependant on $v_\textrm{ee
-}$. Therefore an iterative method, the Self Consistent Field (SCF) method, is used to calculate the ground-state electronic structure (Figure \ref{SCF} in light blue). The initial guess for the density $n(r)$ is given by a superimposition of the atomic charge densities. This is used to calculate the potential and solve the KS equations, which gives a new $n(r)$. This process continues until the convergence criteria is met (most often within an energy tolerance). Various optimisation routines are provided in DFT codes for finding the ground state configuration, including the conjugate gradient scheme, Davidson Scheme and RMM-DIIS.
+}$. Therefore an iterative approach, the Self Consistent Field (SCF) method, is used to calculate the ground-state electronic structure (Figure \ref{SCF}, dashed section). The initial guess for the density $n(r)$ is given by a superimposition of the atomic charge densities. This is used to calculate the potential and solve the KS equations, which gives a new $n(r)$. This process continues until the convergence criteria is met (most often within an energy tolerance). Various optimisation routines are provided in DFT codes for finding the ground state configuration, including the conjugate gradient scheme, Davidson Scheme and RMM-DIIS.
 
-DFT is also used to find the ground state atomic structure. Structures from X-ray Diffraction Data are used as a starting guess, so that finding the energetic minimum becomes a local optimisation problem. Ions in the systems are displaced (either the internal coordinates of the unit cell or the unit cell parameters themselves are adjusted) and the electronic structure for that geometry is solved self-consistently. This repeats until the forces on each atom are zero (within a given tolerance, Figure \ref{SCF} in dark blue). 
+DFT is also used to find the ground state atomic structure. Structures from X-ray Diffraction Data are used as a starting guess, so that finding the energetic minimum becomes a local optimisation problem. Ions in the systems are displaced (either the internal coordinates of the unit cell or the unit cell parameters themselves are adjusted) and the electronic structure for that geometry is solved self-consistently. This repeats until the forces on each atom are zero (within a given tolerance, Figure \ref{SCF}). 
+%optimisation routines.
+% Talk about the PES here
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/scf.png}
-  \caption[]{} 
+  \includegraphics[resolution=450]{figures/ch3/scf.png}
+  \caption[Nested iterative method for geometry optimisation]{Nested iterative method for geometry optimisation. The electronic structure relaxation (dashed lines) is nested within the atomic structure relaxation (solid lines).} 
   \label{SCF}
 \end{figure}
-
+%% the potentials aren't correct need to fix this and addd potentials explicitly to the DFT part of the theory
 \subsubsection{The limits of DFT}
 
 \textit{Thoeretical limitations}
@@ -249,32 +259,18 @@ Second, to calculate many properties of interest we need to integrate over the B
     E = \frac{\Omega}{(2\pi)^3}\sum_\textrm{occ.}\int_\textrm{BZ}E(\textbf{k})d^3k
 \end{equation}
 where $\Omega$ is the volume of the Brillouin zone and there is a sum over all occupied bands. 
-In practice we do not know the continuous form for $E(\textbf{k})$ and so we evaluate Equation \ref{energyintegral} numerically as a weighted sum over special points in reciprocal space which form a $k$-point mesh. This is often an equally spaced mesh centred on the $\Gamma$-point ($k=(0,0,0)$) in reciprocal space (Figure \ref{MPgrid}). As with plane waves, there is a balance between accuracy (the higher the number of $k$-points, the higher the accuracy) and computational expense. This is demonstrated in Figure \ref{kpointconvergence} where x required a $k$-point grid of y to achieve convergence to within z.
-
-\begin{figure}[h]
-\centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/MPgrid.png}
-  \caption[]{} 
-  \label{mPgrid}
-\end{figure}
-
+In practice we do not know the continuous form for $E(\textbf{k})$ and so we evaluate Equation \ref{energyintegral} numerically as a weighted sum over special points in reciprocal space which form a $k$-point mesh. This is often an equally spaced mesh centred on the $\Gamma$-point ($k=(0,0,0)$) in reciprocal space. For any given system, the $k$-point density scales inversely with cell size; if the unit cell in Figure \ref{translational} requires a $6\times6$ $k$-point grid, the $2\times2$ supercell requires a $3\times3$ $k$-point grid. As with plane waves, there is a balance between accuracy (the higher the number of $k$-points, the higher the accuracy) and computational expense. An example convergence study is given in Figure \ref{kpointconvergence} where a $5\times5\times5$ $k$-point grid is required to converge pressure to within \SI{1}{\kilo\bar} and energy to within \SI{0.1}{\electronvolt} in \ce{CsSnI3}.
 
 \begin{figure}[h]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch3/kpointconvergence.png}
-  \caption[]{} 
+  \caption[$k$-point convergence of \ce{CsSnI3}]{$k$-point convergence of \ce{CsSnI3}. The $k$-point grid size is on the $x$-axis. Pressure is denoted with a red dot; the region which is within the \SI{1}{\kilo\bar} convergence criteria for this study is shaded red. Energy is denoted with a blue cross; the region which is within the \SI{0.1}{\electronvolt} convergence criteria  is shaded in blue. Only odd grids sample the $\Gamma$-point and so there is an oscillation in energy and pressure as we move between odd and even grids.}
   \label{kpointconvergence}
 \end{figure}
 
 % - K-point grids and the commensurate grids for supercells.
 % - Doubles k-points reuired as k and –k now no longer equivalent (SoC?)
-
 %All convergence tests must be done for the property of interest. Cancellation of errors can mean that energy differences converge faster than ground state energies, as is reported in Chapter \ref{}.   % EP coupling calcas 
-
-% include some convergence testing here.
-
-
-
 % - See: Designing meaningful density functional theory calculation in materials science - a primer Anne E Mattson et al. Model. Sim. Mater. Sci Eng. 13 R1-R31 (2005). : for information about convergence and getting meaningful results.
 
 %\textit{Computational limitations}
@@ -290,44 +286,97 @@ In practice we do not know the continuous form for $E(\textbf{k})$ and so we eva
 
 \section{Calculating the properties of defects in semiconductors}
 
-%% Books: 
+The second law of thermodynamics states that "an isolated system tends towards an equilibrium macrostate with maximum entropy". A consequence of this is that all solids in equilibrium at finite temperature contain point defects, as the cost in lattice energy is balanced by the change in configrational entropy. 
+Point defects are associated with a number of microscopic processes that can be beneficial or detrimental to material performance, including:
+\begin{itemize}
+    \item optical: colour centres, up/down conversion
+    \item electrical: conductivity, carrier trapping, ionic hopping
+    \item mechanical: material hardening
+    \item thermal: conductivity, decomposition
+\end{itemize}
+The wide ranging impact of point defects accounts for the continuing research activity that began in 1926 when Yakov Frenkel introduced the concept of defects in a crystalline structure. Theoretical methods are particularly useful in this field as, although it is relatively straight forward to estimate the quantity of defects in a material, it is much more challenging to identify the type of defect.  
+ 
+. In this section I first outline the different types of crystal defects, and then discuss the thermodynamics of (charged) defect formation. I end the section by outlining the supercell method for calculating defect properties. This method was used in Chapter \ref{ch:6-defects}, where I calculate electronic structure properties which lead to a description of the defects in \ce{Ch3NH3PbI3}.
 % We are interested in calculating the electronic structure properties which lead to a description of the defects (trap density, binding energy, trap level, capture cross section).
 
-%Mott and Littleton, 1938 - predict concentrations from the defect itself. And predict the conductivity.
-% - THey are demainding and computational expensive .n To avoid computationally expensive defect calculations descriptors have been built on the idea of ‘defect tolerant’ materials: http://pubs.acs.org/doi/pdf/10.1021/acs.nanolett.5b04513
-
-\subsection{Classifying defects}
-
-% - many possible defects
-
-% - many possible point defects
-
-% - may be able to say defect is there experimentally but another step to identify which it is. Admittance spectroscopy, DLTS. 
-
-% - defect levels deend on temperature. DLTS assumes T-independant scattering cross sction, not accurate,
-
-\subsection{The energetics of defect formation}
-
-% - calculating concentrations is difficult because it is exponentially sensitive to the formation energy. The other problem is that is dependant upon the chemical potential which is difficult to monito
+% cite defects and defect processes in nonmetallic solids
 
 % - History:
-
 % - 1912 Born and Karman . PBC (first lattice dynamics paper)
-
 % - 1925 Frenkel – formation of frenkel pair (first defects paper)
-
 % - 1922 Jost – probability of forming defects. Tied into experimental work popular at the time, looking at how a material can be an ionic conductor when it is electrically insulating
-
 % - 1938 Mott – the Mott-Littleton approach for calculating defects
 
+\subsection{Classification of crystal defects}
+
+The first way to classify defects is via their dimension. 0-dimensional are localised around isolated sites in the crystal and are known as point defects. 1-dimensional are lines along which the crystal pattern is broken and are called dislocations. 2-dimensional defects are surfaces along which distinct crystallites are joined and are called grain boundaries or interfaces. 3-dimensional defects are changes to the crystal pattern in finite volumes, this includes precipitates and voids. 
+
+The remainder of this thesis concerns 0-dimensional point defects, which can be further split into extrinsic or intrinsic defects. Extrinsic point defects are impurity atoms, different from the host species. These defects may be added intentionally (for example, to increase electrical conductivity) or unintentionally (as a result of the fabrication method). Intrinsic point defects are associated with host species.
+
+Point defects can also be classified as non-stochiometric or stochiometric. Non-stochiometric defects include interstitials (where an additional atom occupies a site that is unoccupied in the perfect lattice), vacancies (missing atoms) and anti-sites (where atom occupies a site that is occupied by another species in the perfect lattice). Interstitials can have a ``split'' structure, in which two atoms are split symmetrically around a single lattice site. Stochiometric defects include Frenkel pairs, Shottky pairs and V-centres. The stochiometric and non-stochiometric defects are illustrated in Figure \ref{classification}.
+
+\begin{figure}[h]
+\centering
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/classification.png}
+  \caption[Classification of crystal point-defects]{A nearby pair of a vacancy and an interstitial is a Frenkel pair, whereas vacancies on both the anion and cation sub-lattices is a Shottky pair}
+  \label{classification}
+\end{figure}
+
+The final classification is into electrically active and electrically benign defects. Whilst electrically benign defects exist only in one charge state, electrically active defects can take more than one charge state; for example, single acceptors exist in a neutral or negatively charged state and single donors exist in a neutral or positively charged states. Amphoteric defects can exist in a negatively charged or positively charged state.
+% reference alkasukas https://www.osti.gov/pages/servlets/purl/1471061
+% - may be able to say defect is there experimentally but another step to identify which it is. Admittance spectroscopy, DLTS. ESR (later chapter)
+% emphasise that the concentration could be as low as one part in a milllion and wtill have an effect.
+% - defect levels deend on temperature. DLTS assumes T-independant scattering cross sction, not accurate,
+
+\subsection{The energetics of defect formation} \label{defectformation}
+
+The equilibrium concentration of defects ($n$) at a fixed temperature and pressure is given by the density that minimizes the free energy.
+\begin{equation} \label{defectconcentration}
+    n = N_{sites} \exp \left(-\frac{\Delta G}{k_\mathrm{B} \mathrm{T}} \right),
+\end{equation}
+where $\Delta G$ is the Gibbs free energy of defect formation. The Gibbs free energy is approximated as the formation energy of the defect $\Delta E_f$ as this dominates over entropic contributions. The formation energy is given by
+\begin{equation} \label{eqn_formation_energy}
+E_f(q) = E_d(q) - E_b [-] \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_F) + E_{corr}
+\end{equation}
+where $E_d(q)$ is the total energy of the defect supercell and $E_b$ is the total energy of the perfect bulk. 
+$E_{corr}$ is a correction energy that is only needed for charged defects, and is discussed further in the following section.
+The remaining terms describe the energy needed to add or remove atoms and electrons.
+$\mu_i$ is the chemical potential of the atom, and $n_i$ is the number that is added or removed.
+The chemical potential can be adjusted to describe different growth conditions; if the growth conditions are rich for species $i$ then $\mu_i$ will be low.
+$E_F$ is the Fermi level, referenced to the valence band maximum ($\epsilon_\mathrm{VBM}$).
+
+The total energies can be calculated using DFT. Convergence criteria for calculations must be tight as, due to the exponential dependence of defect concentration on formation energy, small errors in the energy difference can lead to large errors in defect concentration.
+
+The Fermi energy is treated as a parameter, of which the defect formation energy is a linear function with a gradient equal to defect charge. This allows us to plot a graph of formation energy against Fermi energy, as shown in Figure \ref{}. Charge transition levels mark the fermi energy at which two charge states have the same defect formation energy. Electrically active defects have at least one charge transition state in the band gap. 
+The charge transition level is equivalent to thermal ionization energy, the energy needed to add or remove electron(s). % check this
+% does not always need a charge transition level deep in the band gap. https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b01313
+
+
+\begin{figure}[h]
+\centering
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/classification.png}
+  \caption[Classification of crystal point-defects]{A nearby pair of a vacancy and an interstitial is a Frenkel pair, whereas vacancies on both the anion and cation sub-lattices is a Shottky pair}
+  \label{classification}
+\end{figure}
+
 % - defect energies theoretical founsations - mott littleton (1938)  - a way to calculate E the defecct energy as knew the hopping rate expression, but didnt know E. only experimental input is dielectric constant.see special 1988 issue.
+%  The other problem is that is dependant upon the chemical potential which is difficult to monitor.
 
+% Point defects result in additional energy levels in the band gap with an associated defect wavefunction to which an electron is added or removed.
+% defect level delocalised, electrical conductivity.EMT.
+%or deep and localised wavefucntion. detrimental in the context of solar cells.
+
+%  Electrically active defects have at least one transition level in the band gap of the material (Section \ref{defectformation}) with an associated defect wavefunction. This thesis
+
+
+%Onecan then introduce the Fermi energyEFas a parameter,relative to the valence band maximum (VBM), of which eachdefect formation energy is a linear function with slopeq,inorder to elucidate likely defect properties at different dopingconditions. The standard approach to presenting such resultsis as a graph of formation energyEf(VqO) versusEF.Thermal ionizations are calculated from the formationenergies via the reactions:V+O+e−⇔V0O,V2+O+e−⇔V+O,V2+O+2e−⇔V0O.(5)The value ofEFwhich balances Eqs. (5), introduced via thee−terms, gives the transition levels from charge state to chargestate for each defect.
+
+% - There is a linear dependance on the product of charge and fermi energy. This means that the slope of the formation energy when plotted against fermi energy gives the charge state. It also means that neutral charge states are flat. Plot as function of fermi energy. gives ionisation levels.
+% ionisation levels in MAPI
+
+% The concentration of point defects can be controlled by thermal treatment, irradiation or doping. 
 % - Fermi level pinning (?) / defect concentration: Happens in TCO’s such as FTO. Above a certain concentration there are no more holes. This could happen when there are defect complexes which compensate each other.
-
 % - This is a compensation mechanism. We try to adjust the fermi level of the system by introducing impurities. However above/below a certain energy level there is spontaneous formation of defects (defects which have a negative energy of formation). These defects compensate for the impurity and in this way the fermi level is pinned.
-
-
-% - There is a linear dependance on the product of charge and fermi energy. This means that the slope of the formation energy when plotted against fermi energy gives the charge state. It also means that neutral charge states are flat
 
 % - Calculable and observable table:
 % Delta E : heat of formation / concentrations
@@ -335,32 +384,55 @@ In practice we do not know the continuous form for $E(\textbf{k})$ and so we eva
 % Defect ionisation , thermal, after relaxation: DLTS / thermally stimuated conductuvtiy
 % Defect vibrational modes: IR/raman spectra and recombination rates
 
-% - Defect levels are very sensitive to the level of theory used (see schematic under visuals) - important to use correct one.
-
 \subsection{The supercell method}
+% previous section: differences between total energies, can be calculated with DFT
+%Can be as low as one part per million.
+% point defects in the dilute limit when defect-defect interactions are negligible. 
+% problem of periodicity (refere back to picture) - interact with itself.
 
-% - Finite size effects (supercell)
+% outline the supercell method - if its large enough.
 
 % - Other method - embedding. 
 
 % - The supercell method leads to some unphysical results for both electronic and vibrational properties. The defect will perturb the lattice. The SC method captures localised defect effects well – but the delocalised defects (possibly in the band) are not captured as there is an enforced periodicity. The only way around this is to use greens functions method (phonons) or QM/MM approach (electrons).
-
+% vibrations of defects - link to final chapter
 
 \subsubsection{Supercell corrections}
+% this is from the joint JPhysChem defects review paper - if its published I will need to cite it!
+% previous section - defect-defect interaction but there are also longer ranged coloumb interations
+Point defects can be electrically charged, and are able to change charge state through the trapping and de-trapping of electrons and holes. 
+The charge state of a defect can affect a number of defect properties including the preferred lattice position, surrounding lattice distortion, and the rates for diffusion, carrier capture, and carrier recombination.
+However understanding the properties of charged defects is a challenge for DFT with periodic boundary conditions, due to the long range nature of the Coulomb interaction.
+There are two issues to resolve. 
+Firstly, charged defects are able to interact with their periodic images; 
+Secondly, a homogeneous "jellium" background charge is introduced to ensure overall charge neutrality. This results in an unknown shift to the average electrostatic potential. 
+These are finite-size effects, that only a very large, almost infinite, supercell would overcome as the Coulomb potential decays very slowly.
+Such a supercell would certainly prove too costly, especially when higher levels of theory (for example, hybrid functionals) are required to calculate accurate total energies.
 
+A number of correction schemes have been developed to deal with these issues; a brief historical overview is given below. These schemes are designed to be used as a post-processing step and provide a value for the $E_{corr}$ term in Eqn.\ref{eqn_formation_energy}. For a more complete description of these issues we refer the reader to the existing literature.\cite{durrant2018,Vinichenko2017}
 
-% - Leslie nad Gillan - charged defects in supercells first paper. their correction gives a size dependance on the size of supercell (it is a monopole expansion and known as Markov Payne correction).
+The Leslie Gillan correction\cite{Leslie1985} models the defect charge $q$ as a point charge interacting with it's periodic images through an isotropic dielectric medium. 
+This correction takes a simple analytic form that depends on the charge state  $q$, static dielectric constant $\epsilon$, separation between images $L$ and the Madelung constant $\alpha_m$, which is determined by the lattice geometry.
+The Markov-Payne correction extends the Leslie Gillan correction by including an additional term which accounts for the delocalised part of the defect charge. 
+\begin{equation}
+    E^\mathrm{MP} = \frac{q^2\alpha_{m}}{2\epsilon L} [+ qQL^{-3}]
+\end{equation}
 
-%-one charge correction is the process of getting a meaningful fermi energy (shift in potential energy -core level shift)
-%-coulomb charge correction: MP correction or LZ (which accounts for Moss Burstein filling)
+The challenge of this approach is in calculating the quadrupole moment $Q$. 
+The Lany-Zunger correction\cite{Lany2009} combines the Markov-Payne correction, including an approach for calculating $Q$, with a potential alignment procedure to correct for the shift in electrostatic potential. 
+The Freysholdt, Neugebauer and van de Walle (FNV) method\cite{Freysoldt2009} models the defect charge as a localised gaussian distribution. 
+The difference between the electrostatic potential of the charged defect supercell and the electrostatic potential of the perfect bulk supercell, calculated far from the defect, is aligned with the defect model potential. 
+Kumagai and Oba have extended to FNV method by using atomic site potentials combined with a point charge model for an anisotropic medium.\cite{Kumagai2014} 
 
+The schemes discussed were initially developed for use with three-dimensional materials. 
+Recent work has extended these methods to two-dimensional\cite{Freysoldt2018,Komsa2013} and one-dimensional\cite{Kim2014} materials.
+We note that there is still no standardised approach to defect charge corrections, 
+which can lead to a spread in calculated defect formation energies in the literature, and predicted defect densities which differ by orders of magnitude.
+Two widely used approaches in the recent literature are the FNV method, and the extension to this provided by Kumagai and Oba.
+Both schemes are implemented in the \texttt{sxdefectalign}, as outlined in the following section.
+Developing an efficient scheme which can account for microscopic effects and anisotropy is an active area of research.\cite{durrant2018,Vinichenko2017}
 % - for a really good explanation see Suzys group talk (Monday the 10th september 2018) and https://aip.scitation.org/doi/10.1063/1.5029818 which it was based upon.
 
-% Spurious charge nteractions as a sresult of the SC approach. For example, 1. periodic-periodic defect-defect interaction and 2. defect-background charge interactions.
-% - Leslie Giliian point charge correction
-% - MP point charge but the defect charge distribtiion is ill defined.
-% - FNV point charge correction indirectly calculates the MP. Pascalrello
-% - Oba correction.
 
 \section{Calculating the properties of vibrations in crystals} \label{sec:latticedynamics}
 %% Hellmann Feynmann theorem
@@ -519,6 +591,7 @@ In practice we do not know the continuous form for $E(\textbf{k})$ and so we eva
 
 \section{Summary}
 
-
+%: LW - could we add here that solid state physics of crystalline materials is not really built for defects as they assume perfect translational symmetry, which the defects break ---> which makes modelling defects a continuing challenge for theory and simulation (as we are working "against" the fundamental assumptions of the framework).
+% - defects are demainding and computational expensive .n To avoid computationally expensive defect calculations descriptors have been built on the idea of ‘defect tolerant’ materials: http://pubs.acs.org/doi/pdf/10.1021/acs.nanolett.5b04513
 
 
