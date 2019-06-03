@@ -347,10 +347,9 @@ $E_F$ is the Fermi level, referenced to the valence band maximum ($\epsilon_\mat
 
 The total energies can be calculated using DFT. Convergence criteria for calculations must be tight as, due to the exponential dependence of defect concentration on formation energy, small errors in the energy difference can lead to large errors in defect concentration.
 
-The Fermi energy is treated as a parameter, of which the defect formation energy is a linear function with a gradient equal to defect charge. This allows us to plot a graph of formation energy against Fermi energy, as shown in Figure \ref{}. Charge transition levels mark the fermi energy at which two charge states have the same defect formation energy. Electrically active defects have at least one charge transition state in the band gap. 
+The Fermi level is treated as a parameter, of which the defect formation energy is a linear function with a gradient equal to defect charge. This allows us to plot a graph of formation energy against Fermi level, as shown in Figure \ref{}. Charge transition levels mark the fermi energy at which two charge states have the same defect formation energy. Electrically active defects have at least one charge transition state in the band gap. 
 The charge transition level is equivalent to thermal ionization energy, the energy needed to add or remove electron(s). % check this
 % does not always need a charge transition level deep in the band gap. https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b01313
-
 
 \begin{figure}[h]
 \centering
@@ -359,6 +358,7 @@ The charge transition level is equivalent to thermal ionization energy, the ener
   \label{classification}
 \end{figure}
 
+Defect levels deep in the band gap correspond to localised wavefunctions. Carrier capture to these defect states is often associated with a large lattice distortion. Shallow defect levels (within thermal energy $kT$ of the valence or conduction band) correspond to delocalised, hydrogenic-like defect wavefunctions. 
 % - defect energies theoretical founsations - mott littleton (1938)  - a way to calculate E the defecct energy as knew the hopping rate expression, but didnt know E. only experimental input is dielectric constant.see special 1988 issue.
 %  The other problem is that is dependant upon the chemical potential which is difficult to monitor.
 
@@ -366,13 +366,7 @@ The charge transition level is equivalent to thermal ionization energy, the ener
 % defect level delocalised, electrical conductivity.EMT.
 %or deep and localised wavefucntion. detrimental in the context of solar cells.
 
-%  Electrically active defects have at least one transition level in the band gap of the material (Section \ref{defectformation}) with an associated defect wavefunction. This thesis
-
-
-%Onecan then introduce the Fermi energyEFas a parameter,relative to the valence band maximum (VBM), of which eachdefect formation energy is a linear function with slopeq,inorder to elucidate likely defect properties at different dopingconditions. The standard approach to presenting such resultsis as a graph of formation energyEf(VqO) versusEF.Thermal ionizations are calculated from the formationenergies via the reactions:V+O+e−⇔V0O,V2+O+e−⇔V+O,V2+O+2e−⇔V0O.(5)The value ofEFwhich balances Eqs. (5), introduced via thee−terms, gives the transition levels from charge state to chargestate for each defect.
-
-% - There is a linear dependance on the product of charge and fermi energy. This means that the slope of the formation energy when plotted against fermi energy gives the charge state. It also means that neutral charge states are flat. Plot as function of fermi energy. gives ionisation levels.
-% ionisation levels in MAPI
+%The concentration of a point defect in a particular charge state can be controlled by tuning the Fermi level through doping. However there is a compensation mechanism, whereby defects form to compensate
 
 % The concentration of point defects can be controlled by thermal treatment, irradiation or doping. 
 % - Fermi level pinning (?) / defect concentration: Happens in TCO’s such as FTO. Above a certain concentration there are no more holes. This could happen when there are defect complexes which compensate each other.
@@ -385,14 +379,14 @@ The charge transition level is equivalent to thermal ionization energy, the ener
 % Defect vibrational modes: IR/raman spectra and recombination rates
 
 \subsection{The supercell method}
-% previous section: differences between total energies, can be calculated with DFT
-%Can be as low as one part per million.
-% point defects in the dilute limit when defect-defect interactions are negligible. 
-% problem of periodicity (refere back to picture) - interact with itself.
 
-% outline the supercell method - if its large enough.
+Defect concentrations as low as one part in one million can have an influence on device performance. 
+To model point defects in the dilute limit, when defect-defect interactions are negligible, a supercell is built from multiple unit cells (Figure \ref{}).
+This supercell must be large enough so that there is no interaction between a defect and its periodic images.
+Although the supercell method captures localised defects well, it cannot capture the behaviour of delocalised (or band resonant) defects due to the enforced periodicty. 
+%http://cmt.dur.ac.uk/sjc/thesis/thesis/node71.html
 
-% - Other method - embedding. 
+It is possible to remove the constraint of translational symmetry and use an embedded approach whereby a region around the defect is modelled using DFT and this is embedded in a region that is modelled classically.
 
 % - The supercell method leads to some unphysical results for both electronic and vibrational properties. The defect will perturb the lattice. The SC method captures localised defect effects well – but the delocalised defects (possibly in the band) are not captured as there is an enforced periodicity. The only way around this is to use greens functions method (phonons) or QM/MM approach (electrons).
 % vibrations of defects - link to final chapter
@@ -593,5 +587,6 @@ Developing an efficient scheme which can account for microscopic effects and ani
 
 %: LW - could we add here that solid state physics of crystalline materials is not really built for defects as they assume perfect translational symmetry, which the defects break ---> which makes modelling defects a continuing challenge for theory and simulation (as we are working "against" the fundamental assumptions of the framework).
 % - defects are demainding and computational expensive .n To avoid computationally expensive defect calculations descriptors have been built on the idea of ‘defect tolerant’ materials: http://pubs.acs.org/doi/pdf/10.1021/acs.nanolett.5b04513
+% in fact I combine defect and phonon calculations in final chapter
 
 
