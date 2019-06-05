@@ -314,12 +314,12 @@ The first way to classify defects is via their dimension. 0-dimensional are loca
 
 The remainder of this thesis concerns 0-dimensional point defects, which can be further split into extrinsic or intrinsic defects. Extrinsic point defects are impurity atoms, different from the host species. These defects may be added intentionally (for example, to increase electrical conductivity) or unintentionally (as a result of the fabrication method). Intrinsic point defects are associated with host species.
 
-Point defects can also be classified as non-stochiometric or stochiometric. Non-stochiometric defects include interstitials (where an additional atom occupies a site that is unoccupied in the perfect lattice), vacancies (missing atoms) and anti-sites (where atom occupies a site that is occupied by another species in the perfect lattice). Interstitials can have a ``split'' structure, in which two atoms are split symmetrically around a single lattice site. Stochiometric defects include Frenkel pairs, Shottky pairs and V-centres. The stochiometric and non-stochiometric defects are illustrated in Figure \ref{classification}.
+Point defects can also be classified as non-stochiometric or stochiometric. Non-stochiometric defects include interstitials (where an additional atom occupies a site that is unoccupied in the perfect lattice), vacancies (missing atoms) and anti-sites (where atom occupies a site that is occupied by another species in the perfect lattice). Interstitials can have a ``split'' structure, in which two atoms are split symmetrically around a single lattice site. Stochiometric defects include Frenkel pairs, Shottky pairs. The stochiometric and non-stochiometric defects are illustrated in Figure \ref{classification}.
 
 \begin{figure}[h]
 \centering
   \includegraphics[resolution=450]{figures/ch3/classification.png}
-  \caption[Classification of crystal point-defects]{A nearby pair of a vacancy and an interstitial is a Frenkel pair, whereas vacancies on both the anion and cation sub-lattices is a Shottky pair}
+  \caption[Classification of crystal point-defects]{Non-stochiometric defects include interstitials (additional atom), vacancies (missing atom) and anti-sites. Stochiometric defects include a Frenkel pair (a vacancy close to an interstitial of the same species), and a Shottky pair (a vacancy on both the anion and cation sub-lattices).}
   \label{classification}
 \end{figure}
 
@@ -355,9 +355,8 @@ The charge transition level is equivalent to thermal ionization energy, the ener
 \begin{figure}[h]
 \centering
   \includegraphics[resolution=450]{figures/ch3/defectenergetics.png}
-  \caption[]{A nearby pair of a vacancy and an interstitial is a Frenkel pair, whereas vacancies on both the anion and cation sub-lattices is a Shottky pair}
-  \label{defectenergetics}
-\end{figure}
+  \caption[Formation energies for the Te vacancy in CdTe]{Formation energies $\DeltaH_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect.}
+\end{figure}%cite https://iopscience.iop.org/article/10.1088/1742-6596/720/1/012031/pdf
 
 Defect levels deep in the band gap correspond to localised wavefunctions. Carrier capture to these defect states is often associated with a large lattice distortion. Shallow defect levels (within thermal energy $kT$ of the valence or conduction band) correspond to delocalised, hydrogenic-like defect wavefunctions. 
 % - defect energies theoretical founsations - mott littleton (1938)  - a way to calculate E the defecct energy as knew the hopping rate expression, but didnt know E. only experimental input is dielectric constant.see special 1988 issue.
@@ -453,7 +452,7 @@ These motions are determined by the force on each atom. For simple systems, for 
 \begin{figure}[h]
 \centering
   \includegraphics[resolution=450]{figures/ch3/harmonicregime.png}
-  \caption[]{}
+  \caption[Crystal potential energy expanded with respect to atomic displacement]{The crystal potential energy can be expanded with respect to atomic displacements $x$ to simulate finite temperature behaviour of material. At small displacements, the anharmonic terms (third order and above) can be ignored, giving the harmonic approximation. The crystal lattice is relaxed so that all forces on the atoms are zero and there is no first order term.}
   \label{harmonicregime}
 \end{figure}
 
@@ -536,7 +535,7 @@ where the first term in the determinent is called the dynamical matrix which is 
 The normal mode frequencies are the roots of Equation \ref{normalmodes} and can be found through matrix diagonalisation. Plotting the frequency $\omega$ against wavevector $k$ gives a bandstructure plot with periodicity $\frac{2\pi}{a}$, similar to that in Section \ref{}.   %check that a is correct for lattice length 
 
 The discussion so far has only used classical mechanics. To introduce quantum effects we recognise that the harmonic lattice vibrations will be analogous to a quantum simple harmonic oscillator and so will be restricted to certain energy values $E_n = (n+\frac{1}{2}\hbar\omega)$.
-Once the phonon eigenvectors and frequencies are found we have access to the Gibbs free energy and heat capacity.
+The phonon eigenvectors and frequencies can be used to calculate thermodynamic properties such as the Gibbs free energy and heat capacity.
 
 % The phonons of energy hbar omega have exact energy so cannot be localised in space: formed of delocalised plane waves
 % But can construct localized packet using modes of different fequency. Can then treat phonons as localised particles. E = hbar omega. K is the crystal momentum .
@@ -547,7 +546,7 @@ Once the phonon eigenvectors and frequencies are found we have access to the Gib
 \subsection{Anharmonicity} \ref{anharmonicapprox}
 
 Anharmonic atomic motion is considered when the higher order terms in Equation \ref{taylorexpansion} are included.
-When the third order term is included it is possible to consider phonon-phonon scattering which, due to the conservation of energy and momentum, is a three particle process.
+When the third order term is included it is possible to consider phonon-phonon scattering which, due to the conservation of energy and momentum, is a three particle process.%cite mark luncdstrom transport book for conservation
 The phonon-phonon scattering rate gives the thermal conductivity of a material :
 
 %Calculate a third order force-constant matrix. Can calculate phonon-phonon coupling terms and low thermal conductivity. Number of channels and strneght of coupling. GaAs vs MAPI. Discussed in paper. Required 41,544 displacements. 96 atoms
@@ -578,7 +577,7 @@ Anharmonic motion is also important in materials near a phase transition. % - an
 \begin{figure}[h]
 \centering
   \includegraphics[resolution=450]{figures/ch3/anharmonicity.png}
-  \caption[]{}
+  \caption[3-phonon processes and anharmonic potential energy surfaces]{A) Energy and momentum are conserved during the creation or annihilation of phonons, so these are three-phonon processes (or higher); B) Some materials, such as silicon (Si) are well-described by a harmonic potential energy surface at typical solar cell operating temperatures. However other materials, such as the organic and inorganic perovskite halides, have highly anharmonic double well potentials.}
   \label{harmonicregime}
 \end{figure}  %include phonon-phonon scattering schematic? the third regime where important is given in the other figure, at high temperature
 
