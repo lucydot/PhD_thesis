@@ -3,7 +3,7 @@ It's simple mathematics.
   \qauthor{--- Mos Def, "Mathematics"}
 \end{savequote}
 
-\chapter{\label{ch:3-methods}Theory and Methodology}
+\chapter{\label{ch:3-methods}Theory and methodology}
 
 \minitoc
 
@@ -105,7 +105,7 @@ To use Kohn-Sham DFT we must approximate the exchange-correlation functional, an
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=450]{figures/ch3/jladder.png}
+  \includegraphics[width=0.5*\columnwidth]{figures/ch3/jladder.png}
   \caption[Jacob's ladder of exchange-correlation functionals]{Jacob's ladder of exchange correlation functionals. On the right hand side are the various categories of exchange-correlation functionals and on the left hand side are the additional input variables included at each level of theory. As we move up the ladder the chemical accuracy increases, alongside computational expense.}
   \label{decouple}
 \end{figure}
@@ -172,16 +172,16 @@ When the Schrodinger equation is solved for a H atom the solution gives wavefunc
 \label{bloch}
 \end{equation}   %could do a sketch of the two parts and the resulting part, and the periodic potential
 
-where the Bl\"{o}ch function is formed from the product of a function $u_k$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $k$ is a crystal wave vector which forms a space known as reciprocal space; to understand the physical significance of $k$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$ (Figure \ref{bands}). The electron states can be described a linear combination of H 1s orbitals $u_n$ centred at each lattice point :
+where the Bl\"{o}ch function is formed from the product of a basis function $u_k$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $k$ is a crystal wave vector which forms a space known as reciprocal space; to understand the physical significance of $k$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$ (Figure \ref{bands}). The electron states can be described a linear combination of H 1s orbitals $u_n$ centred at each lattice point :
 
-\begin{equation}
-\psi_k = \sum_nu_ne^{inkL}
+\begin{equation} \label{1dbloch}
+\psi_k = \sum_nu_ne^{iknL}
 \end{equation}
 
 $k=0$ corresponds to the low energy most bonding state, and $k=\frac{\pi}{L}$ corresponds to the high energy anti-bonding state
 \begin{align}
-\psi_0 &= \sum_nu_ne^0 = u_1 +u_2 +u_3 +u_4 \dots \\
-\psi_{\frac{\pi}{L}} &= \sum_nu_ne^{i\pi n} = u_1 -u_2+u_3-u_4 \dots
+\psi_0 &= \sum_nu_ne^0 = u_0 +u_1 +u_2 +u_3 \dots \\
+\psi_{\frac{\pi}{L}} &= \sum_nu_ne^{i\pi n} = u_0 -u_1+u_2-u_3 \dots
 \end{align}
 Between these two extremes there is a continuum of states forming an electronic band (Figure \ref{bands}). 
 
@@ -197,7 +197,7 @@ For any $k$ we can solve Equation \ref{energyequation} with periodic boundary co
 \begin{figure}[h]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch3/bands.png}
-  \caption[]{} 
+  \caption[Bonding and anti-bonding states in an infinite 1D crystal]{A one dimensional infinite lattice where the points are labelled $n=1,2\ldots$. The point spacing (unit cell length) is $L$, and there is a hydrogen 1s orbital (basis function) $u_n$ centred at each point. The electron states for this system are formed from Bl\"{o}ch functions as given in Equation \ref{1dbloch}. $k=0$ corresponds to a low energy bonding state and $k=\frac{\pi}{L}$ corresponds to a high energy anti-bonding states.} 
   \label{bands}
 \end{figure}
 
@@ -318,9 +318,9 @@ Point defects can also be classified as non-stochiometric or stochiometric. Non-
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=450]{figures/ch3/classification.png}
+  \includegraphics[resolution=350]{figures/ch3/classification.png}
   \caption[Classification of crystal point-defects]{Non-stochiometric defects include interstitials (additional atom), vacancies (missing atom) and anti-sites. Stochiometric defects include a Frenkel pair (a vacancy close to an interstitial of the same species), and a Shottky pair (a vacancy on both the anion and cation sub-lattices).}
-  \label{classification}
+  \label{classification} . %hatch the shapes in this drawing so can tell the differene in b+w
 \end{figure}
 
 The final classification is into electrically active and electrically benign defects. Whilst electrically benign defects exist only in one charge state, electrically active defects can take more than one charge state; for example, single acceptors exist in a neutral or negatively charged state and single donors exist in a neutral or positively charged states. Amphoteric defects can exist in a negatively charged or positively charged state.
@@ -354,7 +354,7 @@ The charge transition level is equivalent to thermal ionization energy, the ener
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=450]{figures/ch3/defectenergetics.png}
+  \includegraphics[width=1.0*\columnwidth]{figures/ch3/defectenergetics.png}
   \caption[Formation energies for the Te vacancy in CdTe]{Formation energies $\DeltaH_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect.}
 \end{figure}%cite https://iopscience.iop.org/article/10.1088/1742-6596/720/1/012031/pdf
 
@@ -451,7 +451,7 @@ These motions are determined by the force on each atom. For simple systems, for 
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=450]{figures/ch3/harmonicregime.png}
+  \includegraphics[resolution=350]{figures/ch3/harmonicregime.png}
   \caption[Crystal potential energy expanded with respect to atomic displacement]{The crystal potential energy can be expanded with respect to atomic displacements $x$ to simulate finite temperature behaviour of material. At small displacements, the anharmonic terms (third order and above) can be ignored, giving the harmonic approximation. The crystal lattice is relaxed so that all forces on the atoms are zero and there is no first order term.}
   \label{harmonicregime}
 \end{figure}
@@ -522,7 +522,7 @@ If we seek displacements of this form, Newton's second law has consistent soluti
 \textrm{Det}|\sum_J A_{\alpha}{\beta}(iI,jJ)exp(i\textbf{k}\cdot\textbf{R}_J)-M_i\delta_{ij}\omega^2(\textbf{k})|=0
 \end{equation}
 where the first term in the determinent is called the dynamical matrix which is built from the force constant matrix $A_{\alpha\beta}$:
-\begin{equation}
+\begin{equation} \label{forceconstant}
 \textbf{A} = 
 \begin{pmatrix} 
 \frac{\delta^2E}{\delta x_1^2} &\frac{\delta^2E}{\delta x_1 \delta x_2} & \cdots & \frac{\delta^2E}{\delta x_1 \delta x_n}\\
@@ -546,44 +546,48 @@ The phonon eigenvectors and frequencies can be used to calculate thermodynamic p
 \subsection{Anharmonicity} \ref{anharmonicapprox}
 
 Anharmonic atomic motion is considered when the higher order terms in Equation \ref{taylorexpansion} are included.
-When the third order term is included it is possible to consider phonon-phonon scattering which, due to the conservation of energy and momentum, is a three particle process.%cite mark luncdstrom transport book for conservation
-The phonon-phonon scattering rate gives the thermal conductivity of a material :
+The third order term accounts for phonon-phonon scattering which, due to the conservation of energy and momentum, is a three particle process (Figure \ref{thermalconductivity}).%cite mark luncdstrom transport book for conservation 
+The linear boltzmann transport equation (LBTE) describes a thermodynamic system out of equilibrium. Solving the LBTE under the single mode relaxation time approximation gives an expression for lattice thermal conductivity $\kappa$. %cite https://arxiv.org/pdf/1501.00691.pdf
+The phonon-phonon scattering rate determines the phonon lifetime $\tau_\lambda$ which is a key quantity in the expression for $\kappa$:
+\begin{equation}
+    \label{thermalconductivity}
+    \kappa=\frac{1}{NV_0}\sum_\lambda C_\lambda v_\lambda \times v_\lambda \tau_lambda
+\end{equation}
+where $N$ is the number of unit cells in the crystal, $V_0$ is the unit cell volume, and $C_\lambda$, $v_\lambda$ and $\tau_\lambda$ are the mode-dependent heat capacity, group velocity and lifetime respectively. $C_\lambda$ and $v_\lambda$ can be calculated using the harmonic approximation. To consider the anharmonic phonon interactions that determine $\tau_\lambda$ it is necessary to calculate a third-order force constant matrix. This is often at high computational cost; 41,544 DFT electronic optimisations were required to calculate the thermal conductivity of a 96-atom unit cell in Reference \cite{Whalley2016}.
 
-%Calculate a third order force-constant matrix. Can calculate phonon-phonon coupling terms and low thermal conductivity. Number of channels and strneght of coupling. GaAs vs MAPI. Discussed in paper. Required 41,544 displacements. 96 atoms
-%Expresion for thermal conductivtiy, product of heat capacity, group velocity and mean free path.
-% - Phonons from DFPT: http://journals.aps.org/rmp/pdf/10.1103/RevModPhys.73.515 - a good outline of the theory implemented in phono3py.
-% - The thermal conductivity as calculated in phono3py depends upon the single mode relaxation time approximation (see togo’s theory paper on this). This is where the lifetime as of a single mode as calculated in phono3py is set as the relaxation time in the linearised boltzmann transport equation.
-% Under this assumption the thermal conductivity is then a summation over the product of heat capacity, mode velocity and relaxation time, which all come out of phono3py
-% - emphasise the cost required
 % -  can reduce the cst by just considering the phase space (broido talk, laptop notes)
 
-
-
-Anharmonic motion is also important in materials near a phase transition. % - anharmonicity schematic under visuals: Si, PbTe, SrTiO3% - Anharmonicity also needs to be considered according to material (schematic here)
+Lattice anharmonicity is also important in materials with dynamic disorder. In the halide and oxide perovskites this disorder is a result of a double well potential energy surface corresponding to octahedral tilting at finite temperature (Figure \ref{thermalconductivity}).%ruoxi
+Chapter \ref{ch:5-epcoupling} of this work calculates the coupling between the double well phonon modes and electronic states in MAPI.
+ % - anharmonicity schematic under visuals: Si, PbTe, SrTiO3% - Anharmonicity also needs to be considered according to material (schematic here)
 % for some vobrations compression and extension will not be equal curvature. talk about % - harmonic approximation expects the energy to increase as you push along the mode.imaginary frequency because $w^2$ is negative.
 % - dynamic stability if all positive
 %- mechanism for some phase transitions is where phonon mode becomes imaginary at a transition temperature
-
+% frozen phonon approximation
 
 
 % - Anharmonicity most important when under high pressure or high temperature (bouchert) which is often the case for geophysical applications.
-
-
-
 % - Navaneeth : assessing how higher order anharmonicity can aggect htermal conductivity. In Diamond the 4 phonon phase space is 10x that of 3-phonon. In Bas it is 100X that of 3-phonon phase space. We must then also consider the scattering strength (can only consider the scattering rate of those with a large phase space). The size of these phase spaces are huge. For example, Bas which is in the zincbelnde structure has 6 polarisations. If each done explicitly there would be $9x10^ 3$-phonon calculations, for 4-phonon processes there would be $2x10^12$!!!  So instead temperature-dependent ensembles are used (where all atoms are moved at the same time, calculated from explicit 2nd order force constant calculation) and then used to fit 3rd and 4th order force constants to.
 
 
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=450]{figures/ch3/anharmonicity.png}
-  \caption[3-phonon processes and anharmonic potential energy surfaces]{A) Energy and momentum are conserved during the creation or annihilation of phonons, so these are three-phonon processes (or higher); B) Some materials, such as silicon (Si) are well-described by a harmonic potential energy surface at typical solar cell operating temperatures. However other materials, such as the organic and inorganic perovskite halides, have highly anharmonic double well potentials.}
+  \includegraphics[resolution=350]{figures/ch3/anharmonicity.png}
+  \caption[3-phonon processes and anharmonic potential energy surfaces]{A) Energy and momentum are conserved during the creation or annihilation of phonons, so these are three-phonon processes (or higher); B) Some materials, such as silicon (Si) are well-described by a harmonic potential energy surface at typical solar cell operating temperatures. However other materials with dynamic disorder, such as the organic and inorganic perovskite halides, have highly anharmonic double well potentials.}
   \label{harmonicregime}
-\end{figure}  %include phonon-phonon scattering schematic? the third regime where important is given in the other figure, at high temperature
+\end{figure}  %include phonon-phonon scattering schematic? the third regime where important is given in the other figure, at high temperature %cite ruoxi work
 
 
 
 \subsection{The finite displacement method} \ref{finitedisplacement}
+
+There are a number of ways to calculate the second order force constant matrix in Equation \ref{forceconstant}: finite displacement, density functional perturbation theory, ab-initio molecular dynamics or compressed sensing lattice dynamics.
+In this work the finite displacement approach (also known as the direct or supercell method) is used as implemented in \ce{phonopy}.\ref{} 
+In this approach, a single atom is displaced a small distance from its energetic minimum and there is a self-consistent electronic structure optimisation to calculate the resultant forces. The maximum number of displacements for a system with $N$ atoms is $6N$ although this is reduced through symmetry (as implemented in \ce{spglib}). 
+A supercell is required to capture phonon wavelengths greater than the unit cell length (which corresponds to all $k$-points in the Brillouin Zone except $\gamma$) and forces must be well converged (typically to less than \SI{0.01}{\electronvolt\per\angstrom}).
+
+%negatives of this approach: no long range forces beyond hte supercell (polar materials), no anharmonicity .  %positive - highly parallelisable
 
 % - Note that the  eigenvalue equation for the dynamical matrix is gotten from fourier transform
 % Of the taylor expansion of the crystal potential.
@@ -594,12 +598,7 @@ Anharmonic motion is also important in materials near a phase transition. % - an
 
 % schematic of workflow: input structure, create displacements, calculate forces, calculate dynamical matrix, diagonalise
 
-\begin{figure}[h]
-\centering
-  \includegraphics[resolution=450]{figures/ch3/phononworkflow.png}
-  \caption[]{}
-  \label{harmonicregime}
-\end{figure}
+% phonon workflow
 
 % in this work the finite displacement approach is used as implemented in...
 % For derivatives we exploit the hellman-feynam theorem and use finite differences % - Force constant via finite displacement - displace small and calculate force. Simple, general and can split into small jobs (parallelise). 
