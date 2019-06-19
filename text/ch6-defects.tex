@@ -4,3 +4,45 @@ It's simple mathematics.
 \end{savequote}
 
 \chapter{\label{ch:6-defects}Results III: H-centre defects}
+
+\section{Introduction}
+In the previuos - we introduced temperature into our model and considered electron-phonon and phonon-phonon interactions. Now we include imperfections in the lattice which are always present at finite temperature.
+
+
+ v
+
+David Mitzi: 
+Voc deficit in MAPI is 0.4mev, in GaAs it is 0.3meV. Impressive to be approachin GaAs after such a short time span.
+
+
+David Cahen: Deep Level Transient Spectrocopy shows that there are shallow levels at 0.28eV, 0.17eV and a deep level at 0.7-0.8eV which has not been confirmed yet.
+Photoconductivity shows that the majority carriers are holes. (nb, remember we are normally only interested in the minority carrier recombination. If this is low, then this means the majority carriers could be sat in the trap and if trap density is low this wouldn’t really have an effect on the device behaviour).
+If we go to the Rose model of 1963 we see that there is a single recombination centre at 0.6-0.8eV, that this is the dominant recombination mechanism under steady state illumination, that recombination is trap mediated. 
+
+Ball et al. nature energy: MAPI has 12 native point defects: VMA, VPb, VI, Interstitials: MA, Pb, I , and anti-site occupations MAPb, MAI, PbMA, PbI, IMA, IPb. "Calculate the formation energy in a host crystal of semiconductor in equilibrium with the pure constituents  which is unlikely given the processing techniques for growing MAPI”. General trend in results is:
+ - point defects that would be deep have high formation energies
+- lower formation energies have shallow states
+- so point defects should not contribute a high density of non-radiative recombination centres
+- deep defects suggested are: IPb, IMA, Pbi, PbI, VI, PbMA. There are growth conditions where Pbi, VI and IMA may contribute a significant density of recombination centres.
+- In I-rich conditions PbI antisite formation energy is low.
+- interaction of atoms around defects predicted to create additional states that also lie deeper in the bandgap
+"Native point defects play an important role in carrier transport properties of CH3NH3PbI3. However, the nature of many important defects remains controversial due partly to the conflicting results reported by recent density functional theory (DFT) calculations. In this Letter, we show that self-interaction error and the neglect of spin–orbit coupling (SOC) in many previous DFT calculations resulted in incorrect positions of valence and conduction band edges, although their difference, which is the band gap, is in good agreement with the experimental value. This problem has led to incorrect predictions of defect-level positions. Hybrid density functional calculations, which partially correct the self-interaction error and include the SOC, show that, among native point defects (including vacancies, interstitials, and antisites), only the iodine vacancy and its complexes induce deep electron and hole trapping levels inside of the band gap, acting as nonradiative recombination centers.” http://pubs.acs.org/doi/abs/10.1021/acs.jpclett.5b00199
+http://pubs.acs.org/doi/abs/10.1021/acs.jpclett.5b00953 "a peak at around T = 191 K is assigned to trap states with activation energies of around 500 meV but with a rather low concentration of 1 × 1021 m–3."
+
+ Pb vacancy leads to I3- trimer, deep state as seen in the PLQE (fillipo de angelis work). This is photoinduced degradation. Photoillumination to lattice deormation to encourages to formatin of lattice defects. This is defectivity via structural deformation. Nanoplatelets can solidify the structure so that photodegradation does not occur. All this takes us away from the traditional picture of traps states as invisaged in semiconductors.
+YY Sun:	
+Defects induce a structural change: A Pb dimer which introduces deep, localised defect levels. Pb trimer lowers electrons in energy and I trimer lowers energy by moving hole level up. These are polaron defects. (VI-, IMA0).  Both of these charge states are only accessible when the fermi level is close to the CBM. So if we can make so that fermi level is at the middle of the gap then we wouldn’t get the trap state, as is the case in most solar cells where the absorber layer is insulating.
+
+
+They are benign. The literature (http://pubs.acs.org/doi/ipdf/10.1021/jz500370k) says that intrinsic Schottky defects do not lie in the band gap and that Frenkel defects form shallow levels (and so create unintentional doping as reported in experiments). 
+It has been reported that grain boundaries do not act as charge recombination centres (Edri nanoletters 2014,14,1000-1004)
+The `defect tolerance’ of this material is especially surprising given it’s processing method
+Argument that they are not all benign, as shown by 1% PL quantum yields. “The predictions of which defects could contribute deep levels are varied, but include IPb, IMA, Pbi, PbI, VI, and PbMA (refs 25,26,29,31). Among these, there are at least some growth conditions where the formation energies of PbI, VI, and IMA may be low enough to contribute a significant density of recombination centres26,29,31” doi:10.1038/nenergy.2016.149
+Some defects are introduced under illumination (and then passivated by oxygen): Photoinduced Emissive Trap States in Lead Halide Perovskite Semiconductors Silvia G. Motti,†,‡ Marina Gandini,†,‡ Alex J. Barker,† James M. Ball,† Ajay Ram Srimath Kandada,† and Annamaria Petrozza*,† 
+MAPI has low free carrier concentrations due to schottky defect formation which regulates the concentration of charge carriers through ionic compensatino of charged point defects : Self-Regulation Mechanism for Charged Point Defects in Hybrid Halide Perovskites** Aron Walsh,* 
+http://proceedings.spiedigitallibrary.org/proceeding.aspx?articleid=2585003 - external radiative efficiency in MAPI is 3 orders of magnitude less than GaAs. It is this which differentiate them. MAPI has higher non-radiative recombination. But compared to organics it’s much better. Numbers here: http://www.nature.com/articles/srep06071
+
+Dane de Quillettes – has shown that vast majority of non-rad reombination happens on the surface. By passivating the surface he has boosted the PLQE so much that the IQE is near 100%; recombination in the bulk is almost zero.
+This could be verified by results with single crystals?
+The beta value for radiative recombination matches that calculated by Pooya (which does not take account of any non-radiative pathways competing with it).
+What about the deficit Voc measured? Well, that is built into the SQ limit: can’t not have it. Also Voc is lost at the contacts also.

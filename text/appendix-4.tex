@@ -1,0 +1,48 @@
+\chapter{\label{app:2-diffusion}Diffusion equation for a hot sphere}
+
+In the case of spherical symmetry
+\begin{equation}
+\nabla^2T = \frac{1}{r}\frac{\partial^2(rT)}{\partial r^2}.
+\end{equation}
+Substituting this into the fourier equation gives
+\begin{equation} \label{fourier}
+\frac{\partial T}{\partial t} = \frac{D}{r}\frac{d^2(rT)}{d r^2},
+\end{equation} 
+and we set the boundary condition as  $T = f(r) \text{ at } t=0$.
+Substituting $u = rT$ into Equation \ref{fourier} gives
+\begin{equation}
+\frac{\partial u}{\partial t} = D\frac{d^2(u)}{dr^2}
+\end{equation}
+with the boundary conditions $u = rf(r) \text{ at } t=0$, $u = 0 \text{ at } r=0$.
+This solution is equivalent to the case of linear flow with one face at zero. To solve, we follow reference \cite{Ingersoll1948}} and consider a distribution on $r$ which is equal to but the opposite sign of a distribution on $-r$. This initial distribution is convolved with a gaussian kernal to give temperature $T$ as a function of time $t$ and position $r$: 
+\begin{equation} \label{gaussian}
+u = rT(r,t) = \frac{\eta}{\sqrt{\pi}} \bigg[ \int_0^\infty \lambda f(\lambda) e^{-(\lambda-r)^2\eta^2}\delta \lambda - \int_0^\infty \lambda f(\lambda) e^{-(\lambda+r)^2\eta^2}\delta \lambda \bigg],
+\end{equation}
+where $\eta = \frac{1}{\sqrt{4Dt}}$ and $\lambda$ is a variable of integration.
+Using the following definition for $\beta$ and $\beta'$
+\begin{equation}
+\begin{aligned}
+& \beta = (\lambda-r)\eta, && \lambda = \frac{\beta}{\eta} + r \\
+& \beta' = (\lambda+r)\eta, && \lambda = \frac{\beta'}{\eta} - r, 
+\end{aligned}
+\end{equation}
+we recast Equation \ref{gaussian} as:
+\begin{equation}
+T(r,t) = \frac{1}{r\sqrt{\pi}} \bigg[ \int^\infty_{r \eta}  \left( \frac{\beta}{\eta} + r\right) f\left( \frac{\beta}{\eta} + r\right)e^{-\beta^2}\delta \beta - \int^\infty_{r \eta}  \left( \frac{\beta'}{\eta} - r\right) f\left( \frac{\beta'}{\eta} - r\right)e^{-\beta'^2} \delta \beta' \bigg].
+\end{equation}
+For a sphere with radius $R$ at temperature $T=T_0$, in a surrounding volume at zero temperature, the expression for $T(r,t)$ is given by:
+\begin{equation}
+T(r,t) = \frac{T_0}{r\sqrt{\pi}} \bigg[ \int^{(R-r)\eta}_{-r \eta}  \left( \frac{\beta}{\eta} + r\right)e^{-\beta^2}\delta \beta - \int^{(R+r)\eta}_{r \eta}  \left( \frac{\beta}{\eta} - r\right) e^{-\beta^2} \delta \beta \bigg]
+\end{equation}
+Using the integral identity
+\begin{equation}
+\int \beta e^{\beta^2} = \frac{1}{2}e^{\beta^2}, 
+\end{equation}
+and the error function
+\begin{equation}
+{erf}(x) = \int_0^x e^{-\beta^2} \delta \beta, 
+\end{equation}
+we reach the final analytical expression for temperature:
+\begin{equation}
+T(r,t) = \frac{T_0}{2} \bigg[{erf}\left((R-r)\eta\right) + {erf}((R+r)\eta) \bigg] - \frac{T_0\sqrt{Dt}}{r\sqrt{\pi}}\left[ e^{-\frac{(R-r)^2}{4Dt}} - e^{-\frac{(R+r)^2}{4Dt}} \right].
+\end{equation}
