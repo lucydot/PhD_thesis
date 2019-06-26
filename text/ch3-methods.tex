@@ -26,7 +26,7 @@ The theoretical basis for DFT was established in 1964 through the work of Walter
 There are a growing number of codes that implement DFT, many of which include extensions to DFT so that excited state properties can be predicted.
 Although some codes aspire to a blackbox approach, with the user protected from the underlying mechanics of DFT, for most systems of interest an understanding of the underlying approximations and parameters used are required for reliable results.
 
-\subsection{DFT in theory} %expand to include more equations, including slater determinant? and E\phi=H\phi.
+\subsection{Basic concepts} %expand to include more equations, including slater determinant? and E\phi=H\phi.
 
 Firstly, a note on the name. A function accepts one or more numbers as input and produces a number as output. Likewise, a functional accepts one or more \textit{functions} as inputs, and produces a number as output. In DFT the functional is the electron density which is a function of space and time.
 
@@ -285,7 +285,7 @@ In practice we do not know the continuous form for $E(\textbf{k})$ and so we eva
 
 \clearpage
 
-\section{Calculating the properties of defects in semiconductors}
+\section{Defects in semiconductors}
 
 The second law of thermodynamics states that "an isolated system tends towards an equilibrium macrostate with maximum entropy". A consequence of this is that all solids in equilibrium at finite temperature contain point defects, as the cost in lattice energy is balanced by the change in configrational entropy. 
 Point defects are associated with a number of microscopic processes that can be beneficial or detrimental to material performance, including:
@@ -329,7 +329,7 @@ The final classification is into electrically active and electrically benign def
 % emphasise that the concentration could be as low as one part in a milllion and wtill have an effect.
 % - defect levels deend on temperature. DLTS assumes T-independant scattering cross sction, not accurate,
 
-\subsection{The energetics of defect formation} \label{defectformation}
+\subsection{Energetics of defect formation} \label{defectformation}
 
 The equilibrium concentration of defects ($n$) at a fixed temperature and pressure is given by the density that minimizes the free energy.
 \begin{equation} \label{defectconcentration}
@@ -378,7 +378,7 @@ Defect levels deep in the band gap correspond to localised wavefunctions. Carrie
 % Defect ionisation , thermal, after relaxation: DLTS / thermally stimuated conductuvtiy
 % Defect vibrational modes: IR/raman spectra and recombination rates
 
-\subsection{The supercell method}
+\subsection{Supercell method}
 
 Defect concentrations as low as one part in one million can have an influence on device performance. 
 One way to model point defects in the dilute limit, when defect-defect interactions are negligible, is to build a supercell from multiple unit cells (Figure \ref{}).
@@ -431,7 +431,7 @@ Developing an efficient scheme which can account for microscopic effects and ani
 %what are the corections used in this work?
 
 
-\section{Calculating the properties of vibrations in crystals} \label{sec:latticedynamics}
+\section{Lattice dynamics} \label{sec:latticedynamics}
 %cite defect and defect processes in nonmetallic solids
 %cite Dove Lattice dynamics
 
@@ -500,7 +500,7 @@ These motions are determined by the force on each atom. For simple systems, for 
 % 4: anharmonic frequency shifts
 % https://thelostelectron.wordpress.com/
 
-\subsection{The harmonic approximation} \ref{harmonicapprox}
+\subsection{Harmonic approximation} \ref{harmonicapprox}
 
 If displacements from equilibrium are small, the total energy can be Taylor expanded in the form 
 \begin{align} \label{taylorexpansion}
@@ -580,7 +580,7 @@ Chapter \ref{ch:5-epcoupling} of this work calculates the coupling between the d
 
 
 
-\subsection{The finite displacement method} \ref{finitedisplacement}
+\subsection{Finite displacement method} \ref{finitedisplacement}
 
 There are a number of ways to calculate the second order force constant matrix in Equation \ref{forceconstant}: finite displacement, density functional perturbation theory, ab-initio molecular dynamics or compressed sensing lattice dynamics.
 In this work the finite displacement approach (also known as the direct or supercell method) is used as implemented in \ce{phonopy}.\ref{} 
