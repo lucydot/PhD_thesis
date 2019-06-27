@@ -52,7 +52,7 @@ The following methods (Hartree-Fock and Kohn-Sham DFT) give a way to obtain an a
 \begin{figure}[h]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch3/decouple.png}
-  \caption[Schematic outlining the equivalence between interacting and non-interacting systems]{Schematic outlining the equivalence between a system of interacting particles and a system of non-interacting particles in an effective potential. The underlying idea is that an interaction can be replaced by the equivalent potential. This maps the interacting 3N-dimensional problem onto N 3-dimensional problems. A consequence of this mapping is that the effective potential depends on the electron density which is itself dependant on the effective potential - a self-consistent set of equations is formed.} %update so q1q2 in couple term in picture
+  \caption[Interacting and non-interacting particle systems]{Schematic outlining the equivalence between a system of interacting particles and a system of non-interacting particles in an effective potential. The underlying idea is that an interaction can be replaced by the equivalent potential. This maps the interacting 3N-dimensional problem onto N 3-dimensional problems. A consequence of this mapping is that the effective potential depends on the electron density which is itself dependant on the effective potential - a self-consistent set of equations is formed.} %update so q1q2 in couple term in picture
   \label{decouple}
 \end{figure}
 
@@ -138,7 +138,7 @@ In DFT each electron interacts with itself as the potential derives from the tot
 % See Janak 1978. 
 
 \textit{Random Phase Approximation} \\
-Closest to heaven is the Random Phase Approximation, which uses all of the Kohn-Sham orbitals (occupied and unoccupied) as input. Previous approaches fail when there are significant long range effects, as they have no information about the electron density far from an electron. The RPA is able to correctly predict long-range interactions between non-overlapping electron orbitals, for example van der Waals interactions.
+Closest to heaven is the Random Phase Approximation (RPA), which uses all of the Kohn-Sham orbitals (occupied and unoccupied) as input. Previous approaches fail when there are significant long range effects, as they have no information about the electron density far from an electron. The RPA is able to correctly predict long-range interactions between non-overlapping electron orbitals, for example van der Waals interactions.
 
 % can I find plot of total energy as function of seperation using different approaches??
 %As DFT is exact except for the approximation to the exchange-correlation functional, any shortcoming to a DFT prediction can be attributed to the XC-functional. It should be noted though that DFT 
@@ -226,7 +226,7 @@ Sudden changes in electron density are hard to capture using a plane wave basis 
 In this section the process of optimising the atomic and electronic structure of a system towards the ground-state (minimum energy) configuration is outlined. 
 
 In Section \ref{DFTtheory} (Figure \ref{decouple}) we saw that the potential $v_\textrm{ee}$ is dependant on electron density $\rho$, which is itself dependant on $v_\textrm{ee
-}$. Therefore an iterative approach, the Self Consistent Field (SCF) method, is used to calculate the ground-state electronic structure (Figure \ref{SCF}, dashed section). The initial guess for the density $n(r)$ is given by a superimposition of the atomic charge densities. This is used to calculate the potential and solve the KS equations, which gives a new $n(r)$. This process continues until the convergence criteria is met (most often within an energy tolerance). Various optimisation routines are provided in DFT codes for finding the ground state configuration, including the conjugate gradient scheme, Davidson Scheme and RMM-DIIS.
+}$. Therefore an iterative approach, the Self Consistent Field method, is used to calculate the ground-state electronic structure (Figure \ref{SCF}, dashed section). The initial guess for the density $n(r)$ is given by a superimposition of the atomic charge densities. This is used to calculate the potential and solve the KS equations, which gives a new $n(r)$. This process continues until the convergence criteria is met (most often within an energy tolerance). Various optimisation routines are provided in DFT codes for finding the ground state configuration, including the conjugate gradient scheme, Davidson Scheme and RMM-DIIS.
 
 DFT is also used to find the ground state atomic structure. Structures from X-ray Diffraction Data are used as a starting guess, so that finding the energetic minimum becomes a local optimisation problem. Ions in the systems are displaced (either the internal coordinates of the unit cell or the unit cell parameters themselves are adjusted) and the electronic structure for that geometry is solved self-consistently. This repeats until the forces on each atom are zero (within a given tolerance, Figure \ref{SCF}). 
 %optimisation routines.
@@ -355,7 +355,7 @@ The charge transition level is equivalent to thermal ionization energy, the ener
 \begin{figure}[h]
 \centering
   \includegraphics[width=1.0*\columnwidth]{figures/ch3/defectenergetics.png}
-  \caption[Formation energies for the Te vacancy in CdTe]{Formation energies $\DeltaH_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect.}
+  \caption[Formation energies of the Te vacancy in CdTe]{Formation energies $\DeltaH_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect.}
 \end{figure}%cite https://iopscience.iop.org/article/10.1088/1742-6596/720/1/012031/pdf
 
 Defect levels deep in the band gap correspond to localised wavefunctions. Carrier capture to these defect states is often associated with a large lattice distortion. Shallow defect levels (within thermal energy $kT$ of the valence or conduction band) correspond to delocalised, hydrogenic-like defect wavefunctions. 
