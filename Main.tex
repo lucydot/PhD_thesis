@@ -71,8 +71,42 @@
 % Either way, you'll have to choose and configure an appropriate bibliography format...
 
 % The science-type option: numerical in-text citation with references in order of appearance.
-\usepackage[ style=nature, autocite=superscript, sorting=none, backend=bibtex, doi=false, eprint=false, isbn=false, url=true]{biblatex}
+\usepackage[ style=nature, autocite=superscript, sorting=none, backend=bibtex, doi=false, eprint=false, isbn=false, url=true,urldate=long]{biblatex}
 \newcommand*{\bibtitle}{References}
+
+% LW - all this so I can print date accessed a URL
+\DeclareBibliographyDriver{online}{% modified from biblatex-nature's bbx
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor+others/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit
+  \printfield{note}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit\newblock
+  \iftoggle{bbx:eprint}
+    {\usebibmacro{eprint}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{url+urldate}% from Biblatex's standard.bbx
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \usebibmacro{finentry}%
+}
 
 % The humanities-type option: author-year in-text citation with an alphabetical works cited.
 %\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
@@ -269,7 +303,7 @@
 \include{text/ch3-methods}
 \include{text/ch4-effmass}
 \include{text/ch5-epcoupling}
-%\include{text/ch6-defects}
+\include{text/ch6-defects}
 
 %%% DEBUGGIN'
 %\include{text/test}
@@ -307,8 +341,9 @@
 
 \setlength{\baselineskip}{0pt} % JEM: Single-space References
 
+
 {\renewcommand*\MakeUppercase[1]{#1}%
-\printbibliography[heading=bibintoc,title={\bibtitle}]}
+\printbibliography[title={\bibtitle}]}
 
 
 \end{document}
