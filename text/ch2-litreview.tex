@@ -7,8 +7,8 @@ I've learned that I still have a lot to learn.
 
 \section{Introduction}
 
-In this chapter, we address recent progress and current challenges in theory and simulation of hybrid perovskites. 
-We pay particular attention to predicting properties that assess the photovoltaic potential of a material. 
+In this chapter recent progress and current challenges in theory and simulation of hybrid perovskites are addressed. 
+Particular attention is paid to predicting properties that assess the photovoltaic potential of a material. 
 Factors to consider include: light absorption, charge transport, absolute band energies, defect physics and chemical stability. 
 
 The perovskite mineral, \ce{CaTiO3}, is the archetype for the structure of many functional materials.\autocite{Schaak2002}
@@ -21,15 +21,15 @@ light-emitting diodes,\autocite{Protesescu2015,Stranks2015b}
 and
 solid-state memory.\autocite{Yoo2015a,Liu2017}
 
-These materials combine a complex crystal structure, modulated by static and dynamic disorder, with a multifarious electronic structure requiring methods beyond density functional theory to treat many-body and relativistic effects. 
-As such, the halide perovskites represent a challenge to predictive materials modelling, in a system of great experimental interest, and where there is considerable motivation to improve on the status quo. 
+These materials combine a complex crystal structure, modulated by static and dynamic disorder, with an electronic structure requiring methods beyond density functional theory to treat many-body and relativistic effects. 
+As such, the halide perovskites represent a challenge to predictive materials modelling. 
 % https://www.youtube.com/watch?v=fAnP2ck-7o4
 
 \begin{figure*}
 \includegraphics[width=1.0\columnwidth]{./figures/ch2/f1.png}
 \caption[\ce{CH3NH3PbBr3} powder neutron diffraction pattern and crystallographic unit cells]{
 The high-resolution powder neutron diffraction pattern of the hybrid halide perovskite \ce{CH3NH3PbI3} is shown in the left panel (adapted with permission from Ref. \autocite{Frost2016a} based on data in Ref. \autocite{Weller2015}), which illustrates the low and high temperature phase transitions. While an ordered \ce{CH3NH3+} sub-lattice is expected in the orthorhombic phase, orientation disorder increases with temperature. 
-The crystallographic unit cells of the pseudo-cubic and orthorhombic perovskite phases are shown in the right panel (adapted with permission from Ref. \autocite{Brivio2015a}). The associated structure files can be accessed from \url{https://github.com/WMD-group/hybrid-perovskites}. Figure prepared by Aron Walsh.
+The crystallographic unit cells of the pseudo-cubic and orthorhombic perovskite phases are shown in the right panel (adapted with permission from Ref. \autocite{Brivio2015a}). The asSoCiated structure files can be accessed from \url{https://github.com/WMD-group/hybrid-perovskites}. Figure prepared by Aron Walsh.
 }
 \label{fig1}
 \end{figure*}
@@ -37,29 +37,27 @@ The crystallographic unit cells of the pseudo-cubic and orthorhombic perovskite 
 \section{Crystal structures and lattice dynamics} 
 
 \subsection{Phase diversity}
-(Hybrid) perovskites of the type \ce{ABX3} form a crystal structure with an (organic) A site cation contained within an inorganic framework \ce{BX3} of corner sharing octahedra. 
-Halide substitution on the X site (X = \ce{Cl-}, \ce{Br-}, \ce{I-}), metal substitutions on the B site (B = \ce{Pb^2+}, \ce{Sn^2+}), and cation substitution on the A site (A = \ce{CH3NH3+}, \ce{HC(NH2)2+}, \ce{Cs+}, \ce{Rb+}) lead to varied chemical and physical properties.\autocite{Mitzi2001,Mitzi2004a}
+Hybrid perovskites of the type \ce{ABX3} form a crystal structure with an organic A site cation contained in an inorganic \ce{BX3} framework of corner sharing octahedra. 
+Halide substitution on the X site (X = \ce{Cl-}, \ce{Br-}, \ce{I-}), metal substitutions on the B site (B = \ce{Pb^2+}, \ce{Sn^2+}), and cation substitution on the A site (A = \ce{CH3NH3+}, \ce{HC(NH2)2+}, \ce{Cs+}, \ce{Rb+}) lead to various chemical and physical properties.\autocite{Mitzi2001,Mitzi2004a}
 In addition to isoelectronic substitutions (e.g. replacing \ce{Pb^2+} by \ce{Sn^2+}), it is possible to perform pairwise substitutions to form double perovskites (e.g. replacing \ce{2Pb^2+} by \ce{Bi^3+} and \ce{Ag^+}).\autocite{Savory2016,Volonakis2016}
 
-In the first report of \ce{CH3NH3PbI3} by Weber in 1978, the crystal structure was assigned as cubic perovskite (space group $Pm\bar{3}m$).\autocite{Weber1978,Weber1978a}
+In the first report of MAPI by Weber in 1978, the crystal structure was assigned as cubic perovskite (space group $Pm\bar{3}m$).\autocite{Weber1978,Weber1978a}
 The anionic \ce{PbI3-} network is charge balanced by the  \ce{CH3NH3+} molecular cation.
 The symmetry of \ce{CH3NH3+}  ($C_{3v}$) is incompatible with the space group symmetry ($O_h$) unless orientation disorder (static or dynamic) is present.
-The crystal structure solved from X-ray or neutron diffraction data usually spread the molecules over a number of orientations with partial occupancy of the associated lattice sites.
+The crystal structure solved from X-ray or neutron diffraction data usually spread the molecules over a number of orientations with partial occupancy of the asSoCiated lattice sites.
 A common feature of perovskites is the existence of phase changes during heating (typically from lower to higher symmetry) as shown in Figure \ref{fig1}. 
 In hybrid halides containing methylammonium, these are orthorhombic ($Pnma$), tetragonal ($I4/mcm$) and cubic ($Pm\bar{3}m$) phases.\autocite{Weller2015} 
 %
-For \ce{CH3NH3PbI3} the $Pnma$ to $I4/mcm$ phase transition is first-order with an associated discontinuity in physical properties, while the $I4/mcm$ to $Pm\bar{3}m$ phase transition is second-order with a continuous evolution of the structure and properties.\autocite{Onoda-Yamamuro1990,Weller2015}
+For MAPI the $Pnma$ to $I4/mcm$ phase transition is first-order with an asSoCiated discontinuity in physical properties, while the $I4/mcm$ to $Pm\bar{3}m$ phase transition is second-order with a continuous evolution of the structure and properties.\autocite{Onoda-Yamamuro1990,Weller2015}
 
 The phase transitions are linked to a change in the tilting pattern of the inorganic octahedral cages, and order-disorder transitions of the molecular sub-lattice.\autocite{Onoda-Yamamuro1990,Yamamuro1992a,Onoda-yamamuro1992}
 X-ray diffraction (XRD) measurements upon cooling (heating) suggest the incursion of tetragonal in orthorhombic phases (and vice versa),\autocite{Hutter2016a}
 which is common for first-order solid-state phase transitions. 
 
 Similar phase behaviour tends to be seen for other compositions; however, the transition temperatures vary.
-In \ce{CH3NH3PbI3} the orthorhombic to tetragonal transition temperature is $162$ K, becoming cubic by around $328$ K,
+In MAPI the orthorhombic to tetragonal transition temperature is $162$ K, becoming cubic by around $328$ K,
 while \ce{CH3NH3PbBr3} is cubic above $237$ K.\autocite{Poglitsch1987c} 
 %
-In addition, compounds such as \ce{HC(NH2)2PbI3} (FAPI) and \ce{CsSnI3} feature a phase competition between a corner-sharing perovskite octahedra (black in appearance) and an edge-sharing octahedra molecular crystal (yellow or white in appearance).\autocite{Weller2015b}
-Only the corner-sharing perovskite phase is of interest for solar energy applications. 
 
 \begin{figure*}
 \includegraphics[width=1.0\columnwidth]{./figures/ch2/f2.png}
@@ -86,9 +84,8 @@ Similar barriers were later found within the generalised gradient approximation 
 %JMF: Bit of a 'me too' citation? Anything extra to add? - AW: Unfortunately not, and we had missed the ealier paper at that time :(
 
 \emph{Ab initio} molecular dynamics (MD), neutron scattering\autocite{Leguy2015b,Chen2015s} and time-resolved infra-red\autocite{Bakulin2015a} data all indicate a 1--10 picosecond reorientation process at room temperature.
-As a result of (by definition) anharmonic molecular rotation, and large-scale dynamic distortions along soft 
+As a result of anharmonic molecular rotation, and large-scale dynamic distortions along soft 
 vibrational modes, the local structure can deviate considerably from that sampled by diffraction techniques, which do not probe local disorder that preserves long-range order on average.
-Knowledge of these locally broken symmetries is essential for meaningful electronic structure calculations, where the broken symmetry results in a lifting of degeneracy, and a potentially quite different solution. 
 
 In spite of the larger cation, FAPI appears to possess a similar timescale of rotation to MAPI\autocite{Weller2015b}. 
 A lighter halide (and therefore smaller cage) results in faster rotation, in spite of the greater steric hindrance.\autocite{selig2017organic}
@@ -102,19 +99,17 @@ This behaviour is characteristic of the perovskite structure, and can be describ
 %and has been recently identified as common to all inorganic halide perovskites. %cite ruoxi. 
 
 Within the frozen-phonon approximation the potential energy surface can be traced along the soft acoustic $M$ and $R$ modes. 
-In both cases this results in a double well with an energy barrier $\sim k_BT$ at the saddle point.\autocite{Whalley2016}  
-At room temperature the structure is dynamically disordered, with continuous tilting.
-The structure is locally non-cubic but only possesses cubic Bragg scattering peaks.\autocite{Beecher2016}
+In both cases this results in a double well with an energy barrier $\sim k_BT$ at the saddle point;\autocite{Whalley2016}   
+at room temperature the structure is dynamically disordered, with continuous tilting.
 Indeed, MD simulations show continuous tilting of MAPI and FAPI at room temperature.\autocite{Frost2014,Quarti2015a,Weller2015b}
 %
 As temperature decreases, the structural instability condenses via the $R$ point (with an energy barrier of 37 meV) into the lower symmetry tetragonal phase. 
 This is followed by condensation of the $M$ point (with an energy barrier of 19 meV) to the orthorhombic phase.\autocite{Whalley2016}
-Whilst the molecular cation continuously rotates with the inorganic tilts in the cubic phase, and is partly hindered in the tetragonal phase, it can only librate in the low temperature orthorhombic phase.
 
-In the static picture---as in the case of an electronic band structure calculated for a single ionic snapshot---the organic cation plays no direct role in optoelectronic properties of the material as the molecular electronic levels lie below that of the inorganic framework.
+In the static picture -- as in the case of an electronic band structure calculated for a single ionic snapshot -- the organic cation plays no direct role in optoelectronic properties of the material as the molecular electronic levels lie below that of the inorganic framework.
 Once motion is considered, the electrostatic and steric interaction between the organic molecule and inorganic framework couples tilting and distortion of the octahedra to the organic cation motion.
 These tilts and distortions vary the orbital overlap between states, perturbing the band-structure and band-gap.\autocite{Mosconi2014,Quarti2015a,Whalley2016,Saidi2016}
-The electronic structure thus becomes sensitive to temperature, which will be discussed further in Section II.
+The electronic structure thus becomes sensitive to temperature, which will be discussed further in Section \ref{ch2epcoupling} and Chapter \ref{ch:5-epcoupling}.
 
 \subsection{Thermodynamic and kinetic stability}
 
@@ -137,19 +132,13 @@ Subsequent calorimetric experiments have supported the prediction that hybrid le
 It is likely that these materials are only formed due to entropic (configurational, vibrational and rotational) contributions
 to the free energy.
 
-The concept of metastable materials is attracting significant interest.\autocite{Caskey2014,Walsh2015b,sun2016thermodynamic,Skelton2017} 
-These are materials that do not appear on an equilibrium phase diagram but can be synthesised with a finite (useful) lifetime.
-For such materials, the chemical kinetics become critical.
-Though these can be calculated with first-principles techniques, this is a more cumbersome and costly process than equilibrium bulk thermodynamics, which requires only total energies of local minimum structures. 
-To our knowledge, there have been no rigorous attempts to model the kinetics of decomposition pathways for hybrid perovskites over complete chemical reactions. 
-
 \begin{figure*} \label{f3}
 \includegraphics[width=1.0\columnwidth]{./figures/ch2/f3.png}
 \caption[Electronic band structures of \ce{CsPbBr3} and \ce{CH3NH3PbBr3}]{
 The electronic band structures of the inorganic perovskite \ce{CsPbBr3} and hybrid perovskite \ce{CH3NH3PbBr3} in the cubic phase.
     One effect of the organic cation is to widen the band-gap located at the $R$ point due to the larger lattice constant. 
     Spin-orbit coupling reduces the band-gap in both materials. 
-The presence of \ce{CH3NH3+} in the hybrid perovskite results in a non-centrosymmetric crystal, with an associated relativistic Rashba-Dresselhaus splitting of the lower conduction band.
+The presence of \ce{CH3NH3+} in the hybrid perovskite results in a non-centrosymmetric crystal, with an asSoCiated relativistic Rashba-Dresselhaus splitting of the lower conduction band.
 While labels of the special points are those of the cubic perovskite structure (space group $Pm\bar{3}m$),  
     the static model of the hybrid perovskite formally has  \textit{P1} symmetry . 
 Points equivalent for a cubic crystal (e.g. $M=\frac{1}{2},\frac{1}{2},0$; $M'=0, \frac{1}{2},\frac{1}{2}$;  $M''=\frac{1}{2},0,\frac{1}{2}$) are inequivalent here. Figure prepared by Young-Kwang Jung.
@@ -162,10 +151,9 @@ Points equivalent for a cubic crystal (e.g. $M=\frac{1}{2},\frac{1}{2},0$; $M'=0
 Kohn-Sham density functional theory is most often carried out in the Born-Oppenheimer approximation where the nuclei are static classical point charges. 
 To consider thermal vibrations, expansion or heat flow the theoretical framework of lattice dynamics can be used.\autocite{Stoffel2010} 
  
-The description of collective vibrational excitations in crystals can be simplified with second quantization to the creation and annihilation of phonons quasiparticles.
 In the harmonic approximation, the lattice dynamics are fully specified by second-order force-constants of individual atoms, which are then readily constructed into the dynamical matrix. 
-The eigenstates of this matrix are the normal modes of vibration with an associated phonon energy. 
-Thermal expansion coefficients, system anharmonicity (e.g. modal \grun parameters) and the temperature-dependence of other properties can be calculated in the quasi-harmonic approximation (QHA). 
+The eigenstates of this matrix are the normal modes of vibration with an asSoCiated phonon energy. 
+Thermal expansion coefficients, system anharmonicity (e.g. \grun parameters) and the temperature-dependence of other properties can be calculated in the quasi-harmonic approximation (QHA). 
 Here the lattice dynamics is harmonic at a given temperature; however, the cell volume is scaled by thermal expansion to give the first-order contribution of finite temperature effects. 
 
 The thermal expansion coefficient of MAPI in the cubic phase has been calculated with the QHA.
@@ -178,29 +166,23 @@ In the harmonic approximation (and similarly the QHA), the dynamic matrix eigenm
 Consequently phonon lifetimes are infinite as the phonons do not scatter; thermal conductivity is infinite. 
 To calculate phonon-phonon scattering, and so its contribution to finite thermal conductivity, anharmonic lattice dynamics need to be considered.
 A computational route is to use perturbative many-body expansion, e.g. as implemented in \textsc{PHONO3PY},\autocite{Togo2015} which includes third-order force constants. 
-For \ce{CH3NH3PbI3}, 41,544 force evaluations are required for these third-order force constants, compared to 72 for second-order (harmonic) force constants.\autocite{Whalley2016}
+For MAPI, 41,544 force evaluations are required for these third-order force constants, compared to 72 for second-order (harmonic) force constants.\autocite{Whalley2016}
 Consequently, these calculations are vastly more expensive. 
 Using this approach phonon-phonon scattering rates are calculated to be three times larger in MAPI compared to standard covalent semiconductors \ce{CdTe} and \ce{GaAs}.\autocite{Whalley2016} 
-The phonons barely exist for a full oscillation before they split or combine into another state. 
 Consequently, mean free paths are on the nanometer rather than more typical micrometer scale. 
 Lattice thermal conductivity is extremely low, 0.05 Wm$^{-1}$K$^{-1}$ at 300 K.\autocite{Whalley2016}
-This combination of high electrical and low thermal conductivity makes these compounds potential thermoelectrics.\autocite{He2014,Mettan2015}
+This combination of high electrical and low thermal conductivity makes these compounds potential thermoelectric materials.\autocite{He2014,Mettan2015}
 
 In highly anharmonic systems third-order force constants and perturbation theory may not be sufficient
 to describe the true dynamics, but going further with lattice dynamics becomes prohibitive.
 Besides, it is not obvious whether the fundamental tenant of lattice dynamics, of expanding in small displacements around a minimum structure, is correct for these soft and highly anharmonic materials. 
-In contrast, MD treats anharmonic contributions to all orders, but as it stochastically explores the phase space, long integration times are required to sample rare events. 
-Finite size effects mean that only phonon modes commensurate with the supercell are sampled. 
-The Green-Kubo relations express transport coefficients in terms of time correlation functions, which can be directly sampled from molecular dynamics. \autocite{volz2000molecular}
-Using this method the thermal conductivity of MAPI is calculated to be 0.31Wm$^{-1}$K$^{-1}$ at 300 K.\autocite{Wang2016d}
-Although still ultra-low, this is greater than that calculated by perturbation theory.
-The thermal conductivity of the tin and bromide analogues were found to be higher than lead iodide due to a higher elastic stiffness.\autocite{Wang2016d} 
+In contrast, MD treats anharmonic contributions to all orders. As MD stochastically explores the phase space, long integration times are required to sample rare events, and finite size effects mean that only phonon modes commensurate with the supercell are sampled.  
 %% Low thermal conductivity is linked to material breakdown explains why all of their perovskite LEDs break very quickly (heat builds up and kills the material) - much higher currents than solar cells
 % Thermal stability: aron says good article on latest advances: https://pubs.acs.org/doi/10.1021/acs.jpclett.8b00463
 \section{Electronic structure}
 
 Despite the dynamic disorder just discussed, in many respects halide perovskites display characteristics of traditional inorganic semiconductors, with a well-defined electronic band structure and electron/hole dispersion relations.
-However, subtleties emerge upon closer examination, when the electronic structure is correctly modelled. 
+However, when the electronic structure is correctly modelled, various subtleties emerge. 
 
 \subsection{Many-body and relativistic effects} \label{Mbre}
 
@@ -209,57 +191,52 @@ provide a reasonable estimate for the band-gaps of these heavy metal halide mate
 This is due to a cancellation of errors. 
 For Pb-based perovskites, the conduction band has mainly Pb 6p character. 
 Due to the large nuclear charge, the electronic kinetic energy requires a relativistic
-treatment, and spin-orbit coupling (SOC) becomes significant. 
+treatment, and spin-orbit coupling (SoC) becomes significant. 
 The first-order effect is a reduction in band-gap by as much as 1 eV\autocite{Brivio2014a}, as the degenerate 6p orbitals are split and moved apart. 
 This is shown in Figure \ref{fig3} for the bromide compounds.
 The typical band-gap underestimation of GGA functionals is offset by the absence of relativistic renormalisation.
 
-SOC is not expected to have a large impact on the structural properties of the Pb-based compounds as the (empty) conduction band is mainly affected, and the force on atoms depends on the electron density (occupied orbitals). 
-Accurate force-constants can be calculated without SOC considerations.\autocite{PerezOsorio2015a}
+SoC is not expected to have a large impact on the structural properties of the Pb-based compounds as the (empty) conduction band is mainly affected, and the force on atoms depends on the electron density (occupied orbitals). 
+Accurate force-constants can be calculated without SoC considerations.\autocite{PerezOsorio2015a}
 %LW - This just claims it gives same qualtatitve picture, don't think valid to cite on this point.
 %AW - Fig 6 shows the potential energy surface as a function of functional
 
 There have been a number of electronic structure calculations considering many-body interactions beyond DFT . 
-Quasi-particle self-consistent \textit{GW} theory shows that the band dispersion (and so density of states, optical character and effective mass) is considerably affected by both the \textit{GW} electron correlation and spin-orbit coupling.\autocite{Brivio2014a}
+Quasi-particle self-consistent \textit{GW} theory shows that the band dispersion (and so density of states, optical character and effective mass) is considerably affected by both the \textit{GW} electron correlation and SoC.\autocite{Brivio2014a}
 Some materials see only a rigid shift of band structure (retaining DFT dispersion relations)\autocite{VanSchilfgaarde2006,Butler2016} but this is not the case for hybrid perovskites.
-This point has not been fully appreciated, in part because DFT codes are more widespread and convenient to generate data.
+The effect of SoC on the band dispersion of MAPI is discussed in Chapter \ref{ch:4-effmass}.
 
-A consequence of SOC when combined with a local electric field is the Rashba-Dresselhaus effect, a splitting of bands in momentum space.\autocite{Kepenekian2015} 
+A consequence of SoC when combined with a local electric field is the Rashba-Dresselhaus effect, a splitting of bands in momentum space.\autocite{Kepenekian2015}.
 This can be understood as an electromagnetic effect, where the magnetic moment (spin) of the electron interacts with a local electric field, to give rise to a force which displaces it in momentum space. 
 Up and down spins are displaced in opposite directions, and this displacement is a function (in both size and direction) of the local electric field, which will depend on the local dynamic order. 
 For a static structure, this is demonstrated in Figure \ref{fig3} for \ce{CH3NH3PbBr3}. 
-Neglecting SOC, the cubic phase has band extrema at the $R$ point (a direct band-gap).
-With SOC the valence and conduction band each split into valleys symmetrical around $R$.
+Neglecting SoC, the cubic phase has band extrema at the $R$ point (a direct band-gap).
+With SoC the valence and conduction band each split into valleys symmetrical around $R$.
 The splitting is much more pronounced in the \ce{Pb} $6p$ conduction band (compared to the \ce{Br} $4p$ valence band), as expected from the $Z^4$ dependence of spin-orbit coupling.
-This asymmetry in the band extrema results in direct-gap like absorption and indirect-gap like radiative recombination which we discuss later.
+This asymmetry in the band extrema results in direct-gap like absorption and indirect-gap like radiative recombination which is discussed later.
+For a comparison between SoC and non-SoC bandstructures across a range of materials see Appendix \ref{app:2-bandstructures}.
 
 The relativistic spin-splitting can only occur in crystals that lack a centre of inversion symmetry, a prerequisite for generating a local electric field. 
-The cubic representation of \ce{CsPbBr3} has an inversion centre, so while SOC affects the band-gap through the separation of Pb 6p into p$_{\frac{1}{2}}$ and  p$_{\frac{3}{2}}$ combinations,
+The cubic representation of \ce{CsPbBr3} has an inversion centre, so while SoC affects the band-gap through the separation of Pb 6p into p$_{\frac{1}{2}}$ and  p$_{\frac{3}{2}}$ combinations,
 no splitting of the band extrema away from the high symmetry points is observed (see Figure \ref{fig3}).
-This is true only for a static cubic structure. 
-As discussed earlier, hybrid halides will have continuous local symmetry breaking. 
-Calculations based on such static high symmetric structures can be misleading, and not representative
-of the real system. 
+This is true only for a static cubic structure and, as discussed earlier, hybrid halides will have continuous local symmetry breaking. 
 
 %It is possible that the Rashba characterisitics of hybrid halide perovskites could be exploited for use in an intermediate band solar cell. The recombination protected pockets could produce a region where an appreciable charge density provides flux to a higher energy conduction band \autocite{frost2016b}.
 
 Point defect calculations will be particularly sensitive to the electronic structure method used.
-Neglect of SOC and self-interaction errors can result in an incorrect position of the valence or conduction band edges, thus introducing spurious errors in defect energy levels and predicted defect concentrations.
-Du\autocite{Du2015} showed how for the case of an iodine vacancy, a deep (0/+) donor level is predicted for GGA-noSOC,
-while a resonant donor level is predicted for GGA-SOC and HSE-SOC treatments of electron-exchange and correlation.
+Neglection of SoC and self-interaction errors can result in an incorrect position of the valence or conduction band edges, thus introducing spurious errors in defect energy levels and predicted defect concentrations.
+Du\autocite{Du2015} showed how for the case of an iodine vacancy, a deep (0/+) donor level is predicted for GGA without SoC,
+while a resonant donor level is predicted for GGA-SoC and HSE-SoC treatments of electron-exchange and correlation.
 
 \subsection{Electron-phonon coupling} \label{ch2epcoupling}
 
-Going beyond the Born-Oppenheimer approximation with perturbation theory, we can consider the interaction of the electronic structure with vibrations of the lattice. 
+Going beyond the Born-Oppenheimer approximation, the interaction of the electronic structure with vibrations of the lattice can be considered. 
 Electron-phonon coupling can perturb the electronic band energies (changing the band-gap), and couple electronic excitations (the hole and electron quasi-particles) into vibrational excitations (phonon quasi-particles). 
 In a semiconductor, charge carrier scattering is often dominated by this electron-phonon interaction, and so the strength of these processes set a limiting value on the mobility. 
 Electron-phonon coupling is often calculated in a second-order density functional perturbation theory calculated for a static (rigid ion) structure.
 In the normal limit, this term is expected to dominate over the first order contribution from the acoustic deformation potential as vibrations are typically small. 
-These calculations are difficult to converge, as integration is over both electronic and vibrational reciprocal space, and the electron-phonon interaction is often found to be a non-smooth function.\autocite{Giustino2017}
 
-In recent work\autocite{Whalley2016} we developed a method to calculate the electron-phonon interaction of soft modes, and applied this to the acoustic zone boundary tilting modes in hybrid halide perovskites described earlier. 
-Here we solved a one-dimensional Schr\"odinger equation for the nuclear degree of freedom along the phonon mode, and then combine the resulting thermalised probability density function (which includes zero point fluctuations and quantum tunnelling) with a band-gap deformation potential along this mode. 
-The method includes quantum nuclear motion, goes beyond the harmonic regime, but only contains the first-order contribution to the electron-phonon coupling of the band-gap deformation. 
+In Chapter \ref{ch:5-epcoupling} a method to calculate the electron-phonon interaction of soft modes is outlined, and applied to the acoustic zone boundary tilting modes in hybrid halide perovskites described earlier. 
 A positive band-gap shift of 36 meV (\textit{R} point phonon) and 28 meV (\textit{M} point phonon) 
 is predicted at T = 300 K.
 %
@@ -271,12 +248,11 @@ and vibrational ($q$-point sampling and supercell size), while maintaining suffi
 
 Recently a `one shot' method has been developed to calculate band-gap renormalization and phonon-assisted optical absorption, and applied to \ce{Si} and \ce{GaAs}.\autocite{Zacharias2016} 
 Nuclei positions are carefully chosen as a representative sample from the thermodynamic ensemble, and the electronic structure is needed for this static structure only---a significant increase in computational efficiency. 
-Such techniques may provide a promising method to calculate the electron-phonon coupling of complex materials, but so-far are only valid in the harmonic phonon approximation. 
-They have not yet been tested for the family of hybrid halide perovskites or other more complicated crystal structures.
+Such techniques may provide a promising method to calculate the electron-phonon coupling of complex materials, but they have not yet been tested for the family of hybrid halide perovskites or other more complicated crystal structures.
 
 \subsection{Charge carrier transport}
 
-We now consider some aspects of charge carrier transport in hybrid halide perovskites.
+Charge carrier transport in hybrid halide perovskites is now considered.
 The minority-carrier diffusion length is the average length a photo-excited (or electronically-injected) carrier travels before recombining. 
 In a photovoltaic device, the diffusion length must be sufficient to reach the contacts.
 The minority-carrier diffusion length is a product of the diffusivity $D$ and lifetime $\tau$ of minority charge carriers, $L_d = \sqrt{D\tau}$.
@@ -290,7 +266,7 @@ Given the effective mass of $< 0.2 m_e$,  the carrier mobility of MAPI ($< 100$ 
 Carrier mobility must be limited by strong scattering.
 
 Low temperature mobility in this material reduces as a function of temperature as T$^{-1.5}$, which provides circumstantial evidence for being limited by acoustic phonon scattering.\autocite{Karakus2015,Yi2016a}
-However, if we only consider acoustic phonon scattering (which is elastic due to the population of acoustic modes), the calculated mobility is orders of magnitude larger than experiment. 
+However, if only the acoustic phonon scattering (which is elastic due to the population of acoustic modes) is considered, the calculated mobility is orders of magnitude larger than experiment. 
 A key realisation is that the soft nature of these semiconductors results in optical phonon modes (see Figure \ref{fig2}) below thermal energy.\autocite{Brivio2015a,PerezOsorio2015a}
 Optical phonon scattering is inelastic and dominates once the charge carriers have sufficient energy to generate the phonon modes\autocite{Leguy2016}. 
 Through solving the Boltzmann transport equation parameterised by DFT calculations, at room temperature the scattering from longitudinal optical phonons is most relevant in limiting mobility.\autocite{Wright2016,Filippetti2016}
@@ -301,10 +277,10 @@ Fluctuations in electrostatic potential resulting from dynamic disorder provide 
 \begin{figure*} 
 \includegraphics[width=1.0\textwidth]{./figures/ch2/f4.png}
 \caption[Simple phase segregation model]{
-Ion transport occurs in halide perovskites: they are mixed ionic-electronic conductors. The vacancy-mediated diffusion of halide anions has been associated with both current-voltage hysteresis of solar cells and the rapid interchange between iodide, bromide and chloride materials.
+Ion transport occurs in halide perovskites: they are mixed ionic-electronic conductors. The vacancy-mediated diffusion of halide anions has been asSoCiated with both current-voltage hysteresis of solar cells and the rapid interchange between iodide, bromide and chloride materials.
 One point of controversy remains the reversible ion segregation observed in mixed (Br,I) systems. 
 Alloyed materials have been found to phase separate upon illumination, but recover their initial state when the light source is removed. 
-The phase separation is associated with a striking red-shift in  photoluminesence spectra.
+The phase separation is asSoCiated with a striking red-shift in  photoluminesence spectra.
 A statistical mechanical analysis of ground-state DFT calculations suggested a large miscibility gap \autocite{Brivio2016}, while the charge carriers generated upon illumination can provide an additional driving force for phase separation.\autocite{Slotcavage2016}
 The results from a simple thermodynamic model are shown in the right panel, where the free energy of mixing contains contributions from the ground-state with an additional component due to the difference in band-gaps between the mixed (I,Br) and phase separated I-rich phases. 
 The latter contribution requires local carrier concentrations approaching 10$^{21}$ cm$^{-3}$ to make a substantial contribution to the overall mixing energy. Figure prepared by Aron Walsh
@@ -319,7 +295,7 @@ There are areas of the underlying physics which are not yet developed, and which
 Ion migration is poorly understood and has been correlated with hysteresis effects\autocite{Eames2015a,Richardson2016} and device degradation.
 Defects which act as recombination centres have not been identified and characterised. 
 Additionally, interfaces have not been optimised for optimal charge carrier extraction.
-We outline these issues---where theory and simulation have much to contribute---in the following section.
+These issues -- where theory and simulation have much to contribute -- are outlined in the following section.
 
 \subsection{Ion migration} 
 
@@ -342,7 +318,7 @@ In MAPI the diffusion of methylammonium cations, iodide anions and protons have 
 Activation energies calculated from first principles show that the predominant mechanism for ion migration is the vacancy assisted hopping of iodide ions.\autocite{Eames2015a}
 This has been confirmed using string simulations\autocite{Meloni2016a} which, like the nudged elastic band method, calculate minimum energy paths and from this infer transition rates.
 
-Based on a bulk activation energy of 0.58 eV\autocite{Eames2015a}, a rate of 733 hops per second would be expected at T = 300 K, with an associated diffusion coefficient of 10$^{-12}$cm$^{-2}$s$^{-1}$.
+Based on a bulk activation energy of 0.58 eV\autocite{Eames2015a}, a rate of 733 hops per second would be expected at T = 300 K, with an asSoCiated diffusion coefficient of 10$^{-12}$cm$^{-2}$s$^{-1}$.
 Effective activation energies as low as 0.1 eV have been reported experimentally,\autocite{Bryant2015,Game2017} which likely 
 correspond to diffusion along extended defects (dislocations, grain boundaries, surfaces)\autocite{Shao2016a,Yun2016}.
 The corresponding diffusion rate of 10$^{-5}$cm$^{-2}$s$^{-1}$ is very fast, but comparable to surface 
@@ -422,7 +398,7 @@ Developing more accurate models and measurements of the nature and effects of la
 
 \subsection{Defect levels in the band-gap}\label{defects}
 
-To understand why the rate of non-radiative recombination is low we consider the known defect properties of hybrid perovskites.
+To understand why the rate of non-radiative recombination is low the known defect properties of hybrid perovskites are considered.
 Defects appear to have a minimal impact upon charge carrier mobility and lifetime,\autocite{Brandt2015a}
 which can be attributed to a combination of large dielectric constants and weak heteropolar bonding. 
 
@@ -438,7 +414,8 @@ where $\frac{m^*}{m_0}$ is the effective mass ratio, $\epsilon_0$ is the static 
 %This corresponds to the formula for energy levels in hydrogen, with an effective mass introduced to account for dispersion due to the band and a dielectric constant to account for charge screening\autocite{Kohn1955}.
 %A similar result can be obtained for acceptor states.
 
-In Table \ref{tab:defectlevels} we give the first hydrogenic defect level for MAPI, Si and CdTe, where the binding energy for MAPI is only 3 meV.
+In Table \ref{tab:defectlevels} the first hydrogenic defect levels for MAPI, Si and CdTe are given.
+The binding energy for MAPI is only 3 meV.
 For ionic materials, one would expect a large central cell correction that could result in much deeper levels, for example, as seen for the colour centres in alkali halides.\autocite{Stoneham1975}
 It was shown numerically that the on-site electrostatic potentials in the I-II-VII$_3$ perovskites are relatively weak owing to the small charge of the ions (e.g \ce{Cs+Pb^2+I^-_3}) compared to other perovskite types (e.g. \ce{Sr^2+Ti^4+O^2^-3}),\autocite{Brivio2014} which would also support  more shallow levels. 
 In addition, arguments based on covalency have also been proposed.\autocite{Brandt2015a}
@@ -531,16 +508,15 @@ Drift-diffusion model & Current-voltage behaviour incorrect & Consider role of f
 
 \section{Summary}
 
-We have outlined the physical properties that make hybrid perovskites unique semiconductors, but also challenging for contemporary theory and simulation. 
-A number of practical points relating to issues we have encountered whilst running simulations of these materials are summarized in Table \ref{tab:techsol}.
+I have outlined the physical properties that make hybrid perovskites unique semiconductors, but also challenging for theory and simulation. 
+A number of practical points relating to issues commonly encountered whilst running simulations of these materials are summarized in Table \ref{tab:techsol}.
 %
-The volume of work in this area has not allowed us to address all active areas of research, including that around perovskite-like structures with lower dimensionality (e.g. Ruddleston-Popper phases)\autocite{Tsai2016,Saparov2016b,Ganose2015} and double perovskites with pairwise substitutions on the B site,\autocite{Savory2016,McClure2016a,Wei2016a,Volonakis2016} 
+The volume of work in this area means that all active areas of research cannot be addressed, including that around perovskite-like structures with lower dimensionality (e.g. Ruddleston-Popper phases)\autocite{Tsai2016,Saparov2016b,Ganose2015} and double perovskites with pairwise substitutions on the B site,\autocite{Savory2016,McClure2016a,Wei2016a,Volonakis2016} 
 which are both attracting significant interest. 
 
 The properties of hybrid halide perovskites which provide difficulties for modelling are also those which make them successful solar energy materials.
-Strong electronic-ionic coupling means that the approximation of a single static lattice is poor when calculating ground state electronic properties. Harmonic approximations may also be invalid due to anharmonicity introduced by rotational disorder. However, it is this coupling which allows charge screening, producing a defect tolerant material. 
-It also facilitates fast charge separation and suppression of excitonic states.
-The facile formation of Schottky-like charged vacancy defects mediates the transport of halide ions---dynamic behaviour which can be only fully captured using multi-scale modelling. However, it is these defects which ensure a low free carrier background concentration which is necessary for high efficiencies in a p-i-n architecture.
+Strong electronic-ionic coupling means that the approximation of a single static lattice is poor when calculating ground state electronic properties. Harmonic approximations may also be invalid due to anharmonicity introduced by rotational disorder. However, it is this coupling that allows charge screening, producing a defect tolerant material, and facilitates fast charge separation and suppression of excitonic states.
+The facile formation of Schottky-like charged vacancy defects mediates the transport of halide ions -- dynamic behaviour which can be only fully captured using multi-scale modelling. However, it is these defects which ensure a low free carrier background concentration which is necessary for high efficiencies in a p-i-n architecture.
 Attempts are now being made to distill this understanding into descriptors for the large-scale screening of novel, earth-abundant, non-toxic semiconductors.\autocite{Brandt2015a,Ganose2016}
 
 %Future challenges include further consideration of non-equilibrium processes such as photo-induced halide separation.
@@ -550,6 +526,5 @@ Attempts are now being made to distill this understanding into descriptors for t
 
 \subsubsection{Acknowledgements}
 
-The primary research underpinning this chapter was performed by Jarvist M. Frost (molecular dynamic and Monte Carlo investigations), Federico Brivio (crystal and electronic structure), Jonathan M. Skelton (lattice dynamics and vibrational spectroscopy), and Lucy Whalley (band-gap deformations).
-This work was funded by the EPSRC (grant numbers EP/L01551X/1 and EP/K016288/1), the Royal Society, and the ERC (grant no. 277757). 
+This work was funded by the EPSRC (grant numbers EP/L01551X/1 and EP/K016288/1), the Royal SoCiety, and the ERC (grant no. 277757). 
 % include computer time here also
