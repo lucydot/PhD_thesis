@@ -72,7 +72,6 @@
 
 % The science-type option: numerical in-text citation with references in order of appearance.
 \usepackage[ style=nature, autocite=superscript, sorting=none, backend=bibtex, doi=false, eprint=false, isbn=false, url=true,urldate=long]{biblatex}
-\newcommand*{\bibtitle}{References}
 
 % LW - all this so I can print date accessed a URL
 \DeclareBibliographyDriver{online}{% modified from biblatex-nature's bbx
@@ -301,9 +300,9 @@
 \include{text/ch1-intro}
 \include{text/ch2-litreview}
 \include{text/ch3-methods}
-\include{text/ch4-effmass}
-\include{text/ch5-epcoupling}
-\include{text/ch6-defects}
+%\include{text/ch4-effmass}
+%\include{text/ch5-epcoupling}
+%\include{text/ch6-defects}
 
 %%% DEBUGGIN'
 %\include{text/test}
@@ -343,7 +342,8 @@
 
 
 {\renewcommand*\MakeUppercase[1]{#1}%
-\printbibliography[title={\bibtitle}]}
+\printbibliography[title={References}]}
+
 
 
 \end{document}

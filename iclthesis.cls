@@ -268,7 +268,6 @@
 \newenvironment{acknowledgements}%
 {   \begin{alwayssingle}\chapter*{Acknowledgements}
     \addcontentsline{toc}{chapter}{Acknowledgements}
-    \renewcommand{\chaptermark}[1]{\markboth{}{#1}}
     \chaptermark{Acknowledgements}
 	\setlength{\baselineskip}{\frontmatterbaselineskip}
 }
