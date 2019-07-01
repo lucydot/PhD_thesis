@@ -86,7 +86,7 @@ This formalism has the advantage that the electron density has a lower dimension
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=450]{figures/ch3/dimensions.png}
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/dimensions.png}
   \caption[Dimensionality of variational objects]{To solve the Schr\"{o}dinger equation we can use a variational object with lower dimensionality and higher computational efficiency, although this will come at the cost of accuracy. This schematic is based on a discussion in Walter Kohn's Nobel Prize lecture.\autocite{Kohn1999}}
   \label{decouple}
 \end{figure}
@@ -113,7 +113,7 @@ To use Kohn-Sham DFT we must approximate the exchange-correlation functional, an
 \textit{Local Density Approximation} \\
 At the lowest rung of the ladder is the local density approximation. In this approximation, only one variable is used to calculate the exchange correlation energy. This is the charge density for an infinitesimal 3-dimensional volume element. The exchange energy is calculated exactly
 $$
-E_{\textrm{LDA,x}}\left[n\right] = −\frac{3}{4}\left(\frac{3}{\pi}\right)^{\frac{1}{3}}n^{\frac{4}{3}}\left(\textbf{r}\right)d\textbf{r},
+E_{\textrm{LDA,x}}\left[n\right] = {-\frac{3}{4}\left(\frac{3}{\pi}\right)^{\frac{1}{3}}n^{\frac{4}{3}}\left(\textbf{r}\right)d\textbf{r}},
 $$
 and the correlation energy is calculated numerically by fitting to many-body quantum monte carlo studies for an inhomogeneous electron gas.%Ceperley and Alder
 Strictly, the LDA should only be used for slowly varying densities, however it has performed surprisingly well for predicting the properties of a variety of atoms, solids and molecules. This is due to a cancellation of errors: LDA underestimates the exchange energy and overestimates the correlation energy. However there is a tendency for LDA to overestimate the binding energy and underestimate lattice parameters. This is a particularly pronounced problem in weakly bonded systems. Common LDA functionals include VWN and PW92.
@@ -159,7 +159,7 @@ It is often the case that translational symmetry is broken in the real material,
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=450]{figures/ch3/supercell.png}
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/supercell.png}
   \caption[Translational symmetry and supercell construction]{An infinite crystal is built from a repeating unit cell of length $L$ (LHS). Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have wavelengths $>L$ (sine wave). A supercell of length $M=2L$ can be built to better model these effects (RHS). } 
   \label{translational}
 \end{figure}
@@ -188,7 +188,7 @@ Between these two extremes there is a continuum of states forming an electronic 
 Substituting Equation \ref{bloch} into Equation \ref{singleparticle} gives
 
 \begin{equation} \label{energyequation}
-\left[\frac{1}{2m}\left(\frac{\hbar}{i}\nabla+\hbark\right)^2+V(\textbf{r})\right]u_k = E(k)u_k
+\left[\frac{1}{2m}\left(\frac{\hbar}{i}\nabla+\hbar k\right)^2+V(\textbf{r})\right]u_k = E(k)u_k
 \end{equation}
 
 For any $k$ we can solve Equation \ref{energyequation} with periodic boundary conditions to find the bandstructure $E(k)$. The bandstructure is often modelled as being parabolic around the maxima and minima, and the curvature determines the carrier effective mass which is explored in Chapter \ref{ch:4-effmass}. There are an infinite number of eigenvalues so the energy is labelled $E_n(k)$ where n labels the particular eigenvalue (band). As a result of crystal symmetry, $E_n(k)$ is periodic and only $k$-vectors within a region of space known as the Brillouin Zone ($|k|<\frac{\pi}{a}$) need to be considered. %I should cite the transport booked used, and include modelling as parabola to link to effective mass.
@@ -215,7 +215,7 @@ The complete expanded Kohn-Sham wavefunction can be expressed as
 \psi_k = \sum_Gc_{\textbf{k},\textbf{G}}e^{i(\textbf{k+G})\cdot\textbf{r}}
 \end{equation}
 
-A plane wave basis set is often used for extended systems as they are inherently peroidic. The software used for the DFT calculations in this thesis, \ce{VASP}\autocite{}, uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals can be used. This is implements in software such as \autcite{}.
+A plane wave basis set is often used for extended systems as they are inherently peroidic. The software used for the DFT calculations in this thesis, \ce{VASP}\autocite{}, uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals can be used. This is implements in software such as \autocite{}.
 
 Sudden changes in electron density are hard to capture using a plane wave basis set (to take the extreme example, the fourier decomposition of a simple top hat in real space needs requires an infinite summation in reciprocal space). This can be problematic when describing the region around the nucleus where there are strong oscillations in the wavefunctions. However these oscillations are associated with the core electrons which are less important in chemical bonding, and so pseudopotentials - an effective potential without oscillations - can be used. It has been established that for certain systems pseudopotentials are as precise as all-electron calculations.\autocite{Lejaeghere2016}
 %http://helper.ipam.ucla.edu/publications/maws3/maws3_6085.pdf
@@ -234,7 +234,7 @@ DFT is also used to find the ground state atomic structure. Structures from X-ra
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=450]{figures/ch3/scf.png}
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/scf.png}
   \caption[Nested iterative method for geometry optimisation]{Nested iterative method for geometry optimisation. The electronic structure relaxation (dashed lines) is nested within the atomic structure relaxation (solid lines).} 
   \label{SCF}
 \end{figure}
@@ -249,7 +249,7 @@ In Section \ref{DFTtheory} we outlined the approximations inherent to DFT calcul
 
 There is also a different set of approximations that relate to  numerical convergence rather than the underlying theory.
 
-First, we have seen that the Kohn-sham wavefunctions are expanded in a basis set. In principle an infinite set may be needed to describe the Kohn-Sham wavefunction; in practice the basis set must be truncated. The kinetic energy operator is given by $-\frac{\hbar \Nabla^2}{2m}$. When this is applied to the plane wave Kohn-Sham eigenstates as given in Equation \ref{KSeigenstates}, we find that the kinetic energy is proportional to $|k+G|^2$; faster oscillations correspond to higher energy. A cutoff energy $\textrm{E}_\textrm{cut}$ is defined so that
+First, we have seen that the Kohn-sham wavefunctions are expanded in a basis set. In principle an infinite set may be needed to describe the Kohn-Sham wavefunction; in practice the basis set must be truncated. The kinetic energy operator is given by $-\frac{\hbar \nabla^2}{2m}$. When this is applied to the plane wave Kohn-Sham eigenstates as given in Equation \ref{KSeigenstates}, we find that the kinetic energy is proportional to $|k+G|^2$; faster oscillations correspond to higher energy. A cutoff energy $\textrm{E}_\textrm{cut}$ is defined so that
 \begin{equation}
 \frac{1}{2}|k+G|^2 < \textrm{E}_\textrm{cut}.
 \end{equation}
@@ -264,7 +264,7 @@ In practice we do not know the continuous form for $E(\textbf{k})$ and so we eva
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=450]{figures/ch3/kpointconvergence.png}
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/kpointconvergence.png}
   \caption[$k$-point convergence of \ce{CsSnI3}]{$k$-point convergence of \ce{CsSnI3}. The $k$-point grid size is on the $x$-axis. Pressure is denoted with a red dot; the region which is within the \SI{1}{\kilo\bar} convergence criteria for this study is shaded red. Energy is denoted with a blue cross; the region which is within the \SI{0.1}{\electronvolt} convergence criteria  is shaded in blue. Only odd grids sample the $\Gamma$-point and so there is an oscillation in energy and pressure as we move between odd and even grids.}
   \label{kpointconvergence}
 \end{figure}
@@ -318,7 +318,7 @@ Point defects can also be classified as non-stochiometric or stochiometric. Non-
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=350]{figures/ch3/classification.png}
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/classification.png}
   \caption[Classification of crystal point-defects]{Non-stochiometric defects include interstitials (additional atom), vacancies (missing atom) and anti-sites. Stochiometric defects include a Frenkel pair (a vacancy close to an interstitial of the same species), and a Shottky pair (a vacancy on both the anion and cation sub-lattices).}
   \label{classification} . %hatch the shapes in this drawing so can tell the differene in b+w
 \end{figure}
@@ -354,8 +354,8 @@ The charge transition level is equivalent to thermal ionization energy, the ener
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=1.0*\columnwidth]{figures/ch3/defectenergetics.png}
-  \caption[Formation energies of the Te vacancy in CdTe]{Formation energies $\DeltaH_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect.}
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/defectenergetics.png}
+  \caption[Formation energies of the Te vacancy in CdTe]{Formation energies $\Delta H_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect.}
 \end{figure}%cite https://iopscience.iop.org/article/10.1088/1742-6596/720/1/012031/pdf
 
 Defect levels deep in the band gap correspond to localised wavefunctions. Carrier capture to these defect states is often associated with a large lattice distortion. Shallow defect levels (within thermal energy $kT$ of the valence or conduction band) correspond to delocalised, hydrogenic-like defect wavefunctions. 
@@ -451,7 +451,7 @@ These motions are determined by the force on each atom. For simple systems, for 
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=350]{figures/ch3/harmonicregime.png}
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/harmonicregime.png}
   \caption[Crystal potential energy expanded with respect to atomic displacement]{The crystal potential energy can be expanded with respect to atomic displacements $x$ to simulate finite temperature behaviour of material. At small displacements, the anharmonic terms (third order and above) can be ignored, giving the harmonic approximation. The crystal lattice is relaxed so that all forces on the atoms are zero and there is no first order term.}
   \label{harmonicregime}
 \end{figure}
@@ -573,7 +573,7 @@ Chapter \ref{ch:5-epcoupling} of this work calculates the coupling between the d
 
 \begin{figure}[h]
 \centering
-  \includegraphics[resolution=350]{figures/ch3/anharmonicity.png}
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/anharmonicity.png}
   \caption[3-phonon processes and anharmonic potential energy surfaces]{A) Energy and momentum are conserved during the creation or annihilation of phonons, so these are three-phonon processes (or higher); B) Some materials, such as silicon (Si) are well-described by a harmonic potential energy surface at typical solar cell operating temperatures. However other materials with dynamic disorder, such as the organic and inorganic perovskite halides, have highly anharmonic double well potentials.}
   \label{harmonicregime}
 \end{figure}  %include phonon-phonon scattering schematic? the third regime where important is given in the other figure, at high temperature %cite ruoxi work
