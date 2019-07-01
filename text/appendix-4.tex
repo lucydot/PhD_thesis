@@ -14,7 +14,7 @@ Substituting $u = rT$ into Equation \ref{fourier} gives
 \frac{\partial u}{\partial t} = D\frac{d^2(u)}{dr^2}
 \end{equation}
 with the boundary conditions $u = rf(r) \text{ at } t=0$, $u = 0 \text{ at } r=0$.
-This solution is equivalent to the case of linear flow with one face at zero. To solve, we follow reference \cite{Ingersoll1948}} and consider a distribution on $r$ which is equal to but the opposite sign of a distribution on $-r$. This initial distribution is convolved with a gaussian kernal to give temperature $T$ as a function of time $t$ and position $r$: 
+This solution is equivalent to the case of linear flow with one face at zero. To solve, we follow reference \cite{Ingersoll1948} and consider a distribution on $r$ which is equal to but the opposite sign of a distribution on $-r$. This initial distribution is convolved with a gaussian kernal to give temperature $T$ as a function of time $t$ and position $r$: 
 \begin{equation} \label{gaussian}
 u = rT(r,t) = \frac{\eta}{\sqrt{\pi}} \bigg[ \int_0^\infty \lambda f(\lambda) e^{-(\lambda-r)^2\eta^2}\delta \lambda - \int_0^\infty \lambda f(\lambda) e^{-(\lambda+r)^2\eta^2}\delta \lambda \bigg],
 \end{equation}
