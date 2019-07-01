@@ -298,7 +298,7 @@ The standard approach for calculating the trap density from first principles is 
 Carrier lifetimes and recombination rates are difficult to measure experimentally as ultra fast optical and electronic sensors are needed to capture transient behaviour, and this must be done in conditions relavant to photovoltaic performance. Time resolved photoluminscence (TRPL) and photoconductivity measurements are used to infer the recombination rates for each recombination pathway.
 Each pathway scales differently with carrier concentration, as specified by the following rate equation:
 \begin{equation}
-$$ \frac{\delta n}{\delta t} = -k_1n -k_2n^2 -k_3n^3 $$
+\frac{\delta n}{\delta t} = -k_1n -k_2n^2 -k_3n^3 
 \end{equation}
 where $k_1$ is the rate constant for SRH recombination, $k_2$ is the rate constant for radiative recombination and $k_3$ is the rate constant for Auger recombination. SRH recombination via a trap state is a one particle process that scales linearly with the carrier concentration. Radiative recombination is a two particle process that depends on the electron density ($n_e$) and hole density ($n_h$), so scales quadratically with carrier concentration. Auger recombination requires three particles and scales cubically.
 TRPL uses short laser pulses to excite excess electrons and holes which then decay via recombination or carrier extraction at an interface. Exponential curves are fitted to the TRPL signal at different laser fluences to extract carrier lifetimes. In general, for solar cells operating under 1.5AM illumination, second order SRH recombination is the dominant recombination mechanism.
@@ -381,17 +381,17 @@ To reduce the rate of climate change we must decrease our reliance on fossil fue
 
 % Key themes in this work: SRH.
 
-\section{Format of the thesis}
+\section{Thesis outline}
 
 Organic-inorganic halide perovskites, the subject of this thesis, present a number of challenges for first-principles atomistic materials modelling. These `plastic crystals' feature dynamic processes across multiple length-scales and time-scales, which include mixed ionic-electronic transport, highly anharmonic lattice dynamics and strong relativistic (spin-orbit coupling) effects on the electronic band structure.
 These issues, which affect the operation of solar cells, are outlined in the following chapter. 
-This is followed with a brief introduction to the theory that underlies almost all of the work in this thesis - Density Functional Theory (DFT). 
+This is followed by a brief introduction to the theory that underlies almost all of the work in this thesis - Density Functional Theory (DFT). 
 To model an imperfect material (one with crystal defects), or temperature effects, a series of post-processing steps must follow the DFT calculation. These are also outlined in Chapter Three.
 
 Chapters Four--Six contain the thesis results. Each results chapter also contains any additional theory where required and calculation steps.
 Bulk transport and optical properties of the perfect material are calculated using Effective Mass Theory (EMT) in Chapter Three. 
 EMT often assumes a parabolic electronic band dispersion, in this chapter distortions away from parabolicity are considered.
-Temperature effects, described on a microscopic scale by phonon quasi-particles, are introduced in Chapter Four. 
+Temperature effects are introduced in Chapter Four. 
 At room temperature the inorganic octahedral \ce{PbI3} units tilt back and forth, and the coupling strength between this tilting and the electronic sub-sytem is quantified.
 Point defects are introduced to our model in Chapter Six. Point defects can be benign or harmful to device performance, depending upon the properties of the defect. This chapter reports the properties of the iodine interstitial point defect.
 
