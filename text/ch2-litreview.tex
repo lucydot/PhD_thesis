@@ -1,13 +1,13 @@
 \begin{savequote}[8cm]
-I've learned that I still have a lot to learn.
-  \qauthor{--- Maya Angelou}
+It's simple mathematics.
+  \qauthor{--- Mos Def, \textit{Mathematics}}
 \end{savequote}
 
-\chapter{\label{ch:2-litreview}Theory and simulation of hybrid halide perovskites}
+\chapter{\label{ch:2-litreview}Simulation of hybrid halide perovskites}
 
 \section{Introduction}
 
-In this chapter recent progress and current challenges in theory and simulation of hybrid perovskites are addressed. 
+In this chapter I address recent progress and current challenges in the theory and simulation of hybrid perovskites. 
 Particular attention is paid to predicting properties that assess the photovoltaic potential of a material. 
 Factors to consider include: light absorption, charge transport, absolute band energies, defect physics and chemical stability. 
 
@@ -29,7 +29,7 @@ As such, the halide perovskites represent a challenge to predictive materials mo
 \includegraphics[width=1.0\columnwidth]{./figures/ch2/f1.png}
 \caption[\ce{CH3NH3PbBr3} powder neutron diffraction pattern and crystallographic unit cells]{
 The high-resolution powder neutron diffraction pattern of the hybrid halide perovskite \ce{CH3NH3PbI3} is shown in the left panel (adapted with permission from Ref. \autocite{Frost2016a} based on data in Ref. \autocite{Weller2015}), which illustrates the low and high temperature phase transitions. While an ordered \ce{CH3NH3+} sub-lattice is expected in the orthorhombic phase, orientation disorder increases with temperature. 
-The crystallographic unit cells of the pseudo-cubic and orthorhombic perovskite phases are shown in the right panel (adapted with permission from Ref. \autocite{Brivio2015a}). The asSoCiated structure files can be accessed from \url{https://github.com/WMD-group/hybrid-perovskites}. Figure prepared by Aron Walsh.
+The crystallographic unit cells of the pseudo-cubic and orthorhombic perovskite phases are shown in the right panel (adapted with permission from Ref. \autocite{Brivio2015a}). The associated structure files can be accessed from \url{https://github.com/WMD-group/hybrid-perovskites}. Figure prepared by Aron Walsh.
 }
 \label{fig1}
 \end{figure*}
@@ -44,11 +44,11 @@ In addition to isoelectronic substitutions (e.g. replacing \ce{Pb^2+} by \ce{Sn^
 In the first report of MAPI by Weber in 1978, the crystal structure was assigned as cubic perovskite (space group $Pm\bar{3}m$).\autocite{Weber1978,Weber1978a}
 The anionic \ce{PbI3-} network is charge balanced by the  \ce{CH3NH3+} molecular cation.
 The symmetry of \ce{CH3NH3+}  ($C_{3v}$) is incompatible with the space group symmetry ($O_h$) unless orientation disorder (static or dynamic) is present.
-The crystal structure solved from X-ray or neutron diffraction data usually spread the molecules over a number of orientations with partial occupancy of the asSoCiated lattice sites.
+The crystal structure solved from X-ray or neutron diffraction data usually spread the molecules over a number of orientations with partial occupancy of the associated lattice sites.
 A common feature of perovskites is the existence of phase changes during heating (typically from lower to higher symmetry) as shown in Figure \ref{fig1}. 
 In hybrid halides containing methylammonium, these are orthorhombic ($Pnma$), tetragonal ($I4/mcm$) and cubic ($Pm\bar{3}m$) phases.\autocite{Weller2015} 
 %
-For MAPI the $Pnma$ to $I4/mcm$ phase transition is first-order with an asSoCiated discontinuity in physical properties, while the $I4/mcm$ to $Pm\bar{3}m$ phase transition is second-order with a continuous evolution of the structure and properties.\autocite{Onoda-Yamamuro1990,Weller2015}
+For MAPI the $Pnma$ to $I4/mcm$ phase transition is first-order with an associated discontinuity in physical properties, while the $I4/mcm$ to $Pm\bar{3}m$ phase transition is second-order with a continuous evolution of the structure and properties.\autocite{Onoda-Yamamuro1990,Weller2015}
 
 The phase transitions are linked to a change in the tilting pattern of the inorganic octahedral cages, and order-disorder transitions of the molecular sub-lattice.\autocite{Onoda-Yamamuro1990,Yamamuro1992a,Onoda-yamamuro1992}
 X-ray diffraction (XRD) measurements upon cooling (heating) suggest the incursion of tetragonal in orthorhombic phases (and vice versa),\autocite{Hutter2016a}
@@ -138,7 +138,7 @@ to the free energy.
 The electronic band structures of the inorganic perovskite \ce{CsPbBr3} and hybrid perovskite \ce{CH3NH3PbBr3} in the cubic phase.
     One effect of the organic cation is to widen the band-gap located at the $R$ point due to the larger lattice constant. 
     Spin-orbit coupling reduces the band-gap in both materials. 
-The presence of \ce{CH3NH3+} in the hybrid perovskite results in a non-centrosymmetric crystal, with an asSoCiated relativistic Rashba-Dresselhaus splitting of the lower conduction band.
+The presence of \ce{CH3NH3+} in the hybrid perovskite results in a non-centrosymmetric crystal, with an associated relativistic Rashba-Dresselhaus splitting of the lower conduction band.
 While labels of the special points are those of the cubic perovskite structure (space group $Pm\bar{3}m$),  
     the static model of the hybrid perovskite formally has  \textit{P1} symmetry . 
 Points equivalent for a cubic crystal (e.g. $M=\frac{1}{2},\frac{1}{2},0$; $M'=0, \frac{1}{2},\frac{1}{2}$;  $M''=\frac{1}{2},0,\frac{1}{2}$) are inequivalent here. Figure prepared by Young-Kwang Jung.
@@ -151,8 +151,8 @@ Points equivalent for a cubic crystal (e.g. $M=\frac{1}{2},\frac{1}{2},0$; $M'=0
 Kohn-Sham density functional theory is most often carried out in the Born-Oppenheimer approximation where the nuclei are static classical point charges. 
 To consider thermal vibrations, expansion or heat flow the theoretical framework of lattice dynamics can be used.\autocite{Stoffel2010} 
  
-In the harmonic approximation, the lattice dynamics are fully specified by second-order force-constants of individual atoms, which are then readily constructed into the dynamical matrix. 
-The eigenstates of this matrix are the normal modes of vibration with an asSoCiated phonon energy. 
+In the harmonic approximation, the lattice dynamics are fully specified by second-order force-constants of individual atoms, which are then used to build the dynamical matrix. 
+The eigenstates of this matrix are the normal modes of vibration with an associated phonon energy. 
 Thermal expansion coefficients, system anharmonicity (e.g. \grun parameters) and the temperature-dependence of other properties can be calculated in the quasi-harmonic approximation (QHA). 
 Here the lattice dynamics is harmonic at a given temperature; however, the cell volume is scaled by thermal expansion to give the first-order contribution of finite temperature effects. 
 
@@ -261,15 +261,15 @@ Minority-carrier diffusion lengths in MAPI are reported to be considerably large
 %
 Long lifetimes (large $\tau$) can be partly attributed to the `defect-tolerance' of hybrid perovsites (discussed in Section \ref{defects}), reducing the rate of ionised-impurity scattering and non-radiative recombination.  
 
-The effective mass of both electrons and holes in hybrid halide perovskites is small (though careful calculations including spin-orbit coupling indicate that the band extrema do not show a paraoblic dispersion relation, and so the concept of effective mass is ill defined in these materials\autocite{Brivio2014a}).
+The effective masses of electrons and holes in hybrid halide perovskites are small.
 Given the effective mass of $< 0.2 m_e$,  the carrier mobility of MAPI ($< 100$ \mob) is modest in comparison to conventional semiconductors such as \ce{Si} or \ce{GaAs} ($> 1000$ \mob).\autocite{Stranks2015b}
 Carrier mobility must be limited by strong scattering.
 
 Low temperature mobility in this material reduces as a function of temperature as T$^{-1.5}$, which provides circumstantial evidence for being limited by acoustic phonon scattering.\autocite{Karakus2015,Yi2016a}
 However, if only the acoustic phonon scattering (which is elastic due to the population of acoustic modes) is considered, the calculated mobility is orders of magnitude larger than experiment. 
 A key realisation is that the soft nature of these semiconductors results in optical phonon modes (see Figure \ref{fig2}) below thermal energy.\autocite{Brivio2015a,PerezOsorio2015a}
-Optical phonon scattering is inelastic and dominates once the charge carriers have sufficient energy to generate the phonon modes\autocite{Leguy2016}. 
-Through solving the Boltzmann transport equation parameterised by DFT calculations, at room temperature the scattering from longitudinal optical phonons is most relevant in limiting mobility.\autocite{Wright2016,Filippetti2016}
+Optical phonon scattering is inelastic and dominates once the charge carriers have sufficient energy to generate the phonon modes.\autocite{Leguy2016} 
+Through solving the Boltzmann transport equation parameterised by DFT calculations, scattering from longitudinal optical phonons is identified as the process limiting mobility at room temperature.\autocite{Wright2016,Filippetti2016}
 
 Mobility will be further limited by scattering from point and extended lattice defects.\autocite{Ball2016}
 Fluctuations in electrostatic potential resulting from dynamic disorder provide a macroscopic structure from which carriers will also scatter.\autocite{Frost2014,Ma2014d}
@@ -277,25 +277,25 @@ Fluctuations in electrostatic potential resulting from dynamic disorder provide 
 \begin{figure*} 
 \includegraphics[width=1.0\textwidth]{./figures/ch2/f4.png}
 \caption[Simple phase segregation model]{
-Ion transport occurs in halide perovskites: they are mixed ionic-electronic conductors. The vacancy-mediated diffusion of halide anions has been asSoCiated with both current-voltage hysteresis of solar cells and the rapid interchange between iodide, bromide and chloride materials.
+Halide perovskites are mixed ionic-electronic conductors. The vacancy-mediated diffusion of halide anions has been associated with both current-voltage hysteresis of solar cells and the rapid interchange between iodide, bromide and chloride materials.
 One point of controversy remains the reversible ion segregation observed in mixed (Br,I) systems. 
 Alloyed materials have been found to phase separate upon illumination, but recover their initial state when the light source is removed. 
-The phase separation is asSoCiated with a striking red-shift in  photoluminesence spectra.
+The phase separation is associated with a striking red-shift in  photoluminesence spectra.
 A statistical mechanical analysis of ground-state DFT calculations suggested a large miscibility gap \autocite{Brivio2016}, while the charge carriers generated upon illumination can provide an additional driving force for phase separation.\autocite{Slotcavage2016}
 The results from a simple thermodynamic model are shown in the right panel, where the free energy of mixing contains contributions from the ground-state with an additional component due to the difference in band-gaps between the mixed (I,Br) and phase separated I-rich phases. 
-The latter contribution requires local carrier concentrations approaching 10$^{21}$ cm$^{-3}$ to make a substantial contribution to the overall mixing energy. Figure prepared by Aron Walsh
+The latter contribution requires local carrier concentrations approaching 10$^{21}$ cm$^{-3}$ to make a substantial contribution to the overall mixing energy. Figure prepared by Aron Walsh.
 }
 \label{fig4}
 \end{figure*}
 
 \section{Photophysics and solar cells}
 
-Recent research interest in hybrid halide perovskites is mainly due to their use as the active layer in efficient solar cells.
+Hybrid halide perovskites are, in the most part, being researched in the context of solar cell technology.
 There are areas of the underlying physics which are not yet developed, and which may be limiting progress in the field.
-Ion migration is poorly understood and has been correlated with hysteresis effects\autocite{Eames2015a,Richardson2016} and device degradation.
-Defects which act as recombination centres have not been identified and characterised. 
+Ion migration is poorly understood and has been correlated with the hysteresis effects\autocite{Eames2015a,Richardson2016} and device degradation.
+In MAPI, the iodine interstitial defect has been identified as a site for charge trapping\autocite{Whalley2017b} (as reported in Chapter \ref{ch:6-defects}), but the role of impurities is not understood. 
 Additionally, interfaces have not been optimised for optimal charge carrier extraction.
-These issues -- where theory and simulation have much to contribute -- are outlined in the following section.
+These issues are outlined in the following section.
 
 \subsection{Ion migration} 
 
@@ -309,16 +309,16 @@ While each point defect is charged, they are formed in neutral combinations so t
 The ion migration rate is given by:
 %
 \begin{equation}
-\Gamma = \nu exp \left( \frac{-\Delta H^{diff}}{k_BT} \right)
+\Gamma = \nu \textrm{exp} \left( \frac{-\Delta H^\textrm{diff}}{k_BT} \right)
 \end{equation}
 %
-where $\Delta H^{diff}$ is the activation energy for solid-state diffusion,
+where $\Delta H^\textrm{diff}$ is the activation energy for solid-state diffusion,
 and $\nu$ is the attempt frequency. 
 In MAPI the diffusion of methylammonium cations, iodide anions and protons have been considered in the literature. 
 Activation energies calculated from first principles show that the predominant mechanism for ion migration is the vacancy assisted hopping of iodide ions.\autocite{Eames2015a}
 This has been confirmed using string simulations\autocite{Meloni2016a} which, like the nudged elastic band method, calculate minimum energy paths and from this infer transition rates.
 
-Based on a bulk activation energy of 0.58 eV\autocite{Eames2015a}, a rate of 733 hops per second would be expected at T = 300 K, with an asSoCiated diffusion coefficient of 10$^{-12}$cm$^{-2}$s$^{-1}$.
+Based on a bulk activation energy of 0.58 eV\autocite{Eames2015a}, a rate of 733 hops per second would be expected at T = 300 K, with an associated diffusion coefficient of 10$^{-12}$cm$^{-2}$s$^{-1}$.
 Effective activation energies as low as 0.1 eV have been reported experimentally,\autocite{Bryant2015,Game2017} which likely 
 correspond to diffusion along extended defects (dislocations, grain boundaries, surfaces)\autocite{Shao2016a,Yun2016}.
 The corresponding diffusion rate of 10$^{-5}$cm$^{-2}$s$^{-1}$ is very fast, but comparable to surface 
@@ -328,8 +328,8 @@ Modelling ion diffusion at device scales is not yet possible with \emph{ab-initi
 Parametrised drift-diffusion modelling of ion and electron density indicate that slow moving ions can explain the slow device hysteresis.\autocite{VanReenen2015,Richardson2016} 
 A vacancy diffusion coefficient of the order of 10$^{-12}$cm$^2$s$^{-1}$ is consistent with both predictions and transient measurements.\autocite{Eames2015a}
 
-It has been suggested that ion migration within mixed-halide compositions is the result of a non-equilibrium process induced by photo-excitation.
-X-ray diffraction measurements by Hoke et al.\autocite{Hoke2015} show that under illumination the mixed halide perovskite $\ce{MAPb(I_{1-x}Br_x)3}$ segregates into two crystalline phases: one iodide-rich and the other bromide-rich.
+It has been suggested that ion migration within mixed-halide compositions is the result of a non-equilibrium process induced by photoexcitation.
+X-ray diffraction measurements by Hoke et al.\autocite{Hoke2015} show that under illumination the mixed halide perovskite $\ce{MAPb(I_{1-x}Br_x)3}$ segregates into two crystalline phases, one iodide-rich and the other bromide-rich.
 This segregation leads to reduced photovoltaic performance via charge carrier trapping at the iodide-rich regions.
 In some reports, after a few minutes in the dark the initial single phase XRD patterns are recovered. 
 This reversible process is unusual and defies the common assumption made that ion and electron transport are decoupled.
@@ -338,28 +338,17 @@ A schematic outlining the phase segregation process is shown in Figure \ref{fig4
 A phase diagram constructed from first-principles thermodynamics found a miscibility gap for a range of stoichometries at room temperature.\autocite{Brivio2016}
 This suggests that a mixed-halide material is metastable and will phase segregate after being excited by light, which follow a decreasing free energy gradient towards halide-rich areas formed prior to light excitation (such as grain boundaries).
 The accumulation of charge carriers increases lattice strain and drives further halide segregation.  
-Our calculations indicate that the transition between mixing and segregation will occur at a local carrier concentration of $10^{21}$ cm$^{-3}$, which would require accumulation into small regions of the material. 
+Our calculations indicate that the transition between mixing and segregation will occur at a local carrier concentration of $10^{21}$ cm$^{-3}$, so that charge accumulation in small regions of the material is required for this model. 
 
 \subsection{Electron-hole recombination} \label{EHR}
 
-The open-circuit voltage (V$_{OC}$) of a solar cell is determined by the rate of charge carrier recombination in the material, as no photogenerated charges are being extracted and so all are recombining. 
-When operated to generate power, the rate of recombination competes with the rate of charge extraction, limiting the fill factor of the solar cell. 
-Combined, rates of recombination specify the photovoltaic potential of a material. 
+The open-circuit voltage (V$_\textrm{oc}$) of a solar cell is determined by the rate of charge carrier recombination in the material, as no photogenerated charges are being extracted and so all are recombining. 
+When operating to generate power, the rate of recombination competes with the rate of charge extraction, limiting the fill factor of the solar cell. 
 
 Recombination is usually separated into three channels: 
-non-radiative; radiative; and Auger. 
-These respectively correspond to: one; two; and three electron processes.
-Assuming that the prefactors for the rates of these processes are constant, the carrier density in an intrinsic semiconductor can be modelled as a rate equation:
-%
-\begin{equation}
-\frac{dn}{dt} = G - nA - n^2B - n^3C
-\end{equation}
-%
-where $G$ is the rate of electron-hole generation.
-
-While non-radiative recombination is limiting in many inorganic thin-film technologies, hybrid perovskites are not significantly affected. 
-This is surprising for the high density of defects expected
-for a material processed from solution, leading to them being described as `defect tolerant'. \autocite{Berry2016}
+non-radiative; radiative; and Auger (see Section \ref{exprecombo} for further dicussion). While non-radiative recombination is limiting in many inorganic thin-film technologies, hybrid perovskites are not significantly affected. 
+This is surprising given the high density of defects expected
+for a material processed from solution, leading to hybrid perovskites being described as `defect tolerant'. \autocite{Berry2016}
 
 %% AW - I think explaining the concepts below properly will be too long and off topic here
 %
@@ -372,23 +361,20 @@ for a material processed from solution, leading to them being described as `defe
 
 Radiative (bimolecular) recombination is slower than would be expected for a direct band-gap semiconductor. 
 %
-Recent calculations\autocite{Azarhoosh2016, Zheng2015} revealed how relativistic Rashba splitting can suppress radiative recombination at an illumination intensity relevant to an operating solar cell.
+Recent calculations reveal how relativistic Rashba splitting can suppress radiative recombination at an illumination intensity relevant to an operating solar cell.\autocite{Azarhoosh2016, Zheng2015} 
 After photoexcitation, electrons thermalise to Rashba pockets in the conduction band minima away from the high symmetry point in reciprocal space.
 This leads to an indirect charge recombination pathway as the overlap in $k$-space between occupied states near upper valence and lower conduction bands diminishes.
-It has also been suggested that direct recombination is suppressed due to the pockets of minima being spin-protected.\autocite{Zheng2015}
+It has also been suggested that direct recombination is suppressed at very short timescales due to the pockets of minima being spin-protected.\autocite{Zheng2015}
 % JMF: *cough* might be true for the first 50 fs; thereafter not true, once spins re-thermalised.
 Direct gap radiative recombination is reduced by a factor of 350 at solar fluences, as electrons must thermally repopulate back to the direct gap.\autocite{Azarhoosh2016}
 This is in agreement with the temperature-dependence of the bimolecular rate measured experimentally \autocite{Hutter2016a} and calls into question the validity of models where a global radiative recombination rate independent of carrier concentration is used.
-
-Auger recombination is only significant at fluences well above solar radiation, but is important for understanding laser photophysics. 
+Auger recombination is only significant at fluences well above solar radiation. 
 
 Ferroelectric effects could contribute to electron-hole separation due to electrostatic potential fluctuations in real space.
-Although the molecular cation plays no direct role in charge generation or separation it could have a part to play in charge transport through the formation of polar domains.\autocite{Frost2014b,Ma2014d}
-Macroscopic ferroelectric order is not necessary to explain device behaviour in a 3D drift-diffusion simulation.\autocite{Sherkar2015}
-A multiscale Monte Carlo code based on a model Hamiltonian parameterized for the inter-molecular dipole interaction in MAPI, explored the results of this dynamic polarisation.\autocite{Frost2014}
-This predicts the formation of antiferroelectric domains which minimise energy via dipole-dipole interaction, which work against a cage-strain term preferring ferroelectric alignment.\autocite{Leguy2015b}
-This provides electrostatically preferred pathways for electrons and holes to conduct.
-Developing more accurate models and measurements of the nature and effects of lattice polarisation in these materials is the subject of on-going research efforts.
+Although the molecular cation plays no direct role in charge generation or separation it could influence charge transport through the formation of polar domains.\autocite{Frost2014b,Ma2014d}
+This dynamic polarisation has been explored using a model Hamiltonian parameterized for the inter-molecular dipole interaction in MAPI, explored the results of .\autocite{Frost2014}
+This model predicts the formation of antiferroelectric domains that minimise energy via dipole-dipole interaction, and dominate a cage-strain term preferring ferroelectric alignment.\autocite{Leguy2015b}
+The domains would provided electrostatically preferred pathways for electrons and holes to conduct.
 
 %By following detailed balance arguments\autocite{Shockley1961a} radiative recombination is unavoidable and provides a fundamental limit to device efficiency as a function of bandgap.
 %The Shockley-Queisser limit for photovoltaic conversion efficiency is reached when all radiation is through radiative channels. 
@@ -398,30 +384,27 @@ Developing more accurate models and measurements of the nature and effects of la
 
 \subsection{Defect levels in the band-gap}\label{defects}
 
-To understand why the rate of non-radiative recombination is low the known defect properties of hybrid perovskites are considered.
-Defects appear to have a minimal impact upon charge carrier mobility and lifetime,\autocite{Brandt2015a}
-which can be attributed to a combination of large dielectric constants and weak heteropolar bonding. 
-
+To understand why defects appear to have a minimal impact upon charge carrier mobility and lifetime,\autocite{Brandt2015a} the defect properties of hybrid perovskites can be considered.
 Under the Shockley-Read-Hall model for semiconductor statistics non-radiative recombination is mediated through deep defect states in the gap.\autocite{PhysRev.87.835}
 Shallow defect states can act as traps but the carriers are thermally released to the band before recombination can occur.
-Hybrid perovskites---with high dielectric constant and low effective mass---show a tendency towards benign shallow defects under the hydrogenic model:\autocite{Yu1996}
+Hybrid perovskites -- with high dielectric constant and low effective mass -- show a tendency towards benign shallow defects under the hydrogenic model:\autocite{Yu1996}
 %
 \begin{equation} \label{hydeqn}
 E_n = - \frac{m^*}{m_0}\frac{1}{2n^2\epsilon_0^2}
 \end{equation}
 %
-where $\frac{m^*}{m_0}$ is the effective mass ratio, $\epsilon_0$ is the static dielectric constant and $n$ is an integer quantum number for given energy level. Atomic units are used and so energy is given in Hartrees. 
+where $\frac{m^*}{m_0}$ is the effective mass ratio, $\epsilon_0$ is the static dielectric constant and $n$ is an integer number that labels the energy level. Atomic units are used and so the energy $E_n$ is given in Hartrees. 
 %This corresponds to the formula for energy levels in hydrogen, with an effective mass introduced to account for dispersion due to the band and a dielectric constant to account for charge screening\autocite{Kohn1955}.
 %A similar result can be obtained for acceptor states.
 
 In Table \ref{tab:defectlevels} the first hydrogenic defect levels for MAPI, Si and CdTe are given.
 The binding energy for MAPI is only 3 meV.
-For ionic materials, one would expect a large central cell correction that could result in much deeper levels, for example, as seen for the colour centres in alkali halides.\autocite{Stoneham1975}
-It was shown numerically that the on-site electrostatic potentials in the I-II-VII$_3$ perovskites are relatively weak owing to the small charge of the ions (e.g \ce{Cs+Pb^2+I^-_3}) compared to other perovskite types (e.g. \ce{Sr^2+Ti^4+O^2^-3}),\autocite{Brivio2014} which would also support  more shallow levels. 
+For ionic materials, one would expect a large central cell correction that could result in much deeper levels, as seen for the colour centres in alkali halides.\autocite{Stoneham1975}
+However on-site electrostatic potentials in the I-II-VII$_3$ perovskites are relatively weak due to the small charge of the ions (e.g \ce{Cs+Pb^2+I^-_3}) compared to other perovskite types (e.g. \ce{Sr^2+Ti^4+O^2^-3}),\autocite{Brivio2014} which supports the existance of shallow levels. 
 In addition, arguments based on covalency have also been proposed.\autocite{Brandt2015a}
 
 \begin{table} \centering
-\caption[Donor defect levels in \ce{CH3NH3PbBr3}, Si and CdTe]{\label{tab:defectlevels}The first shallow donor defect level in \ce{MAPI}, \ce{Si} and \ce{CdTe} calculated from effective mass theory using Equation \ref{hydeqn}. The dielectric constant $\epsilon_0$ can be considered an important descriptor for photovoltaic materials as several important properties (e.g. rate of impurity scattering) scale with its square.}
+\caption[Donor defect levels in \ce{CH3NH3PbBr3}, Si and CdTe]{\label{tab:defectlevels}The first shallow donor defect level in \ce{MAPI}, \ce{Si} and \ce{CdTe} calculated from effective mass theory using Equation \ref{hydeqn}. The dielectric constant $\epsilon_0$ is an important descriptor for photovoltaic materials as several important properties (e.g. rate of impurity scattering) scale with its square.}
 \begin{tabular}{@{}llll@{}} \toprule   %@{} removes space to the vertical edges
 Material & $\frac{m^*}{m_0}$ & $\epsilon_0$ & $E_1 (meV)$ \\
 \midrule
@@ -437,35 +420,28 @@ CdTe & 0.11\autocite{Wang2007} & 10.2\autocite{Madelung2003} & 14 \\
 % LW - Schematic: IP's against other contact materials.
 % LW - Schematic from Keith's screening technique?
 
-As perovskite solar cells approach commercial viability,\autocite{Park2016} there are considerations to be made beyond the bulk materials.
+As perovskite solar cells approach commercial viability,\autocite{Park2016} there are considerations to be made beyond the bulk material.
 Surfaces, grain boundaries and interfaces will influence device performance and long-term stability, and become increasingly important as the science is scaled up from lab to production line. 
-Accurate interface modelling requires consideration of halide migration, ion accumulation, charge carrier transport and charge carrier recombination at the defect states.
+Halide migration, ion accumulation, charge carrier transport and charge carrier recombination at the defect states are some of the processes to consider when building an accurate interface model.
 There has been preliminary work, that provides insights, but real systems offer much deeper complexity. 
 
 Perovskite films fabricated through solution processing methods are multicrystalline and so the formation of grain boundaries is inevitable.
 The resulting microstructure provides pathways for ion conduction, electron-hole separation and recombination.
-The shallow traps introduced are evidenced through improved device performance with increasing grain size\autocite{Chen2016} and their thermal activation. % LW -  for more proof: Kim et al Adv. materials 28, 917 (2016) and Hirozaku
+Improved device performance with increasing grain size\autocite{Chen2016} is evidence for shallow traps associated with the grain boundary. % LW -  for more proof: Kim et al Adv. materials 28, 917 (2016) and Hirozaku
 %
 Initial calculations suggest that grain boundaries do not introduce deep defects and consequently have negligible effect upon the rate of non-radiative recombination.\autocite{Yin2015b}
 This is in conflict with spatially resolved photoluminescence\autocite{deQuilettes2015a} and cathodoluminescence\autocite{Bischak2015a} measurements which evidence greater non-radiative loss at grain boundaries.
-
-Recent calculations using nonadiabatic MD and time-domain density DFT\autocite{Long2016a} indicate that grain boundaries localize the electron and hole wavefunctions and provide additional phonon modes.
+Nonadiabatic MD and time-domain density DFT\autocite{Long2016a} indicate that grain boundaries localize the electron and hole wavefunctions and provide additional phonon modes.
 This leads to increased electron-phonon coupling which in turn will give a higher rate of non-radiative recombination. 
 %Chlorine passivation at grain boundaries was shown to restore the recombination rate found in pristine  \ce{CH3NH3PbI3} and this has been verified experimentally \autocite{deQuilettes2015a}.
 %Grancini work here: microstructure on the formation of excitons
 
-The typical device structure for a perovskite cell is the perovskite absorber layer sandwiched between an electron transport layer (e.g. \ce{TiO2}, \ce{SnO}) and hole transport layer (e.g. spiro-OMeTAD, PEDOT-PSS).
-At the interface there are two key considerations.
-One is that the bands should be electronically matched so as to allow efficient charge extraction without large energy loss. 
-%Procedure for energy level matching here.
-The second is that the formation of defects should be minimised as these acts as sites for recombination, can lead to mechanical degradation of the device and have been linked to hysteresis.\autocite{Almora2016a}
-
-The commonly used hole transporter spiro-OMeTAD is hygroscopic so that stability in humid air is a concern.\autocite{Tai2016}
-This has prompted the development of screening procedures \autocite{Butler2016a, Murray2015a} to identify alternative contacts. 
-The electronic-lattice-site (ELS) figure of merit considers band alignment, lattice match and chemical viability via the overlap of atomic positions.\autocite{Butler2016a}
-Using this figure of merit \ce{Cu2O} and is identified as a possible earth abundant hole extractor, whilst oxide perovskites such as \ce{SrTiO3} and \ce{NaNbO3} have been identified as possible electron extractors.
+A commonly used hole transport material is spiro-OMeTAD. This material is hygroscopic so stability in humid air is a concern,\autocite{Tai2016}
+and screening procedures have been used to identify alternative contacts.\autocite{Butler2016a, Murray2015a} 
+Band alignment, lattice match and chemical viability via the overlap of atomic positions are used to determine the electronic-lattice-site (ELS) figure of merit.\autocite{Butler2016a}
+Using this approach \ce{Cu2O} is identified as a possible earth abundant hole extractor, whilst oxide perovskites such as \ce{SrTiO3} and \ce{NaNbO3} are identified as possible electron extractors.
 As with the majority of screening techniques, the candidate materials meet the necessary but perhaps not sufficient conditions. 
-Further refinements may consider the change in electronic properties as lattice strain and chemical inhomogeneity at the interface is introduced.
+Further refinements to the screening procedure could consider the change in electronic properties as lattice strain and chemical inhomogeneity at the interface is introduced.
 
 % LW - could add:
 % Interface between MAPI and water?? OR
@@ -475,31 +451,31 @@ Further refinements may consider the change in electronic properties as lattice 
 % An improved coupling between the \ce{TiO2} and perovskite was found when the perovskite was terminated with \ce{PbI2}, simulating the non-stochiometric material \autocite{Mosconi2016}.
 
 \begin{table*} \centering
-\caption[Common issues that arise in the simulation of hybrid perovskites]{\label{tab:techsol} A collection of common issues that can arise in the simulation of hybrid perovskites.
+\caption[Common issues that arise in the simulation of hybrid perovskites]{\label{tab:techsol} A collection of common issues that can arise in the simulation of hybrid perovskites, sourced from members of the Walsh Materials Design Group.
 }
 \begin{tabular}{p{4cm}p{4cm}p{6cm}}
 \toprule
 Technique & Symptom & Solution \\
 \midrule
-Crystal structure optimisation & Partial occupancy in structure files & Test different configurations and check total energy \\
-Crystal structure optimisation & Missing H in structure files & Include H based on chemical knowledge and electron counting  \\
-Crystal structure optimisation & Slow ionic convergence & Try changing algorithm type and settings \\
+Geometry \newline optimisation & Partial occupancy in structure files & Test different configurations and check total energy \\
+Geometry \newline optimisation & Missing H in structure files & Include H based on chemical knowledge and electron counting  \\
+Geometry \newline optimisation & Slow ionic convergence & Try changing algorithm type and settings \\
 Electronic structure & Bandgap is too large & Include spin-orbit coupling and consider excitonic effects \\
 Electronic structure & Bandgap is too small & Use a more sophisticated exchange-correlation functional \\
 Electronic structure & Bandgap is still too small & Try breaking symmetry, especially for cubic perovskites \\
-Electronic structure & Workfunction is positive & Align to external vacuum level using a non-polar surface  \\
+Electronic structure & Workfunction is \newline positive & Align to external vacuum level using a non-polar surface  \\
 Supercell convergence & Unusual convergence behaviour & Use only even cell expansions (e.g. $2\times2\times2$) \\
-Ab initio thermodynamics & No stable chemical potential range & No easy fix (many hybrid materials are metastable) \\
-Berry phase polarisation & Spontaneous polarisation is too large & Use appropriate reference structure and pathway \\
-Point defects & Negative formation energies & Check for balanced chemical reaction and chemical potential limits \\
+Ab initio \newline thermodynamics & No stable chemical \newline potential range & No easy fix (many hybrid\newline materials are metastable) \\
+Berry phase \newline polarisation & Spontaneous polarisation is too large & Use appropriate reference \newline structure and pathway \\
+Point defects & Negative formation \newline energies & Check for balanced chemical reaction and chemical potential limits \\
 Point defects & Transition levels are deep in band-gap & Check supercell expansion and charged defect corrections \\
-Alloyed systems & Many possible configurations & Use appropriate statistical mechanics \\
+Alloyed systems & Many possible \newline configurations & Use appropriate statistical \newline mechanics \\
 Lattice dynamics & Many imaginary phonon modes & Check supercell size and force convergence \\
 Lattice dynamics & Imaginary modes at zone boundaries & Use mode-following to map out potential energy surface \\
-Molecular dynamics & System melts or decomposes & Check $k$-points and basis set convergence \\
+Molecular dynamics & System melts or \newline decomposes & Check $k$-points and basis set\newline convergence \\
 Molecular dynamics & Unphysical dynamics & Check equilibration and supercell expansion \\
 Molecular dynamics & No tilting observed & Use an even supercell expansion \\
-Electron-phonon coupling & Values far from experiment & Consider anharmonic terms beyond linear response theory   \\
+Electron-phonon\newline coupling & Values far from \newline experiment & Consider anharmonic terms \newline beyond linear response theory   \\
 Drift-diffusion model & Current-voltage behaviour incorrect & Consider role of fluctuating ions and electrostatic potentials \\
 \bottomrule
 \end{tabular}
@@ -508,15 +484,16 @@ Drift-diffusion model & Current-voltage behaviour incorrect & Consider role of f
 
 \section{Summary}
 
-I have outlined the physical properties that make hybrid perovskites unique semiconductors, but also challenging for theory and simulation. 
-A number of practical points relating to issues commonly encountered whilst running simulations of these materials are summarized in Table \ref{tab:techsol}.
+I have outlined the physical properties which make hybrid perovskites unique semiconductors that are a challenge for theory and simulation. 
+Common issues that can arise in the simulation of hybrid perovskites are summarized in Table \ref{tab:techsol}.
 %
-The volume of work in this area means that all active areas of research cannot be addressed, including that around perovskite-like structures with lower dimensionality (e.g. Ruddleston-Popper phases)\autocite{Tsai2016,Saparov2016b,Ganose2015} and double perovskites with pairwise substitutions on the B site,\autocite{Savory2016,McClure2016a,Wei2016a,Volonakis2016} 
+The volume of work in this area means that all active areas of research cannot be addressed, including perovskite-like structures with lower dimensionality (e.g. Ruddleston-Popper phases)\autocite{Tsai2016,Saparov2016b,Ganose2015} and double perovskites with pairwise substitutions on the B site,\autocite{Savory2016,McClure2016a,Wei2016a,Volonakis2016} 
 which are both attracting significant interest. 
 
-The properties of hybrid halide perovskites which provide difficulties for modelling are also those which make them successful solar energy materials.
-Strong electronic-ionic coupling means that the approximation of a single static lattice is poor when calculating ground state electronic properties. Harmonic approximations may also be invalid due to anharmonicity introduced by rotational disorder. However, it is this coupling that allows charge screening, producing a defect tolerant material, and facilitates fast charge separation and suppression of excitonic states.
-The facile formation of Schottky-like charged vacancy defects mediates the transport of halide ions -- dynamic behaviour which can be only fully captured using multi-scale modelling. However, it is these defects which ensure a low free carrier background concentration which is necessary for high efficiencies in a p-i-n architecture.
+The properties of hybrid halide perovskites which are difficult to model are also those which make them a successful PV material.
+For example, calculating ground state electronic properties using the approximation of a single static lattice does not capture the effects of strong electronic-ionic coupling. However, it is this coupling screens charge, produces a defect tolerant material, facilitates fast charge separation and suppresses excitonic states.
+Multi-scale modelling must be used to capture the transport of halide ions via Schottky-like charged vacancy defects.
+However, it is these defects that provide the low free carrier background concentration necessary for high efficiencies in a p-i-n architecture.
 Attempts are now being made to distill this understanding into descriptors for the large-scale screening of novel, earth-abundant, non-toxic semiconductors.\autocite{Brandt2015a,Ganose2016}
 
 %Future challenges include further consideration of non-equilibrium processes such as photo-induced halide separation.
@@ -526,5 +503,5 @@ Attempts are now being made to distill this understanding into descriptors for t
 
 \subsubsection{Acknowledgements}
 
-This work was funded by the EPSRC (grant numbers EP/L01551X/1 and EP/K016288/1), the Royal SoCiety, and the ERC (grant no. 277757). 
+This work was funded by the EPSRC (grant numbers EP/L01551X/1 and EP/K016288/1), the Royal society, and the ERC (grant no. 277757). 
 % include computer time here also
