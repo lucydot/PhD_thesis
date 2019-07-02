@@ -1,6 +1,7 @@
 \begin{savequote}[8cm]
-It's simple mathematics.
-  \qauthor{--- Mos Def, \textit{Mathematics}}
+Two MCs can't occupy the same space at the same time,
+it's against the laws of physics.
+\qauthor{--- Lauryn Hill, \textit{Zealots}}
 \end{savequote}
 
 \chapter{\label{ch:3-methods}Theory and methodology}
@@ -13,22 +14,22 @@ It's simple mathematics.
 
 \section{Introduction} 
 
-In this chapter I present the theory and methodology that underlies the work in this thesis. The chapter starts with an introduction to Density Functional Theory - first I introduce the theoretical concepts, then I provide details about how DFT is implemented in practice. In the second part of the chapter I outline how we can use DFT energies combined with a number of post-processing steps to predict defect formation energies and charge transition levels. The chapter ends with an introduction to the theory of lattice dynamics and how this is used to calculate the vibrational properties of a material. 
+In this chapter I present the theory and methodology that underlies the work in this thesis. The chapter starts with an introduction to Density Functional Theory (DFT); first I introduce the theoretical concepts, then I provide some details about how DFT is implemented in practice. In the second part of the chapter I outline how we can use DFT energies combined with a series of post-processing steps to predict defect formation energies and charge transition levels. The chapter ends with an introduction to the theory of lattice dynamics and how this theory is used to calculate the vibrational properties of a material. 
 
 \section{Density Functional Theory} \label{DFTtheory}
 
-Density Functional Theory is the most commonly used method of electronic structure calculation in condensed matter physics and quantum chemistry. 
-Using DFT we are able to predict the ground state properties of a material including electron density, total energy, equilibrium structure, vibrational frequencies and properties relating to the difference in total energies, such as defect formation energies or surface energies. 
-As DFT is a ground state theory, we are not able to calculate properties relating to to excited states and, without further calculations (such as those outlined in Section \ref{sec:latticedynamics}), results do not incorporate the effects of temperature. 
+Density Functional Theory is the most commonly used electronic structure method in condensed matter physics and quantum chemistry. 
+DFT can be used to predict the ground state properties of a material including electron density, total energy, equilibrium structure, vibrational frequencies, and properties relating to differences in total energy, such as defect formation energy or surface energy. 
+As DFT is a ground state theory we are not able to calculate properties relating to excited states and, without further calculations such as those outlined in Section \ref{sec:latticedynamics}, results do not incorporate the effects of temperature. 
 
-The theoretical basis for DFT was established in 1964 through the work of Walter Kohn and Pierre Hohenberg.\autocite{Hohenberg1964} This was further developed by Walter Kohn and Lu Jeu Sham to produce Kohn-Sham DFT.\autocite{Kohn1965} However it was not until the late 1980's that work started on building approximations to the exchange-correlation functional so that DFT could be used in practice. 
+The theoretical basis for DFT was established in 1964 through the work of Walter Kohn and Pierre Hohenberg.\autocite{Hohenberg1964} This was further developed by Walter Kohn and Lu Jeu Sham to produce Kohn-Sham DFT.\autocite{Kohn1965} However it was not until the late 1980's approximations to the exchange-correlation functional were built so that DFT could be used in practice. 
 
-There are a growing number of codes that implement DFT, many of which include extensions to DFT so that excited state properties can be predicted.
+There are a growing number of codes that implement DFT. 
 Although some codes aspire to a blackbox approach, with the user protected from the underlying mechanics of DFT, for most systems of interest an understanding of the underlying approximations and parameters used are required for reliable results.
 
 \subsection{Basic concepts} %expand to include more equations, including slater determinant? and E\phi=H\phi.
 
-Firstly, a note on the name. A function accepts one or more numbers as input and produces a number as output. Likewise, a functional accepts one or more \textit{functions} as inputs, and produces a number as output. In DFT the functional is the electron density which is a function of space and time.
+Firstly, a note on the name. A function accepts one or more numbers as input and produces a number as output. Likewise, a functional accepts one or more \textit{functions} as inputs, and produces a number as output. In DFT the functional is the electron density which is itself a function of space and time.
 
 Throughout this chapter, unless stated otherwise, we use the Born-Oppenheimer approximation: the heavy atomic nuclei are treated as fixed points, and we solve the ground state quantum mechanical problem for the electrons only. This reduces the number of degrees of freedom of the system, a tactic that will be used again later in the chapter.
 
@@ -37,56 +38,54 @@ Although no one single text is followed, concepts for the underlying theory have
 
 \subsubsection{The Schr\"{o}dinger equation}
 
-The Schr\"{o}dinger equation describes the wavefunction $\Psi$ of a quantum mechanical system. The wavefunction is a fundamental postulate of quantum mechanics and it contains all the information for a given system. Once the Schr\"{o}dinger equation is solved, and a wavefunction is found, all the physical properties for that system follow. To take the simplest possible example, the time-independent non-relativistic Schr\"{o}dinger equation for a single particle can be written as:
+A fundamental postulate of quantum mechanics is that for any physical system there is an associated wavefunction that contains all the system information.
+The Schr\"{o}dinger equation describes the wavefunction $\Psi$ of a quantum mechanical system.  Once the Schr\"{o}dinger equation is solved, and a wavefunction is found, all the physical properties for that system follow. To take the simplest possible example, the time-independent non-relativistic Schr\"{o}dinger equation for a single particle can be written as:
 \begin{equation} \label{singleparticle}
-\left[\frac{-\hbar^2}{2m}\nabla^2+V(\textbf{r})\right]\Psi(\textbf{r}) = E\Psi(\textbf{r})
+\left[\frac{-\hbar^2}{2m}\nabla^2+v_\textrm{ext}(\textbf{r})\right]\Psi(\textbf{r}) = E\Psi(\textbf{r})
 \end{equation}
-where the first term in the bracket corresponds to the kinetic energy and the second term corresponds to the potential energy. For a single particle in a simple potential, such as the ``particle in a box" system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). In this case, the Schr\"{o}dinger equation takes the form:
+where the first term in the bracket corresponds to the kinetic energy and the second term corresponds to the potential energy. For a single particle in a simple potential, such as the ``particle in a box'' system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). In this case, the Schr\"{o}dinger equation takes the form:
 \begin{equation}
 \left[\frac{-\hbar^2}{2m}\sum_{i=1}^N\nabla_i^2+\sum_{i=1}^Nv_{\textrm{ext}}(\textbf{r}_i)+\sum_{i<j}^N\frac{q_iq_j}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}\right]\Psi(\textbf{r}_i) = E\Psi(\textbf{r}_i),
 \end{equation}
 where the third term in the square bracket describes the electrostatic interaction between two particles of charges $q_i$ and $q_j$, and couples the coordinates of the particles together.
 
-The following methods (Hartree-Fock and Kohn-Sham DFT) give a way to obtain an approximate solution to the Schr\"{o}dinger equation for systems of interest. They do this by mapping the interacting problem onto a non-interacting problem with an effective potential $V_\textrm{s}(\textbf{r})$. In doing so, the dimensionality of the problem is greatly reduced. Instead of solving one N-dimensional probelem, which is computationally intractable, N one-dimensional problems are solved (Figure \ref{decouple}). These provide a compromise between accuracy and computational efficiency.
+Hartree-Fock methods and Kohn-Sham DFT provide a way to obtain an approximate solution to the Schr\"{o}dinger equation for systems of interest. They do this by mapping the interacting problem onto a non-interacting problem with an effective potential $v_\textrm{ee}(\textbf{r})$. In doing so, the dimensionality of the problem is greatly reduced. Instead of solving one N-dimensional computationally intractable problem, N one-dimensional problems are solved (Figure \ref{decouple}). These methods provide a compromise between accuracy and computational efficiency.
 
 \begin{figure}[h]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch3/decouple.png}
-  \caption[Interacting and non-interacting particle systems]{Schematic outlining the equivalence between a system of interacting particles and a system of non-interacting particles in an effective potential. The underlying idea is that an interaction can be replaced by the equivalent potential. This maps the interacting 3N-dimensional problem onto N 3-dimensional problems. A consequence of this mapping is that the effective potential depends on the electron density which is itself dependant on the effective potential - a self-consistent set of equations is formed.} %update so q1q2 in couple term in picture
+  \caption[Interacting and non-interacting particle systems]{Schematic outlining the equivalence between a system of interacting particles and a system of non-interacting particles in an effective potential. The underlying idea is that an interaction can be replaced by the equivalent potential. This maps the interacting 3N-dimensional problem onto N 3-dimensional problems. A consequence of this mapping is that the effective potential depends on the electron density which is itself dependant on the effective potential -- a self-consistent set of equations is formed. For the non-interacting case $phi_i$ is used to denote a single particle wavefunction.} %update so q1q2 in couple term in picture
   \label{decouple}
 \end{figure}
 
 \subsubsection{Hartree-Fock methods}
 
-Hartree-Fock methods introduced the concept of fictitious one-electron orbitals $\phi$ that do not interact with each other as a way of solving the Schr\"{o}dinger equation. The HF many-body wavefunction is a Slater determinant of the one-electron orbitals and is denoted with $\Phi$. 
+Hartree-Fock (HF) methods introduce the concept of fictitious non-interacting one-electron orbitals $\phi$ as a way of solving the Schr\"{o}dinger equation. The one-electron orbitals are combined using a Slater determinant to produce the HF many-body wavefunction.\autocite{Burke2007} 
+The effective potential, introduced in Figure \ref{decouple}, is given by $v_{\textrm{ee}} = U + E_{\textrm{x}}$. $U$ accounts for the electrostatic interaction between electrons. Hartree-Fock methods model the charge interaction as a coulomb potential for a system of fixed electrons; the electrons feel the average electrostatic field due to the other electrons.
 
-The effective potential, introduced in Figure \ref{decouple}, is given by $V_{\textrm{ee}} = U + E_{\textrm{x}}$. $U$ accounts for the electrostatic interaction between electrons. Hartree-Fock methods model the charge interaction as a coulomb potential for a system of fixed electrons; the electrons feel the average electrostatic field due to the other electrons.
+$E_x$ accounts for the spin exchange interaction between electrons.
+Electrons with the same spin are indistinguishable, and a consequence of this is that the many body wavefunction must be anti-symmetric. This leads to the Pauli Exclusion Principle, whereby two identical electrons (ie, electrons with the same spin and momentum) cannot occupy the same space at the same time.
+Hartree Fock methods account for electron exchange $E_x$, the repulsion between electrons with parallel spins, exactly. 
 
-The second way electrons interact with each other is via their spin:
-\begin{displayquote}
-    Two MCs can't occupy the same space at the same time,
-    it's against the laws of physics \\ \hspace{2cm}---Lauryn Hill, \textit{Zealots}
-\end{displayquote}
-Electrons with the same spin are indistinguishable, and a consequence of this is that the many body  wavefunction must be anti-symmetric. This leads to the Pauli Exclusion Principle, whereby two identical electrons (ie, electrons with the same spin and momentum) cannot occupy the same space at the same time. Hartree Fock methods account for electron exchange, the repulsion between electrons with parallel spins, exactly. 
-
-Hartree-Fock methods do not give an exact solution to the Schr\"{o}dinger equation as they ignore electron correlation. This is the correlated motion of electrons with anti-parallel spins as a result of their mutual coulombic repulsion. It is a consequence of the fact that the true many body wavefunction is not formed from a simple Slater determinant.
+Hartree-Fock methods do not give an exact solution to the Schr\"{o}dinger equation as the true many body wavefunction is not formed from a simple Slater determinant. As a result of using a Slater determinant, electron correlation is ignored. This is the correlated motion of electrons with anti-parallel spins as a result of their mutual coulombic repulsion.
 % from http://newton.ex.ac.uk/research/qsystems/people/coomer/dft_intro.html
 
 \subsubsection{The Hohenberg-Kohn theorems}
 
-The 1964 Hohenberg-Kohn paper contains two key results: (i) the ground state electron density uniquely determines the ground state electronic wave function and, following this, all properties of the system; (ii) the true density functional for the electronic energy assumes its minimum for the correct ground-state density. % quote this from? http://publish.uwo.ca/~vstarove/PDF/tacc_chapter24.pdf
+The 1964 Hohenberg-Kohn paper\autocite{Hohenberg1964} contains two key results: (i) the ground state electron density uniquely determines the ground state electronic wave function and, following this, all properties of the system; (ii) the true density functional for the electronic energy assumes its minimum for the correct ground-state density. % quote this from? http://publish.uwo.ca/~vstarove/PDF/tacc_chapter24.pdf
 
-In Hartree-Fock methods, the potentials (external, coulomb and exchange) determine the properties of a system. First, Hohenberg and Kohn demonstrate that the density can be used instead to uniquely characterise the system; rather than solving the Schr\"{o}dinger equation for the wavefunction, we can solve it for the electron density. The energy can be expressed as
-$$E\left[\rho\right]=\int v_{\textrm{ext}}(\textbf{r})\rho(\textbf{r})d\textbf{r}+T\left[\rho\right]+J\left[\rho\right]+E_{\textrm{xc}}\left[\rho\right].$$
+The potentials (external, coulomb and exchange) in Hartree-Fock methods determine the properties of a system. Hohenberg and Kohn demonstrate that the electron density $\rho$ can be used instead to uniquely characterise the system; rather than solving the Schr\"{o}dinger equation for the wavefunction, we can solve it for the electron density. The total energy $$E\left[\rho\right]$$ can be expressed as
+\begin{equation}
+ E\left[\rho\right]=\int v_{\textrm{ext}}(\textbf{r})\rho(\textbf{r})d\textbf{r}+T\left[\rho\right]+J\left[\rho\right]+E_{\textrm{xc}}\left[\rho\right],   
+\end{equation}
+where $T\left[\rho\right]$, $J\left[\rho\right]$ and $E_\textrm{xc}\left[\rho\right]$ describe the kinetic, classical electrostatic and exchange-correlation energies respectively. 
 For a fixed number of electrons the functional $F\left[\rho\right]=T\left[\rho\right]+J\left[\rho\right]+E_{\textrm{xc}}\left[\rho\right]$ is universal, and the only thing that varies between systems is the external potential (determined by the electron-nuclei interaction). 
 
-Secondly, Hohenberg and Kohn show that the ground state energy can be found variationally; the density that minimises the total energy is the true ground state density.
-
-This formalism has the advantage that the electron density has a lower dimensionality than the N-electron wavefunction (Figure \ref{}). The problem is that although the Hohenberg-Kohn theorem tells us that the terms $T\left[\rho\right]$ and $E_{\textrm{xc}}\left[\rho\right]$ exist, they are unknown and must be approximated.
+In reference \cite{Hohenberg1964} Hohenberg and Kohn also demonstrate that the ground state energy can be found variationally; the density that minimises the total energy is the true ground state density. This formalism has the advantage that the electron density has a lower dimensionality than the N-electron wavefunction (Figure \ref{decouple}). The problem is that although the Hohenberg-Kohn theorem tells us that the terms $T\left[\rho\right]$ and $E_{\textrm{xc}}\left[\rho\right]$ exist, they are unknown and must be approximated.
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/dimensions.png}
+  \includegraphics[width=0.8\columnwidth]{figures/ch3/dimensions.png}
   \caption[Dimensionality of variational objects]{To solve the Schr\"{o}dinger equation we can use a variational object with lower dimensionality and higher computational efficiency, although this will come at the cost of accuracy. This schematic is based on a discussion in Walter Kohn's Nobel Prize lecture.\autocite{Kohn1999}}
   \label{decouple}
 \end{figure}
@@ -101,45 +100,46 @@ The Kohn-Sham theorem shows the for any interacting system with ground state den
 \subsection{DFT in practice}
 
 \subsubsection{Exchange-correlation functionals}
-To use Kohn-Sham DFT we must approximate the exchange-correlation functional, and there is a growing list of functionals with varying levels of complexity. A useful way of categorising these functionals, "Jacob's Ladder", has been proposed by John Perdew (Figure \ref{}). As a general rule, more accurate functionals are constructured by adding more parameters and variables.
+To use Kohn-Sham DFT we must approximate the exchange-correlation functional, and there is a growing list of functionals at varying levels of complexity. John Perdew proposed ``Jacob's Ladder'' as a way to categorise these functionals (Figure \ref{jladder}). As a general rule, more accurate functionals are constructed by including more parameters and variables.
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=0.5\columnwidth]{figures/ch3/jladder.png}
+  \includegraphics[width=0.8\columnwidth]{figures/ch3/jladder.png}
   \caption[Jacob's ladder of exchange-correlation functionals]{Jacob's ladder of exchange correlation functionals. On the right hand side are the various categories of exchange-correlation functionals and on the left hand side are the additional input variables included at each level of theory. As we move up the ladder the chemical accuracy increases, alongside computational expense.}
-  \label{decouple}
+  \label{jladder}
 \end{figure}
 
-\textit{Local Density Approximation} \\
-At the lowest rung of the ladder is the local density approximation. In this approximation, only one variable is used to calculate the exchange correlation energy. This is the charge density for an infinitesimal 3-dimensional volume element. The exchange energy is calculated exactly
-$$
-E_{\textrm{LDA,x}}\left[n\right] = {-\frac{3}{4}\left(\frac{3}{\pi}\right)^{\frac{1}{3}}n^{\frac{4}{3}}\left(\textbf{r}\right)d\textbf{r}},
-$$
-and the correlation energy is calculated numerically by fitting to many-body quantum monte carlo studies for an inhomogeneous electron gas.%Ceperley and Alder
-Strictly, the LDA should only be used for slowly varying densities, however it has performed surprisingly well for predicting the properties of a variety of atoms, solids and molecules. This is due to a cancellation of errors: LDA underestimates the exchange energy and overestimates the correlation energy. However there is a tendency for LDA to overestimate the binding energy and underestimate lattice parameters. This is a particularly pronounced problem in weakly bonded systems. Common LDA functionals include VWN and PW92.
+\\
+\textbf{Local Density Approximation} \\
+At the lowest rung of the ladder is the local density approximation where only one variable, the electron density for an infinitesimal 3-dimensional volume element, is used to calculate the exchange correlation energy. The exchange energy is calculated exactly
+\begin{equation}
+E_{\textrm{LDA,x}}\left[\rho\right] = {-\frac{3}{4}\left(\frac{3}{\pi}\right)^{\frac{1}{3}}\rho^{\frac{4}{3}}\left(\textbf{r}\right)d\textbf{r}},
+\end{equation}
+and the correlation energy is calculated numerically by fitting to many-body quantum Monte Carlo calculations for an inhomogeneous electron gas. %Ceperley and Alder
+Strictly, the LDA should only be used for slowly varying densities, however it has performed surprisingly well for predicting the properties of a variety of atoms, solids and molecules. This is due to a cancellation of errors: LDA underestimates the exchange energy and overestimates the correlation energy. However there is a tendency for LDA to overestimate the binding energy and underestimate lattice parameters. This is a particularly pronounced problem in weakly bonded systems.
 
-\textit{Generalised Gradient Approximation} \\
-At the next level of theory, two variables are used to determine the exchange-correlation energy: charge density and the density gradient. GGAs are semi-local functions due to their dependence on the gradient. The parameters of GGA functionals can be derived from physical constraints (non-empirical, as in the widely used PBE functional), or obtained from fitting procedures (empirical, as in the case of B88). GGAs improve the over-binding of LDA, but tend to underestimate the band gap of the material.
+\\
+\textbf{Generalised Gradient Approximation} \\
+At the next level of theory, two variables are used to determine the exchange-correlation energy: electron density and the density gradient. Due to their dependence on the GGA functionals are semi-local. The parameters of GGA functionals can be derived from physical constraints (non-empirical, as in the widely used PBE functional), or obtained from fitting procedures (empirical, as in the case of the B88 functional). GGAs improve the over-binding of LDA, but tend to underestimate the band gap of the material.
 
-\textit{Meta-GGA} \\
-Meta-GGAs extend the GGA functional to include the non-interacting kinetic energy density as an input to the functional. This is the calculated from the laplacian of the occupied electron orbitals.
-% could include equation here perhaps (make sure consisstent with earlier).
-A common meta-GGA functional is TPSS.
+\\
+\textbf{Meta-GGA} \\
+Meta-GGAs extend the GGA functional to include the non-interacting kinetic energy density as an input variable. This is the calculated from the laplacian of the occupied electron orbitals.
 
-\textit{Hybrid functionals} \\
-On the fourth rung, hybrid functionals combine GGA functionals with a proportion of the exact HF exchange energy. The simplest hybrid functional takes the form
-$$
-E_{\textrm{hybrid,xc}}\left[n\right] = \alpha E_{\textrm{exact,x}} + \left(1-\alpha\right)E_{\textrm{GGA,xc}}
-$$
-In some studies, the proportion of exact exchange is tuned to reproduce the property of interest correctly. For example, $\alpha=0.25$ is commonly used to correctly reproduce the band gap of the hybrid halide perovskite MAPI.% check the alpha is right
-In DFT each electron interacts with itself as the potential derives from the total charge density of the system. This error is particularly pronounced for localised states, for example after the trapping of an electron or hole. By including a proportion of exact HF exchange hybrid functionals correct the self-interaction error and improve the accuracy of predictions.
+\\
+\textbf{Hybrid functionals} \\
+In DFT each electron interacts with itself as the potential derives from the total charge density of the system. This error is particularly pronounced for localised states, after trapping an electron or hole at a defect site for example. Hybrid functionals combine GGA functionals with a proportion of the exact HF exchange energy to correct the self-interaction error. The simplest hybrid functional takes the form
+\begin{equation}
+E_{\textrm{hybrid,xc}}\left[\rho\right] = \alpha E_{\textrm{exact,x}} + \left(1-\alpha\right)E_{\textrm{GGA,xc}}.
+\end{equation}
+In some studies the proportion of exact exchange is tuned to reproduce the property of interest correctly. For example, $\alpha=0.43$ is commonly used to correctly reproduce the band gap of the hybrid halide perovskite MAPI. %
 % good stuff here incl. schematic: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4892865/#S3title
 % - Linked to Koopman’s linearity:E(N) – E(N-1) = En
 % See Janak 1978. 
 
-\textit{Random Phase Approximation} \\
-Closest to heaven is the Random Phase Approximation (RPA), which uses all of the Kohn-Sham orbitals (occupied and unoccupied) as input. Previous approaches fail when there are significant long range effects, as they have no information about the electron density far from an electron. The RPA is able to correctly predict long-range interactions between non-overlapping electron orbitals, for example van der Waals interactions.
-
+\\ \\
+\textbf{Random Phase Approximation} \\
+Closest to heaven is the Random Phase Approximation (RPA), which uses all of the Kohn-Sham orbitals (occupied and unoccupied) as input variables. The functionals listed so far are inaccurate when there are significant long range effects, as they have no information about the electron density far from an electron. The RPA is able to correctly predict long-range interactions, such as the van der Waals interaction, between non-overlapping electron orbitals.
 % can I find plot of total energy as function of seperation using different approaches??
 %As DFT is exact except for the approximation to the exchange-correlation functional, any shortcoming to a DFT prediction can be attributed to the XC-functional. It should be noted though that DFT 
 % DFT was not designed to calculate band gaps.
@@ -147,26 +147,19 @@ Closest to heaven is the Random Phase Approximation (RPA), which uses all of the
 
 \subsubsection{Exploiting symmetry}
 
-The material studied in this thesis, \ce{CH3NH3PbI3}, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach which is to model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that it's properties do not depend on size. We introduce Born-von Karman (periodic) boundary conditions so that the infinite crystal is built from a repeating array of unit cells. For a unit cell of length $L$, any physically significant function $\psi$ of the crystal must have the same value at the origin and $L$, or in 3D:
+The material studied in this thesis, \ce{CH3NH3PbI3}, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach and model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that its properties do not depend on size. Born-von Karman (periodic) boundary conditions are used so that the infinite crystal is built from a repeating array of unit cells. There are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal. Any physically significant function of the crystal must have the same periodicity.
 
-\begin{equation}
-\psi([0 0 0]) = \psi([L 0 0]) =  \psi([ 0 L 0]) = \psi([0 0 L])
-\end{equation}
-
-where the square bracket denotes a vector on the basis of the three unit cell vectors (Figure \ref{translational}. Note that there are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal.
-
-It is often the case that translational symmetry is broken in the real material, for example when there are point defects (as in Results chapter \ref{}). Furthermore, lattice vibrations have a periodicity larger than the unit cell (Results chapter \ref{}). To model this phenomena a supercell is built from multiple unit cells and this is used as the basic repeating unit (Figure \ref{translational}).
+In real materials translational symmetry can be broken, for example when there are point defects (as in Results chapter \ref{ch:6-defects}). Furthermore, lattice vibrations have a periodicity larger than the unit cell . To model defects or lattice vibrations a supercell is built from multiple unit cells and this is used as the basic repeating unit (Figure \ref{translational}).
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/supercell.png}
-  \caption[Translational symmetry and supercell construction]{An infinite crystal is built from a repeating unit cell of length $L$ (LHS). Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have wavelengths $>L$ (sine wave). A supercell of length $M=2L$ can be built to better model these effects (RHS). } 
+  \includegraphics[width=0.8\columnwidth]{figures/ch3/supercell.png}
+  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have wavelengths $>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model phonons. } 
   \label{translational}
 \end{figure}
 % copy and paste phonon mode across to supercell picture?
 
 When the Schrodinger equation is solved for a H atom the solution gives wavefunctions corresponding to the 1s, 2s, 2p, etc orbitals found in chemistry. For periodic systems, wavefunctions are formed by Bl\"{o}ch functions:\autocite{Hoffman1987}
-
 \begin{equation} 
 \psi_{k} = u_ke^{i\textbf{k}\cdot\textbf{r}}
 \label{bloch}
