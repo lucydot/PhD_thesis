@@ -196,13 +196,13 @@ In the example of a 1D linear chain, the lattice periodic part of the Bl\"{o}ch 
 \begin{equation}
 u_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i\textbf{G}\cdot\textbf{r}},
 \end{equation}
-and the complete expanded Kohn-Sham wavefunction can be expressed as
+and the complete expanded Kohn-Sham orbital can be expressed as
 \begin{equation} \label{KSeigenstates}
 \psi_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i(\textbf{k+G})\cdot\textbf{r}}.
 \end{equation}
 As a plane wave is inherently periodic this basis set is often used for extended systems. The software used for the DFT calculations in this thesis, \ce{VASP}\autocite{}, uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals are more likely to be used.
 
-Sudden changes in electron density are hard to capture using a plane wave basis set; to take an extreme example, the fourier decomposition of a simple top hat in real space requires an infinite summation in reciprocal space. This can be problematic when describing the region around the nucleus where there are strong oscillations in the wavefunctions. However these oscillations are associated with the core electrons which are less important in chemical bonding, and so pseudopotentials - an effective potential without oscillations - can be used. It has been established that for certain systems pseudopotentials are as precise as all-electron calculations.\autocite{Lejaeghere2016}
+Sudden changes in electron density are hard to capture using a plane wave basis set; to take an extreme example, the fourier decomposition of a simple top hat in real space requires an infinite summation in reciprocal space. This can be problematic when describing the region around the nucleus where there are strong oscillations in the KS orbitals. However these oscillations are associated with the core electrons which are less important in chemical bonding, and so pseudopotentials - an effective potential without oscillations - can be used. It has been established that for certain systems pseudopotentials are as precise as all-electron calculations.\autocite{Lejaeghere2016}
 %http://helper.ipam.ucla.edu/publications/maws3/maws3_6085.pdf
 %http://davidbowler.github.io/AtomisticSimulations//blog/dft-reliability#R3
 
@@ -217,38 +217,39 @@ DFT is also used to find the ground state atomic structure. Structures calculate
 \begin{figure}[h]
 \centering
   \includegraphics[width=0.7\columnwidth]{figures/ch3/scf.png}
-  \caption[Nested iterative method for geometry optimisation]{Nested iterative method for geometry optimisation. The electronic structure relaxation (dashed lines) is nested within the atomic structure relaxation (solid lines).} 
+  \caption[Nested iterative method for geometry optimisation]{Nested iterative method for geometry optimisation. The electronic structure relaxation (dashed lines) is nested within the atomic structure relaxation (solid lines). $v_\textrm{ext}(\textbf{r})$, $v_\textrm{c}(\textbf{r})$ and $v_\textrm{xc}(\textbf{r})$ correspond to the external, classical and exchange-correlation potentials respectively.} 
   \label{SCF}
 \end{figure}
 \subsubsection{The limits of DFT}
 
-\textit{Thoeretical limitations}
+\\
+\textbf{Thoeretical limitations} 
 
-In Section \ref{DFTtheory} we outlined the approximations inherent to DFT calculations: the Born-Oppenheimer approximation and the unknown exchange-correlation functional. Higher levels of theory, which incorporate the effects of spin and relativity (e.g. spin-oribt coupling) are included in many DFT implementations. However DFT is still restricted to ground-state properties and higher levels of theory (GW or TDDFT) are required to describe optical excitations, for example. Another inherent limitation is that the KS eigenvalues are artificial; only the ground state electron density and derived properties are correct. In practice, the KS eigenvalues are used to calculate the bandgap, although quantitative bandgaps often require the use of hybrid functionals which are tuned to give the correct bandgap.
+In Section \ref{DFTtheory} the approximations inherent to DFT calculations were outlined: the Born-Oppenheimer approximation and the unknown exchange-correlation functional. Higher levels of theory, which incorporate the effects of spin and relativity (e.g. spin-orbit coupling) are included in many DFT implementations. However DFT is still restricted to ground-state properties and higher levels of theory (GW or time-dependent DFT) are required to describe excited states. Another inherent limitation is that the KS eigenvalues are artificial; only the ground state electron density and derived properties are correct. However in practice the KS eigenvalues are used to calculate the bandgap. Quantitatively correct bandgaps often require the use of hybrid functionals that are parameterised to give the correct bandgap.
 
-\textit{Numerical limitations}
+\textbf{Numerical limitations} 
 
-There is also a different set of approximations that relate to  numerical convergence rather than the underlying theory.
-
-First, we have seen that the Kohn-sham wavefunctions are expanded in a basis set. In principle an infinite set may be needed to describe the Kohn-Sham wavefunction; in practice the basis set must be truncated. The kinetic energy operator is given by $-\frac{\hbar \nabla^2}{2m}$. When this is applied to the plane wave Kohn-Sham eigenstates as given in Equation \ref{KSeigenstates}, we find that the kinetic energy is proportional to $|k+G|^2$; faster oscillations correspond to higher energy. A cutoff energy $\textrm{E}_\textrm{cut}$ is defined so that
+There are also approximations that relate to numerical convergence rather than the underlying theory.
+We have seen that the KS orbital are expanded in a basis set. In principle an infinite set may be needed to describe the orbitals, but in practice the basis set must be truncated. The kinetic energy operator is given by $-\frac{\hbar \nabla^2}{2m}$ and when this is applied to the plane wave KS orbitals as given in Equation \ref{KSeigenstates}, we find that the kinetic energy is proportional to $|k+G|^2$; faster oscillations correspond to higher energy. A cutoff energy $\textrm{E}_\textrm{cut}$ is defined so that
 \begin{equation}
 \frac{1}{2}|k+G|^2 < \textrm{E}_\textrm{cut}.
 \end{equation}
-This cutoff energy must be tested to ensure that the property of interest, most often energy, is converged to within a certain range.
-
-Second, to calculate many properties of interest we need to integrate over the Brillouin Zone. To calculate the total energy of an insulator for example, we use
-\begin{equation} \label{energyintegral}
-    E = \frac{\Omega}{(2\pi)^3}\sum_\textrm{occ.}\int_\textrm{BZ}E(\textbf{k})d^3k
-\end{equation}
-where $\Omega$ is the volume of the Brillouin zone and there is a sum over all occupied bands. 
-In practice we do not know the continuous form for $E(\textbf{k})$ and so we evaluate Equation \ref{energyintegral} numerically as a weighted sum over special points in reciprocal space which form a $k$-point mesh. This is often an equally spaced mesh centred on the $\Gamma$-point ($k=(0,0,0)$) in reciprocal space. For any given system, the $k$-point density scales inversely with cell size; if the unit cell in Figure \ref{translational} requires a $6\times6$ $k$-point grid, the $2\times2$ supercell requires a $3\times3$ $k$-point grid. As with plane waves, there is a balance between accuracy (the higher the number of $k$-points, the higher the accuracy) and computational expense. An example convergence study is given in Figure \ref{kpointconvergence} where a $5\times5\times5$ $k$-point grid is required to converge pressure to within \SI{1}{\kilo\bar} and energy to within \SI{0.1}{\electronvolt} in \ce{CsSnI3}.
+This cutoff energy must be tested to ensure that the property of interest, most often energy, is converged to within a certain tolerance.
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/kpointconvergence.png}
+  \includegraphics[width=0.7\columnwidth]{figures/ch3/kpointconvergence.png}
   \caption[$k$-point convergence of \ce{CsSnI3}]{$k$-point convergence of \ce{CsSnI3}. The $k$-point grid size is on the $x$-axis. Pressure is denoted with a red dot; the region which is within the \SI{1}{\kilo\bar} convergence criteria for this study is shaded red. Energy is denoted with a blue cross; the region which is within the \SI{0.1}{\electronvolt} convergence criteria  is shaded in blue. Only odd grids sample the $\Gamma$-point and so there is an oscillation in energy and pressure as we move between odd and even grids.}
   \label{kpointconvergence}
 \end{figure}
+
+To calculate many properties of interest we need to integrate over the Brillouin Zon in reciprocal space. To calculate the total energy of an insulator for example, we use
+\begin{equation} \label{energyintegral}
+    E = \frac{\Omega}{(2\pi)^3}\sum_\textrm{occ.}\int_\textrm{BZ}E(\textbf{k})d^3k
+\end{equation}
+where $\Omega$ is the volume of the Brillouin zone and the sum is over all occupied bands. 
+In practice we do not know the continuous form for $E(\textbf{k})$ and so we numerically evaluate Equation \ref{energyintegral} as a weighted sum over special points in reciprocal space. These points often form an equally spaced mesh centred on the $\Gamma$-point ($\textbf{k}=(0,0,0)$) in reciprocal space. For any given system, the $k$-point density scales inversely with cell size; for example, if the unit cell in Figure \ref{translational} requires a $6\times6$ $k$-point grid, then the larger $2\times2$ supercell requires a $3\times3$ $k$-point grid. As with plane waves, there is a balance between accuracy (the higher the number of $k$-points, the higher the accuracy) and computational expense. An example convergence study is given in Figure \ref{kpointconvergence} where a $5\times5\times5$ $k$-point grid is required to converge pressure to within \SI{1}{\kilo\bar} and energy to within \SI{0.1}{\electronvolt} in \ce{CsSnI3}.
+
 
 % - K-point grids and the commensurate grids for supercells.
 % - Doubles k-points reuired as k and –k now no longer equivalent (SoC?)
@@ -259,12 +260,6 @@ In practice we do not know the continuous form for $E(\textbf{k})$ and so we eva
 % - history of computers section at science museum for HPC section
 % - put the amount of computer time and carbon burnt here?
 % - computational expense: limitations on size: See review of materials models which Alison Walker mentions. Mesoscopic bridges the atomistic with the drift diffusion models. Meso is often monte carlo, tranjectory tpe calculations. Cells are too big for atomistic (1 cm squared). Efficiecny depends upon J-V curves which can only be modelled at scale of fill device. The electrostatics is incredible important which linked ot build up of charges at SC nd OC. Grain boundaries and recombination at intercaes.
-
-
-
-
-
-\clearpage
 
 \section{Defects in semiconductors}
 

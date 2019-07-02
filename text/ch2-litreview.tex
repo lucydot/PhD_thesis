@@ -450,37 +450,39 @@ Further refinements to the screening procedure could consider the change in elec
 % Excess \ce{PbI2}, which is distributed at the interface, when solution processing using \ce{MAI} and \ce{PbI2} precursor has shown to improve performance)
 % An improved coupling between the \ce{TiO2} and perovskite was found when the perovskite was terminated with \ce{PbI2}, simulating the non-stochiometric material \autocite{Mosconi2016}.
 
+\begin{landscape}
 \begin{table*} \centering
-\caption[Common issues that arise in the simulation of hybrid perovskites]{\label{tab:techsol} A collection of common issues that can arise in the simulation of hybrid perovskites, sourced from members of the Walsh Materials Design Group.
+\caption[Common issues that arise in the simulation of hybrid perovskites]{\label{tab:techsol} Common issues that arise in the simulation of hybrid perovskites, sourced from members of the Walsh Materials Design Group.
 }
-\begin{tabular}{p{4cm}p{4cm}p{6cm}}
+\begin{tabular}{p{5cm}p{7cm}p{10cm}}
 \toprule
 Technique & Symptom & Solution \\
 \midrule
-Geometry \newline optimisation & Partial occupancy in structure files & Test different configurations and check total energy \\
-Geometry \newline optimisation & Missing H in structure files & Include H based on chemical knowledge and electron counting  \\
-Geometry \newline optimisation & Slow ionic convergence & Try changing algorithm type and settings \\
+Geometry  optimisation & Partial occupancy in structure files & Test different configurations and check total energy \\
+Geometry  optimisation & Missing H in structure files & Include H based on chemical knowledge and electron counting  \\
+Geometry  optimisation & Slow ionic convergence & Try changing algorithm type and settings \\
 Electronic structure & Bandgap is too large & Include spin-orbit coupling and consider excitonic effects \\
 Electronic structure & Bandgap is too small & Use a more sophisticated exchange-correlation functional \\
 Electronic structure & Bandgap is still too small & Try breaking symmetry, especially for cubic perovskites \\
-Electronic structure & Workfunction is \newline positive & Align to external vacuum level using a non-polar surface  \\
+Electronic structure & Workfunction is  positive & Align to external vacuum level using a non-polar surface  \\
 Supercell convergence & Unusual convergence behaviour & Use only even cell expansions (e.g. $2\times2\times2$) \\
-Ab initio \newline thermodynamics & No stable chemical \newline potential range & No easy fix (many hybrid\newline materials are metastable) \\
-Berry phase \newline polarisation & Spontaneous polarisation is too large & Use appropriate reference \newline structure and pathway \\
-Point defects & Negative formation \newline energies & Check for balanced chemical reaction and chemical potential limits \\
+Ab initio  thermodynamics & No stable chemical  potential range & No easy fix (many hybrid materials are metastable) \\
+Berry phase polarisation & Polarisation is too large & Use appropriate reference  structure and pathway \\
+Point defects & Negative formation  energies & Check for balanced chemical reaction and chemical potential limits \\
 Point defects & Transition levels are deep in band-gap & Check supercell expansion and charged defect corrections \\
-Alloyed systems & Many possible \newline configurations & Use appropriate statistical \newline mechanics \\
+Alloyed systems & Many possible  configurations & Use appropriate statistical  mechanics \\
 Lattice dynamics & Many imaginary phonon modes & Check supercell size and force convergence \\
 Lattice dynamics & Imaginary modes at zone boundaries & Use mode-following to map out potential energy surface \\
-Molecular dynamics & System melts or \newline decomposes & Check $k$-points and basis set\newline convergence \\
+Molecular dynamics & System melts or  decomposes & Check $k$-points and basis set convergence \\
 Molecular dynamics & Unphysical dynamics & Check equilibration and supercell expansion \\
 Molecular dynamics & No tilting observed & Use an even supercell expansion \\
-Electron-phonon\newline coupling & Values far from \newline experiment & Consider anharmonic terms \newline beyond linear response theory   \\
-Drift-diffusion model & Current-voltage behaviour incorrect & Consider role of fluctuating ions and electrostatic potentials \\
+Electron-phonon coupling & Values far from  experiment & Consider anharmonic terms  beyond linear response \newline theory   \\
+Drift-diffusion model & Current-voltage behaviour incorrect & Consider role of fluctuating ions and electrostatic \newline potentials \\
 \bottomrule
 \end{tabular}
 
 \end{table*}
+\end{landscape}
 
 \section{Summary}
 
