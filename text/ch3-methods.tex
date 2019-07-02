@@ -54,7 +54,7 @@ Hartree-Fock methods and Kohn-Sham DFT provide a way to obtain an approximate so
 \begin{figure}[h]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch3/decouple.png}
-  \caption[Interacting and non-interacting particle systems]{Schematic outlining the equivalence between a system of interacting particles and a system of non-interacting particles in an effective potential. The underlying idea is that an interaction can be replaced by the equivalent potential. This maps the interacting 3N-dimensional problem onto N 3-dimensional problems. A consequence of this mapping is that the effective potential depends on the electron density which is itself dependant on the effective potential -- a self-consistent set of equations is formed. For the non-interacting case $phi_i$ is used to denote a single particle wavefunction.} %update so q1q2 in couple term in picture
+  \caption[Interacting and non-interacting particle systems]{Schematic outlining the equivalence between a system of interacting particles and a system of non-interacting particles in an effective potential. The underlying idea is that an interaction can be replaced by the equivalent potential. This maps the interacting 3N-dimensional problem onto N 3-dimensional problems. A consequence of this mapping is that the effective potential depends on the electron density which is itself dependent on the effective potential -- a self-consistent set of equations is formed. For the non-interacting case $phi_i$ is used to denote a single particle wavefunction.} %update so q1q2 in couple term in picture
   \label{decouple}
 \end{figure}
 
@@ -120,7 +120,7 @@ Strictly, the LDA should only be used for slowly varying densities, however it h
 
 \\
 \textbf{Generalised Gradient Approximation} \\
-At the next level of theory, two variables are used to determine the exchange-correlation energy: electron density and the density gradient. Due to their dependence on the GGA functionals are semi-local. The parameters of GGA functionals can be derived from physical constraints (non-empirical, as in the widely used PBE functional), or obtained from fitting procedures (empirical, as in the case of the B88 functional). GGAs improve the over-binding of LDA, but tend to underestimate the band gap of the material.
+At the next level of theory, two variables are used to determine the exchange-correlation energy: electron density and the density gradient. Due to their dependence on the GGA functionals are semi-local. The parameters of GGA functionals can be derived from physical constraints (non-empirical, as in the widely used PBE functional), or obtained from fitting procedures (empirical, as in the case of the B88 functional). GGAs improve the over-binding of LDA, but tend to underestimate the bandgap of the material.
 
 \\
 \textbf{Meta-GGA} \\
@@ -132,7 +132,7 @@ In DFT each electron interacts with itself as the potential derives from the tot
 \begin{equation}
 E_{\textrm{hybrid,xc}}\left[\rho\right] = \alpha E_{\textrm{exact,x}} + \left(1-\alpha\right)E_{\textrm{GGA,xc}}.
 \end{equation}
-In some studies the proportion of exact exchange is tuned to reproduce the property of interest correctly. For example, $\alpha=0.43$ is commonly used to correctly reproduce the band gap of the hybrid halide perovskite MAPI. %
+In some studies the proportion of exact exchange is tuned to reproduce the property of interest correctly. For example, $\alpha=0.43$ is commonly used to correctly reproduce the bandgap of the hybrid halide perovskite MAPI. %
 % good stuff here incl. schematic: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4892865/#S3title
 % - Linked to Koopman’s linearity:E(N) – E(N-1) = En
 % See Janak 1978. 
@@ -142,7 +142,7 @@ In some studies the proportion of exact exchange is tuned to reproduce the prope
 Closest to heaven is the Random Phase Approximation (RPA), which uses all of the Kohn-Sham orbitals (occupied and unoccupied) as input variables. The functionals listed so far are inaccurate when there are significant long range effects, as they have no information about the electron density far from an electron. The RPA is able to correctly predict long-range interactions, such as the van der Waals interaction, between non-overlapping electron orbitals.
 % can I find plot of total energy as function of seperation using different approaches??
 %As DFT is exact except for the approximation to the exchange-correlation functional, any shortcoming to a DFT prediction can be attributed to the XC-functional. It should be noted though that DFT 
-% DFT was not designed to calculate band gaps.
+% DFT was not designed to calculate bandgaps.
 % - However, since 2000 functionals have been better at giving total energy but they don’t give accurate density: straying away from ab-initio into a fitting exercise: DFT is straying from the path towards an exact functional
 
 \subsubsection{Exploiting symmetry}
@@ -154,63 +154,55 @@ In real materials translational symmetry can be broken, for example when there a
 \begin{figure}[h]
 \centering
   \includegraphics[width=0.8\columnwidth]{figures/ch3/supercell.png}
-  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have wavelengths $>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model phonons. } 
+  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have wavelengths $>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model longer wavelength phonons. } 
   \label{translational}
 \end{figure}
 % copy and paste phonon mode across to supercell picture?
 
-When the Schrodinger equation is solved for a H atom the solution gives wavefunctions corresponding to the 1s, 2s, 2p, etc orbitals found in chemistry. For periodic systems, wavefunctions are formed by Bl\"{o}ch functions:\autocite{Hoffman1987}
-\begin{equation} 
-\psi_{k} = u_ke^{i\textbf{k}\cdot\textbf{r}}
-\label{bloch}
+When the Schr\"{o}dinger equation is solved for a hydrogen atom the solution gives wavefunctions corresponding to the 1s, 2s, 2p, etc orbitals found in chemistry. When the Schr\"{o}dinger equation is solved for a periodic system, wavefunctions are formed by Bl\"{o}ch functions $\psi_{\textbf{k}}$:\autocite{Hoffmann1987}
+\begin{equation} \label{bloch}
+\psi_{\textbf{k}} = u_\textbf{k}e^{i\textbf{k}\cdot\textbf{r}}.
 \end{equation}   %could do a sketch of the two parts and the resulting part, and the periodic potential
-
-where the Bl\"{o}ch function is formed from the product of a basis function $u_k$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $k$ is a crystal wave vector which forms a space known as reciprocal space; to understand the physical significance of $k$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$ (Figure \ref{bands}). The electron states can be described a linear combination of H 1s orbitals $u_n$ centred at each lattice point :
+The Bl\"{o}ch function is formed from the product of a basis function $u_\textbf{k}$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $\textbfk$ is the crystal wave vector which forms a space known as reciprocal space; to understand the physical significance of $\textbf{k}$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$. The electron states can be described as a linear combination of hydrogen 1s orbitals $u_n$ centred at each lattice point:
 
 \begin{equation} \label{1dbloch}
 \psi_k = \sum_nu_ne^{iknL}
 \end{equation}
 
-$k=0$ corresponds to the low energy most bonding state, and $k=\frac{\pi}{L}$ corresponds to the high energy anti-bonding state
+$k=0$ corresponds to the lowest energy bonding state, and $k=\frac{\pi}{L}$ corresponds to the highest energy anti-bonding state
 \begin{align}
 \psi_0 &= \sum_nu_ne^0 = u_0 +u_1 +u_2 +u_3 \dots \\
 \psi_{\frac{\pi}{L}} &= \sum_nu_ne^{i\pi n} = u_0 -u_1+u_2-u_3 \dots
 \end{align}
 Between these two extremes there is a continuum of states forming an electronic band (Figure \ref{bands}). 
 
-Substituting Equation \ref{bloch} into Equation \ref{singleparticle} gives
-
+Returning to the mathematical description of any periodic system, Equation \ref{bloch} substituted into Equation \ref{singleparticle} gives:
 \begin{equation} \label{energyequation}
-\left[\frac{1}{2m}\left(\frac{\hbar}{i}\nabla+\hbar k\right)^2+V(\textbf{r})\right]u_k = E(k)u_k
+\left[\frac{1}{2m}\left(\frac{\hbar}{i}\nabla+\hbar \textbf{k}\right)^2+v_\tetrm{ext}(\textbf{r})\right]u_\textbf{k} = E(\textbf{k})u_\textbf{k}.
 \end{equation}
-
-For any $k$ we can solve Equation \ref{energyequation} with periodic boundary conditions to find the bandstructure $E(k)$. The bandstructure is often modelled as being parabolic around the maxima and minima, and the curvature determines the carrier effective mass which is explored in Chapter \ref{ch:4-effmass}. There are an infinite number of eigenvalues so the energy is labelled $E_n(k)$ where n labels the particular eigenvalue (band). As a result of crystal symmetry, $E_n(k)$ is periodic and only $k$-vectors within a region of space known as the Brillouin Zone ($|k|<\frac{\pi}{a}$) need to be considered. %I should cite the transport booked used, and include modelling as parabola to link to effective mass.
+For any $\textbf{k}$ we can solve Equation \ref{energyequation} with periodic boundary conditions to calculate the electronic bandstructure $E(\textbf{k})$. There are an infinite number of eigenvalues $E_n(\textbf{\textbf{k}})$, where $n$ is used to label a particular eigenvalue (band). As a result of crystal symmetry, $E_n(\textbf{k})$ is periodic and only $k$-vectors within a region of space known as the Brillouin Zone ($|\textbf{k}|<\frac{\pi}{a}$) need to be considered.\autocite{Lundstrom2000} 
 %talk about high symmetry points and the naming conventions (greek in zone and latin a boundaries) - choose route through use aflowlib
 
 \begin{figure}[h]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch3/bands.png}
-  \caption[Bonding and anti-bonding states in an infinite 1D crystal]{A one dimensional infinite lattice where the points are labelled $n=1,2\ldots$. The point spacing (unit cell length) is $L$, and there is a hydrogen 1s orbital (basis function) $u_n$ centred at each point. The electron states for this system are formed from Bl\"{o}ch functions as given in Equation \ref{1dbloch}. $k=0$ corresponds to a low energy bonding state and $k=\frac{\pi}{L}$ corresponds to a high energy anti-bonding states.} 
+  \caption[Bonding and anti-bonding states in an infinite 1D crystal]{(LHS) A one dimensional infinite lattice where the points are labelled $n=0,1,2\ldots$. The point spacing (unit cell length) is $L$, and there is a hydrogen 1s orbital (basis function) $u_n$ centred at each point. The electron states for this system are formed from Bl\"{o}ch functions as given in Equation \ref{1dbloch}. (RHS) $k=0$ corresponds to a low energy bonding state and $k=\frac{\pi}{L}$ corresponds to a high energy anti-bonding states. Between these two extremes there exists a continuum of states.} 
   \label{bands}
 \end{figure}
 
 \subsubsection{Basis Sets}   %valence bands and conductions bands?
 
-In the previous example the lattice periodic part of a bloch function took the form of a H 1s orbital. For more complex systems, $u_k$ can itself be expanded into a plane wave basis set whose wave vectors $G$ are reciprocal lattice vectors
-
+In the example of a 1D linear chain, the lattice periodic part of the Bl\"{o}ch function took the form of a hydrogen 1s orbital. For more complex systems, $u_k$ can itself be expanded into a plane wave basis set whose wave vectors $\textbf{G}$ are reciprocal lattice vectors
 \begin{equation}
-u_k = \sum_Gc_{\textbf{k},\textbf{G}}e^{i\textbf{G}\cdot\textbf{r}}.
+u_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i\textbf{G}\cdot\textbf{r}},
 \end{equation}
-
-The complete expanded Kohn-Sham wavefunction can be expressed as
-
+and the complete expanded Kohn-Sham wavefunction can be expressed as
 \begin{equation} \label{KSeigenstates}
-\psi_k = \sum_Gc_{\textbf{k},\textbf{G}}e^{i(\textbf{k+G})\cdot\textbf{r}}
+\psi_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i(\textbf{k+G})\cdot\textbf{r}}.
 \end{equation}
+As a plane wave is inherently periodic this basis set is often used for extended systems. The software used for the DFT calculations in this thesis, \ce{VASP}\autocite{}, uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals are more likely to be used.
 
-A plane wave basis set is often used for extended systems as they are inherently peroidic. The software used for the DFT calculations in this thesis, \ce{VASP}\autocite{}, uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals can be used. This is implements in software such as \autocite{}.
-
-Sudden changes in electron density are hard to capture using a plane wave basis set (to take the extreme example, the fourier decomposition of a simple top hat in real space needs requires an infinite summation in reciprocal space). This can be problematic when describing the region around the nucleus where there are strong oscillations in the wavefunctions. However these oscillations are associated with the core electrons which are less important in chemical bonding, and so pseudopotentials - an effective potential without oscillations - can be used. It has been established that for certain systems pseudopotentials are as precise as all-electron calculations.\autocite{Lejaeghere2016}
+Sudden changes in electron density are hard to capture using a plane wave basis set; to take an extreme example, the fourier decomposition of a simple top hat in real space requires an infinite summation in reciprocal space. This can be problematic when describing the region around the nucleus where there are strong oscillations in the wavefunctions. However these oscillations are associated with the core electrons which are less important in chemical bonding, and so pseudopotentials - an effective potential without oscillations - can be used. It has been established that for certain systems pseudopotentials are as precise as all-electron calculations.\autocite{Lejaeghere2016}
 %http://helper.ipam.ucla.edu/publications/maws3/maws3_6085.pdf
 %http://davidbowler.github.io/AtomisticSimulations//blog/dft-reliability#R3
 
@@ -218,25 +210,21 @@ Sudden changes in electron density are hard to capture using a plane wave basis 
 
 In this section the process of optimising the atomic and electronic structure of a system towards the ground-state (minimum energy) configuration is outlined. 
 
-In Section \ref{DFTtheory} (Figure \ref{decouple}) we saw that the potential $v_\textrm{ee}$ is dependant on electron density $\rho$, which is itself dependant on $v_\textrm{ee
-}$. Therefore an iterative approach, the Self Consistent Field method, is used to calculate the ground-state electronic structure (Figure \ref{SCF}, dashed section). The initial guess for the density $n(r)$ is given by a superimposition of the atomic charge densities. This is used to calculate the potential and solve the KS equations, which gives a new $n(r)$. This process continues until the convergence criteria is met (most often within an energy tolerance). Various optimisation routines are provided in DFT codes for finding the ground state configuration, including the conjugate gradient scheme, Davidson Scheme and RMM-DIIS.
+As discussed in Section \ref{DFTtheory}, the potential $v_\textrm{ee}$ is dependent on the electron density $\rho$, which is itself dependent on $v_\textrm{ee}$. Therefore an iterative approach called the Self Consistent Field method is used to calculate the ground-state electronic structure (Figure \ref{SCF}, dashed section). The initial guess for the density $\rho(\textbf{r})$ is given by a superposition of the atomic charge densities. This is used to calculate the potential and solve the KS equations, which gives a new $\rho(\textbf{r})$. This process continues until there is convergence within a given energy tolerance. Various optimisation routines are provided in DFT codes for finding the ground state configuration, including the conjugate gradient scheme, Davidson Scheme and RMM-DIIS.
 
-DFT is also used to find the ground state atomic structure. Structures from X-ray Diffraction Data are used as a starting guess, so that finding the energetic minimum becomes a local optimisation problem. Ions in the systems are displaced (either the internal coordinates of the unit cell or the unit cell parameters themselves are adjusted) and the electronic structure for that geometry is solved self-consistently. This repeats until the forces on each atom are zero (within a given tolerance, Figure \ref{SCF}). 
-%optimisation routines.
-% Talk about the PES here
+DFT is also used to find the ground state atomic structure. Structures calculated from X-ray Diffraction data are used as a starting guess, so that finding the energetic minimum becomes a local optimisation problem. Atoms in the systems are displaced (either the internal coordinates of the unit cell or the unit cell parameters themselves are adjusted) and the electronic structure for that geometry is solved self-consistently. This process repeats until the forces on each atom are zero to within a given tolerance (Figure \ref{SCF}). 
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/scf.png}
+  \includegraphics[width=0.7\columnwidth]{figures/ch3/scf.png}
   \caption[Nested iterative method for geometry optimisation]{Nested iterative method for geometry optimisation. The electronic structure relaxation (dashed lines) is nested within the atomic structure relaxation (solid lines).} 
   \label{SCF}
 \end{figure}
-%% the potentials aren't correct need to fix this and addd potentials explicitly to the DFT part of the theory
 \subsubsection{The limits of DFT}
 
 \textit{Thoeretical limitations}
 
-In Section \ref{DFTtheory} we outlined the approximations inherent to DFT calculations: the Born-Oppenheimer approximation and the unknown exchange-correlation functional. Higher levels of theory, which incorporate the effects of spin and relativity (e.g. spin-oribt coupling) are included in many DFT implementations. However DFT is still restricted to ground-state properties and higher levels of theory (GW or TDDFT) are required to describe optical excitations, for example. Another inherent limitation is that the KS eigenvalues are artificial; only the ground state electron density and derived properties are correct. In practice, the KS eigenvalues are used to calculate the band gap, although quantitative band gaps often require the use of hybrid functionals which are tuned to give the correct band gap.
+In Section \ref{DFTtheory} we outlined the approximations inherent to DFT calculations: the Born-Oppenheimer approximation and the unknown exchange-correlation functional. Higher levels of theory, which incorporate the effects of spin and relativity (e.g. spin-oribt coupling) are included in many DFT implementations. However DFT is still restricted to ground-state properties and higher levels of theory (GW or TDDFT) are required to describe optical excitations, for example. Another inherent limitation is that the KS eigenvalues are artificial; only the ground state electron density and derived properties are correct. In practice, the KS eigenvalues are used to calculate the bandgap, although quantitative bandgaps often require the use of hybrid functionals which are tuned to give the correct bandgap.
 
 \textit{Numerical limitations}
 
@@ -320,7 +308,7 @@ The final classification is into electrically active and electrically benign def
 % reference alkasukas https://www.osti.gov/pages/servlets/purl/1471061
 % - may be able to say defect is there experimentally but another step to identify which it is. Admittance spectroscopy, DLTS. ESR (later chapter)
 % emphasise that the concentration could be as low as one part in a milllion and wtill have an effect.
-% - defect levels deend on temperature. DLTS assumes T-independant scattering cross sction, not accurate,
+% - defect levels deend on temperature. DLTS assumes T-independent scattering cross sction, not accurate,
 
 \subsection{Energetics of defect formation} \label{defectformation}
 
@@ -341,9 +329,9 @@ $E_F$ is the Fermi level, referenced to the valence band maximum ($\epsilon_\mat
 
 The total energies can be calculated using DFT. Convergence criteria for calculations must be tight as, due to the exponential dependence of defect concentration on formation energy, small errors in the energy difference can lead to large errors in defect concentration.
 
-The Fermi level is treated as a parameter, of which the defect formation energy is a linear function with a gradient equal to defect charge. This allows us to plot a graph of formation energy against Fermi level, as shown in Figure \ref{}. Charge transition levels mark the fermi energy at which two charge states have the same defect formation energy. Electrically active defects have at least one charge transition state in the band gap. 
+The Fermi level is treated as a parameter, of which the defect formation energy is a linear function with a gradient equal to defect charge. This allows us to plot a graph of formation energy against Fermi level, as shown in Figure \ref{}. Charge transition levels mark the fermi energy at which two charge states have the same defect formation energy. Electrically active defects have at least one charge transition state in the bandgap. 
 The charge transition level is equivalent to thermal ionization energy, the energy needed to add or remove electron(s). % check this
-% does not always need a charge transition level deep in the band gap. https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b01313
+% does not always need a charge transition level deep in the bandgap. https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b01313
 
 \begin{figure}[h]
 \centering
@@ -351,11 +339,11 @@ The charge transition level is equivalent to thermal ionization energy, the ener
   \caption[Formation energies of the Te vacancy in CdTe]{Formation energies $\Delta H_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect.}
 \end{figure}%cite https://iopscience.iop.org/article/10.1088/1742-6596/720/1/012031/pdf
 
-Defect levels deep in the band gap correspond to localised wavefunctions. Carrier capture to these defect states is often associated with a large lattice distortion. Shallow defect levels (within thermal energy $kT$ of the valence or conduction band) correspond to delocalised, hydrogenic-like defect wavefunctions. 
+Defect levels deep in the bandgap correspond to localised wavefunctions. Carrier capture to these defect states is often associated with a large lattice distortion. Shallow defect levels (within thermal energy $kT$ of the valence or conduction band) correspond to delocalised, hydrogenic-like defect wavefunctions. 
 % - defect energies theoretical founsations - mott littleton (1938)  - a way to calculate E the defecct energy as knew the hopping rate expression, but didnt know E. only experimental input is dielectric constant.see special 1988 issue.
-%  The other problem is that is dependant upon the chemical potential which is difficult to monitor.
+%  The other problem is that is dependent upon the chemical potential which is difficult to monitor.
 
-% Point defects result in additional energy levels in the band gap with an associated defect wavefunction to which an electron is added or removed.
+% Point defects result in additional energy levels in the bandgap with an associated defect wavefunction to which an electron is added or removed.
 % defect level delocalised, electrical conductivity.EMT.
 %or deep and localised wavefucntion. detrimental in the context of solar cells.
 
@@ -452,7 +440,7 @@ These motions are determined by the force on each atom. For simple systems, for 
 
 
 %important to understand crstal stabilit as the vibrational energy and entropy enter the Gibbs free energy
-% - Partition function ---> bridge function kTlnZ (bridges micro and macro thermodyamics) to get helmholtz free energy. need vibrations to get temperature dependant energy and stability as a function of temperature.
+% - Partition function ---> bridge function kTlnZ (bridges micro and macro thermodyamics) to get helmholtz free energy. need vibrations to get temperature dependent energy and stability as a function of temperature.
 
 % We know this affects electrical and optical properties – look at the peak shift in energy and peak broadening ith temperature.
 % % - model for vibrations (harmonic approximation) ---> vib freq and displacement patterns (vibrational spectra) and from that IR/raman, free energies (T) - phase change. all stuff you couldnt get with standard electronic structure
@@ -466,7 +454,7 @@ These motions are determined by the force on each atom. For simple systems, for 
 % Infromation about lattice instabilities in the form of imaginary frequencies,
 % Elastic tensor from the q to zero limit of phonon dispersion,
 % Thermal expansion coefficient,
-% Temperature dependence of the band gap,
+% Temperature dependence of the bandgap,
 % Electron phonon coupling strengths,
 % Static polarization
 
@@ -501,7 +489,7 @@ E&=\textrm{kinetic energy}+\textrm{potential energy}
 &=\sum_i\frac{1}{2}M\dot{x}_i^2+\sum_{ij}\frac{1}{2}\textbf{x}_i\cdot\textbf{A}_{ij}\cdot\textbf{x}_j+\textrm{higher-order terms}.
 \end{align}
 
-The structure is relaxed and forces are equal to zero so that there is no term linear in $\textbf{x}$. The harmonic approximation ignores the higher order terms in Equation \ref{taylorexpansion}. For these harmonic systems there exists a basis set so that $\textbf{A}_{ij}$ is diagonal and the oscillators are independant of one another:
+The structure is relaxed and forces are equal to zero so that there is no term linear in $\textbf{x}$. The harmonic approximation ignores the higher order terms in Equation \ref{taylorexpansion}. For these harmonic systems there exists a basis set so that $\textbf{A}_{ij}$ is diagonal and the oscillators are independent of one another:
 \begin{align} \label{independentoscillators}
 &=\sum_i\frac{1}{2}MQ_i^2+\sum_{i}\frac{1}{2}\textbf{A}_{ij}\cdot\textbf{x}_j+\textrm{higher-order terms}.
 \end{align}
