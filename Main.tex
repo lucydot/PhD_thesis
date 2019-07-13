@@ -23,7 +23,7 @@
 \newcommand{\grun}{Gr\"{u}neisen }
 \newcommand{\mob}{cm$^2$V$^{-1}$s$^{-1}$}
 
-\DeclareUnicodeCharacter{2212}{-}
+%\DeclareUnicodeCharacter{2212}{-}
 
 
 %%%%% CHOOSE PAGE LAYOUT
@@ -50,6 +50,7 @@
 %%% For landscape table
 \usepackage{pdflscape}
 \usepackage{rotating}
+\usepackage{afterpage}
 
 %%%%% SELECT YOUR DRAFT OPTIONS
 % Three options going on here; use in any combination.  But remember to turn the first two off before
@@ -300,22 +301,17 @@
 %%%%% CHAPTERS
 % Add or remove any chapters you'd like here, by file name (excluding '.tex'):
 \flushbottom
-\include{text/ch1-intro}
-\include{text/ch2-litreview}
-\include{text/ch3-methods}
+%\include{text/ch1-intro}
+%\include{text/ch2-litreview}
+%\include{text/ch3-methods}
 %\include{text/ch4-effmass}
-%\include{text/ch5-epcoupling}
+\include{text/ch5-epcoupling}
 %\include{text/ch6-defects}
 
 %%% DEBUGGIN'
 %\include{text/test}
 
 %%%%%% LW - closing remarks
-
-\begin{savequote}[8cm]
-“I don't know where I'm going from here, but I promise it won't be boring.” 
-  \qauthor{--- David Bowie}
-\end{savequote} 
 \begin{closing}
     \input{text/closing}
 \end{closing}
@@ -325,11 +321,12 @@
 %    page that just says "Appendices" to signal the end of your main text.
 \startappendices
 % Add or remove any appendices you'd like here:
-\include{text/appendix-2}
-\include{text/appendix-3}
-\include{text/appendix-1}
-\include{text/appendix-4}
-\include{text/appendix-5}
+%\include{text/appendix-2}
+%\include{text/appendix-3}
+%\include{text/appendix-1}
+\include{text/appendix-6}
+%\include{text/appendix-4}
+%\include{text/appendix-5}
 
 %% include exchange correlation functional , alpha value on defect formation energy
 
