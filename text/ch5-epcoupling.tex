@@ -105,12 +105,20 @@ In either case, we would expect two timescales to appear experimentally; fast in
 
 
 \section{Methods}
-\subsection{Calculation procedures for bandgap deformation potential}
+
+\subsection{Lattice dynamics}
+
+Harmonic lattice-dynamics calculations were performed with the \textsc{Phonopy} package.\autocite{Togo2015} Displacement steps of \SI{0.01}{\angstrom} were used to evaluate the second-order force-constant matrix using the finite-displacement method. A $4\! \times\! 4\! \times\! 4$ supercell expansion was used to compute the second-order force constants (72 displacements in a 768-atom cell).
+Forces were computed within the Kohn-Sham density-functional theory (DFT) formalism as implemented in the \textsc{VASP} code,\autocite{Kresse1996a} using the scalar relativistic corrections given in Section \ref{bgdefmethod}.
+The valence wavefunctions were expanded in a plane-wave basis set with a 800 eV cut-off and the exchange and correlation interactions between electrons were modelled using the PBEsol exchange-correlation functional.\autocite{Perdew2008a}
+The electronic Brillouin zone was evaluated at the $\Gamma$-point, and a total-energy convergence criterion of $10^{-8}\textrm{eV}$ was used.
+
+\subsection{Bandgap deformation potential} \label{bgdefmethod}
 
 Density-functional perturbation theory (DFPT) is a method commonly used to calculate the electron-phonon coupling. However DFPT assumes a small harmonic response for the perturbative treatment to be correct and for anharmonic phonon modes this assumption does not hold.
 For MAPI, where the range of motion is large and anharmonic, the `frozen phonon' method can be used: here the energy of the valence and conduction bands are tracked as the crystal lattice is distorted along a single phonon mode to give a bandgap deformation potential.
 
-\ce{Phonopy}\autocite{Togo2015} was used to calculate the harmonic phonon eigenvalues and eigenvectors. $2\,\times2\,\times2$ supercell expansions and displacement steps of 0.01 were used to evaluate the second-order and force-constant matrices using the finite-displacement method. ModeMap scripts available online\autocite{ModeMap} were used to generate a sequence of structures along the phonon eigenvectors at the $M$ and $R$ points in reciprocal space. 
+\textsc{Phonopy}\autocite{Togo2015} was used to calculate the harmonic phonon eigenvalues and eigenvectors, as outlined above. ModeMap scripts available online\autocite{ModeMap} were used to generate a sequence of structures along the phonon eigenvectors at the $M$ and $R$ points in reciprocal space. 
 
 The deformation potentials were calculated by following the phonon mode vectors and mapping the change in bandgap as a function of normal mode coordinate $Q$.
 Bandgaps were computed within the Kohn-Sham density-functional theory (DFT) formalism as implemented in the \textsc{VASP} code.\autocite{Kresse1996a}
@@ -127,12 +135,12 @@ However, as evidenced and discussed further in Appendix \ref{app:6-SCcompare}, t
 
 \subsection{Classical model for hot carrier cooling}
 The hot carrier cooling rate was modelled classically. The polaron was considered as a hot-sphere in a continuum of ambrient-temperature material. This reduces the problem to one-dimension, where the exponent is weighted by the $r^2$ increasing shell of available states over the surface of the sphere. 
-The initial “top hat” heat distribution was convolved with a Gaussian kernel to give an analytical expression for the evolution of hot carrier energy with time.
+The initial “top hat” heat distribution was convolved with a Gaussian kernel to give an analytical expression for the evolution of hot carrier energy with time. The analytical expression and derivation is given in Appendix (\ref{app:2-diffusion}).
 The rate of cooling was determined by the diffusivity $D$:
 \begin{equation}
     D = \frac{\kappa}{\rho c_p}
 \end{equation}
-where $\kappa$ is the thermal conductivity, $\rho$ is the material density, and $C_p$ is the specific heat capacity. A derivation of the diffusion equation for a hot sphere is given in the Appendix (\ref{app:2-diffusion}).
+where $\kappa$ is the thermal conductivity, $\rho$ is the material density, and $C_p$ is the specific heat capacity.
 
 \section{Results}
 \subsection{Anharmonic bandgap deformation potential}
@@ -140,8 +148,8 @@ The change in bandgap as a function of normal mode coordinate $Q$ is plotted in 
 To reduce the computational cost we take advantage of the symmetry of the double well potential energy surface (Figure \ref{fig2}) and consider distortions along positive $Q$ values only. The corresponding single-well potential energy surface can be found in Appendix \ref{app:6-SCcompare}.
 
 \begin{figure}[h]
-\includegraphics[width=\textwidth]{figures/ch5/phonondisp.png}
-\caption[Harmonic phonon dispersion and eigenvectors at the $M$ and $R$ points in the Brillouin zone]{\label{ch5phonondisp} A) Harmonic phonon dispersion for MAPI. Phonon frequencies up to 5THz are considered, as wavenumbers above this correspond to the molecular vibrations of the inorganic cation.\autocite{Leguy2016} This image was generated using the sumo package.\cite{sumo2018} B) Phonon mode eigenvectors at the $M$ point in the Brillouin zone. The magnitude of the vector arrow is increased by a factor three, and only the motion of the inorganic cage is considered. This image was generated using the \textsc{ascii phonons} package available at \url{https://github.com/ajjackson/ascii-phonons}.
+\includegraphics[width=0.8\textwidth]{figures/ch5/phonon_band.png}
+\caption[Harmonic phonon dispersion and eigenvectors at the $M$ and $R$ points in the Brillouin zone]{\label{ch5phonondisp} A) Harmonic phonon dispersion for MAPI. Phonon frequencies up to 5THz are considered, as wavenumbers above this correspond to the molecular vibrations of the inorganic cation.\autocite{Leguy2016} This image was generated using the sumo software package.\autocite{sumo2018} B) Phonon mode eigenvectors at the $M$ point in the Brillouin zone. The green and brown atoms correspond to iodine and lead, respectively. The remaining atoms form the inorganic cation. The magnitude of the vector arrow is increased by a factor of three for clarity, and only the motion of the inorganic cage is considered. This image was generated using the \textsc{ascii phonons} package available at \url{https://github.com/ajjackson/ascii-phonons}.
 
 }
 \end{figure}
@@ -273,7 +281,6 @@ $R$ & & VBM & & $1.34 \times 10^{-5}$ & & $1.01 \times 10^{-5}$ & & $1.33 \times
 
 \subsection{Temperature dependant bandgap broadening} \label{ch5coupling}
 
-Distortions along the $M$ and $R$ phonon modes produce the familiar double-well potential energy surface shown earlier in the thesis (Figure \ref{fig2}).
 The undistorted high-symmetry cubic perovskite structure is a saddle point between two equivalent broken-symmetry solutions. Dynamic disorder is expected as the barriers are $37\ \textrm{meV}$ and $19\ \textrm{meV}$ for the $R$ and $M$ modes respectively, which is comparable to $K_BT$. 
 The Schr\"{o}dinger equation describing nuclear motion in the double well potential energy surface can be solved following a procedure outlined in Reference \cite{Skelton2016a}. % jonathan paper: https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.117.075502 autocite{} JArv's code.
 The average bandgap as a function of temperature, $E_g(T)$, can then be calculated from the thermally populated vibrational eigenstates $\chi(Q,T)$ that form a solution to the 1D Schr\"{o}dinger equation:
@@ -287,15 +294,26 @@ Using this procedure, a positive band-gap shift of $35.5\ \textrm{meV}$ ($R$-mod
 In the previous subsection coupling between the electronic and vibrational sub-systems was considered. This section focuses on the coupling between phonon modes, and how this relates to thermal transport in the material. The source of excess thermal energy is a hot polaronic state after above bandgap carrier excitation. Polaron formation and initial thermalisation is discussed first, followed by results for the cooling time to equilibrium.
 
 \subsubsection{Polaron formation and initial thermalisation}
-The Frohlich polaron model has been recently recently applied to MAPI to calculate a polaron mobility from first principles.\autocite{Frost2017b} %Jarvist
+The Fr\"{o}lich polaron model has been recently recently applied to MAPI to calculate a polaron mobility from first principles.\autocite{Frost2017b} %Jarvist
 When the polaron coupling is weak the kinetic energy is larger than the polaron binding energy, and the polaron radius is larger than a unit cell -- a large polaron is formed. When the polaron coupling is strong the electron is self-trapped, and the polaron radius is the size of a unit cell or smaller -- a small polaron is formed. The solution to Fr\"{o}lich model in Reference \cite{Frost2017b} gives Fr\"{o}lich coupling constants of $\alpha=2.4$ and $\alpha=2.7$ for the electron and hole in MAPI respectively. These values fall in the intermediate coupling regime where the large polaron model is valid. This corresponds to a polaron radii of $26.8\AA$ and $25.3\AA$ for the electron and hole respectively, at \SI{300}{\K}.
 Note that the calculated polaron radii are an upper bound, as bulk polaron states are further localised by disorder, point defects and extended defects such as surfaces, interfaces and grain boundaries.
 
 After polaron formation there is initial thermalisation, where electron kinetic energy is transferred into the optical phonon modes. This is a fast picosecond process via the strong Fr\"{o}lich coupling between the charge carrier and localised, polar phonon population. Once fully thermalised, the above bandgap energy is distributed amongst all phonon states associated with the polaron.
 
-The temperature of the resulting Fr{\:o}lich polaron depends on the polaron volume, the polaron specific heat capacity $C_v$ and the initial excitation energy (Figure \ref{ch5TemperatureRadius}). We assume that the initial excitation energy is distributed evenly between the electron and hole. The heat capacity is calculated from the bulk phonon density of states: summing over the Bose-Einstein occupied phonon modes for MAPI, the per-unit cell specific heat capacity is \SI{1.25}{\milli\eV\per\K} at
+%include IPR as proof for cage modes?
+The temperature of the resulting Fr{\:o}lich polaron depends on the polaron volume, the polaron specific heat capacity $C_v$ and the initial excitation energy (Figure \ref{ch5TemperatureRadius}). We assume that the polaron forms a sphere with a radius determined by the Fr\"{o}lich model (\SI{26.8}{\angstrom}) and that the initial excitation energy is distributed evenly between the electron and hole. 
+The heat capacity is calculated from the bulk phonon calculation. Coupling to the optical cage modes (phonon frequency $<$ \SI{5}{\tera\hertz}\autocite{Leguy2016}) at the gamma point are considered. The average temperature dependent energy $E(T)$ is determined by the phonon energies, $\epsilon_i = \hbar\omega_i$, and occupation numbers, as given by the Bose-Einstien distribution $n_i(T,\epsilon_i)$:
+\begin{equation}
+    E(T) = \sum_i \epsilon_i n_i(T,\epsilon_i) = \sum_i \frac{\epsilon_i}{\textrm{e}^{\frac{\epsilon_i}{k_BT}}-1}
+\end{equation}
+So that the specific heat capacity $C_v$ for a given temperature is given by:
+\begin{equation}
+    C_v = \frac{\partial E_T}{\partial T} = k_B \sum_i \left(\frac{\epsilon_i}{k_BT}\right)^2 \frac{\textrm{e}^{\frac{\epsilon_i}{k_BT}}}{\left(\textrm{e}^{\frac{\epsilon_i}{k_BT}}-1\right)^2}
+\end{equation}
+%0.43454600, 0.75018732, 0.81515675, 0.89371517, 0.948438024, 1.01347671, 1.71280131, 1.97002626,1.99846539,2.20803605,2.34772924,2.73338668,3.52222265,3.82347645,3.99786503
+
+For MAPI, the per-unit cell specific heat capacity is \SI{1.25}{\milli\eV\per\K} at
 \SI{300}{\K}. Near-UV excitation at \SI{4}{\eV} gives a maximum energy of \SI{1.2}{\eV} which can be transferred to the polaron, and the temperature increases with localisation ($T \propto r^{-3}$).
-%could include specific heat capacity stuff here
 
 \begin{figure}[h]
 \centering
@@ -303,10 +321,10 @@ The temperature of the resulting Fr{\:o}lich polaron depends on the polaron volu
   \caption[Polaron temperature as a function of polaron radius]{Thermalised polaron temperature in MAPI as a function of polaron
     radius and excitation  energy assuming a bulk value of the heat capacity. 
     The calculated bulk electron polaron radius
-    of 26.8 $\AA$ provides an upper bound for polaron size.
-    We take the lattice parameter (6.3 $\AA$) as a lower bound -- below this the
+    of \SI{26.8}{\angstrom} provides an upper bound for polaron size.
+    The lattice parameter (\SI{6.3}{\angstrom}) is used as a lower bound -- below this the
     continuum large polaron approach is not valid. 
-    We consider excitation from the bandgap to near-UV. 
+    Excitation from the bandgap to near-UV are considered. 
     Inset shows detail at larger radii (axes same as main). }
   \label{ch5TemperatureRadius}
 \end{figure}
@@ -326,9 +344,9 @@ respectively.
 \begin{figure}[h]
 \centering
   \includegraphics[width=0.7\textwidth]{figures/ch5/f4.png}
-  \caption[Hot carrier cooling rate]{The energy of a large polaron state (starting at 1.2 eV above the conduction band minimum, with a polaron radius of 26.8 \AA) 
+  \caption[Hot carrier cooling rate]{The energy of a large polaron state (starting at \SI{1.2}{\electronvolt} above the conduction band minimum, with a polaron radius of \SI{26.8}{\angstrom}) 
   in \ce{CH3NH3PbI3} as a function of time.
-  The slow rate is due to the low thermal conductivity in MAPI ($\kappa$ = 0.05Wm$^{-1}$K$^{-1}$). 
+  The slow rate is due to the low thermal conductivity in MAPI ($\kappa=$\SI{0.05}{\watt\per\metre\per\K}). 
   For comparison, we show the behaviour using the thermal conductivities of 
   CdTe ($\kappa$ = 9) and GaAs ($\kappa$ = 38). }
   \label{ch5TemperatureTime}
@@ -338,30 +356,31 @@ To model the third order phonon-phonon scattering processes we consider the pola
 We consider the low fluence limit where individual photon quanta are absorbed into isolated hot polarons.
 The rate of cooling is determined by the diffusivity ($D$): 
 \begin{equation}
-    D= \frac{\kappa}{\rho c_p}
+    D= \frac{\kappa}{\rho C_p}
 \end{equation} 
-where $\kappa$ is the thermal conductivity, $\rho$ is the density and $c_p$ is the specific heat capacity. 
+where $\kappa$ is the thermal conductivity, $\rho$ is the density and $C_p$ is the specific heat capacity. 
 
-Heat diffuses from MAPI on the order of 100 ps, whilst for other conductivities the process is much faster, on the order of 100 fs. 
-This is in agreement with reported experimental values from References \cite{Klein2016} (MAPI), \autocite{Zhong2017} (CdTe) and \autocite{Rosenwaks1993} (GaAs). 
-Note that at short timescales, measurements of hot carrier cooling in MAPI and \ce{CsPbI3}($\kappa$ = 0.5) may appear linear due to the slower exponential decay.
+Heat diffuses from MAPI on the order of 100 ps, whilst for other conductivities the process is much faster, on the order of \SI{100}{\femto\second}. 
+This is in agreement with reported experimental values from References \cite{Klein2016} (MAPI), \cite{Zhong2017} (CdTe) and \cite{Rosenwaks1993} (GaAs). 
+Note that at short timescales, measurements of hot carrier cooling in MAPI and \ce{CsPbI3} ($\kappa$ = 0.5) may appear linear due to the slower exponential decay.
 
 \section{Summary}
 
 In this chapter we have ``turned on'' temperature and introduced the phonon quasi-particle into our description of MAPI. The first consequence of this is that the electronic states couple to the normal mode vibrations of the system. I have quantified the extent of this coupling to two highly anharmonic modes at the $M$ and $R$ points in the Brillouin Zone. These modes, which are occupied at room temperature, have a large amplitude of motion and lead to a band gap broadening comparable to that found experimentally -- i.e. they play a significant role in the overall electron-phonon coupling of the system.
-The second consequence on introducting temperature is that temperature variations in the bulk material lead to heat diffusion. I have shown that Fr{\:o}lich polaron theory and a classical heat diffusion model can be combined to
+The second consequence of including phonons in our model is that temperature variations in the bulk material lead to heat diffusion. I have shown that a classical heat diffusion model, parameterised using Fr{\:o}lich polaron theory and first-principles calculations, can be used to
 describe the physical process behind the experimentally observed slow hot-carrier cooling rates
 observed for halide perovskites.
 
 \textbf{Data Access Statement}
 
 The crystal structures and phonon data are available at \url{https://github.com/WMD-group/Phonons}, 
-and can be processed using the \textsc{Phonopy} package available from \url{http://atztogo.github.io/phonopy} and the \textsc{Modemap} package available from \url{https://github.com/jmskelton/ModeMap}. For visualising the phonon modes the \textsc{ascii phonons} package available at \url{https://github.com/ajjackson/ascii-phonons} can be used. The phonon dispersion can be plotted using the \textsc{sumo} package.\cite{sumo2018}
+and can be processed using the \textsc{Phonopy} package available from \url{http://atztogo.github.io/phonopy} and the \textsc{Modemap} package available from \url{https://github.com/jmskelton/ModeMap}. For visualising the phonon modes the \textsc{ascii phonons} package available at \url{https://github.com/ajjackson/ascii-phonons} can be used. The phonon dispersion can be plotted using the \textsc{sumo} package.\autocite{sumo2018}
 
 Data files and Jupyter notebooks outlining the calculation steps for hot carrier cooling are available as a repository on GitHub at \url{https://github.com/WMD-group/hot-carrier-cooling}.
 
 \textbf{Acknowledgements}
-Via membership of the UK's HEC Materials Chemistry Consortium, this work used the ARCHER UK National Supercomputing Service (http://www.archer.ac.uk).
+
+Via membership of the UK's HEC Materials Chemistry Consortium, this work used the ARCHER UK National Supercomputing Service.
 
 
 
