@@ -449,11 +449,31 @@ Further refinements to the screening procedure could consider the change in elec
 % Formation of protection layer: PbI (ganose and savory work).
 % Excess \ce{PbI2}, which is distributed at the interface, when solution processing using \ce{MAI} and \ce{PbI2} precursor has shown to improve performance)
 % An improved coupling between the \ce{TiO2} and perovskite was found when the perovskite was terminated with \ce{PbI2}, simulating the non-stochiometric material \autocite{Mosconi2016}.
-\afterpage{
-    \clearpage
-\begin{landscape}
- \centering
 
+
+
+
+\section{Summary}
+
+I have outlined the physical properties which make hybrid perovskites unique semiconductors that are a challenge for theory and simulation. 
+Common issues that can arise in the simulation of hybrid perovskites are summarized in Table \ref{tab:techsol}.
+%
+The volume of work in this area means that all active areas of research cannot be addressed, including perovskite-like structures with lower dimensionality (e.g. Ruddleston-Popper phases)\autocite{Tsai2016,Saparov2016b,Ganose2015} and double perovskites with pairwise substitutions on the B site,\autocite{Savory2016,McClure2016a,Wei2016a,Volonakis2016} 
+which are both attracting significant interest. 
+
+The properties of hybrid halide perovskites which are difficult to model are also those which make them a successful PV material.
+For example, calculating ground state electronic properties using the approximation of a single static lattice does not capture the effects of strong electronic-ionic coupling. However, it is this coupling screens charge, produces a defect tolerant material, facilitates fast charge separation and suppresses excitonic states.
+Multi-scale modelling must be used to capture the transport of halide ions via Schottky-like charged vacancy defects.
+However, it is these defects that provide the low free carrier background concentration necessary for high efficiencies in a p-i-n architecture.
+Attempts are now being made to distill this understanding into descriptors for the large-scale screening of novel, earth-abundant, non-toxic semiconductors.\autocite{Brandt2015a,Ganose2016}
+
+%Future challenges include further consideration of non-equilibrium processes such as photo-induced halide separation.
+%A better understanding of the energy alignment between layers and the defects introduced at interfaces will provide a firmer foundation for understanding performance-limiting hysterisis behaviour. 
+%The coupling between electronic and nuclear motion may also be a fruitful avenue, especially in the context of defects.
+% Can you have a de-localised deep defect?? You can have a localised shallow defect!! (Shockley paper).
+
+\begin{landscape}
+\begin{table}[tb]\centering
 \begin{tabular}{p{5cm}p{7cm}p{10cm}}
 \toprule
 Technique & Symptom & Solution \\
@@ -480,32 +500,7 @@ Electron-phonon coupling & Values far from  experiment & Consider anharmonic ter
 Drift-diffusion model & Current-voltage behaviour incorrect & Consider role of fluctuating ions and electrostatic \newline potentials \\
 \bottomrule
 \end{tabular}
-\captionof[Common issues that arise in the simulation of hybrid perovskites]{\label{tab:techsol} Common issues that arise in the simulation of hybrid perovskites, sourced from members of the Walsh Materials Design Group.
+\caption[Common issues that arise in the simulation of hybrid perovskites]{\label{tab:techsol} Common issues that arise in the simulation of hybrid perovskites, sourced from members of the Walsh Materials Design Group.
 }
+\end{table}
 \end{landscape}
-\clearpage
-}
-
-\section{Summary}
-
-I have outlined the physical properties which make hybrid perovskites unique semiconductors that are a challenge for theory and simulation. 
-Common issues that can arise in the simulation of hybrid perovskites are summarized in Table \ref{tab:techsol}.
-%
-The volume of work in this area means that all active areas of research cannot be addressed, including perovskite-like structures with lower dimensionality (e.g. Ruddleston-Popper phases)\autocite{Tsai2016,Saparov2016b,Ganose2015} and double perovskites with pairwise substitutions on the B site,\autocite{Savory2016,McClure2016a,Wei2016a,Volonakis2016} 
-which are both attracting significant interest. 
-
-The properties of hybrid halide perovskites which are difficult to model are also those which make them a successful PV material.
-For example, calculating ground state electronic properties using the approximation of a single static lattice does not capture the effects of strong electronic-ionic coupling. However, it is this coupling screens charge, produces a defect tolerant material, facilitates fast charge separation and suppresses excitonic states.
-Multi-scale modelling must be used to capture the transport of halide ions via Schottky-like charged vacancy defects.
-However, it is these defects that provide the low free carrier background concentration necessary for high efficiencies in a p-i-n architecture.
-Attempts are now being made to distill this understanding into descriptors for the large-scale screening of novel, earth-abundant, non-toxic semiconductors.\autocite{Brandt2015a,Ganose2016}
-
-%Future challenges include further consideration of non-equilibrium processes such as photo-induced halide separation.
-%A better understanding of the energy alignment between layers and the defects introduced at interfaces will provide a firmer foundation for understanding performance-limiting hysterisis behaviour. 
-%The coupling between electronic and nuclear motion may also be a fruitful avenue, especially in the context of defects.
-% Can you have a de-localised deep defect?? You can have a localised shallow defect!! (Shockley paper).
-
-\subsubsection{Acknowledgements}
-
-This work was funded by the EPSRC (grant numbers EP/L01551X/1 and EP/K016288/1), the Royal society, and the ERC (grant no. 277757). 
-% include computer time here also

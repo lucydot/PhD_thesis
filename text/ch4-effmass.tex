@@ -1,10 +1,12 @@
 \begin{savequote}[8cm]
-Well, think. When do light and electrons and nuclei behave like a particle - like a quantum? When they bump into anything, right? When they hit a wall - that sort of thing. As for the wave behaviour, that happens when they are moving about from place to another - squeezing through holes, and so on.
-  \qauthor{--- Russell Stannard's \textit{Uncle Albert}}
+%Well, think. When do light and electrons and nuclei behave like a particle - like a quantum? When they bump into anything, right? When they hit a wall - that sort of thing. 
+%  \qauthor{--- Russell Stannard's \textit{Uncle Albert}}
+Ok, everyone back to the lab, try again.
+   \qauthor{--- MF DOOM, \textit{Books of War}}
 \end{savequote}
 
 
-\chapter{\label{ch:4-effmass}Results I: Electronic band non-parabolicity}
+\chapter{\label{ch:4-effmass}Electronic band non-parabolicity}
 
 \section{Introduction}
 %% Need to include references to the three appendices.
@@ -14,7 +16,7 @@ This perturbation could take the form of an electric field, change in temperatur
 In a crystal, this response depends on the interaction of the electrons with a periodic potential. 
 The effective mass approximation assumes that the response of an electron in a periodic potential is equivalent to that of a free electron with a renormalised mass (called the ``effective mass'').
 This makes the effective mass a critical parameter in models for the optical and transport properties of a semiconductor.
-Recently there has been renewed interest in this research area, in particular the impact of electronic band structure anisotropy and non-parabolicity on the properties of thermoelectric materials.\autocite{Gibbs2017,Mecholsky2014}
+Recently there has been renewed interest in this research area, in particular the impact of electronic bandstructure anisotropy and non-parabolicity on the properties of thermoelectric materials.\autocite{Gibbs2017,Mecholsky2014}
 
 The conventional definition of effective mass is
 \begin{equation} \label{curvature}
@@ -22,7 +24,7 @@ The conventional definition of effective mass is
 \end{equation}
 This is derived using Newton's second law\autocite{Ashcroft1976,Ariel2012} and so is commonly referred to as the inertial effective mass or conductivity effective mass (as it describes the acceleration of an electron in an applied electric field).
 In principle, this allows effective masses to be calculated directly from \textit{ab-initio} bandstructures,
-as $m_\text{c}$ is inversely proportional to the curvature of the electronic dispersion in reciprocal space (Fig.\ \ref{effmass_schematic}). 
+as $m_\text{c}$ is inversely proportional to the curvature of the electronic dispersion in reciprocal space (Figure\ \ref{effmass_schematic}). 
 We will refer to this definition as the curvature effective mass.
 
 For semiconductor materials with a low carrier concentration we are often interested in eigenstates close to the band extrema where the dispersion can be approximated with an isotropic parabola
@@ -32,7 +34,7 @@ E(k)= \frac{\hbar^2k^2}{2m^*}.
 \end{equation}
 
 This approximation leads to an effective mass which is independant of the sampling density and range in reciprocal space.
-However, non-parabolic deviations in the true dispersion mean that the effective mass obtained from a particular band structure depends on the approach used to numerically calculate Eqn.\ \ref{curvature}. 
+However, non-parabolic deviations in the true dispersion mean that the effective mass obtained from a particular bandstructure depends on the approach used to numerically calculate Eqn.\ \ref{curvature}. 
 
 At greater carrier concentrations and higher temperatures, higher energy eigenstates are accessed and it becomes increasingly important to account for band non-parabolicity.\autocite{Ruf1990} 
 To describe a non-parabolic band dispersion we keep the second order $k^2$ ellipsoidal energy surfaces and introduce a non-linear dependence on the energy, 
@@ -48,11 +50,11 @@ Keeping the first non-linear term gives the Kane quasi-linear dispersion relatio
 
 where $\alpha$ is a parameter that quantifies the extent of non-parabolicity; for the perfectly parabolic material this would be equal to zero. 
 $\alpha$ is positive for electrons in the conduction band (CB) and negative for electrons in the valence band (VB). 
-This corresponds to a flattening of the band as the difference between the eigenstate energy and the band edge energy is increased (Fig.\ \ref{dispersion_fits}).
+This corresponds to a flattening of the band as the difference between the eigenstate energy and the band edge energy is increased (Figure\ \ref{dispersion_fits}).
 
 \begin{figure}[tb] \centering
 \includegraphics[width=0.6\textwidth]{./figures/ch4/effmass_schematic.pdf}
-\caption[Schematic of the three definitions for effective mass]{\label{effmass_schematic} The three definitions for effective mass used in this paper are: i) the curvature effective mass $m_{\text{c}}$, which is inversely proportional to the curvature of the electronic dispersion in reciprocal space; ii) the optical effective mass $m_{\text{opt}}$, which is the average curvature effective mass, weighted according to the Fermi--Dirac distribtion; and iii) the transport effective mass $m_{\text{t}}$. }
+\caption[Schematic of the three definitions for effective mass]{\label{effmass_schematic} The three definitions for effective mass used in this chapter are: i) the curvature effective mass $m_{\text{c}}$, which is inversely proportional to the curvature of the electronic dispersion in reciprocal space; ii) the optical effective mass $m_{\text{opt}}$, which is the average curvature effective mass, weighted according to the Fermi--Dirac distribtion; and iii) the transport effective mass $m_{\text{t}}$. }
 \end{figure}
 
 For non-parabolic dispersions we use the following definition of effective mass
@@ -98,7 +100,7 @@ where $k_{\text{F}}$ is the Fermi wavevector.
 
 The extent to which this value of effective mass will increase as the carrier concentration increases depends on the extent of band non-parabolicity and the level to which the bands are filled. 
 The level of band-filling can be measured experimentally via the Burstein--Moss band gap shift.\autocite{Burstein1954,Moss1954} 
-This is a concentration-dependant shift in the absorption edge which was used for the characterisation of \ce{GaAs} and other small band-gap semiconductors in the 1970's. 
+This is a concentration-dependant shift in the absorption edge which was used for the characterisation of \ce{GaAs} and other small bandgap semiconductors in the 1970's. 
 
 \begin{figure}[tb] \centering
 \includegraphics[width=0.6\textwidth]{./figures/ch4/fits_to_dispersion.pdf}
@@ -107,59 +109,62 @@ This is a concentration-dependant shift in the absorption edge which was used fo
 
 Transient absortion spectroscopy can be used to measure the Burstein--Moss band gap shift, from which the effective mass and shape (parabolicity) of the electronic bands can be inferred.
 Three studies have calculated the Burstein--Moss shift in the hybrid halide perovskite \ce{CH3NH3PbI3} (MAPI), with values for the effective mass ranging from $0.14\,m_{\text{e}}$--$0.30\,m_{\text{e}}$ (where $m_{\text{e}}$ is the electron rest mass).\autocite{Manser2014,Yang2015,Price2015}
-Although each model differs in detail (Yang \textit{et al.} consider band gap renormalisation,\autocite{Yang2015} whilst Price \textit{et al.} consider photoinduced refractive index changes\autocite{Price2015}), none of the models account for band structure non-parabolicity, despite previous computational studies which report significant non-parabolicity in MAPI within an energy range accesible at room temperature ($k_BT=25\,\mathrm{meV}$ at $T=300\,\mathrm{K}$). 
+Although each model differs in detail (Yang \textit{et al.} consider band gap renormalisation,\autocite{Yang2015} whilst Price \textit{et al.} consider photoinduced refractive index changes\autocite{Price2015}), none of the models account for bandstructure non-parabolicity, despite previous computational studies which report significant non-parabolicity in MAPI within an energy range accesible at room temperature ($k_BT=25\,\mathrm{meV}$ at $T=300\,\mathrm{K}$). 
 
-As we have outlined previously, for any dispersion that is not parabolic, the calculated effective mass will depend upon the numerical method used to calculate band curvature and carrier concentration.
+As we has been outlined previously, for any dispersion that is not parabolic, the calculated effective mass will depend upon the numerical method used to calculate band curvature and carrier concentration.
 For materials with a significant number of excited carriers, the discrepancy between the parabolic and non-parabolic effective mass can be large.\autocite{Ruf1990,Riffe2002}
 An \textit{ab-intio} effective mass which recognises the non-parabolicity of real materials allows for better prediction of important material properties such as carrier mobility. 
 
-In this paper we calculate the curvature effective mass and $\alpha$ parameter of four photovoltaic materials: \ce{CdTe}, \ce{GaAs}, \ce{MAPI} and \ce{CZTS}. 
-First we consider how sensitive the effective mass is to the method and sampling density used to calculate the band curvature. 
-For this, we compare results obtained using three different methods. 
+In this chapter I calculate the curvature effective mass and $\alpha$ parameter of four photovoltaic materials: \ce{CdTe}, \ce{GaAs}, \ce{MAPI} and \ce{CZTS}. 
+First I consider how sensitive the effective mass is to the method and sampling density used to calculate the band curvature. 
+For this, the results obtained using three different methods are compared. 
 Two of these are widely used to calculate the curvature effective mass: a three-point finite difference and a least-squares quadratic fit. 
 The third method is a new approach which uses a least-squares quadratic fit weighted according to Fermi--Dirac statistics. 
-We then compare our results at different levels of theory to assess the impact of spin-orbit coupling and electron exchange-correlation on the calculated values for effective mass and $\alpha$. 
-Finally, we investigate the effect of non-parabolicity on the optical and transport properties of MAPI at high carrier concentrations. 
-We show that the Burstein--Moss shift is severely overestimated if calculated within the parabolic approximation, and that the Kane quasi-linear dispersion leads to accurate predictions.
-We predict the optical effective mass and electron mobility over a carrier concentration range of $10^{16}$--$10^{20}\,\mathrm{cm}^{-3}$, which is the relevant range for concentrated solar power systems ($\sim10^{18}\,\mathrm{cm}^{-3}$)\autocite{Law2014}, or when excited under a laser for transient absorption or photoluminescence studies ($\sim10^{19}\,\mathrm{cm}^{-3}$).
-We find that non-parabolicity leads to a significant change in transport properties for carrier concentrations above $10^{18}\,\mathrm{cm}^{-3}$.
+The results at different levels of theory are then compared to assess the impact of spin-orbit coupling and electron exchange-correlation on the calculated values for effective mass and $\alpha$. 
+Finally, the effect of non-parabolicity on the optical and transport properties of MAPI at high carrier concentrations is considered. 
+It is shown that the Burstein--Moss shift is severely overestimated if calculated within the parabolic approximation, and that the Kane quasi-linear dispersion leads to accurate predictions.
+The optical effective mass and electron mobility is predicted, over a carrier concentration range of $10^{16}$--$10^{20}\,\mathrm{cm}^{-3}$, which is the relevant range for concentrated solar power systems ($\sim10^{18}\,\mathrm{cm}^{-3}$)\autocite{Law2014}, or when excited under a laser for transient absorption or photoluminescence studies ($\sim10^{19}\,\mathrm{cm}^{-3}$).
+It is found that non-parabolicity leads to a significant change in transport properties for carrier concentrations above $10^{18}\,\mathrm{cm}^{-3}$.
 
 
-\section{Methods}
+\section{Methods} \label{ch4:methods}
 
 \subsection{Calculation procedures for effective mass}
 
-Throughout this work we consider one-dimensional slices through the Brillouin zone so that the effective mass tensor is reduced to a function of one variable $k$. Unless otherwise stated, we calculated the Fermi--Dirac distribution at $T=300\,\mathrm{K}$ with the Fermi level set in the middle of the band-gap.
+One-dimensional slices through the Brillouin zone are considered so that the effective mass tensor is reduced to a function of one variable $k$. Unless otherwise stated, the Fermi--Dirac distribution is calculated at $T=300\,\mathrm{K}$ with the Fermi level set in the middle of the bandgap.
 
 \subsubsection{Curvature effective mass at the band edge}
 
-We used three approaches for calculating the curvature effective mass at the band edge: i) a three point forward finite difference method; ii) an unweighted quadratic least-squares fit\autocite{Vanderwalt2011} to three points; iii) a quadratic least-squares fit, weighted according to the Fermi--Dirac distribution across all points up to energy $10\,\mathrm{k_BT}$ ($=0.25\,\mathrm{eV}$).
+Three approaches are used to calculate the curvature effective mass at the band edge: i) a three point forward finite difference method; ii) an unweighted quadratic least-squares fit\autocite{Vanderwalt2011} to three points; iii) a quadratic least-squares fit, weighted according to the Fermi--Dirac distribution across all points up to energy $10\,\mathrm{k_BT}$ ($=0.25\,\mathrm{eV}$).
 
-\textit{Finite difference:} We use a three point forward finite difference equation to calculate the curvature at point $i$:
+\textit{Finite difference:} \\
+A three point forward finite difference equation is used to calculate the curvature at point $i$:
 
 \begin{equation}
 \frac{\partial^2E}{\partial k^2} = \frac{E_{i+2} - 2E_{i+1} + E_i}{\left|k_{i+1} - k_i\right|},
 \end{equation}
 where $E_\mathrm{i}$ is the energy eigenvalue at position $k_\mathrm{i}$ in reciprocal space. 
 
-\textit{Unweighted least-squares fit:} To obtain an estimate for the coefficient $c$ of a parabolic dispersion
+\textit{Unweighted least-squares fit:}\\
+To obtain an estimate for the coefficient $c$ of a parabolic dispersion
 
 \begin{equation}
 E = {c}k^2,
 \end{equation}
-we use a least-squares method as implemented in the \textsc{NumPy} Python library to minimise the summed square of residuals
+A least-squares method as implemented in the \textsc{NumPy} Python library is used to minimise the summed square of residuals
 
 \begin{equation}
 \sum^{5}_{i=1}(\mathrm{c}k_{i}^2 - E_{i})^2.
 \end{equation}
-We fit to five points; three points from the DFT-calculated dispersion plus two from the symmetry of the dispersion ($E(k)=E(-k)$).
+This is a five point fit; three points from the DFT-calculated dispersion plus two from the symmetry of the dispersion ($E(k)=E(-k)$).
 
-\textit{Weighted least-squares fit:} To obtain an estimate for the coefficient $c$ of a parabolic dispersion
+\textit{Weighted least-squares fit:}\\
+To obtain an estimate for the coefficient $c$ of a parabolic dispersion
 
 \begin{equation}
 E = \mathrm{c}k^2,
 \end{equation}
-we use a weighted least-squares method as implemented in the \textsc{NumPy} Python library to minimise the summed square of residuals
+A weighted least-squares method is used as implemented in the \textsc{NumPy} Python library to minimise the summed square of residuals
 
 \begin{equation}
 \sum^n_{i=1}W_i(\mathrm{c}k_i^2 - E_i)^2.
@@ -175,20 +180,20 @@ Due to the exponential term in $W_i$, points with an energy difference larger th
 
 \subsubsection{Kane dispersion parameters}
 
-To calculate the parameters for the Kane dispersion we fitted a sixth order polynomial over an energy range of $0.25\,\mathrm{eV}$ to the DFT calculated electronic band dispersion. We used the first derivative of this continuous function to determine the transport effective mass. We then plotted the transport effective mass against energy to give values for $\alpha$ and the effective mass at the band edge. We truncated the dispersion where the second derivative changes sign as this corresponds to an inflexion point where the Kane dispersion is no longer valid. 
+To calculate the parameters for the Kane dispersion a sixth order polynomial is fitted to the DFT calculated electronic band dispersion over an energy range of $0.25\,\mathrm{eV}$. The first derivative of this continuous function is used to determine the transport effective mass. The transport effective mass is plotted against energy to give values for $\alpha$ and the effective mass at the band edge. The dispersion is truncated where the second derivative changes sign as this corresponds to an inflexion point where the Kane dispersion is no longer valid. 
 %The alpha values in table \ref{largetable} were calculated from a Kane dispersion fitted over an energy range of minimum 0.09eV.
 
 \subsubsection{Optical effective mass}
 
-To calculate the optical effective mass we numerically integrated the integrand in Eqn.\ \ref{opt} with $E(k)$ given by the Kane dispersion. We found that the convergence with respect to energy is fast as the Fermi--Dirac distribution kills the probability of eigenstate occupation exponentially. 
+To calculate the optical effective mass the integrand in Eqn.\ \ref{opt} is numerically integrated with $E(k)$ given by the Kane dispersion. Convergence with respect to energy is fast as the Fermi--Dirac distribution kills the probability of eigenstate occupation exponentially. 
 
-\subsection{Electronic band structure calculations}
+\subsection{Electronic bandstructure calculations}
 
-For each of our systems, we relaxed the atomic structures and calculated band dispersions using density functional theory (DFT) as implemented in the Vienna \textit{Ab-initio} Simulation Package (\textsc{VASP}).\autocite{Kresse1996} We expanded valence wavefunctions in a plane wave basis set with a cut-off of $500\,\mathrm{eV}$. We used scalar-relativistic corrections for the core electrons within the projector augmented wave formalism.\autocite{Blochl1994}
-We determined our initial structures as follows: Si and \ce{GaAs} structures were taken from the Madelung handbook,\autocite{Madelung2004}  \ce{CdTe}\autocite{Rabadanov2001} and \ce{CZTS}\autocite{Lafond2014} (in the tetragonal phase) were determined from X-ray diffraction data, whilst \ce{MAPI} was optimised starting from a pseudo-cubic (high temperature) structure available online.\autocite{WMD} For all relaxations we used a quasi-Newtonian algorithm and the PBEsol exchange-correlation functional.
+For each system, the atomic structures and calculated band dispersions were relaxed using density functional theory (DFT) as implemented in the Vienna \textit{Ab-initio} Simulation Package (\textsc{VASP}).\autocite{Kresse1996} The valence wavefunctions were expanded in a plane wave basis set with a cut-off of $500\,\mathrm{eV}$. Scalar-relativistic corrections for the core electrons were used within the projector augmented wave formalism.\autocite{Blochl1994}
+The initial structure was determined as follows: Si and \ce{GaAs} structures were taken from the Madelung handbook,\autocite{Madelung2004}  \ce{CdTe}\autocite{Rabadanov2001} and \ce{CZTS}\autocite{Lafond2014} (in the tetragonal phase) were determined from X-ray diffraction data, whilst \ce{MAPI} was optimised starting from a pseudo-cubic (high temperature) structure available online.\autocite{WMD} For all relaxations a quasi-Newtonian algorithm and the PBEsol exchange-correlation functional were used.
 
-For each calculation we sampled the Brillouin zone using a Monkhorst-Pack $\Gamma$-centred $k$-point mesh. For silicon, CdTe, GaAs and MAPI we used a $6\!\times\!6\!\times\!6$ grid. For CZTS, which has a tetragonal crystal structure, we used a $6\!\times\!6\!\times\!4$ grid. We followed this with a non-self-consistent calculation along high symmetry lines\autocite{Setyawan2010}, with points spaced $0.005\,\text{\AA}^{-1}$ apart in reciprocal space, except in the case of the hybrid HSE06 functional with spin-orbit coupling, where we used a spacing of $0.02\,\text{\AA}^{-1}$. We converged the total energy of each material to within $10^{-6}\,\mathrm{eV}$. We modelled exchange and correlation using: (i) the local density approximation (LDA); (ii) the PBEsol\autocite{Perdew2008} generalized gradient approximation, and (iii) the screened hybrid functional HSE06.\autocite{Heyd2003} We introduced spin-orbit coupling (SoC) at the PBEsol and HSE06 levels of theory to investigate relativistic effects. 
-We calculated the density-of-states of MAPI using tetragonal smearing at the HSE06 with SoC level of theory. 
+For each calculation the Brillouin zone was sampled using a Monkhorst-Pack $\Gamma$-centred $k$-point mesh. For silicon, CdTe, GaAs and MAPI a $6\!\times\!6\!\times\!6$ grid was used. For CZTS, which has a tetragonal crystal structure, a $6\!\times\!6\!\times\!4$ grid was used. This was followed with a non-self-consistent calculation along high symmetry lines\autocite{Setyawan2010}, with points spaced $0.005\,\text{\AA}^{-1}$ apart in reciprocal space, except in the case of the hybrid HSE06 functional with spin-orbit coupling, where a spacing of $0.02\,\text{\AA}^{-1}$ was used. The total energy of each material was converged to within $10^{-6}\,\mathrm{eV}$. Exchange and correlation was modelled using: (i) the local density approximation (LDA); (ii) the PBEsol\autocite{Perdew2008} generalized gradient approximation, and (iii) the screened hybrid functional HSE06.\autocite{Heyd2003} Spin-orbit coupling (SoC) was used at the PBEsol and HSE06 levels of theory to investigate relativistic effects. 
+The density-of-states of MAPI was investigated using tetragonal smearing and the HSE06 functional with SoC. 
 
 \begin{landscape}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
@@ -198,6 +203,7 @@ We calculated the density-of-states of MAPI using tetragonal smearing at the HSE
 & \phantom{abc}&\multicolumn{3}{c}{finite diff $m_\text{c}\left(m_{\text{e}}\right)$} & \phantom{abc}& \multicolumn{3}{c}{unweighted $m_\text{c}\left(m_{\text{e}}\right)$} &\phantom{abc} & \multicolumn{3}{c}{weighted $m_\text{c}\left(m_{\text{e}}\right)$} & \phantom{abc} & \multicolumn{3}{c}{$\alpha \left(\mathrm{eV}^{-1}\right)$}\\
 \cline{3-5} \cline{7-9} \cline{11-13} \cline{15-17}
 && [100] & [110] & [111]$^*$  && [100] & [110] & [111]$^*$   && [100] & [110] & [111]$^*$   && [100] & [110] & [111]$^*$  \\ 
+\midrule
 GaAs\\
 light hole 
 && 0.09 & 0.08 & 0.05        &&  0.08    & 0.07  & 0.07     && 0.09 & 0.08 & 0.08     && 3.32 & 3.64 & 3.69  \\
@@ -222,9 +228,9 @@ hole
 && 0.23 & 0.74 & 0.75        &&  0.22    & 0.54  & 0.60     && 0.32 & 1.16 & 1.23     && 3.96 & 2.21 & 1.50  \\
 electron 
 && 0.19 & 0.19 & 0.19        &&  0.18    & 0.18  & 0.18     && 0.19 & 0.19 & 0.19     && 0.91 & 1.19 & 0.87  \\
-
+\bottomrule
 \end{tabular} 
-\caption[Values of effective mass and the alpha parameter]{\label{largetable} The curvature effective mass at the band edge (calculated using three different methods, as outlined in Methodology) and $\alpha$ (a measure of band non-parabolicity). Calculations use the hybrid exchange-correlation functional HSE06 with spin-orbit coupling. The effective mass is calculated for the bands which are degenerate at the conduction band minima / valence band maxima. We have taken the mean average of the spin-up and spin-down states. $^*$Direction is [010] in the case of \ce{Cu2ZnSnS4}. }
+\caption[Values of effective mass and the alpha parameter]{\label{largetable} The curvature effective mass at the band edge (calculated using three different methods, as outlined in Section \ref{ch4:methods}) and $\alpha$ (a measure of band non-parabolicity). Calculations use the hybrid exchange-correlation functional HSE06 with spin-orbit coupling. The effective mass is calculated for the bands which are degenerate at the conduction band minima / valence band maxima. The mean average of the spin-up and spin-down states is taken. $^*$Direction is [010] in the case of tetragonal \ce{Cu2ZnSnS4}. }
 \end{table}
 \end{landscape}
 
@@ -246,42 +252,23 @@ Using an unweighted least squares fit to three points, we calculate an effective
 Using a three-point finite difference method, we calculate an effective mass ranging from $0.06\,m_\text{e}$ to $0.12\,m_\text{e}$.
 To avoid this sensitivity, we propose using a least-squares fit where each point is weighted according to the Fermi--Dirac distribution.
 We have found that the weighted least-squares method is less sensitive to the sampling density; 
-for the previous example, we calculate a value of $0.07\,m_\text{e}$ at all sampling densities. 
-The weighting accounts for the thermal distribution of electrons, as even when the Fermi level is in the band-gap, higher energy states are occupied according to the Fermi--Dirac distribution. 
+for the previous example, we calculate a value of $0.07\,m_\text{e}$ at all sampling densities (Appendix \ref{app:2-sampling}). 
+The weighting accounts for the thermal distribution of electrons, as even when the Fermi level is in the bandgap, higher energy states are occupied according to the Fermi--Dirac distribution. 
 
 We compare values for the curvature effective mass in Table\ \ref{largetable}. 
 We find that electrons in the CB have light, highly isotropic masses and that there is good agreement between values calculated using the finite difference and least-squares fitting approaches. 
 We find larger discrepancies between the methods used for calculating VB hole effective masses. 
 This can be attributed to the increased non-parabolicity of the VB (see the $\alpha$ values in Table\ \ref{largetable}). 
-The weighted effective mass assumes a parabolic dispersion, however the curvature of this parabola accounts for the flattening of the dispersion away from the band edge, as shown in Fig.\ \ref{dispersion_fits}. 
+The weighted effective mass assumes a parabolic dispersion, however the curvature of this parabola accounts for the flattening of the dispersion away from the band edge, as shown in Figure\ \ref{dispersion_fits}. 
 As a result, we calculate heavier effective masses using the weighted least-squares method compared to the unweighted least-squares method. 
 
 We compare the weighted to unweighted calculation methods further by considering the ratio of their effective mass values.
-The ratio between the weighted and unweighted effective mass values is large when the values for $\alpha$ and the effective mass are large, as shown in Fig.\ \ref{mass_alpha_ratio}. 
+The ratio between the weighted and unweighted effective mass values is large when the values for $\alpha$ and the effective mass are large, as shown in Figure\ \ref{mass_alpha_ratio}. 
 A large $\alpha$ is required as it is non-parabolicity which adjusts the value of effective mass away from the band edge.
 A large mass is required as more eigenstates are then available at energies where the occupation probability, determined by the Fermi--Dirac distribution, is appreciable. 
 As a result, the ratio between weighted and unweighted masses is small for the light CB electrons, and larger for the heavy VB holes in CZTS and GaAS. 
-The spurious results found for CdTe, where the weighted values are less than the unweighted values, are due to a non-parabolic flattening at the top of the valence band, a feature which is seen only when spin-orbit effects are included.
 %We also see that the weighted effective masses are more anisotropric than the unweighted masses.
 %This is due to anistropric values for $\alpha$, as seen for holes in CZTS and MAPI in Table \ref{largetable}.
-
-There are two deviations from the expected trends in the effective mass results, Table \ref{largetable}. 
-Firstly; in Table \ref{largetable} we see that the GaAs unweighted heavy-hole mass along [111] is smaller than for [100], while this is the opposite for the other methods. To explain this we should consider the non-parabolicity of the GaAs heavy-hole in the [111] direction (denoted $m_{hh}$[111]). The alpha for parameter for $m_{hh}$[111] is $1.7\,\mathrm{eV}^{-1}$ and so we expect the weighted effective mass to be heavier than the unweighted effective mass (as it samples the heavier states away from band edge). This is confirmed (weighted: $0.53\,m_e$, unweighted: $0.25\,m_e$). Compare this to the alpha parameter for $m_{hh}$[100] which is $0.38\,\mathrm{eV}^{-1}$. This alpha parameter indicates that the dispersion in the [100] direction is near parabolic, and so we would expect the weighted and unweighted masses to be similar. This is also confirmed in our calculations (weighted: $0.32\,m_e$, unweighted: $0.31\,m_e$).
-This means that at band edge $m_{hh}\mathrm{[111]} < m_{hh}\mathrm{[100]}$ but due to high non-parabolicity in the [111] direction, when we use our weighted approach and take into account eigenstates away from band edge, $m_{hh}\mathrm{[111]} > m_{hh}\mathrm{[100]}$.
-
-Secondly; in Table \ref{largetable} we see that the CdTe $m_{hh}$[111] is larger for the unweighted method than for the weighted method. This is not the trend seen for the other materials, nor is it the trend we would expect, as the weighted method samples eigenstates away from band edge where the band (approximated by the Kane dispersion) flattens.
-This deviation indicates that the Kane dispersion is not an accurate approximation for the CdTe heavy hole band in the [111] direction. The Kane dispersion we use to describe the electronic bands is accurate when the transport effective mass grows linearly with the electron eigenstate energy (Eqn. X of main text). This is the case for most band dispersions in this study, however a plot of transport mass against energy for the CdTe heavy hole in the [111] direction shows that the transport mass is almost constant at small energies - this corresponds to a flattening at the top of the valence band (Fig. \ref{mt_E_hh}). We compare this to the light hole in the [111] direction, which shows a linear relationship between transport mass and energy (Fig. \ref{mt_E_lh}). This light hole has a weighted mass heavier than the unweighted mass (Table \ref{largetable}), as would be expected for an electronic band described by the Kane dispersion.
-%%%% GET RIGHT EQN NUM ABOVE
-
-\begin{figure}[htb]
-\includegraphics[width=0.6\textwidth]{./figures/ch4/mt_E_hh.png}
-\caption[Transport effective mass of the CdTe heavy hole]{\label{mt_E_hh}Transport effective mass of the CdTe heavy hole band in the [111] direction, as a function of eigenstate energy (referenced from the valence band maximum).}
-\end{figure}
-
-\begin{figure}[htb]
-\includegraphics[width=0.6\textwidth]{./figures/ch4//mt_E_lh.png}
-\caption[Transport effective mass of the CdTe light hole]{\label{mt_E_lh}Transport effective mass of the CdTe light hole band in the [111] direction, as a function of eigenstate energy (referenced from the valence band maximum).}
-\end{figure}
 
 \begin{figure}[tb]\centering
 \includegraphics[width=0.6\textwidth]{./figures/ch4/mass_alpha_ratio.pdf}
@@ -293,16 +280,36 @@ It avoids polynomial fitting to an arbitrarily chosen energy range.
 For light, parabolic bands we find that the three different methods we compare lead to comparable results.
 The difference between the calculation methods is greatest for bands with low dispersion and high non-parabolicity.
 
+\subsection{Deviations from the expected effective mass trend}
+
+There are two deviations from the expected trends in the effective mass results, Table \ref{largetable}. 
+Firstly; in Table \ref{largetable} we see that the GaAs unweighted heavy-hole mass along [111] is smaller than for [100], while this is the opposite for the other methods. To explain this we should consider the non-parabolicity of the GaAs heavy-hole in the [111] direction (denoted $m_{hh}$[111]). The alpha for parameter for $m_{hh}$[111] is $1.7\,\mathrm{eV}^{-1}$ and so we expect the weighted effective mass to be heavier than the unweighted effective mass (as it samples the heavier states away from band edge). This is confirmed (weighted: $0.53\,m_e$, unweighted: $0.25\,m_e$). Compare this to the alpha parameter for $m_{hh}$[100] which is $0.38\,\mathrm{eV}^{-1}$. This alpha parameter indicates that the dispersion in the [100] direction is near parabolic, and so we would expect the weighted and unweighted masses to be similar. This is also confirmed in our calculations (weighted: $0.32\,m_e$, unweighted: $0.31\,m_e$).
+This means that at band edge $m_{hh}\mathrm{[111]} < m_{hh}\mathrm{[100]}$ but due to high non-parabolicity in the [111] direction, when we use our weighted approach and take into account eigenstates away from band edge, $m_{hh}\mathrm{[111]} > m_{hh}\mathrm{[100]}$.
+
+Secondly; in Table \ref{largetable} we see that the CdTe $m_{hh}$[111] is larger for the unweighted method than for the weighted method. This is not the trend seen for the other materials, nor is it the trend we would expect, as the weighted method samples eigenstates away from band edge where the band (approximated by the Kane dispersion) flattens.
+This deviation indicates that the Kane dispersion is not an accurate approximation for the CdTe heavy hole band in the [111] direction. The Kane dispersion we use to describe the electronic bands is accurate when the transport effective mass grows linearly with the electron eigenstate energy (Equation \ref{kanemass} of main text). This is the case for most band dispersions in this study, however a plot of transport mass against energy for the CdTe heavy hole in the [111] direction shows that the transport mass is almost constant at small energies - this corresponds to a flattening at the top of the valence band (Figure \ref{mt_E_hh}). We compare this to the light hole in the [111] direction, which shows a linear relationship between transport mass and energy (Figure \ref{mt_E_lh}). This light hole has a weighted mass heavier than the unweighted mass (Table \ref{largetable}), as would be expected for an electronic band described by the Kane dispersion.
+%%%% GET RIGHT EQN NUM ABOVE
+
+\begin{figure}[htb] \centering
+\includegraphics[width=0.6\textwidth]{./figures/ch4/mt_E_hh.png}
+\caption[Transport effective mass of the CdTe heavy hole]{\label{mt_E_hh}Transport effective mass of the CdTe heavy hole band in the [111] direction, as a function of eigenstate energy (referenced from the valence band maximum).}
+\end{figure}
+
+\begin{figure}[htb] \centering
+\includegraphics[width=0.6\textwidth]{./figures/ch4//mt_E_lh.png}
+\caption[Transport effective mass of the CdTe light hole]{\label{mt_E_lh}Transport effective mass of the CdTe light hole band in the [111] direction, as a function of eigenstate energy (referenced from the valence band maximum).}
+\end{figure}
+
 \subsection{Sensitivity of the curvature effective mass to the level of theory}
 
 In the previous section we considered the sensitivity of the curvature effective mass to the numerical method used.
 In this section we consider how sensitive the curvature effective mass is to the exchange-correlation functional (LDA/GGA/HSE06) and spin-orbit coupling.
-We plot the weighted curvature effective mass against the band-gap, at different levels of theory, in Fig.\ \ref{m*_bandgap_plot}. 
-For CZTS, CdTe and GaAs we find that the local (LDA) and semilocal (GGA) approximations for the exchange energy underestimate the band-gap whereas HSE06 provides a better description. This agrees with previous work.\autocite{Deak2010,Heyd2003}
-MAPI has an experimental band-gap of $1.53\,\mathrm{eV}$,\autocite{Liu2015} which, due to a cancellation of errors, is in good agreement with the value calculated using PBEsol with no spin-orbit coupling. 
+We plot the weighted curvature effective mass against the bandgap, at different levels of theory, in Figure\ \ref{m*_bandgap_plot}. 
+For CZTS, CdTe and GaAs we find that the local (LDA) and semilocal (GGA) approximations for the exchange energy underestimate the bandgap whereas HSE06 provides a better description. This agrees with previous work.\autocite{Deak2010,Heyd2003}
+MAPI has an experimental bandgap of $1.53\,\mathrm{eV}$,\autocite{Liu2015} which, due to a cancellation of errors, is in good agreement with the value calculated using PBEsol with no spin-orbit coupling. 
 
 Tight binding theory states that the effective mass is inversely proportional to the coupling strength between the valence and conduction bands.\autocite{Kittel2005} 
-This agrees with the positive correlation between the band-gap and the effective mass shown in Fig.\ \ref{m*_bandgap_plot}.
+This agrees with the positive correlation between the bandgap and the effective mass shown in Figure\ \ref{m*_bandgap_plot}.
 For CZTS, CdTe and GaAs, the effective mass calculated with the HSE06 functional gives the best agreement with experimental data, as has been found previously.\autocite{Kim2010} 
 The electron effective mass in CZTS is particularly sensitive to the exchange-correlation energy; the value calculated using the HSE06 functional ($0.19\,m_{\text{e}}$) is over three times that calculated using the LDA or GGA functional ($0.06\,m_\text{e}$).
 
@@ -314,26 +321,26 @@ Without spin-orbit coupling the effective masses are signficantly overestimated.
 
 \begin{figure}[tb] \centering
 \includegraphics[width=0.6\textwidth]{./figures/ch4/m__bandgap_plot.pdf}
-\caption[Effective mass and band-gap]{\label{m*_bandgap_plot}The effective mass of conduction band electrons in the [100] direction is plotted against the band-gap. The effective mass is calculated using a weighted quadratic least-squares fit as outlined in the Methodology section. We use filled shapes to denote a calculation with spin-orbit coupling. We use stars, triangles and circles to denote the use of the LDA, PBEsol and HSE06 exchange-correlation functionals respectively. Yellow squares denote results from other computational studies: [1] DFT+SoC\autocite{Filip2015} [2] GW\autocite{Filip2015} [3] DFT+SoC\autocite{Liu2012} [5] GW\autocite{Deguchi2016}  [6] 30-band $k\cdot p$ method.\autocite{Richard2004} Green squares denote results from experimental studies [4] (obscured by [5]) cyclotron resonance\autocite{Madelung2004} [7] cyclotron resonance.\autocite{Madelung2004}}
+\caption[Effective mass and bandgap]{\label{m*_bandgap_plot}The effective mass of conduction band electrons in the [100] direction is plotted against the bandgap and Fermi level (referenced to the CBM). The effective mass is calculated using a weighted quadratic least-squares fit as outlined in Section \ref{ch4:methods}. We use filled shapes to denote a calculation with spin-orbit coupling. We use stars, triangles and circles to denote the use of the LDA, PBEsol and HSE06 exchange-correlation functionals respectively. Yellow squares denote results from other computational studies: [1] DFT+SoC\autocite{Filip2015} [2] GW\autocite{Filip2015} [3] DFT+SoC\autocite{Liu2012} [5] GW\autocite{Deguchi2016}  [6] 30-band $k\cdot p$ method.\autocite{Richard2004} Green squares denote results from experimental studies [4] (obscured by [5]) cyclotron resonance\autocite{Madelung2004} [7] cyclotron resonance.\autocite{Madelung2004}}
 \end{figure}
 
 \subsection{Sensitivity of the Kane dispersion parameters to the level of theory}
 
-Until this point we have approximated the band structures with a parabola, and the effective mass could be described with a single parameter.
-We will now approximate the band structures with the Kane quasi-linear dispersion. As a result, the effective mass will have two parameters; the effective mass at the band edge and the $\alpha$ parameter (Eqn.\ \ref{kanemass}).
+Until this point we have approximated the bandstructures with a parabola, and the effective mass could be described with a single parameter.
+We will now approximate the bandstructures with the Kane quasi-linear dispersion. As a result, the effective mass will have two parameters; the effective mass at the band edge and the $\alpha$ parameter (Eqn.\ \ref{kanemass}).
 
-We find that $\alpha$ is inversely correlated with the band gap of the material for all materials in this study (Fig.\ \ref{alpha_bandgap_plot}). 
+We find that $\alpha$ is inversely correlated with the band gap of the material for all materials in this study (Figure\ \ref{alpha_bandgap_plot}). 
 In CZTS, for example, we find that the CB is highly non-parabolic ($\alpha\approx3.5\,\textrm{eV}^{-1}$) at lower levels of theory (LDA/GGA).
-However, when we use a hybrid functional the band-gap is increased and the CB becomes more parabolic ($\alpha\approx1\,\textrm{eV}^{-1}$).
-We attribute this to the $k\cdot p$ interaction between the conduction and valence bands,\autocite{Kane1957} which makes non-parabolicity particularly pronounced in narrow band-gap semiconductors such as GaAs.\autocite{Szmyd1990}
+However, when we use a hybrid functional the bandgap is increased and the CB becomes more parabolic ($\alpha\approx1\,\textrm{eV}^{-1}$).
+We attribute this to the $k\cdot p$ interaction between the conduction and valence bands,\autocite{Kane1957} which makes non-parabolicity particularly pronounced in narrow bandgap semiconductors such as GaAs.\autocite{Szmyd1990}
 
 \begin{figure}[tb] \centering
 \includegraphics[width=0.6\textwidth]{./figures/ch4/alpha_bandgap_plot.pdf}
-\caption[Band non-parabolicity and band-gap]{\label{alpha_bandgap_plot}$\alpha$ (a measure of band non-parabolicity) is plotted against band-gap at various levels of theory. $\alpha$ is calculated for the CB in the [100] direction. We use filled shapes to denote a calculation with spin-orbit coupling. We use stars, triangles and circles to denote the use of the LDA, PBEsol and HSE06 exchange-correlation functionals, respectively. }
+\caption[Band non-parabolicity and bandgap]{\label{alpha_bandgap_plot}$\alpha$ (a measure of band non-parabolicity) is plotted against bandgap at various levels of theory. $\alpha$ is calculated for the CB in the [100] direction. We use filled shapes to denote a calculation with spin-orbit coupling. We use stars, triangles and circles to denote the use of the LDA, PBEsol and HSE06 exchange-correlation functionals, respectively. }
 \end{figure}
 
 The non-parabolicity of bands in CZTS\autocite{Ito2015} and MAPI\autocite{Brivio2014,Mosconi2017} has been previously attributed to the spin-orbit interaction. 
-We find that, for CZTS, non-parabolicity in the CB is due to the change in band-gap; spin-orbit coupling has only small effect (Fig.\ \ref{alpha_SoC}). 
+We find that, for CZTS, non-parabolicity in the CB is due to the change in bandgap; spin-orbit coupling has only small effect (Figure\ \ref{alpha_SoC}). 
 Spin-orbit coupling has a larger effect on the non-parabolicity of the CZTS VB, which has an $\alpha$ value of $3.96\,\textrm{eV}^{-1}$ when calculated with spin-orbit coupling and $1.47\,\textrm{eV}^{-1}$ when calculated without. 
 For MAPI, there is increased non-parabolicity in both the VB and CB when spin-orbit effects are considered. 
 ?
@@ -347,14 +354,14 @@ For CdTe, GaAs and CZTS this is achieved through use of the HSE06 functional.
 Without this, the effective mass is under-estimated and band non-parabolicity is over-estimated.
 CZTS is particularly sensitive to the exchange-correlation functional used.
 The story is different for MAPI: 
-reproducing the correct band-gap does not necessarily lead to accurate effective mass values.
+reproducing the correct bandgap does not necessarily lead to accurate effective mass values.
 Instead, to calculate accurate effective mass values and capture the full extent of band non-parabolicity, we must account for spin-orbit effects.
 
 \subsection{Consequences of non-parabolicity on the optical and transport properties of MAPI}
 
 The effective mass is commonly calculated and compared across materials because it can be used to model differences in various optical and transport properties.
 This also means that the effective mass can be inferred from a number of different measurements, which can lead to discrepancies.
-For non-parabolic band structures, \textit{e.g.} MAPI, these values will also vary with temperature and carrier concentration.
+For non-parabolic bandstructures, \textit{e.g.} MAPI, these values will also vary with temperature and carrier concentration.
 In interpreting the photophysical behaviour of MAPI a range of effective mass values can be found in the literature, from $0.09\,m_{\text{e}}$--$0.30\,m_{\text{e}}$).\autocite{Miyata2015,Tanaka2003,Hirasawa1994,Yang2015,Manser2014,Price2015}
 We will focus briefly on the results from transient absorption spectroscopy (TAS).
 Manser \textit{et al.} calculated the Burstein--Moss shift in MAPI up to a carrier concentration of $1.5 \times 10^{19}\,\mathrm{cm}^{-1}$.\autocite{Manser2014} Assuming a parabolic band dispersion, they calculated an effective mass at band edge of $0.3\,m_{\text{e}}$.
@@ -362,13 +369,13 @@ Yang \textit{et al.} found that a parabolic effective mass value of $0.23\,m_{\t
 Price \textit{et al.} have developed a model which includes photoinduced changes to the refractive index.\autocite{Price2015} This gives a value of $0.14\,m_{\text{e}}$ for the reduced effective mass, assuming a parabolic dispersion, which is in line with results from magneto-absorption experiments\autocite{Miyata2015,Tanaka2003,Hirasawa1994} and theory.\autocite{Brivio2014,Umari2014} 
 The error bar in this value, $0.04\,m_{\text{e}}$, is significant and may be attributed to an effective mass which varies with carrier concentration.
 
-In this section we will quantify the extent to which non-parabolicity impacts upon the Burstein--Moss band-gap shift, optical effective mass, and polaron mobility.
+In this section we will quantify the extent to which non-parabolicity impacts upon the Burstein--Moss bandgap shift, optical effective mass, and polaron mobility.
 To do so, we assume a Kane quasi-linear dispersion and predict, for MAPI, how these observables will vary as a function of carrier concentration.
 
-\subsubsection{Burstein--Moss band-gap shift}
+\subsubsection{Burstein--Moss bandgap shift}
 
 A consequence of the Pauli exlusion principle is that at a particular carrier concentration the Fermi level is pushed into the conduction (or valence) band. 
-This band filling leads to the experimentally observable Burstein--Moss shift where the optical band-gap of the material is increased.
+This band filling leads to the experimentally observable Burstein--Moss shift where the optical bandgap of the material is increased.
 The magnitude of the Burstein--Moss shift is given by 
 \begin{equation} \label{parabolic_shift}
 \Delta_{\text{BM}} =\frac{\hbar^2}{2m^*}(3\pi^2n_{\text{e}})^{\frac{2}{3}},
@@ -386,7 +393,7 @@ However concentrator systems can achieve carrier concentrations of $10^{18}\,\ma
 Furthermore, carrier concentrations of up to $10^{19}\,\mathrm{cm}^{-3}$ are reached when exciting with a laser as in photoluminescence and transient absorption spectroscopy measurements,\autocite{Richter2016}
 and there has been recent research interest in developing a hybrid halide perovskite lasing material which would require concentrations of up to $10^{21}\,\mathrm{cm}^{-3}$.\autocite{Gao2017}
 
-We assume a parabolic dispersion and use the curvature effective mass to calculate values of the Burstein--Moss shift using Eqn.\ \ref{parabolic_shift}. When we compare our results to the density of states data calculated from DFT, which makes no assumption about the form of the dispersion, we see that the parabolic approximation leads to a large overestimation (Fig.\ \ref{burstein_moss_plot}). 
+We assume a parabolic dispersion and use the curvature effective mass to calculate values of the Burstein--Moss shift using Eqn.\ \ref{parabolic_shift}. When we compare our results to the density of states data calculated from DFT, which makes no assumption about the form of the dispersion, we see that the parabolic approximation leads to a large overestimation (Figure\ \ref{burstein_moss_plot}). 
 Walsh \textit{et al.}\autocite{Walsh2008} demonstrated that non-parabolicity can cause this discrepancy, as
 non-parabolicity increases the density of states, which results in the Fermi level increasing more slowly. 
 We account for non-parabolicity by substituting the energy-dependant mass given by Eqn.\ \ref{kanemass} into Eqn.\ \ref{parabolic_shift} and solving self-consistently.
@@ -408,16 +415,16 @@ We set the Fermi level equal to the Burstein--Moss shift, which gives a dependan
 \end{figure}
 % also, by chance, the GaAs secondary band at 0.35 eV corresponds to 3E19.
 
-At a concentration of $3\!\times\!10^{19}\,\mathrm{cm}^{-3}$ there is a significant increase in the optical effective mass in the [100] direction, from $0.19\,m_\text{e}$ at the band edge to a value of $0.35\,m_\text{e}$ (Fig.\ \ref{optical_concentration_plot}). 
+At a concentration of $3\!\times\!10^{19}\,\mathrm{cm}^{-3}$ there is a significant increase in the optical effective mass in the [100] direction, from $0.19\,m_\text{e}$ at the band edge to a value of $0.35\,m_\text{e}$ (Figure\ \ref{optical_concentration_plot}). 
 To put this in context, the effective mass values calculated using GW+SoC and DFT+SoC differ by up to only $0.03\,m_\text{e}$.\autocite{Umari2014}
 Clearly, at high carrier concentrations, we must account for non-parabolicity to achieve accurate estimates for the optical effective mass.
 This result is highly dependant on the non-parabolicity of the bandstructure; we see a negligible increase in the optical effective mass in the [111] direction due to the small value of $\alpha$ in this direction. 
 
 \begin{table*} \centering
 \caption[Electron effective mass and polaron mobility at various carrier concentrations]{\label{masstable} The optical effective mass and polaron mobility for a conduction band electron in the [110] direction of \ce{CH3NH3PbI3}. AM1.5 is the global standard solar spectrum for non-concentrator systems.}
-\begin{tabular}{p{3cm}p{3cm}p{3cm}p{5cm}}
+\begin{tabular}{p{3.5cm}p{3.5cm}p{3.5cm}p{4cm}}
 \toprule
-concentration (cm$^{-3}$) & effective mass $m_\text{opt}$ ($m_\text{e}$) & mobility ($\frac{\text{cm}^2}{\text{Vs}}$) & application \\
+conc. (cm$^{-3}$) & eff. mass $m_\text{opt}$ ($m_\text{e}$) & mobility ($\frac{\text{cm}^2}{\text{Vs}}$) & application \\
 \midrule
 10$^{15}$ & 0.11 & 158 & solar cell AM1.5\\
 10$^{18}$ & 0.11 & 158 & concentrator system \\
@@ -428,7 +435,7 @@ concentration (cm$^{-3}$) & effective mass $m_\text{opt}$ ($m_\text{e}$) & mobil
 \end{table*}
 
 
-\subsubsection{Polaron mobility}
+\subsubsection{Polaron mobility} \label{ch4:mobility}
 
 The relationship between the mobility $\mu$, relaxation time $\tau$ and effective mass $m^*$ of a particle with charge $q$ is given by
 
@@ -448,18 +455,18 @@ We justify using the optical effective mass to calculate a transport property wi
 
 \begin{figure}[tb] \centering
 \includegraphics[width=0.6\textwidth]{./figures/ch4/mobility.pdf}
-\caption[Polaron mobility as a function of carrier concentration]{\label{mobility_plot} Polaron mobility, limited by optic-mode scattering, is plotted as a function of carrier concentration for a conduction band electron in the [110] direction of \ce{CH3NH3PbI3}. This is calculated using parameters from previous work:\autocite{Frost2017b} high-frequency dielectric constant $=4.5$, low-frequency dieletric constant $=24.1$ and characteristic phonon frequency $=2.25\times10^{12}\,\mathrm{cm}^{-1}$.}
+\caption[Polaron mobility as a function of carrier concentration]{\label{mobility_plot} Polaron mobility, limited by optic-mode scattering, is plotted as a function of carrier concentration for a conduction band electron in the [110] direction of \ce{CH3NH3PbI3}. This is calculated using parameters taken from the literature:\autocite{Frost2017b} high-frequency dielectric constant $=4.5$, low-frequency dieletric constant $=24.1$ and characteristic phonon frequency $=2.25\times10^{12}\,\mathrm{cm}^{-1}$.}
 \end{figure}
 
-The mobility at a concentration of $10^{20}\,\mathrm{cm}^{-3}$ is $\sim30\%$ of that calculated for low carrier concentrations (Fig.\ \ref{mobility_plot} and Table \ref{masstable}).
+The mobility at a concentration of $10^{20}\,\mathrm{cm}^{-3}$ is $\sim30\%$ of that calculated for low carrier concentrations (Figure\ \ref{mobility_plot} and Table \ref{masstable}).
 This significant reduction happens even in the absence of the electron--electron scattering that will be enhanced at higher carrier concentrations,
 and agrees with a previous report which states that mobility is particularly sensitive to effective mass.\autocite{Ponce2018} 
 %These values provide an upper limit for the polaron mobility, without considering other scattering process (defect--carrier, carrier--carrier) which will depend on carrier concentration and may reduce our estimates .
 
 Our results show that non-parabolicty has a negligible effect on the optical effective mass and mobility of MAPI at concentrations of $\sim10^{18}\,\mathrm{cm}^{-3}$ (Table\ \ref{masstable}).
-At a concentration of $1.5\!\times\!10^{18}\,\mathrm{cm}^{-3}$, the Burstein--Moss band-gap shifts we predict using the parabolic and Kane quasi-linear dispersion differ by $0.008\,\text{eV}$.
+At a concentration of $1.5\!\times\!10^{18}\,\mathrm{cm}^{-3}$, the Burstein--Moss bandgap shifts we predict using the parabolic and Kane quasi-linear dispersion differ by $0.008\,\text{eV}$.
 This is significantly less than the typical energetic disorder at room temperature ($\mathrm{k_BT}=0.025\,\mathrm{eV}$), and so we predict the parabolic approximation to be sufficient at these carrier concentrations.
-At higher concentrations it is important to account for band non-parabolicity to make accurate predictions for the Burstein-Moss band-gap shift, optical effective mass and polaron mobility. 
+At higher concentrations it is important to account for band non-parabolicity to make accurate predictions for the Burstein-Moss bandgap shift, optical effective mass and polaron mobility. 
 At a concentration of $10^{20}\,\mathrm{cm}^{-3}$ there is a doubling in the optical effective mass and a three-fold decrease in polaron mobility. 
 
 
@@ -468,19 +475,19 @@ At a concentration of $10^{20}\,\mathrm{cm}^{-3}$ there is a doubling in the opt
 The effective mass plays a central role in the description of several material properties, and is a key parameter when assessing the suitability of materials for use in, for example, photovoltaic applications. 
 Several alternative definitions exist for the effective mass, and there are also different ways to numerically calculate these from calculated electronic structure data.
 
-We have introduced a method to calculate the curvature effective mass which uses a physically intuitive energy range given by the Fermi--Dirac distribution. This accounts for the thermal smearing of charge carriers, which is inevitable above $0\,\mathrm{K}$.
-We have shown that this method is less sensitive to the sampling density in reciprocal space.
+I have introduced a method to calculate the curvature effective mass which uses a physically intuitive energy range given by the Fermi--Dirac distribution. This accounts for the thermal smearing of charge carriers, which is inevitable above $0\,\mathrm{K}$.
+I have shown that this method is less sensitive to the sampling density in reciprocal space.
 
-We then moved beyond the parabolic approximation to consider band structures described by Kane quasi-linear dispersion.
+We then moved beyond the parabolic approximation to consider bandstructures described by Kane quasi-linear dispersion.
 The $\alpha$ parameter provides a good description of the dispersion away from band edge and could be used as a screening parameter for materials which operate at high carrier concentrations, for example transparent conducting oxides.
-We found that, across our four materials, accurate non-parabolic effective mass values require hybrid functionals as band gap underestimation generally results in artificially high levels of non-parabolicity.
+It is found that, across the four materials, accurate non-parabolic effective mass values require hybrid functionals as band gap underestimation generally results in artificially high levels of non-parabolicity.
 It is also important to account for spin-orbit coupling when describing the non-parabolicity of the valence bands via the $\alpha$ parameter.
 
-Finally, we have considered how non-parabolicity impacts upon optical and transport properties at high carrier concentrations.
-For this we used the lead halide perovskite MAPI as a case study, as it was found to be the most highly non-parabolic of the four materials.
-We found that the parabolic approximation severely overestimates the Burstein--Moss shift, 
+Finally, I have considered how non-parabolicity impacts upon optical and transport properties at high carrier concentrations.
+For this the lead halide perovskite MAPI was used as a case study, as it was found to be the most highly non-parabolic of the four materials.
+It was found that the parabolic approximation severely overestimates the Burstein--Moss shift, 
 whilst the Kane quasi-linear dispersion shows good agreement with density of states calculations. 
-Using the Burstein--Moss shift as a proxy for the Fermi level, we calculated the change in electron effective mass and mobility as a function of carrier concentration. 
+Using the Burstein--Moss shift as a proxy for the Fermi level, I calculated the change in electron effective mass and mobility as a function of carrier concentration. 
 The assumption previously used in the literature---that the effective mass is independant of carrier concentration---is not valid.
 At carrier concentrations above $10^{18}\,\mathrm{cm}^{-3}$, non-parabolicity must be built into photophysical models to give accurate values for the effective mass and derived properties.
 
@@ -488,9 +495,9 @@ At carrier concentrations above $10^{18}\,\mathrm{cm}^{-3}$, non-parabolicity mu
 
 The crystal structures and electronic structure data reported in this work are available 
 in an online repository,\autocite{Whalley2018b} 
-which also includes a Python package for calculating the effective masses and a Jupyter notebook which outlines the key calculation steps used in this paper.\autocite{Whalley2018a}
+which also includes a Python package for calculating the effective masses and a Jupyter notebook which outlines the key calculation steps used in this chapter.\autocite{Whalley2018a}
 Polaron mobility can be calculated using a published code available at \url{https://github.com/jarvist/PolaronMobility.jl}.\autocite{Frost2018}
 
 \textbf{Acknowledgements}
 
-This work used the ARCHER UK National Supercomputing Service \\ (http://www.archer.ac.uk) which we have access to via our membership of the UK's HEC Materials Chemistry Consortium (funded by EPSRC Grant No. EP/L000202). We are also grateful to the UK Materials and Molecular Modelling Hub for computational resources, which is partially funded by EPSRC Grant No. EP/P020194/1. L.W. and J.M.F. are funded by the EPSRC (Grant Numbers EP/L01551X/1 and EP/K016288/1 respectively). A.W. and B.J.M. acknowledge support from the Royal Society (Grant Numbers x and UF130329 respectively).
+This work used the ARCHER UK National Supercomputing Service \\ (http://www.archer.ac.uk) which we have access to via membership of the UK's HEC Materials Chemistry Consortium. I am also grateful to the UK Materials and Molecular Modelling Hub for computational resources.
