@@ -34,7 +34,7 @@ The first two terms describe the separate electron and phonon sub-systems, and t
 
 Unfortunately Equation \ref{HamiltonianEP} does not tell us how to calculate the electron-phonon matrix $g_{mnv}(\textbf{k},\textbf{q})$. The first expression for the matrix elements was derived by Bl\"{o}ch in 1929:\autocite{Giustino2017}
 \begin{equation}
-g_{mnv}(\textbf{k},\textbf{q}) = -i\left(\frac{\hbar}{2N_pM_\kappa\omega_{\textbf{q}v}}\right)^{\frac{1}{2}}\ttextbf{q}\cdot\textbf{e}_{kv}(\textbf{q})V_0,
+g_{mnv}(\textbf{k},\textbf{q}) = -i\left(\frac{\hbar}{2N_pM_\kappa\omega_{\textbf{q}v}}\right)^{\frac{1}{2}}\textbf{q}\cdot\textbf{e}_{kv}(\textbf{q})V_0,
 \end{equation}
 where $V_0$ is an average effective potential experienced by the electrons in the crystal, $M_\kappa$ is the mass of the $\kappa$th nucleus and $\textbf{e}_{kv}(\textbf{q})$ is a phonon eigenvector
 
@@ -304,11 +304,11 @@ After polaron formation there is initial thermalisation, where electron kinetic 
 The temperature of the resulting Fr{\:o}lich polaron depends on the polaron volume, the polaron specific heat capacity $C_v$ and the initial excitation energy (Figure \ref{ch5TemperatureRadius}). We assume that the polaron forms a sphere with a radius determined by the Fr\"{o}lich model (\SI{26.8}{\angstrom}) and that the initial excitation energy is distributed evenly between the electron and hole. 
 The heat capacity is calculated from the bulk phonon calculation. Coupling to the optical cage modes (phonon frequency $<$ \SI{5}{\tera\hertz}\autocite{Leguy2016}) at the gamma point are considered. The average temperature dependent energy $E(T)$ is determined by the phonon energies, $\epsilon_i = \hbar\omega_i$, and occupation numbers, as given by the Bose-Einstien distribution $n_i(T,\epsilon_i)$:
 \begin{equation}
-    E(T) = \sum_i \epsilon_i n_i(T,\epsilon_i) = \sum_i \frac{\epsilon_i}{\textrm{e}^{\frac{\epsilon_i}{k_BT}}-1}
+    E(T) = \sum_i \epsilon_i n_i(T,\epsilon_i) = \sum_i \frac{\epsilon_i}{\textrm{e}^{\frac{\epsilon_i}{k_BT}}-1}.
 \end{equation}
-So that the specific heat capacity $C_v$ for a given temperature is given by:
+Following this, the specific heat capacity $C_v$ for a given temperature is given by:
 \begin{equation}
-    C_v = \frac{\partial E_T}{\partial T} = k_B \sum_i \left(\frac{\epsilon_i}{k_BT}\right)^2 \frac{\textrm{e}^{\frac{\epsilon_i}{k_BT}}}{\left(\textrm{e}^{\frac{\epsilon_i}{k_BT}}-1\right)^2}
+    C_v = \frac{\partial E_T}{\partial T} = k_B \sum_i \left(\frac{\epsilon_i}{k_BT}\right)^2 \frac{\textrm{e}^{\frac{\epsilon_i}{k_BT}}}{\left(\textrm{e}^{\frac{\epsilon_i}{k_BT}}-1\right)^2}.
 \end{equation}
 %0.43454600, 0.75018732, 0.81515675, 0.89371517, 0.948438024, 1.01347671, 1.71280131, 1.97002626,1.99846539,2.20803605,2.34772924,2.73338668,3.52222265,3.82347645,3.99786503
 
@@ -334,7 +334,7 @@ For MAPI, the per-unit cell specific heat capacity is \SI{1.25}{\milli\eV\per\K}
 \subsubsection{Cooling to equilibrium}
 After a fast initial thermalisation, the polaron will cool to equilibrium over a longer timeframe. During this cooling process the excited local optical phonon modes scatter into phonon modes that diffuse away from the polaron.
 
-Due to energy and momentum conservation rules, three-phonon scattering is the lowest-order scattering process.  The three-phonon interaction strengths have been calculated for MAPI,\autocite{Whalley2016} and they are found to be orders of magnitude stronger than for CdTe and GaAs. The strong three-phonon interactions strengths produce a bulk thermal conductivity, calculated from a solution of the Boltzmann transport equation in the relaxation time approximation, that is extremely low; \SI{0.05}{\watt\per\metre\per\K} at \SI{300}{\K}.\autocite{Whalley2016} 
+Due to energy and momentum conservation rules, three-phonon scattering is the lowest-order scattering process.  The three-phonon interaction strengths have been calculated for MAPI,\autocite{Whalley2016} and they are found to be orders of magnitude stronger than for CdTe and GaAs. In addition, there are a large number of energy- and momentum conserving scattering pathways. As a result the bulk thermal conductivity, calculated from a solution of the Boltzmann transport equation in the relaxation time approximation, is extremely low; \SI{0.05}{\watt\per\metre\per\K} at \SI{300}{\K}.\autocite{Whalley2016} 
 In contrast, the calculated conductivity for GaAs and CdTe is 
 \SI{38}{\watt\per\metre\per\K}
 and
