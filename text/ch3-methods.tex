@@ -62,10 +62,10 @@ Hartree-Fock methods and Kohn-Sham DFT provide a way to obtain an approximate so
 
 Hartree-Fock (HF) methods introduce the concept of fictitious non-interacting one-electron orbitals $\phi$ as a way of solving the Schr\"{o}dinger equation. The one-electron orbitals are combined using a Slater determinant to produce the HF many-body wavefunction.\autocite{Burke2007} 
 
-The effective potential, introduced in Figure \ref{decouple}, is given by $v_{\textrm{ee}} = U + E_{\textrm{x}}$. $U$ accounts for the electrostatic interaction between electrons. Hartree-Fock methods model the charge interaction as a coulomb potential for a system of fixed electrons; the electrons feel the average electrostatic field due to the other electrons.
-$E_x$ accounts for the spin exchange interaction between electrons.
-Electrons with the same spin are indistinguishable, and a consequence of this is that the many body wavefunction must be anti-symmetric. This leads to the Pauli Exclusion Principle, whereby two identical electrons (ie, electrons with the same spin and momentum) cannot occupy the same space at the same time.
-Hartree Fock methods account for electron exchange $E_x$, the repulsion between electrons with parallel spins, exactly. 
+The effective potential, introduced in Figure \ref{decouple}, is given by $v_{\textrm{ee}} = U + E_{\mathrm{x}}$. $U$ accounts for the electrostatic interaction between electrons. Hartree-Fock methods model the charge interaction as a coulomb potential for a system of fixed electrons; the electrons feel the average electrostatic field due to the other electrons.
+$E_\mathrm{x}$ accounts for the spin exchange interaction between electrons.
+Electrons with the same spin are indistinguishable, and a consequence of this is that the many body wavefunction must be anti-symmetric. This leads to the Pauli Exclusion Principle, whereby two identical electrons (i.e. electrons with the same spin and momentum) cannot occupy the same space at the same time.
+Hartree Fock methods account for electron exchange $E_\mathrm{x}$, the repulsion between electrons with parallel spins, exactly. 
 
 Hartree-Fock methods do not give an exact solution to the Schr\"{o}dinger equation as the true many body wavefunction is not formed from a simple Slater determinant. As a result of using a Slater determinant, electron correlation is ignored. This is the correlated motion of electrons with anti-parallel spins as a result of their mutual coulombic repulsion.
 % from http://newton.ex.ac.uk/research/qsystems/people/coomer/dft_intro.html
@@ -94,7 +94,7 @@ In reference \cite{Hohenberg1964} Hohenberg and Kohn also demonstrate that the g
 
 \subsubsection{The Kohn-Sham theorem} 
 
-The Kohn-Sham theorem shows the for any interacting system with ground state density $\rho(\textrm{r})$ there exists a non-interacting system with the same ground-state $\rho(\textrm{r})$. To find the ground state energy of the real interacting system, the occupation numbers of \textit{fictitous}, non-interacting one-electron orbitals can be optimised. For a non-interacting system we know how to calculate $T\left[\rho\right]$ and this provides a good approximation to the true kinetic energy, so the Kohn-Sham theorem provide a more practical way to apply DFT. However, the exchange-correlation density functional $E_{\textrm{xc}}\left[\rho\right]$ is still not known. Only approximations to this functional can be made, leading to approximations for the electronic density, total energy and other system properties.
+The Kohn-Sham theorem shows the for any interacting system with ground state density $\rho(\textbf{\textrm{r}})$ there exists a non-interacting system with the same ground-state $\rho(\textbf{\textrm{r}})$. To find the ground state energy of the real interacting system, the occupation numbers of \textit{fictitous}, non-interacting one-electron orbitals can be optimised. For a non-interacting system we know how to calculate $T\left[\rho\right]$ and this provides a good approximation to the true kinetic energy, so the Kohn-Sham theorem provide a more practical way to apply DFT. However, the exchange-correlation density functional $E_{\textrm{xc}}\left[\rho\right]$ is still not known. Only approximations to this functional can be made, leading to approximations for the electronic density, total energy and other system properties.
 
 
 \subsection{DFT in practice}
@@ -152,19 +152,19 @@ Closest to heaven is the Random Phase Approximation (RPA), which uses all of the
 
 \subsubsection{Exploiting symmetry}
 
-The material studied in this thesis, \ce{CH3NH3PbI3}, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach and model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that its properties do not depend on size. Born-von Karman (periodic) boundary conditions are used so that the infinite crystal is built from a repeating array of unit cells. There are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal. Any physically significant function of the crystal must have the same periodicity.
+The material studied in this thesis, MAPI, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach and model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that its properties do not depend on size. Born-von Karman (periodic) boundary conditions are used so that the infinite crystal is built from a repeating array of unit cells. There are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal. Any physically significant function of the crystal must have the same periodicity.
 
-In real materials translational symmetry can be broken, for example when there are point defects (as in Results chapter \ref{ch:6-defects}). Furthermore, lattice vibrations have a periodicity larger than the unit cell . To model defects or lattice vibrations a supercell is built from multiple unit cells and this is used as the basic repeating unit (Figure \ref{translational}).
+In real materials translational symmetry can be broken, for example when there are point defects (as in Results chapter \ref{ch:6-defects}). Furthermore, lattice vibrations have a periodicity larger than the unit cell. To model defects or lattice vibrations a supercell is built from multiple unit cells and this is used as the basic repeating unit (Figure \ref{translational}).
 
 \begin{figure}[h]
 \centering
   \includegraphics[width=0.8\columnwidth]{figures/ch3/supercell.png}
-  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have wavelengths $>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model longer wavelength phonons. } 
+  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have $\nu>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model longer wavelength phonons. } 
   \label{translational}
 \end{figure}
 % copy and paste phonon mode across to supercell picture?
 
-When the Schr\"{o}dinger equation is solved for a hydrogen atom the solution gives wavefunctions corresponding to the 1s, 2s, 2p, etc orbitals found in chemistry. When the Schr\"{o}dinger equation is solved for a periodic system, wavefunctions are formed by Bl\"{o}ch functions $\psi_{\textbf{k}}$:\autocite{Hoffmann1987}
+When the Schr\"{o}dinger equation is solved for a hydrogen atom the solution gives wavefunctions corresponding to the 1$s$, 2$s$, 2$p$, etc orbitals found in chemistry. When the Schr\"{o}dinger equation is solved for a periodic system, wavefunctions are formed by Bl\"{o}ch functions $\psi_{\textbf{k}}$:\autocite{Hoffmann1987}
 \begin{equation} \label{bloch}
 \psi_{\textbf{k}} = u_\textbf{k}e^{i\textbf{k}\cdot\textbf{r}}.
 \end{equation}   %could do a sketch of the two parts and the resulting part, and the periodic potential
@@ -205,7 +205,7 @@ and the complete expanded Kohn-Sham orbital can be expressed as
 \begin{equation} \label{KSeigenstates}
 \psi_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i(\textbf{k+G})\cdot\textbf{r}}.
 \end{equation}
-As a plane wave is inherently periodic this basis set is often used for extended systems. The software used for the DFT calculations in this thesis, \texttt{VASP}\autocite{Kresse1996}, uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals are more likely to be used.
+As a plane wave is inherently periodic this basis set is often used for extended systems. The software used for the DFT calculations in this thesis, \textsc{VASP}\autocite{Kresse1996}, uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals are more likely to be used.
 
 Sudden changes in electron density are hard to capture using a plane wave basis set; to take an extreme example, the fourier decomposition of a simple top hat in real space requires an infinite summation in reciprocal space. This can be problematic when describing the region around the nucleus where there are strong oscillations in the KS orbitals. However these oscillations are associated with the core electrons which are less important in chemical bonding, and so pseudopotentials - an effective potential without oscillations - can be used. It has been established that for certain systems pseudopotentials are as precise as all-electron calculations.\autocite{Lejaeghere2016}
 %http://helper.ipam.ucla.edu/publications/maws3/maws3_6085.pdf
@@ -244,7 +244,7 @@ This cutoff energy must be tested to ensure that the property of interest, most 
 \begin{figure}[h]
 \centering
   \includegraphics[width=0.7\columnwidth]{figures/ch3/kpointconvergence.png}
-  \caption[$k$-point convergence of \ce{CsSnI3}]{$k$-point convergence of \ce{CsSnI3}. The $k$-point grid size is on the $x$-axis. Red dots denote pressure; the region which is within the \SI{1}{\kilo\bar} convergence criteria for this study is shaded red. Blue crosses denote total energy; the region which is within the \SI{0.1}{\electronvolt} convergence criteria is shaded in blue. Only odd grids sample the $\Gamma$-point and so there is an oscillation in energy and pressure as points move between odd and even grids.}
+  \caption[\ce{CsSnI3} $k$-point convergence]{$k$-point convergence of \ce{CsSnI3}. The $k$-point grid size is on the $x$-axis. Red dots denote pressure; the region which is within the \SI{1}{\kilo\bar} convergence criteria for this study is shaded red. Blue crosses denote total energy; the region which is within the \SI{0.1}{\electronvolt} convergence criteria is shaded in blue. Only odd grids sample the $\Gamma$-point and so there is an oscillation in energy and pressure as points move between odd and even grids.}
   \label{kpointconvergence}
 \end{figure}
 
@@ -316,14 +316,14 @@ The final classification is into electrically active and electrically benign def
 
 The equilibrium concentration of defects $n$ at a fixed temperature and pressure is given by the density that minimizes free energy.
 \begin{equation} \label{defectconcentration}
-    n = N_{sites} \exp \left(-\frac{\Delta G}{k_\mathrm{B} \mathrm{T}} \right),
+    n = N_\mathrm{sites} \exp \left(-\frac{\Delta G}{k_\mathrm{B} \mathrm{T}} \right),
 \end{equation}
-where $\Delta G$ is the Gibbs free energy of defect formation. The Gibbs free energy is approximated as the formation energy $E_f$ of the defect as this dominates over entropic contributions. The formation energy is given by:
+where $\Delta G$ is the Gibbs free energy of defect formation. The Gibbs free energy is approximated as the formation energy $E_\mathrm{f}$ of the defect as this dominates over entropic contributions. The formation energy is given by:
 \begin{equation} \label{eqn_formation_energy}
-E_f(q) = E_d(q) - E_b - \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_F) + E_{corr}
+E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_\mathrm{F}) + E_\mathrm{corr}
 \end{equation}
-where $E_d(q)$ is the total energy of the supercell with a defect of charge $q$ and $E_b$ is the total energy of the perfect bulk. 
-$E_{corr}$ is a correction energy that is only needed for charged defects and is discussed Section \ref{corrections}.
+where $E_\mathrm{d}(q)$ is the total energy of the supercell with a defect of charge $q$ and $E_\mathrm{b}$ is the total energy of the perfect bulk. 
+$E_\mathrm{corr}$ is a correction energy that is only needed for charged defects and is discussed Section \ref{corrections}.
 The remaining terms describe the energy needed to add or remove atoms or electrons.
 $\mu_i$ is the chemical potential of atom $i$ and $n_i$ is the number of atoms that are added or removed.
 The chemical potential can be adjusted to describe different growth conditions; if the growth conditions are rich for species $i$ then $\mu_i$ will be low.
@@ -338,7 +338,7 @@ The charge transition level is equivalent to thermal ionization energy, the ener
 \begin{figure}[h]
 \centering
   \includegraphics[width=0.8\columnwidth]{figures/ch3/defectenergetics.png}
-  \caption[Formation energies of the Te vacancy in CdTe]{Formation energies $\Delta H_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect. Figure reprinted with permission from Reference \cite{Menendez2016}.}
+  \caption[Formation energies of the Te vacancy in CdTe]{Formation energies $\Delta H_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect. Figure reproduced with permission from the work of Menendez et al.\autocite{Menendez2016}.}
   \label{CdTeformation}
 \end{figure}%cite https://iopscience.iop.org/article/10.1088/1742-6596/720/1/012031/pdf
 
@@ -388,16 +388,16 @@ However a system this size is computationally intractable, especially considerin
 
 A number of correction schemes have been developed to deal with these issues; a brief historical overview is given below. These schemes are designed to be used as a post-processing step and provide a value for the $E_{corr}$ term in Eqn.\ref{eqn_formation_energy}. A more complete description of these issues can be found in References \cite{durrant2018,Vinichenko2017}
 
-The Leslie Gillan correction\autocite{Leslie1985} models the defect charge $q$ as a point charge interacting with its periodic images through an isotropic dielectric medium. 
+The Leslie Gillan correction\autocite{Leslie1985} $E^\mathrm{LG}$ models the defect charge $q$ as a point charge interacting with its periodic images through an isotropic dielectric medium. 
 This correction takes a simple analytic form that depends on the charge state  $q$, static dielectric constant $\epsilon_0$, separation between defect images $L$ and the Madelung constant $\alpha_m$, which is determined by the lattice geometry:
 \begin{equation}
     E^\mathrm{LG} = \frac{q^2\alpha_{m}}{2\epsilon L}.
 \end{equation}
-The Markov-Payne correction extends the Leslie Gillan correction by including an additional term that accounts for the delocalised part of the defect charge. 
+The Markov-Payne correction $E^\mathrm{MP}$ extends the Leslie Gillan correction by including an additional term that accounts for the delocalised part of the defect charge. 
 \begin{equation}
     E^\mathrm{MP} = \frac{q^2\alpha_{m}}{2\epsilon L} + qQL^{-3}. 
 \end{equation}
-The challenge of the Markoc-Payne approach is in calculating the quadrupole moment $Q$. 
+The challenge of the Markov-Payne approach is in calculating the quadrupole moment $Q$. 
 The Lany-Zunger correction\autocite{Lany2009} combines the Markov-Payne correction, including an approach for calculating $Q$, with a potential alignment procedure to correct for the shift in electrostatic potential. 
 The Freysholdt, Neugebauer and van de Walle (FNV) method\autocite{Freysoldt2009} models the defect charge as a localised gaussian distribution. 
 The difference between the electrostatic potential of the charged defect supercell and the electrostatic potential of the perfect bulk supercell, calculated far from the defect, is aligned with the defect model potential. 
@@ -406,7 +406,7 @@ Kumagai and Oba have extended to FNV method by using atomic site potentials comb
 There is still no standardised approach to defect charge corrections, 
 which can lead to a spread in calculated defect formation energies in the literature, and predicted defect densities which differ by orders of magnitude.
 Two widely used approaches in the recent literature are the FNV method, and the extension to this provided by Kumagai and Oba.
-This extension is applied to the iodine interstitial defect in Chapter \ref{ch:6-defects}, using an implementation in the package \texttt{sxdefectalign}.
+This extension is applied to the iodine interstitial defect in Chapter \ref{ch:6-defects}, using an implementation in the package \textsc{sxdefectalign}.
 % - for a really good explanation see Suzys group talk (Monday the 10th september 2018) and https://aip.scitation.org/doi/10.1063/1.5029818 which it was based upon.
 %what are the corections used in this work?
 
@@ -593,7 +593,7 @@ To consider phonon wavelengths greater than the unit cell length a supercell is 
 In this chapter I have introduced the key concepts that underly DFT, and the post-processing steps required to calculate the defect and vibrational properties of a crystal. 
 Much of solid state physics is built upon the idea of a translationally invariant crystal, so it should come as little surprise that additional steps are needed to describe defects that break translational symetry and work against the fundamental assumptions of the theoretical framework.
 In contrast, phonons at the gamma point preserve the underlying crystal symmetry, but additional steps are needed to build the force constant matrix from multiple DFT calculations.
-In this chapter I have presented the defect and vibrational calculations separately. However in Chapter \ref{ch:6-defects} I combine the two approaches, and calculate the vibrational properties of the iodine interstitial defect in MAPI. 
+In this chapter I have presented the defect and vibrational calculations separately. However in Chapter \ref{ch:6-defects} I also combine the two approaches, and calculate the vibrational properties of the iodine interstitial defect in MAPI. 
 %A discussion about how a point defect perturbs the vibrational sub-system of a bulk material is included in that final chapter.
 %: LW - could we add here that solid state physics of crystalline materials is not really built for defects as they assume perfect translational symmetry, which the defects break ---> which makes modelling defects a continuing challenge for theory and simulation (as we are working "against" the fundamental assumptions of the framework).
 % - defects are demainding and computational expensive .n To avoid computationally expensive defect calculations descriptors have been built on the idea of ‘defect tolerant’ materials: http://pubs.acs.org/doi/pdf/10.1021/acs.nanolett.5b04513

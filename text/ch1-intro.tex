@@ -40,7 +40,7 @@ The threat of climate change seems not to have had a proportionate response from
 One way to reduce the rate of climate change is to generate energy through processes that do not release net positive amounts of CO$_2$ into the atmosphere, and harnessing the vast amount of energy that is released from the sun is one way of doing this. This idea has been around for more than sixty years; in 1954 Bell Labs demonstrated that it was possible to convert sunlight into electricity by powering a small toy Ferris wheel and radio transmitter with a silicon solar cell. Reporting this event, The New York Times wrote:
 %http://www.aps.org/publications/apsnews/200904/physicshistory.cfmthe New York Times wrote that:
 \begin{displayquote}
-“[the solar cell] may mark the beginning of a new era, leading eventually to the realization of one of mankind’s most cherished dreams–the harnessing of the almost limitless energy of the sun for the uses of civilization.”
+“[the solar cell] may mark the beginning of a new era, leading eventually to the realization of one of mankind’s most cherished dreams –- the harnessing of the almost limitless energy of the sun for the uses of civilization.”
 \end{displayquote}
 A solar flux density of $1361\,\textrm{Wm}^{-2}$ reaches the earth's atmosphere each second, which is almost $10^4$ times larger than any other external energy source.\autocite{Kopp2011} A quick back-of-the-envelope calculation shows that if we assume a sunlight to electricity conversion efficiency of 40\% (achievable using concentrated solar power) and zero transmission loss, we could meet the world's electricity demands ($22\,\textrm{PWh}$ in 2015\autocite{IEA2017}) by covering an area equivalent to Northumberland county ($5000\,\textrm{km}^2$) with photovoltaic solar panels.
 %$46400\,Wm^{-2}$ is the absolute limit if we consider concentrator cell architectures (section \ref{SQlimit}). 
@@ -278,19 +278,20 @@ Electron-hole recombination competes with charge extraction to the external circ
 
 Radiative recombination and Auger recombination are unavoidable processes intrinsic to the material, whereas SRH recombination is an avoidable process that can be controlled through defect engineering. The SRH recombination rate is given by
 \begin{equation}
-U_\textrm{SRH} = \frac{np-n_\textrm{i}^2}{\tau_\textrm{n,SRH}(p+p_t)+\tau_\textrm{p,SRH}(n+n_t)},
+U_\textrm{SRH} = \frac{np-n_\textrm{i}^2}{\tau_\textrm{n,SRH}(p+p_\textrm{t})+\tau_\textrm{p,SRH}(n+n_\textrm{t})},
 \end{equation}
-where $n$ ($p$) is the density of electrons (holes), $n_i$ is the intrinsic carrier density and $n_t$ ($p_t$) is the value of the electron (hole) density when the electron Fermi level is equal to the trap level $E_t$: 
+where $n$ ($p$) is the density of electrons (holes), $n_i$ is the intrinsic carrier density and $n_\mathrm{t}$ ($p_\mathrm{t}$) is the value of the electron (hole) density when the electron Fermi level is equal to the trap level $E_\mathrm{t}$: 
 \begin{align}
-n_t &= n_ie^{\frac{(E_t-E_c)}{k_BT}} \\
-n_p &= n_ie^{\frac{(E_v-E_t)}{k_BT}},
+n_\mathrm{t} &= n_\mathrm{i}e^{\frac{(E_\mathrm{t}-E_\mathrm{c})}{k_\mathrm{B}T}} \\
+n_\mathrm{p} &= n_\mathrm{i}e^{\frac{(E_\mathrm{v}-E_\mathrm{t})}{k_\mathrm{B}T}},
 \end{align}
-where $E_c$ and $E_v$ are the energies of the CBM and VBM respectively. The recombination rate has a maximum when the rates of hole capture and electron capture are comparable. This happens when the trap level is in the middle of the bandgap, and $n_t = p_t$. % note here that deep state not needed: czts : https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b01313
+where $E_\mathrm{c}$ and $E_\mathrm{v}$ are the energies of the CBM and VBM respectively. The recombination rate has a maximum when the rates of hole capture and electron capture are comparable. This happens when the trap level is in the middle of the bandgap, and $n_\mathrm{t} = p_\mathrm{t}$. % note here that deep state not needed: czts : https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b01313
 
-$\tau_\textrm{n,SRH}$ ($\tau_\textrm{p,SRH}$) is the electron (hole) lifetime. For a trap density $N_t$, mean thermal electron (hole) velocity $v_n$ ($v_p$) and electron (hole) capture cross section $\sigma_n$ ($\sigma_p$), the lifetimes can be approximated as 
+$\tau_\textrm{n,SRH}$ ($\tau_\textrm{p,SRH}$) is the electron (hole) lifetime. For a trap density $N_\mathrm{t}$, mean thermal electron (hole) velocity $v_\mathrm{n
+}$ ($v_\mathrm{p}$) and electron (hole) capture cross section $\sigma_\mathrm{n}$ ($\sigma_p$), the lifetimes can be approximated as 
 \begin{align}
-\tau_\textrm{n,SRH} &= \frac{1}{v_n\sigma_nN_t} \\
-\tau_\textrm{p,SRH} &= \frac{1}{v_p\sigma_pN_t}.
+\tau_\textrm{n,SRH} &= \frac{1}{v_\mathrm{n}\sigma_\mathrm{n}N_\mathrm{t}} \\
+\tau_\textrm{p,SRH} &= \frac{1}{v_\mathrm{p}\sigma_\mathrm{p}N_\mathrm{t}}.
 \end{align}
 The standard approach for calculating the trap density from first principles is give in Chapter\ \ref{ch:3-methods}, and a method for calculating the capture cross section is outlined in the results Chapter\ \ref{ch:6-defects}.
 
@@ -299,9 +300,9 @@ The standard approach for calculating the trap density from first principles is 
 Carrier lifetimes and recombination rates are difficult to measure experimentally as ultra fast optical and electronic sensors are needed to capture transient behaviour, and this must be done in conditions relavant to photovoltaic performance. Time resolved photoluminscence (TRPL) and photoconductivity measurements are used to infer the recombination rates for each recombination pathway.
 Each pathway scales differently with carrier concentration, as specified by the following rate equation:
 \begin{equation}
-\frac{d n}{\d t} = G -k_1n -k_2n^2 -k_3n^3 
+\frac{d n}{d t} = G -k_1n -k_2n^2 -k_3n^3 
 \end{equation}
-where $G$ is the rate of electron-hole generation, $k_1$ is the rate constant for SRH recombination, $k_2$ is the rate constant for radiative recombination and $k_3$ is the rate constant for Auger recombination. SRH recombination via a trap state is a one particle process that scales linearly with the carrier concentration. Radiative recombination is a two particle process that depends on the electron density ($n_e$) and hole density ($n_h$), so scales quadratically with carrier concentration. Auger recombination requires three particles and scales cubically.
+where $G$ is the rate of electron-hole generation, $k_1$ is the rate constant for SRH recombination, $k_2$ is the rate constant for radiative recombination and $k_3$ is the rate constant for Auger recombination. SRH recombination via a trap state is a one particle process that scales linearly with the carrier concentration. Radiative recombination is a two particle process that depends on the electron density and hole density, so scales quadratically with carrier concentration. Auger recombination requires three particles and scales cubically.
 TRPL uses short laser pulses to excite excess electrons and holes which then decay via recombination or carrier extraction at an interface. Exponential curves are fitted to the TRPL signal at different laser fluences to extract carrier lifetimes. In general, for solar cells operating under 1.5AM illumination, second order SRH recombination is the dominant recombination mechanism.
 % 
 % https://www-herz.physics.ox.ac.uk/publications/Herz16a.pdf
@@ -355,7 +356,7 @@ After light absorption, a bound electron-hole pair (exciton) is created. The ele
 
 Some materials may have suitable optical properties but are unable to transport the photogenerated charge efficiently to the contact layers. Carrier mobility quantifies how quickly an electron or hole can move through a material when pulled by an electric charge. 
 Light carrier effective masses (high band dispersions) correspond to higher mobilities. However light effective masses are not sufficient in themselves as there are various scattering channels to consider: lattice scattering, carrier-carrier scattering and defect scattering. The most significant scattering mechanisms in a PV material are lattice scattering and ionized defect scattering.
-A high dielectric constant is beneficial to carrier mobility as the rate of ionized defect scattering is proportional to $\frac{1}{\epsilon^2}$. The composition of the material is also important -- for example, vacancies in gallium nitride (Ga($3+$)N($3-$)) carry a larger charge and have a larger scattering cross section than vacancies in MAPI ($CH_3NH_3$($1+$)Pb($2+$)I($1+$)$_3$).
+A high dielectric constant is beneficial to carrier mobility as the rate of ionized defect scattering is proportional to $\frac{1}{\epsilon^2}$. The composition of the material is also important -- for example, vacancies in gallium nitride (Ga$^{3+}$N$^{3-}$) carry a larger charge and have a larger scattering cross section than vacancies in MAPI (\ce{CH_3NH_3}$^{1+}$Pb$^{2+}$I$^{1+}_3$).
 
 
 \textbf{Long carrier lifetime}
@@ -404,7 +405,7 @@ To reduce the rate of climate change we must decrease our reliance on fossil fue
 \section{Thesis outline}
 
 Organic-inorganic halide perovskites present a number of challenges for first-principles atomistic materials modelling. These `plastic crystals' feature dynamic processes across multiple length-scales and time-scales, which include mixed ionic-electronic transport, highly anharmonic lattice dynamics and strong relativistic (spin-orbit coupling) effects on the electronic band structure.
-These issues, which affect the operation of solar cells, are outlined from a review of the literature in the following chapter. 
+These issues, which affect the operation of solar cells, are outlined in a review of the literature. 
 This is followed by a brief introduction to the theory that underlies almost all of the work in this thesis - Density Functional Theory (DFT). 
 To model an imperfect material (one with crystal defects), or a material at finite temperature, there are a series of post-processing steps that follow the DFT calculation. These are also outlined in Chapter Three.
 
@@ -412,6 +413,7 @@ Chapters Four to Six contain the thesis results. Each results chapter contains a
 EMT often assumes a parabolic electronic band dispersion, however in this chapter non-parabolic distortions are considered.
 Temperature effects are introduced in Chapter Four. 
 At room temperature the inorganic octahedral \ce{PbI3} units tilt back and forth, and the coupling strength between this tilting and the electronic sub-sytem is quantified.
-Finally, point defects are introduced to our model in Chapter Six. Point defects can be benign or harmful to device performance, depending upon the properties of the defect. This chapter reports the properties of the iodine interstitial point defect.
+Finally, point defects are introduced to our model in Chapter Six. Point defects can be benign or harmful to device performance, depending upon the properties of the defect. This chapter focuses on the iodine interstitial point defect and gives the rate of charge trapping at this defect site.
+% check that it actually does this!
 
 
