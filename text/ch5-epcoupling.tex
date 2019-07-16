@@ -26,7 +26,7 @@ Phonon-phonon coupling, and how this relates to hot-carrier cooling in MAPI, is 
 
 \subsection{Electron-phonon coupling}
 We have previously considered a system where the electronic and vibrational substates are decoupled. %the full wavefunction product of ht other two.
-However to model electron-phonon interactions we must remove this approximation and employ a Hamiltonian that describres the coupled system. Using the formalism of second-quantisation this Hamiltonian can be expressed as:\autocite{Giustino2017}
+However to model electron-phonon interactions we must remove this approximation and employ a Hamiltonian that describres the coupled system. Using the formalism of second-quantisation this Hamiltonian can be expressed in a relatively compact form:\autocite{Giustino2017}
 \begin{equation} \label{HamiltonianEP}
     \hat{H} = \sum_{n\textbf{k}}\epsilon_{n\textbf{k}}\hat{c}^{\dagger}_{n\textbf{k}}\hat{c}_{n\textbf{k}} + \sum_{\textbf{q}v}\hbar\nu_{\textbf{q}v}(\hat{a}^{\dagger}_{\textbf{q}v}\hat{a}_{\textbf{q}v}+\frac{1}{2})+N_p^{-\frac{1}{2}}\sum_{\substack{\textbf{k},\textbf{q} \\ m,n,v}}g_{mnv}(\textbf{k},\textbf{q})\hat{c}^{\dagger}_{m\textbf{k}+\textbf{q}}\hat{c}_{n\textbf{k}}(\hat{a}_{\textbf{q}v}+\hat{a}^{\dagger}_{-\textbf{q}v}).
 \end{equation}
@@ -144,12 +144,12 @@ where $\kappa$ is the thermal conductivity, $\rho$ is the material density, and 
 
 \section{Results}
 \subsection{Anharmonic bandgap deformation potential}
-The deformations are along soft acoustic phonon modes at $q$-points $M$ and $R$ in reciprocal space, which correspond to in-phase and out-of-phase tilting of the inorganic octahedra respectively (Figure \ref{ch5phonondisp}).
+Deformations along the soft acoustic phonon modes at $q$-points $M$ and $R$ in reciprocal space are considered, which correspond to in-phase and out-of-phase tilting of the inorganic octahedra respectively (Figure \ref{ch5phonondisp}).
 To reduce the computational cost we take advantage of the symmetry of the double well potential energy surface (Figure \ref{fig2}) and consider distortions along positive $Q$ values only. The corresponding single-well potential energy surface can be found in Appendix \ref{app:6-SCcompare}.
 
 \begin{figure}[h]
 \includegraphics[width=0.8\textwidth]{figures/ch5/phonon_band.png}
-\caption[Harmonic phonon dispersion and eigenvectors at the $M$ and $R$ $q$-points]{\label{ch5phonondisp} A) Harmonic phonon dispersion for MAPI. Phonon frequencies up to 5THz are considered, as wavenumbers above this correspond to the molecular vibrations of the inorganic cation.\autocite{Leguy2016} This image was generated using the sumo software package.\autocite{sumo2018} B) Phonon mode eigenvectors at the $M$ point in the Brillouin zone. The green and brown atoms correspond to iodine and lead, respectively. The remaining atoms form the inorganic cation. The magnitude of the vector arrow is increased by a factor of three for clarity, and only the motion of the inorganic cage is considered. This image was generated using the \textsc{ascii phonons} package available at \url{https://github.com/ajjackson/ascii-phonons}.
+\caption[Harmonic phonon dispersion and eigenvectors at the $M$ and $R$ $q$-points]{\label{ch5phonondisp} A) Harmonic phonon dispersion for MAPI. The bandgap deformation potentials are calculated for distortions along the imaginary mode eigenvectors at $q$-points $M$ and $R$ in reciprocal space. In the Fr\"{o}lich polaron model for MAPI phonon frequencies up to 5THz are considered, as wavenumbers above this correspond to the molecular vibrations of the organic cation.\autocite{Leguy2016} The imaginary modes at the $\Gamma$-point are a result of numerical noise. This image was generated using the \textsc{sumo} software package.\autocite{sumo2018} B) Eigenvector for the imaginary phonon mode at the $M$ point in the Brillouin zone. The green and brown atoms correspond to iodine and lead, respectively. The remaining atoms form the inorganic cation. The magnitude of the vector arrow is increased by a factor of three for clarity, and only the motion of the inorganic cage is considered. This image was generated using the \textsc{ascii phonons} package available at \url{https://github.com/ajjackson/ascii-phonons}.
 
 }
 \end{figure}
@@ -208,9 +208,10 @@ In contrast, relativistic calculations for MAPI predict an ``inverted'' bandstru
 As we distort the pseudo-cubic structure along the $M$ or $R$ phonon modes, the Pb-I bond length increases (Table \ref{ch5bondlength}), which indicates that there should be a decrease in CBM and VBM energies, contrary to the predicted energy increases.
 
 Band edge energies as a function of various normal mode distortions have been investigated for the metal halide perovskite \ce{CsPbI3}, which shares the same VBM and CBM orbital character as MAPI.\autocite{McKechnie2018} For displacements along the normal phonon mode corresponding to octahedral twisting (iodine motion) around Pb, there is: i) a significant increase in the CBM energy; ii) a decrease Pb $p$-orbital character at the CBM; iii) an increase in I $p$-orbital character at the CBM. The increase in CBM energy is attributed to a reduction in Pb-$p$ character, as a result of reduced spin-orbit coupling. However tests on MAPI for two different descriptions of electron exchange and correlation and one including spin-orbit coupling, shows similar behaviour with respect to band deformation (Table \ref{ch5allxc} and Figure \ref{Egtheory}). 
-Instead, we attribute the increase in energy to an increase in orbital overlap between the Pb 6$p$- and I 5$p$ states, leading to increased level repulsion and anti-bonding state energy.
+Instead, we attribute the increase in energy to a decrease in orbital overlap between the Pb 6$p$-states, leading to a less dispersive band and decreased band width.
 The increase in the VBM site energy could be attributed to the hybridised Pb 6$p$- and I5$p$ bonding orbitals which lie lower in the valence band,\autocite{Wang2015i} although further calculations to predict the orbital character as a function of phonon mode displacement are needed to confirm this statement.
 %useful lit: https://pubs.acs.org/doi/full/10.1021/acs.chemmater.6b00968 / https://journals.aps.org/prb/abstract/10.1103/PhysRevB.88.165203
+%could look at Pb-Pb bond length also
 
 \begin{figure}[h] \centering
 \includegraphics[width=0.8\textwidth]{figures/ch5/dos.pdf}
@@ -381,7 +382,6 @@ Data files and Jupyter notebooks outlining the calculation steps for hot carrier
 
 \textbf{Acknowledgements}
 
-Via membership of the UK's HEC Materials Chemistry Consortium, this work used the ARCHER UK National Supercomputing Service.
-
+Via our membership of the UK's HEC Materials Chemistry Consortium, which is funded by EPSRC (EP/L000202), this work used the ARCHER UK National Supercomputing Service (http://www.archer.ac.uk). I also made use of the Balena HPC facility at the University of Bath, which is maintained by Bath University Computing Services. 
 
 
