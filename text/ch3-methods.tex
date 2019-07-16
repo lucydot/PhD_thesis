@@ -41,7 +41,7 @@ Although no one single text is followed, concepts for the underlying theory have
 A fundamental postulate of quantum mechanics is that for any physical system there is an associated wavefunction that contains all the system information.
 The Schr\"{o}dinger equation describes the wavefunction $\Psi$ of a quantum mechanical system.  Once the Schr\"{o}dinger equation is solved, and a wavefunction is found, all the physical properties for that system follow. To take the simplest possible example, the time-independent non-relativistic Schr\"{o}dinger equation for a single particle can be written as:
 \begin{equation} \label{singleparticle}
-\left[\frac{-\hbar^2}{2m}\nabla^2+v_\textrm{ext}(\textbf{r})\right]\Psi(\textbf{r}) = E\Psi(\textbf{r})
+\left[\frac{-\hbar^2}{2m}\nabla^2+v_\textrm{ext}(\textbf{r})\right]\Psi(\textbf{r}) = E\Psi(\textbf{r}),
 \end{equation}
 where the first term in the bracket corresponds to the kinetic energy and the second term corresponds to the potential energy. For a single particle in a simple potential, such as the ``particle in a box'' system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). In this case, the Schr\"{o}dinger equation takes the form:
 \begin{equation}
@@ -171,7 +171,7 @@ When the Schr\"{o}dinger equation is solved for a hydrogen atom the solution giv
 The Bl\"{o}ch function is formed from the product of a basis function $u_\textbf{k}$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $\textbf k$ is the crystal wave vector which forms a space known as reciprocal space; to understand the physical significance of $\textbf{k}$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$. The electron states can be described as a linear combination of hydrogen 1s orbitals $u_n$ centred at each lattice point:
 
 \begin{equation} \label{1dbloch}
-\psi_k = \sum_nu_ne^{iknL}
+\psi_k = \sum_nu_ne^{iknL}.
 \end{equation}
 
 $k=0$ corresponds to the lowest energy bonding state, and $k=\frac{\pi}{L}$ corresponds to the highest energy anti-bonding state
@@ -320,7 +320,7 @@ The equilibrium concentration of defects $n$ at a fixed temperature and pressure
 \end{equation}
 where $\Delta G$ is the Gibbs free energy of defect formation. The Gibbs free energy is approximated as the formation energy $E_\mathrm{f}$ of the defect as this dominates over entropic contributions. The formation energy is given by:
 \begin{equation} \label{eqn_formation_energy}
-E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_\mathrm{F}) + E_\mathrm{corr}
+E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_\mathrm{F}) + E_\mathrm{corr},
 \end{equation}
 where $E_\mathrm{d}(q)$ is the total energy of the supercell with a defect of charge $q$ and $E_\mathrm{b}$ is the total energy of the perfect bulk. 
 $E_\mathrm{corr}$ is a correction energy that is only needed for charged defects and is discussed Section \ref{corrections}.
@@ -338,7 +338,7 @@ The charge transition level is equivalent to thermal ionization energy, the ener
 \begin{figure}[h]
 \centering
   \includegraphics[width=0.8\columnwidth]{figures/ch3/defectenergetics.png}
-  \caption[Formation energies of the Te vacancy in CdTe]{Formation energies $\Delta H_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect. Figure reproduced with permission from the work of Menendez et al.\autocite{Menendez2016}.}
+  \caption[Formation energies of the Te vacancy in CdTe]{Formation energies $\Delta H_f$ as a function of the Fermi energy for the Te vacancy in \ce{CdTe}. In a Te-rich environment it is more energetically unfavourable to form a Te-vacancy, as intuition would suggest. The slope of each line corresponds to the defect charge. Charge transition levels correspond to the energies at which the lines intersect. Figure reproduced with permission from the work of Menendez et al.\autocite{Menendez2016}}
   \label{CdTeformation}
 \end{figure}%cite https://iopscience.iop.org/article/10.1088/1742-6596/720/1/012031/pdf
 
@@ -497,7 +497,7 @@ where the linear transformation has cast coordinates $x$ into $Q$.
 The general solution to this system of equations for an $N$-atom unit cell in three dimensions is a superposition of $3N$ normal modes of vibration, each with its own frequency and eigenvector.
 To calculate the normal modes Newton's second law, $F=ma$, is applied. For crystalline solids we take advantage of symmetry and seek normal modes $\textbf{e}(\textbf{k},t)$ that for a chosen wavevector $\textbf{k}$ are a linear combination of a relative displacement within the unit cell ($\textbf{u}_0(i,\textbf{k})$), a phase that depends on the origin $\textbf{R}_I$ of cell $I$ ($\textrm{exp}(i\textbf{k}\cdot \textbf{R}_I)$), and an oscillation in time of well defined frequency $\omega(\textbf{k})$ ($\textrm{exp}(i\omega(\textbf{k})t)$):
 \begin{equation} \label{normalmodes}
-\textbf{e}(\textbf{k},t) = \textbf{u}_0(i,\textbf{k})\textrm{exp}(i\textbf{k}\cdot\textbf{R}_I)\textrm{exp}(i\omega(\textbf{k})t)
+\textbf{e}(\textbf{k},t) = \textbf{u}_0(i,\textbf{k})\textrm{exp}(i\textbf{k}\cdot\textbf{R}_I)\textrm{exp}(i\omega(\textbf{k})t).
 \end{equation}
 For displacements of this form, Newton's second law has consistent solutions only if the following secular equation is satisfied:
 \begin{equation}
@@ -532,7 +532,7 @@ The linear boltzmann transport equation (LBTE) describes a thermodynamic system 
 The phonon-phonon scattering rate determines the phonon lifetime $\tau_\lambda$ which is a key quantity in the expression for $\kappa$:
 \begin{equation}
     \label{thermalconductivity}
-    \kappa=\frac{1}{NV_0}\sum_\lambda C_\lambda v_\lambda \times v_\lambda \tau_\lambda
+    \kappa=\frac{1}{NV_0}\sum_\lambda C_\lambda v_\lambda \times v_\lambda \tau_\lambda,
 \end{equation}
 where $N$ is the number of unit cells in the crystal, $V_0$ is the unit cell volume, and $C_\lambda$, $v_\lambda$ and $\tau_\lambda$ are the mode-dependent heat capacity, group velocity and lifetime respectively. $C_\lambda$ and $v_\lambda$ can be calculated using the harmonic approximation. To quantify the strength of the anharmonic phonon interactions that determine $\tau_\lambda$ it is necessary to calculate a third-order force constant matrix. This is often at high computational cost; in Reference \cite{Whalley2016} 41,544 DFT calculations were required to calculate the thermal conductivity of a 96-atom unit cell.
 % -  can reduce the cst by just considering the phase space (broido talk, laptop notes)
