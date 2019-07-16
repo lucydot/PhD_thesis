@@ -68,7 +68,7 @@ while \ce{CH3NH3PbBr3} is cubic above $237$ K.\autocite{Poglitsch1987c}
     The saddle point corresponds to a $1\times1\times1$ cubic structure, whilst the two local minima correspond to a distorted structure of lower symmetry. 
 The energy barrier is small enough to allow both minima can be accessed at room temperature, so the system is expected to exhibit dynamic rather than static disorder. 
 Similar behaviour is found at the $M$ point. 
-Figure adapted by Aron Walsh with permission from Refs. \autocite{Whalley2016} and \autocite{Beecher2016a}.
+Figure adapted by Aron Walsh with permission from Refs. \cite{Whalley2016} and \cite{Beecher2016a}.
 The underlying phonon data is available from \url{https://github.com/WMD-group/Phonons}.
 }
 \label{fig2}
@@ -236,10 +236,6 @@ In a semiconductor, charge carrier scattering is often dominated by this electro
 Electron-phonon coupling is often calculated in a second-order density functional perturbation theory calculated for a static (rigid ion) structure.
 In the normal limit, this term is expected to dominate over the first order contribution from the acoustic deformation potential as vibrations are typically small. 
 
-In Chapter \ref{ch:5-epcoupling} a method to calculate the electron-phonon interaction of soft modes is outlined, and applied to the acoustic zone boundary tilting modes in hybrid halide perovskites described earlier. 
-A positive band-gap shift of 36 meV (\textit{R} point phonon) and 28 meV (\textit{M} point phonon) 
-is predicted at T = 300 K.
-%
 Saidi et al. sampled all non-soft harmonic phonons at the $\Gamma$ point using a Monte Carlo technique,\autocite{Saidi2016} finding significant differences with the standard perturbation theory results.
 %
 Electron-phonon interactions can be calculated with MD, but as with phonon-phonon scattering, 
@@ -450,37 +446,8 @@ Further refinements to the screening procedure could consider the change in elec
 % Excess \ce{PbI2}, which is distributed at the interface, when solution processing using \ce{MAI} and \ce{PbI2} precursor has shown to improve performance)
 % An improved coupling between the \ce{TiO2} and perovskite was found when the perovskite was terminated with \ce{PbI2}, simulating the non-stochiometric material \autocite{Mosconi2016}.
 
-\begin{table*} \centering
-\caption[Common issues that arise in the simulation of hybrid perovskites]{\label{tab:techsol} A collection of common issues that can arise in the simulation of hybrid perovskites, sourced from members of the Walsh Materials Design Group.
-}
-\begin{tabular}{p{4cm}p{4cm}p{6cm}}
-\toprule
-Technique & Symptom & Solution \\
-\midrule
-Geometry \newline optimisation & Partial occupancy in structure files & Test different configurations and check total energy \\
-Geometry \newline optimisation & Missing H in structure files & Include H based on chemical knowledge and electron counting  \\
-Geometry \newline optimisation & Slow ionic convergence & Try changing algorithm type and settings \\
-Electronic structure & Bandgap is too large & Include spin-orbit coupling and consider excitonic effects \\
-Electronic structure & Bandgap is too small & Use a more sophisticated exchange-correlation functional \\
-Electronic structure & Bandgap is still too small & Try breaking symmetry, especially for cubic perovskites \\
-Electronic structure & Workfunction is \newline positive & Align to external vacuum level using a non-polar surface  \\
-Supercell convergence & Unusual convergence behaviour & Use only even cell expansions (e.g. $2\times2\times2$) \\
-Ab initio \newline thermodynamics & No stable chemical \newline potential range & No easy fix (many hybrid\newline materials are metastable) \\
-Berry phase \newline polarisation & Spontaneous polarisation is too large & Use appropriate reference \newline structure and pathway \\
-Point defects & Negative formation \newline energies & Check for balanced chemical reaction and chemical potential limits \\
-Point defects & Transition levels are deep in band-gap & Check supercell expansion and charged defect corrections \\
-Alloyed systems & Many possible \newline configurations & Use appropriate statistical \newline mechanics \\
-Lattice dynamics & Many imaginary phonon modes & Check supercell size and force convergence \\
-Lattice dynamics & Imaginary modes at zone boundaries & Use mode-following to map out potential energy surface \\
-Molecular dynamics & System melts or \newline decomposes & Check $k$-points and basis set\newline convergence \\
-Molecular dynamics & Unphysical dynamics & Check equilibration and supercell expansion \\
-Molecular dynamics & No tilting observed & Use an even supercell expansion \\
-Electron-phonon\newline coupling & Values far from \newline experiment & Consider anharmonic terms \newline beyond linear response theory   \\
-Drift-diffusion model & Current-voltage behaviour incorrect & Consider role of fluctuating ions and electrostatic potentials \\
-\bottomrule
-\end{tabular}
 
-\end{table*}
+
 
 \section{Summary}
 
@@ -489,6 +456,7 @@ Common issues that can arise in the simulation of hybrid perovskites are summari
 %
 The volume of work in this area means that all active areas of research cannot be addressed, including perovskite-like structures with lower dimensionality (e.g. Ruddleston-Popper phases)\autocite{Tsai2016,Saparov2016b,Ganose2015} and double perovskites with pairwise substitutions on the B site,\autocite{Savory2016,McClure2016a,Wei2016a,Volonakis2016} 
 which are both attracting significant interest. 
+%include here that there are on average 10 papers a day?!
 
 The properties of hybrid halide perovskites which are difficult to model are also those which make them a successful PV material.
 For example, calculating ground state electronic properties using the approximation of a single static lattice does not capture the effects of strong electronic-ionic coupling. However, it is this coupling screens charge, produces a defect tolerant material, facilitates fast charge separation and suppresses excitonic states.
@@ -501,7 +469,35 @@ Attempts are now being made to distill this understanding into descriptors for t
 %The coupling between electronic and nuclear motion may also be a fruitful avenue, especially in the context of defects.
 % Can you have a de-localised deep defect?? You can have a localised shallow defect!! (Shockley paper).
 
-\subsubsection{Acknowledgements}
-
-This work was funded by the EPSRC (grant numbers EP/L01551X/1 and EP/K016288/1), the Royal society, and the ERC (grant no. 277757). 
-% include computer time here also
+\begin{landscape}
+\begin{table}[tb]\centering
+\begin{tabular}{p{5cm}p{7cm}p{10cm}}
+\toprule
+Technique & Symptom & Solution \\
+\midrule
+Geometry  optimisation & Partial occupancy in structure files & Test different configurations and check total energy \\
+Geometry  optimisation & Missing H in structure files & Include H based on chemical knowledge and electron counting  \\
+Geometry  optimisation & Slow ionic convergence & Try changing algorithm type and settings \\
+Electronic structure & Bandgap is too large & Include spin-orbit coupling and consider excitonic effects \\
+Electronic structure & Bandgap is too small & Use a more sophisticated exchange-correlation functional \\
+Electronic structure & Bandgap is still too small & Try breaking symmetry, especially for cubic perovskites \\
+Electronic structure & Workfunction is  positive & Align to external vacuum level using a non-polar surface  \\
+Supercell convergence & Unusual convergence behaviour & Use only even cell expansions (e.g. $2\times2\times2$) \\
+Ab initio  thermodynamics & No stable chemical  potential range & No easy fix (many hybrid materials are metastable) \\
+Berry phase polarisation & Polarisation is too large & Use appropriate reference  structure and pathway \\
+Point defects & Negative formation  energies & Check for balanced chemical reaction and chemical potential limits \\
+Point defects & Transition levels are deep in band-gap & Check supercell expansion and charged defect corrections \\
+Alloyed systems & Many possible  configurations & Use appropriate statistical  mechanics \\
+Lattice dynamics & Many imaginary phonon modes & Check supercell size and force convergence \\
+Lattice dynamics & Imaginary modes at zone boundaries & Use mode-following to map out potential energy surface \\
+Molecular dynamics & System melts or  decomposes & Check $k$-points and basis set convergence \\
+Molecular dynamics & Unphysical dynamics & Check equilibration and supercell expansion \\
+Molecular dynamics & No tilting observed & Use an even supercell expansion \\
+Electron-phonon coupling & Values far from  experiment & Consider anharmonic terms  beyond linear response \newline theory   \\
+Drift-diffusion model & Current-voltage behaviour incorrect & Consider role of fluctuating ions and electrostatic \newline potentials \\
+\bottomrule
+\end{tabular}
+\caption[Common issues that arise in the simulation of hybrid perovskites]{\label{tab:techsol} Common issues that arise in the simulation of hybrid perovskites, sourced from members of the Walsh Materials Design Group.
+}
+\end{table}
+\end{landscape}

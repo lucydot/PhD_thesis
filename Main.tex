@@ -23,8 +23,7 @@
 \newcommand{\grun}{Gr\"{u}neisen }
 \newcommand{\mob}{cm$^2$V$^{-1}$s$^{-1}$}
 
-
-
+%\DeclareUnicodeCharacter{2212}{-}
 
 
 %%%%% CHOOSE PAGE LAYOUT
@@ -44,11 +43,14 @@
 \usepackage{pdfpages}
 
 %%%%%LW - table options
-
 \usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{booktabs}% introduce commands for toprule, cmidrule, bottomrule
 \renewcommand{\arraystretch}{1.2}   % increase spacing between rows
 
+%%% For landscape table
+\usepackage{pdflscape}
+\usepackage{rotating}
+\usepackage{afterpage}
 
 %%%%% SELECT YOUR DRAFT OPTIONS
 % Three options going on here; use in any combination.  But remember to turn the first two off before
@@ -71,7 +73,7 @@
 % Either way, you'll have to choose and configure an appropriate bibliography format...
 
 % The science-type option: numerical in-text citation with references in order of appearance.
-\usepackage[ style=nature, autocite=superscript, sorting=none, backend=bibtex, doi=false, eprint=false, isbn=false, url=true,urldate=long]{biblatex}
+\usepackage[ style=nature, autocite=superscript, sorting=none, backend=bibtex, doi=false, eprint=false, isbn=false, url=false, doi=false, urldate=long]{biblatex}
 
 % LW - all this so I can print date accessed a URL
 \DeclareBibliographyDriver{online}{% modified from biblatex-nature's bbx
@@ -136,11 +138,13 @@
 \usepackage{lscape}
 
 %%%%%LW - lists that aren't all whitespace
-\newenvironment{itemize*}%
-  {\begin{itemize}%
-    \setlength{\itemsep}{0pt}}%
-    %\setlength{\parskip}{0pt}}%
-  {\end{itemize}}
+%\newenvironment{itemize*}%
+%  {\begin{itemize}%
+%    \setlength{\itemsep}{0pt}}%
+%    %\setlength{\parskip}{0pt}}%
+%  {\end{itemize}}
+
+\usepackage{enumitem}
 
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
@@ -300,19 +304,14 @@
 \include{text/ch1-intro}
 \include{text/ch2-litreview}
 \include{text/ch3-methods}
-%\include{text/ch4-effmass}
-%\include{text/ch5-epcoupling}
+\include{text/ch4-effmass}
+\include{text/ch5-epcoupling}
 %\include{text/ch6-defects}
 
 %%% DEBUGGIN'
 %\include{text/test}
 
 %%%%%% LW - closing remarks
-
-\begin{savequote}[8cm]
-“I don't know where I'm going from here, but I promise it won't be boring.” 
-  \qauthor{--- David Bowie}
-\end{savequote} 
 \begin{closing}
     \input{text/closing}
 \end{closing}
@@ -325,6 +324,7 @@
 \include{text/appendix-2}
 \include{text/appendix-3}
 \include{text/appendix-1}
+\include{text/appendix-6}
 \include{text/appendix-4}
 \include{text/appendix-5}
 
@@ -341,8 +341,9 @@
 \setlength{\baselineskip}{0pt} % JEM: Single-space References
 
 
-{\renewcommand*\MakeUppercase[1]{#1}%
-\printbibliography[title={References}]}
+{\renewcommand*\MakeUppercase[1]{#1}}
+
+\printbibliography[title={References}]
 
 
 

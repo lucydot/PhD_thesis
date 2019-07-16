@@ -40,7 +40,7 @@ The threat of climate change seems not to have had a proportionate response from
 One way to reduce the rate of climate change is to generate energy through processes that do not release net positive amounts of CO$_2$ into the atmosphere, and harnessing the vast amount of energy that is released from the sun is one way of doing this. This idea has been around for more than sixty years; in 1954 Bell Labs demonstrated that it was possible to convert sunlight into electricity by powering a small toy Ferris wheel and radio transmitter with a silicon solar cell. Reporting this event, The New York Times wrote:
 %http://www.aps.org/publications/apsnews/200904/physicshistory.cfmthe New York Times wrote that:
 \begin{displayquote}
-“[the solar cell] may mark the beginning of a new era, leading eventually to the realization of one of mankind’s most cherished dreams–the harnessing of the almost limitless energy of the sun for the uses of civilization.”
+“[the solar cell] may mark the beginning of a new era, leading eventually to the realization of one of mankind’s most cherished dreams –- the harnessing of the almost limitless energy of the sun for the uses of civilization.”
 \end{displayquote}
 A solar flux density of $1361\,\textrm{Wm}^{-2}$ reaches the earth's atmosphere each second, which is almost $10^4$ times larger than any other external energy source.\autocite{Kopp2011} A quick back-of-the-envelope calculation shows that if we assume a sunlight to electricity conversion efficiency of 40\% (achievable using concentrated solar power) and zero transmission loss, we could meet the world's electricity demands ($22\,\textrm{PWh}$ in 2015\autocite{IEA2017}) by covering an area equivalent to Northumberland county ($5000\,\textrm{km}^2$) with photovoltaic solar panels.
 %$46400\,Wm^{-2}$ is the absolute limit if we consider concentrator cell architectures (section \ref{SQlimit}). 
@@ -74,13 +74,11 @@ It is widely predicted that solar power will continue to grow -- to what extent 
 %- from library: Photovoltaic Solar Energy: From Fundamentals to Applications: Angèle Reinders, Pierre Verlinden, Wilfried van Sark, Alexandre Freundlich
 Photovoltaic devices are commonly split into three generations. In this section I introduce each generation and discuss what is driving the development of new PV materials in a competitive market that is dominated by silicon.
 
-\newline
-\textbf{First generation}\newline
+\textbf{First generation}
 
 The first generation devices are based upon mono- and poly-crystalline silicon wafers. They dominate the PV market; in 2016 90\% of total PV module production used this technology.\autocite{Jager-Waldau2017}. They are high efficiency (>20\%), reliable (25 year lifetimes) and low cost (<0.5 \$/W). There has been a steady decrease in cost due to i) device engineering improvements (eg: textured surfaces); ii) the economies of scale as silicon industrial processes are driven by a demand for computer chips; and iii) improved industrial practices which allow thinner and thinner wafers to be fabricated with less waste. However there are technological and physical limits to how much the cost of a crystalline silicon wafer can be reduced. First, the manufacturing process for silicon wafers is energy intensive and requires high temperatures. Second, silicon is an indirect bandgap material and as a result does not absorb sunlight efficiently; wafers have to be a minimum thickness ($\sim 60\mu \textrm{m}$) to compensate for this. It is difficult to reach this limit without snapping the material during fabrication as silicon is a hard and brittle material.
 
-\newline
-\textbf{Second generation}\newline
+\textbf{Second generation}
 
 Second generation devices are fabricated from the direct bandgap materials gallium arsenide (GaAs), cadmium telluride (CdTe), cadmium indium gallium diselenide (CIGS) and amorphous silicon (a-Si). These materials have higher absorption coefficients, so they can be built into lighter thin-film ($\sim 10\mu \textrm{m}$) architectures. A thin-film is not mechanically stable, it needs a substrate, but this opens up possibility of it being a flexible film.
 
@@ -88,8 +86,8 @@ CdTe was the first thin film to be commercialised and development has been led b
 
 % Much is invested into cheap solution deposition methods rather than expensive vacuum deposition like that used for GaAs. Jake Bowers / Mitzi
 % What about GaInP??
-\newline
-\textbf{Third generation}\newline
+
+\textbf{Third generation}
 
 Third generation devices are emerging technologies which are not yet in the market. This includes organic and dye-sensitised materials, hybrid halide perovskites, and copper zinc tin sulfide (CZTS). These are abundant materials which can be fabricated through low-cost solution-deposition methods. Only the hybrid-halide perovskites have efficiencies high enough for commercialisation (currently 24.2\%).
 
@@ -280,19 +278,20 @@ Electron-hole recombination competes with charge extraction to the external circ
 
 Radiative recombination and Auger recombination are unavoidable processes intrinsic to the material, whereas SRH recombination is an avoidable process that can be controlled through defect engineering. The SRH recombination rate is given by
 \begin{equation}
-U_\textrm{SRH} = \frac{np-n_\textrm{i}^2}{\tau_\textrm{n,SRH}(p+p_t)+\tau_\textrm{p,SRH}(n+n_t)},
+U_\textrm{SRH} = \frac{np-n_\textrm{i}^2}{\tau_\textrm{n,SRH}(p+p_\textrm{t})+\tau_\textrm{p,SRH}(n+n_\textrm{t})},
 \end{equation}
-where $n$ ($p$) is the density of electrons (holes), $n_i$ is the intrinsic carrier density and $n_t$ ($p_t$) is the value of the electron (hole) density when the electron Fermi level is equal to the trap level $E_t$: 
+where $n$ ($p$) is the density of electrons (holes), $n_i$ is the intrinsic carrier density and $n_\mathrm{t}$ ($p_\mathrm{t}$) is the value of the electron (hole) density when the electron Fermi level is equal to the trap level $E_\mathrm{t}$: 
 \begin{align}
-n_t &= n_ie^{\frac{(E_t-E_c)}{k_BT}} \\
-n_p &= n_ie^{\frac{(E_v-E_t)}{k_BT}},
+n_\mathrm{t} &= n_\mathrm{i}e^{\frac{(E_\mathrm{t}-E_\mathrm{c})}{k_\mathrm{B}T}} \\
+n_\mathrm{p} &= n_\mathrm{i}e^{\frac{(E_\mathrm{v}-E_\mathrm{t})}{k_\mathrm{B}T}},
 \end{align}
-where $E_c$ and $E_v$ are the energies of the CBM and VBM respectively. The recombination rate has a maximum when the rates of hole capture and electron capture are comparable. This happens when the trap level is in the middle of the bandgap, and $n_t = p_t$. % note here that deep state not needed: czts : https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b01313
+where $E_\mathrm{c}$ and $E_\mathrm{v}$ are the energies of the CBM and VBM respectively. The recombination rate has a maximum when the rates of hole capture and electron capture are comparable. This happens when the trap level is in the middle of the bandgap, and $n_\mathrm{t} = p_\mathrm{t}$. % note here that deep state not needed: czts : https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b01313
 
-$\tau_\textrm{n,SRH}$ ($\tau_\textrm{p,SRH}$) is the electron (hole) lifetime. For a trap density $N_t$, mean thermal electron (hole) velocity $v_n$ ($v_p$) and electron (hole) capture cross section $\sigma_n$ ($\sigma_p$), the lifetimes can be approximated as 
+$\tau_\textrm{n,SRH}$ ($\tau_\textrm{p,SRH}$) is the electron (hole) lifetime. For a trap density $N_\mathrm{t}$, mean thermal electron (hole) velocity $v_\mathrm{n
+}$ ($v_\mathrm{p}$) and electron (hole) capture cross section $\sigma_\mathrm{n}$ ($\sigma_p$), the lifetimes can be approximated as 
 \begin{align}
-\tau_\textrm{n,SRH} &= \frac{1}{v_n\sigma_nN_t} \\
-\tau_\textrm{p,SRH} &= \frac{1}{v_p\sigma_pN_t}.
+\tau_\textrm{n,SRH} &= \frac{1}{v_\mathrm{n}\sigma_\mathrm{n}N_\mathrm{t}} \\
+\tau_\textrm{p,SRH} &= \frac{1}{v_\mathrm{p}\sigma_\mathrm{p}N_\mathrm{t}}.
 \end{align}
 The standard approach for calculating the trap density from first principles is give in Chapter\ \ref{ch:3-methods}, and a method for calculating the capture cross section is outlined in the results Chapter\ \ref{ch:6-defects}.
 
@@ -301,9 +300,9 @@ The standard approach for calculating the trap density from first principles is 
 Carrier lifetimes and recombination rates are difficult to measure experimentally as ultra fast optical and electronic sensors are needed to capture transient behaviour, and this must be done in conditions relavant to photovoltaic performance. Time resolved photoluminscence (TRPL) and photoconductivity measurements are used to infer the recombination rates for each recombination pathway.
 Each pathway scales differently with carrier concentration, as specified by the following rate equation:
 \begin{equation}
-\frac{d n}{\d t} = G -k_1n -k_2n^2 -k_3n^3 
+\frac{d n}{d t} = G -k_1n -k_2n^2 -k_3n^3 
 \end{equation}
-where $G$ is the rate of electron-hole generation, $k_1$ is the rate constant for SRH recombination, $k_2$ is the rate constant for radiative recombination and $k_3$ is the rate constant for Auger recombination. SRH recombination via a trap state is a one particle process that scales linearly with the carrier concentration. Radiative recombination is a two particle process that depends on the electron density ($n_e$) and hole density ($n_h$), so scales quadratically with carrier concentration. Auger recombination requires three particles and scales cubically.
+where $G$ is the rate of electron-hole generation, $k_1$ is the rate constant for SRH recombination, $k_2$ is the rate constant for radiative recombination and $k_3$ is the rate constant for Auger recombination. SRH recombination via a trap state is a one particle process that scales linearly with the carrier concentration. Radiative recombination is a two particle process that depends on the electron density and hole density, so scales quadratically with carrier concentration. Auger recombination requires three particles and scales cubically.
 TRPL uses short laser pulses to excite excess electrons and holes which then decay via recombination or carrier extraction at an interface. Exponential curves are fitted to the TRPL signal at different laser fluences to extract carrier lifetimes. In general, for solar cells operating under 1.5AM illumination, second order SRH recombination is the dominant recombination mechanism.
 % 
 % https://www-herz.physics.ox.ac.uk/publications/Herz16a.pdf
@@ -326,54 +325,64 @@ Materials screening criteria must be defined so that successful materials are id
 
 With the concept of inverse design in mind, items for a successful PV material ``shopping list'' are listed below. The final three items (toughness, elemental abundance, elemental non-toxicity) are not necessary for successful devices in the lab, but would promote commercialisation of the technology.
 
-\newline
-\textbf{Thermodynamic stability}\newline
+
+\textbf{Thermodynamic stability}
+
 The material should be thermodynamically stable with regard to competing phases so that it does not degrade over years of operation. The binary compound CdTe was the first thin film PV material to be commercialised and, similar to GaAs, it has no competing phases. Quaternary chalcogenide compounds such as \ce{CISSe} and CZTS have many more competing phases to consider and the chemical potentials during synthesis must be very finely tuned for stability, which hinders their development.
 % Cu3Bi5S3 chalcogenide (major group). 0.1\% efficiency. Probelm: other phases. Keep it cimple: Sb2S3/Sb2Se3 - 5.5% with 3o papers/
 %The same thing that makes a material have a good bandgap is that which makes it degrade (something about the bonding strenght??)
 
-\newline
-\textbf{Optimum bandgap}\newline
+
+\textbf{Optimum bandgap}
+
 Ultimately, it is the spectrum of the sun and features of our atmosphere (light scattering and absorption) that dictates the design of solar cells; we must optimise our solar technology to take advantage of the spectrum that is particular to our planet. The Shockley-Queisser limit, discussed in subsection\ \ref{sec:SQlimit}, gives an optimum bandgap of \SI{1.4}{\electronvolt}.\autocite{Ruhle2016}
 Atomic disorder or point defects can reduce the material band gap. Quaternaries with elemental species of a comparable atomic radii are more likely to exhibit atomic disorder -- for example in CZTS this leads to a bandgap reduction of \SI{30}{meV}.\autocite{Rey2018}
 
-\newline
-\textbf{Strong light absorption}\newline
+
+\textbf{Strong light absorption}
+
 The absorption coefficient specifies how much light of a particular wavelength is absorbed by a material. Different semiconductor materials have different absorption coefficients; those with a higher absorption coefficient will more readily absorb light. Silicon is an indirect bandgap material that requires phonon-assisted absorption. As a result, crystalline silicon absorbs 92\% of light in a thickness of  \SI{200}{\micro\metre}, whilst CdTe can absorbe the same amount in a thickness of \SI{1}{\micro\metre}.\autocite{Poortmans2006}
 %As a result of relativistic spin-orbit coupling, the hybrid halide perovskite MAPI is also an indirect bandgap material. However, as spin splitting of the conduction band edge is small () and the density of states at the valence band edge is large, this has a negligible influence on light absorption in the material.\autocite{Azarhoosh2016}
 
-\newline
-\textbf{Low exciton binding energy}\newline
+
+\textbf{Low exciton binding energy}
+
 After light absorption, a bound electron-hole pair (exciton) is created. The electron and hole must disassociate so that they can travel to their respective contacts. Here, the dielectric response is key, as this determines how readily a material will screen electrostatic perturbations. Organic solar cell materials are limited by low dielectric constants ($\epsilon_0 \approx 3--4$) that lead to large exciton binding strengths.\autocite{Brebels2017} In inorganic or hybrid materials the dielectric constants are higher ($\epsilon_0=10.4$ for CdTe,\autocite{Madelung2004} whilst values vary from $\epsilon_0=16.6$ to $\epsilon_0=28.5$ for MAPI\autocite{Wilson2019}).
 % dielectric constant - effective mass theory
 % polar domains for charge separation
 
-\newline
-\textbf{High carrier mobility}\newline
+
+\textbf{High carrier mobility}
+
 Some materials may have suitable optical properties but are unable to transport the photogenerated charge efficiently to the contact layers. Carrier mobility quantifies how quickly an electron or hole can move through a material when pulled by an electric charge. 
 Light carrier effective masses (high band dispersions) correspond to higher mobilities. However light effective masses are not sufficient in themselves as there are various scattering channels to consider: lattice scattering, carrier-carrier scattering and defect scattering. The most significant scattering mechanisms in a PV material are lattice scattering and ionized defect scattering.
-A high dielectric constant is beneficial to carrier mobility as the rate of ionized defect scattering is proportional to $\frac{1}{\epsilon^2}$. The composition of the material is also important -- for example, vacancies in gallium nitride (Ga($3+$)N($3-$)) carry a larger charge and have a larger scattering cross section than vacancies in MAPI ($CH_3NH_3$($1+$)Pb($2+$)I($1+$)$_3$).
+A high dielectric constant is beneficial to carrier mobility as the rate of ionized defect scattering is proportional to $\frac{1}{\epsilon^2}$. The composition of the material is also important -- for example, vacancies in gallium nitride (Ga$^{3+}$N$^{3-}$) carry a larger charge and have a larger scattering cross section than vacancies in MAPI (\ce{CH_3NH_3}$^{1+}$Pb$^{2+}$I$^{1+}_3$).
 
-\newline
-\textbf{Long carrier lifetime}\newline
+
+\textbf{Long carrier lifetime}
+
 Carrier lifetime has already been discussed in the context of electron-hole recombination in Section\ \ref{recombination}. Whereas the concentration of defects is important for carrier mobility, here it is the energy of defect states with respect to the valence and conduction band which is important. This is discussed in Chapter \ref{ch:6-defects}. In summary, the key is to minimise non-radiative recombination via deep level defect states (also known as ``killer defects''). Carrier diffusion length, another important figure of merit with regard to carrier transport, is proportional to the product of carrier mobility and lifetime.
 
-\newline
-\textbf{Compatibility}\newline
+
+\textbf{Compatibility}
+
 For efficient charge extraction, the PV absorber layer must be compatible with suitable contact and/or buffer layers. Firstly, the energy levels of the interfacing materials must align so that there is an electrical potential gradient to extract the charge, without significant loss of $V_\textrm{OC}$. For example, band mis-alignments are reported to be the source of poor photovoltaic efficiencies in the candidate absorober materials \ce{BiSI} and \ce{BiSeI}.\autocite{Ganose2016} Secondly, lattice mismatch at the interface should be avoided as this can lead to deep point defects that provide sites for non-radiative recombination and, in the case of more severe strain, an incoherent interface with many defect sites and weak chemical bonding. Computational screening procedures can be used to identify potential electronically and structurally matched contact layers and this has been recently applied to the hybrid halide perovskites.\autocite{Butler2016}
 %more examples?
 % http://science.sciencemag.org/content/sci/352/6283/aad4424.full.pdf “Photovoltaic materials: Present efficiencies and future challenges”
 
-\newline
-\textbf{Toughness}\newline
+
+\textbf{Toughness}
+
 Silicon is a brittle material; the majority of Si material in a solar cell is used as a mechanical carrier to prevent crack propagation, and glass must be used as a protective layer. The resulting cell is often too heavy to be installed on structures which are made from wood or sheet metal. In addition, the bulk of system costs are higher for heavier cells. Organic photovoltaics, and to some extent perovskites, are tougher and can be made using roll-to-roll print processes onto a flexible substrate.
 
-\newline
-\textbf{Elemental abundance}\newline
+
+\textbf{Elemental abundance}
+
 The power generated from PV installations must exceed \SI{1}{TW} to make a real impact on global carbon emissions.\autocite{Battersby2019} To meet this demand, PV materials must be made from abundant elements that are in ready supply at reasonable cost. To quantify this criteria, the Herfindahl–Hirschman index (HHI), which is used in economics as a measure of market concentration, can be applied to elements. The HHI indicates that Si is abundant but that production is highly concentrated in a few countries. Elements common to the third generation of materials---Cu, Zn, S, Se, Sn---are less abundant but their production is more highly distributed across the globe.\autocite{Gaultois2013}
 
-\newline
-\textbf{Elemental non-toxicity} \newline
+
+\textbf{Elemental non-toxicity} 
+
 Finally, toxic elements may hinder the succesful commercialisation of future PV technologies. The problem is not insurmountable; cadmium telluride is toxic if ingested but is a commercial solar cell material. Encapsulation and recycling can reduce any risk, but add another level of complexity to the development of new solar technologies.
 
 \section{Summary}
@@ -395,16 +404,16 @@ To reduce the rate of climate change we must decrease our reliance on fossil fue
 
 \section{Thesis outline}
 
-Organic-inorganic halide perovskites, the subject of this thesis, present a number of challenges for first-principles atomistic materials modelling. These `plastic crystals' feature dynamic processes across multiple length-scales and time-scales, which include mixed ionic-electronic transport, highly anharmonic lattice dynamics and strong relativistic (spin-orbit coupling) effects on the electronic band structure.
-These issues, which affect the operation of solar cells, are outlined in the following chapter. 
+Organic-inorganic halide perovskites present a number of challenges for first-principles atomistic materials modelling. These `plastic crystals' feature dynamic processes across multiple length-scales and time-scales, which include mixed ionic-electronic transport, highly anharmonic lattice dynamics and strong relativistic (spin-orbit coupling) effects on the electronic band structure.
+These issues, which affect the operation of solar cells, are outlined in a review of the literature. 
 This is followed by a brief introduction to the theory that underlies almost all of the work in this thesis - Density Functional Theory (DFT). 
-To model an imperfect material (one with crystal defects), or temperature effects, a series of post-processing steps must follow the DFT calculation. These are also outlined in Chapter Three.
+To model an imperfect material (one with crystal defects), or a material at finite temperature, there are a series of post-processing steps that follow the DFT calculation. These are also outlined in Chapter Three.
 
-Chapters Four--Six contain the thesis results. Each results chapter also contains any additional theory where required and calculation steps.
-Bulk transport and optical properties of the perfect material are calculated using Effective Mass Theory (EMT) in Chapter Three. 
-EMT often assumes a parabolic electronic band dispersion, in this chapter distortions away from parabolicity are considered.
+Chapters Four to Six contain the thesis results. Each results chapter contains any additional theory, where required, and calculation steps. Bulk transport and optical properties of the perfect material are calculated using Effective Mass Theory (EMT) in Chapter Three. 
+EMT often assumes a parabolic electronic band dispersion, however in this chapter non-parabolic distortions are considered.
 Temperature effects are introduced in Chapter Four. 
 At room temperature the inorganic octahedral \ce{PbI3} units tilt back and forth, and the coupling strength between this tilting and the electronic sub-sytem is quantified.
-Point defects are introduced to our model in Chapter Six. Point defects can be benign or harmful to device performance, depending upon the properties of the defect. This chapter reports the properties of the iodine interstitial point defect.
+Finally, point defects are introduced to our model in Chapter Six. Point defects can be benign or harmful to device performance, depending upon the properties of the defect. This chapter focuses on the iodine interstitial point defect and gives the rate of charge trapping at this defect site.
+% check that it actually does this!
 
 
