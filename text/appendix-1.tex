@@ -3,13 +3,13 @@
 \section{Summary}
 \label{sec:summary}
 
-Many semiconductor properties depend on the response of electrons to an external pertubation. This perturbation could take the form of an electric field, change in temperature or an applied lattice stress. In a crystal, this response depends on the interaction of the electrons with a periodic potential. The effective mass approximation assumes that the response of an electron in a periodic potential is equivalent to that of a free electron with a renormalised mass (called the ``effective mass''). This makes the effective mass a critical parameter in models for the optical and transport properties of a semiconductor.
+Many semiconductor properties depend on the response of electrons to an external perturbation. This perturbation could take the form of an electric field, change in temperature or an applied lattice stress. In a crystal, this response depends on the interaction of the electrons with a periodic potential. The effective mass approximation assumes that the response of an electron in a periodic potential is equivalent to that of a free electron with a renormalised mass (called the ``effective mass''). This makes the effective mass a critical parameter in models for the optical and transport properties of a semiconductor.
 
-The effective mass has a number of definitions, depending on the perturbation under consideration. The conventional definition of effective mass is inversely proportional to the second derivative of electron energy with respect to electron momentum \autocite[p.~227]{Ashcroft1976}. This allows the effective mass to be easily calculated from ab-initio band structures, and there are existing codes which have implemented this (see section ``Related packages'' below).
+The effective mass has a number of definitions, depending on the perturbation under consideration. The conventional definition of effective mass is inversely proportional to the second derivative of electron energy with respect to electron momentum.\autocite[p.~227]{Ashcroft1976} This allows the effective mass to be easily calculated from ab-initio band structures, and there are existing codes which have implemented this (see section ``Related packages'' below).
 
-We must approximate the band structure with a parabola for the previous definition to be valid \autocite{Ariel2012}. However, this approximation breaks down when there is a high concentration of electrons in the material - when, for example, the material is doped or excited under a laser. Instead, we can then approximate the band structure with the Kane quasi-linear dispersion \autocite{Kane1957}, and the definition of effective mass is adapted accordingly.
+We must approximate the band structure with a parabola for the previous definition to be valid.\autocite{Ariel2012} However, this approximation breaks down when there is a high concentration of electrons in the material - when, for example, the material is doped or excited under a laser. Instead, we can then approximate the band structure with the Kane quasi-linear dispersion,\autocite{Kane1957} and the definition of effective mass is adapted accordingly.
 
-effmass \autocite{Whalley2018b} is a Python 3 package for calculating various definitions of effective mass from the electronic bandstructure of a semiconducting material. It contains a core class that calculates the effective mass and other associated properties of selected band structure segments. effmass also contains functions for locating band structure extrema, calculating the Kane quasi-linear dispersion parameters and plotting approximations to the true dispersion. Parsing of electronic structure data is faciliated by the vasppy \autocite{Morgan2018} package.
+effmass\autocite{Whalley2018b} is a Python 3 package for calculating various definitions of effective mass from the electronic bandstructure of a semiconducting material. It contains a core class that calculates the effective mass and other associated properties of selected band structure segments. effmass also contains functions for locating band structure extrema, calculating the Kane quasi-linear dispersion parameters and plotting approximations to the true dispersion. Parsing of electronic structure data is facilitated by the vasppy package.\autocite{Morgan2018}
 
 The effmass package is aimed towards theoretical solid state physicists and chemists who have a basic familiarity with Python. Depending on the functionality and level of approximation you are looking for, it may be that one of the packages listed below will suit your needs better.
 
@@ -18,10 +18,10 @@ The effmass package is aimed towards theoretical solid state physicists and chem
 
 Effective mass calculations are implemented in a number of other packages:
 \begin{itemize}
-    \item vasppy \autocite{Morgan2018}: This is installed as a dependancy of effmass. Calculates the effective mass using a least-squares quadratic fit for parabolic dispersions.
-    \item sumo \autocite{Ganose2018}: Calculates the effective mass using a least-squares fit for parabolic and non-parabolic dispersions.
-    \item emc \autocite{Fornari2012}: Calculates the effective mass tensor using a finite-difference method for parabolic dispersions.
-    \item pymatgen \autocite{Ong2013}: This is installed as a dependancy of effmass. Calculates an average effective mass tensor for non-parabolic dispersions with multiple bands and extrema. Also calculates the Seebeck effective mass as defined here.
+    \item vasppy \cite{Morgan2018}: This is installed as a dependancy of effmass. Calculates the effective mass using a least-squares quadratic fit for parabolic dispersions.
+    \item sumo \cite{Ganose2018}: Calculates the effective mass using a least-squares fit for parabolic and non-parabolic dispersions.
+    \item emc \cite{Fornari2012}: Calculates the effective mass tensor using a finite-difference method for parabolic dispersions.
+    \item pymatgen \cite{Ong2013}: This is installed as a dependancy of effmass. Calculates an average effective mass tensor for non-parabolic dispersions with multiple bands and extrema. Also calculates the Seebeck effective mass as defined here.
 \end{itemize}
 
 \section{Unique features of effmass}
@@ -29,11 +29,11 @@ Effective mass calculations are implemented in a number of other packages:
 
 To our knowledge, the following features are unique to this package:
 \begin{itemize}
-    \item easily compare the values of curvature effective mass calculated using multiple numerical techniques (least-squares and polynomial fitting)
-    \item tailor the polynomial fitting used to approximate the DFT calculated dispersion: by choosing the order of the polynomial and the energy range to fit over.
-    \item visualise the dispersions used to approximate the DFT calculated dispersion
-    \item quantify non-parabolicity through the Kane dispersion parameters: effective mass at band-edge and alpha
-    \item calculate the optical effective mass assuming a Kane dispersion.
+    \item Easily compare the values of curvature effective mass calculated using multiple numerical techniques (least-squares and polynomial fitting)
+    \item Tailor the polynomial fitting used to approximate the DFT calculated dispersion: by choosing the order of the polynomial and the energy range to fit over.
+    \item Visualise the dispersions used to approximate the DFT calculated dispersion
+    \item Quantify non-parabolicity through the Kane dispersion parameters: effective mass at band-edge and alpha
+    \item Calculate the optical effective mass assuming a Kane dispersion.
 \end{itemize}
 
 \textbf{Acknowledgements}
