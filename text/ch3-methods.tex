@@ -248,7 +248,7 @@ This cutoff energy must be tested to ensure that the property of interest, most 
   \label{kpointconvergence}
 \end{figure}
 
-To calculate many properties of interest we need to integrate over the Brillouin Zon in reciprocal space. To calculate the total energy of an insulator for example, we use
+To calculate many properties of interest we need to integrate over the Brillouin Zone in reciprocal space. To calculate the total energy of an insulator for example, we use
 \begin{equation} \label{energyintegral}
     E = \frac{\Omega}{(2\pi)^3}\sum_\textrm{occ.}\int_\textrm{BZ}E(\textbf{k})d^3k
 \end{equation}
@@ -386,7 +386,7 @@ Secondly, a homogeneous `jellium' background charge is introduced to ensure over
 These are finite-size effects that only a very large, almost infinite, supercell would overcome.
 However a system this size is computationally intractable, especially considering that higher levels of theory (for example, hybrid functionals) are often required to calculate accurate total energies.
 
-A number of correction schemes have been developed to deal with these issues; a brief historical overview is given below. These schemes are designed to be used as a post-processing step and provide a value for the $E_{corr}$ term in Eqn.\ref{eqn_formation_energy}. A more complete description of these issues can be found in References \cite{durrant2018,Vinichenko2017}
+A number of correction schemes have been developed to deal with these issues; a brief historical overview is given below. These schemes are designed to be used as a post-processing step and provide a value for the $E_{corr}$ term in Eqn.\ref{eqn_formation_energy}. A more complete description of these issues can be found in References \cite{durrant2018} and \cite{Vinichenko2017}.
 
 The Leslie Gillan correction\autocite{Leslie1985} $E^\mathrm{LG}$ models the defect charge $q$ as a point charge interacting with its periodic images through an isotropic dielectric medium. 
 This correction takes a simple analytic form that depends on the charge state  $q$, static dielectric constant $\epsilon_0$, separation between defect images $L$ and the Madelung constant $\alpha_m$, which is determined by the lattice geometry:
