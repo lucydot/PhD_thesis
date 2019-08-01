@@ -11,7 +11,7 @@ So rap is no big thang, I was created in the void
 \section{Introduction}
 
 Up until this chapter we have considered a lattice with perfect translational symmetry, and no missing or extra atoms. However at finite temperature a crystalline material always contains point defects, as the cost in lattice energy is balanced by the increase in configurational entropy.
-In this chapter the iodine interstitial defect is predicted to form a split-interstitial defect with self-trapped hole ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{i}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$). The vibrational properties of the defect are studied to predict the coefficient for electron capture at this defect site.
+In this chapter the iodine interstitial defect is predicted to form a split-interstitial defect with self-trapped hole ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{i}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$). The vibrational properties of the defect are studied to i) confirm the validity of the 1D configurational coordinate approach and ii) predict the electron capture coefficient at this defect site.
 
 As outlined briefly in Section \ref{recombination} we are often interested in semiconductor defects that form electronic states in the bandgap, as these can provide sites for non-radiative processes such as minority carrier trapping and electron-hole recombination, both of which limit the photovoltaic efficiency of solar cell absorber materials. Marshall Stoneham coined the term ``killer centre'' for defects with fast non-radiative transitions and lists the defect types that may act as performance killers. Two of four in the list relate to the vibrational properties of the defect lattice:
 
@@ -27,47 +27,53 @@ it is now possible to calculate from first principles the coupling strength betw
 This methodology has been recently applied to \ce{CZTS} where it has been found that the sulfur vacancy provides a site for fast non-radiative recombination.
 
 Hybrid halide perovskite materials are classed in the literature as `defect tolerant' materials with low concentration of killer defects. This is for two reasons. 
-Firstly, good photovoltaic efficiencies can be achieved using a low-temperature solution processing method which is expected to form a thin film with a high concentration of defects. 
-he $V_\mathrm{oc}$ remains
+Firstly, good device performance can be achieved using a low-temperature solution processing method which is expected to form a thin film with a high concentration of defects. 
+%For example, the $V_\mathrm{oc}$ deficit for solution processed hybrid halide perovskite materials can be as low as \SI{0.5}{\volts}, compared to 
 %http://www.nature.com/articles/srep06071
 Secondly, theoretical calculations show that Schottky and Frenkel point defects form at high concentrations, but that they form electronic states either in have shallow electronic states states ($< \mathrm{kT}$ from the bandgap) which are unlikely to contribute to non-radiative recombination.
 %Self-Regulation Mechanism for Charged Point Defects in Hybrid Halide Perovskites** Aron Walsh,* 
 %  (http://pubs.acs.org/doi/ipdf/10.1021/jz500370k)
-Amongst the native non-stochiometric defects, the iodine interstitial is predicted to be the only stable and active trap species.
+Amongst the native non-stochiometric defects in MAPI the iodine interstitial is predicted to be the only stable and active trap species.
 %cite de angelis
+% Several studies42,43 have taken advantage of absorption and emission reciprocity relationships in complete solar cells to show that the predominant contribution to the deficit in VOC from its ideal value under solar illumination is a low EQEEL value. This indicates that most carriers recombine non-radiatively. These relationships have been recently explored in mixed-cation, mixed-halide perovskites, concluding that the EQEEL is limited by SRH recombination in devices with state-of-the-art power conversion efficiency44. % https://www.nature.com/articles/nenergy2016149
 
 
 
+The halide sub-lattice is also associated with ionic migration, with iodine ions being the dominant mobile species in MAPI.%The nature of ion conduction in methylammonium lead iodide: a multimethod approach
+Experimental evidence points to a coupling between the electronic and ionic states, and various models exist which link trapping at the iodine ion with phase segregation and hysterisis in hybrid halide perovskites.
+As a result, there has been recent research interest in the point defect properties of halide perovskites, and in the properties of the iodine interstitial in particular.
+Point defects in hybrid halide perovskites are a challenge to model from first principles. Due to the organic cation the structure is low symmetry and there are multiple inequivalent iodine sites. The atomic lattice is soft and distorts easily, often requiring hundreds of ionic steps to achieve force convergence. 
+Previous calculations in the literature demonstrate that the defect formation energies are sensitive to the level of theory used; hybrid functionals with spin-orbit coupling predict electrically active charge states of the iodine interstitial that are not found at lower levels of theory.
+%mao hua du
+Capacitive techniques such as Deep Level Transient Spectroscopy (DLTS) and Thermal Admittance Spectroscopy (TAS) have been used to identify defect concentrations and trap levels in the halide perovskites.
+Defects have been observed with energies at SI{0.17}{\electronvolt}, SI{0.20}{\electronvolt} and SI{0.17}{\electronvolt}, SI{0.35}{\electronvolt} above valence band edge using DLTS and TAS respectively.
+%https://aip.scitation.org/doi/10.1063/1.4995970
+However capacitive features associated with the mobile ionic species, rather than electronic defect dynamics, can `present spectra with overlapping or even ``fake'' peaks', and it has been suggested charactiersiations with bias and light perturbations should be used to confirm the results from DLTS and TAS.
+%https://pubs.acs.org/doi/abs/10.1021/acs.jpclett.9b00601
 
-% for this reason there is a flurry of interest
-% point defects in HHPs published. They are a challenge: SoC and Hybrid are expensive. Low symmetry structure due to organic. inequivalent iodine sites. Soft lattice with large distortions: a challenge to model.
-% neglect of spin–orbit coupling (SOC) in many previous DFT calculations resulted in incorrect positions of valence and conduction band edges, although their difference, which is the band gap, is in good agreement with the experimental value
-% these will be most plentiful. 
-% But increasingly DLTS and related techniques are being dismissed for halide perovskites as “misleading and produce wrong outcomes” because it is not only static defects that respond: https://pubs.acs.org/doi/abs/10.1021/acs.jpclett.9b00601
-% David Cahen: Deep Level Transient Spectrocopy shows that there are shallow levels at 0.28eV, 0.17eV and a deep level at 0.7-0.8eV which has not been confirmed yet.
-% Mitzi? Cahne? If we go to the Rose model of 1963 we see that there is a single recombination centre at 0.6-0.8eV, that this is the dominant recombination mechanism under steady state illumination, that recombination is trap mediated.
-% Ball et al. nature energy: MAPI has 12 native point defects: VMA, VPb, VI, Interstitials: MA, Pb, I , and anti-site occupations MAPb, MAI, PbMA, PbI, IMA, IPb. "Calculate the formation energy in a host crystal of semiconductor in equilibrium with the pure constituents  which is unlikely given the processing techniques for growing MAPI”. General trend in results is:
-% http://pubs.acs.org/doi/abs/10.1021/acs.jpclett.5b00953 "a peak at around T = 191 K is assigned to trap states with activation energies of around 500 meV but with a rather low concentration of 1 × 1021 m–3."
-% Pb V is linked ot iodine formation: Pb vacancy leads to I3- trimer, deep state as seen in the PLQE (fillipo de angelis work). This is photoinduced degradation.YY Sun
-%can disclude the following from being killer for following reasons...
+% http://pubs.acs.org/doi/abs/10.1021/acs.jpclett.5b00953 " TSC study: a peak at around T = 191 K is assigned to trap states with activation energies of around 500 meV but with a rather low concentration of 1 × 1021 m–3."
+
+Published defect formation energies predict that the neutral iodine interstitial is metastable at all fermi levels across the bandgap.
+However charge trapping at defect sites can result in the formation of metastable defects.
+Meggiolaro et al. use a configuration coordinate diagram to outline the expected charge trapping processes at the iodine interstitial. 
+The configuration coordinate is a collective phonon mode describing the displacement between the relevant charge states is considered and reduces the vibrational problem to one dimension.
+Their model predicts that electron (hole) trapping at positively (negatively) charged defect states will result in the formation of a metastable neutral charge state, and that radiative electron trapping at the neutral defect will compete with non-radiative electron trapping.
+However the rate of electron capture is not calculated, and the motion of the defect species around lattice equilibrium positions is assumed to be harmonic.
 
 
-
-% iodine interstitial the mobile species - additional incentive to understand as linked to phase segregation and memory effects. There is a link between the ionic and he electronic - unusual as different time scales. To understand, need to understand the carrier capture processes.
-% Some defects are introduced under illumination (and then passivated by oxygen): Photoinduced Emissive Trap States in Lead Halide Perovskite Semiconductors .
-%In HHPs it is especially important to consider all forms of charge trapping as there is experimental evidence for the coupling between electronic and ionic states: this is linked to processes including hysteresis, ion migration, phase segregation.
-
-
-
+In this chapter the neutral iodine interstitial is considered. This defect is predicted to form a split-interstitial defect with self-trapped hole ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{i}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$). The hole induces the formation of a bond between two halide ions, producing an open-shell molecular dimer called a H-centre (Figure \ref{Hcentre_schematic}). The formation of a H-centre is a well-established process, and has been studied in metal halide crystals since the 1950s.
 % H-center defect castner and kanzig.
-% V-centers have been studied in metal halide crystals since the1950s, including F2−impurities in CaF2and LiF, where F−anionsare normally present at specific lattice sites.5,6Related molecularhalide impurities have also been characterized in metal chlorides,bromides, and iodides.7They are unusual point defects as theyinvolvenomissing or extra atoms. A hole is introduced into apristine lattice, and the charge induces the formation of a bondbetween two nearest-neighbor halide ions, producing an open-shell dihalide species, 2X−+h+→X2−. In contrast to the V-center, the H-center is where hole-capture and dimer formationinvolves excess halide (for example, an interstitial) interactingwith a lattice site, X−+Xi−+h+→X2−. It has been shown that H-centers can be thermally converted into V-centers, and the twodefects have similar but distinguishable optical and electronicsignatures.5
-% schematic made by Aron.
-% since then there has been following literature
+The electron-phonon coupling matrix element is calculated and combined with anhamornic potential energy surfaces to give a rate for non-radiative electron capture at the H-centre (neutral) defect. In addition, all phonon modes of the defective supercell are analysed to validate the one dimensional configuration coordinate model.
+
 %De Angelis work suggests radiative pathway between the neutral and negative charge state, we find a non-radiative pathway.
 % we give carrier capture rate
-% interested in minority carrier capture, but roughly equal holes and electronis in perovskite??? so both of interest. holes are slightly more bountiful, so wrt limiting current collection, it is hole capture.
-% we have predicted H-center defect, and flurry of interest. No carrier capture rate.
 
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.7\columnwidth]{figures/ch6/Hcentre_schematic.png}
+  \caption[Lattice geometry of pristine perovskite and perovskite with H-centre defect]{ Change in local equatorial environment around Pb in a lead halide perovskite upon formation of a H-center defect. The H-center the dimer is formed from a lattice iodide and interstitial iodide. The I−I interatomic spacing of ca. \SI{4.5}{\angstrom} in the perfect lattice decreases to a bond length of \SI{3.3}{\angstrom} upon dimer formation.Figure adapted with permission from an original prepared by Aron Walsh.}
+\label{Hcentre_schematic}
+\end{figure}
 
 
 \section{Methods}
@@ -174,6 +180,8 @@ Amongst the native non-stochiometric defects, the iodine interstitial is predict
 % Transport of the H-center would require an interstitialcymechanism, which has also been predicted to be low energy inhalide perovskites.12The slow motion of trapped holes wouldadd a further layer to the complexity of the temporal response ofperovskite solar cells to light soaking and bias voltages (alsoevident in quantum dot photovoltaics13). Given the polyanionnature of iodine (e.g., charged I2up to I16complexes) and theflexibility of the perovskite structure, the formation of largercharged molecular aggregates is also possible for the iodideperovskites. Such polyanion inclusions in a crystal would beredox active and could facilitate additional electron or holetrapping, which is a fertile line of research for future studie
 % interstitcalicy - sam stranks paper
 % open questions around interface and recomgination" JS Park, It has been reported that grain boundaries do not act as charge recombination centres (Edri nanoletters 2014,14,1000-1004)
+%  This poses a challenge for computational modelling as processes over a range of time and length scales are coupled together. 
+% interested in minority carrier capture, but roughly equal holes and electronis in perovskite??? so both of interest. holes are slightly more bountiful, so wrt limiting current collection, it is hole capture.
 
 \textbf{Data access statement}
 % I need to publish my structures!
