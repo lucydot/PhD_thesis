@@ -13,7 +13,8 @@ So rap is no big thang, I was created in the void
 Until this point we have considered a lattice with perfect translational symmetry and no missing or extra atoms. However at finite temperature a crystalline material always contains point defects, as the cost in lattice energy is balanced by the increase in configurational entropy.
 In this chapter we consider the iodine interstitial defect and predict that it will form a split-interstitial defect with self-trapped hole ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{i}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$). The vibrational properties of the defect are studied to i) confirm the validity of the 1D configurational coordinate approach and ii) predict the electron capture coefficient at this defect site.
 
-As outlined briefly in Section \ref{recombination} we are often interested in semiconductor defects that form electronic states in the bandgap, as these can provide sites for non-radiative processes such as minority carrier trapping and electron-hole recombination, both of which limit the photovoltaic efficiency of solar cell absorber materials. Marshall Stoneham coined the term `killer centre' for defects with fast non-radiative transitions and lists the defect types that may act as performance killers. Two of four in the list relate to the vibrational properties of the defect lattice:
+As outlined briefly in Section \ref{recombination} we are often interested in semiconductor defects that form electronic states in the bandgap, as these can provide sites for fast non-radiative transitions such as minority carrier trapping and electron-hole recombination, both of which limit the photovoltaic efficiency of solar cell absorber materials. Such is the impact of these defects that special names have been coined to describe them - Marshall Stoneham uses the term `killer centre' whilst William Shockley in his Nobel Lecture uses the term `deathnium'.\autocite{}
+Stoneham lists the defect types that may act as `killer centres'. Two of four in the list relate to the vibrational properties of the defect lattice:
 
 \begin{displayquote}
 ``2. Defects with favorable vibrational properties, that is, with large-amplitude modes promoting the transitions, and large-energy modes to take up the electronic energy.
@@ -120,6 +121,7 @@ The capture coefficient is derived by considering the first order of electron ph
 where $V$ is the supercell volume, $g$ is the energetic degeneracy of the final state, $W_{if}$ is the electron-phonon coupling matrix element, $\omega_m$ is the thermal occupation of the vibrational state $m$, $\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle$ is the overlap of the vibrational wavefunctions $\chi$ and $\delta(\Delta E+m\hbar\Omega_i-n\hbar\Omega_f)$ ensures that there is conservation of energy. In practice the $\delta$ term is replaced by a smearing function, for the calculations in this study this is a gaussian function of width \SI{0.01}{\electronvolt}.
 The total energies and wavefunctions of the iodine interstitial in a neutral and negative charge state, for the fully relaxed and distorted geometries, were calculated using the parameters outlined in Section \ref{method:dfe}. Total energies were calculated using the HSE06 hybrid exchange-correlation functional with spin-orbit coupling, whilst single particle wavefunctions for the electron-phonon coupling matrix were calculated using the PBEsol functional.
 The anharmonic potential energy surface was generated from fitting a spline of order 4, as implemented in the \textsc{dierckx.jl} package,\autocite{dierckx} to the DFT total energies. 
+The potential energy surfaces reported in the main text are calculated using the HSE06 functional with spin-orbit coupling. However it was found that the shape of the potential energy surface is largely independent of the level of theory used (see Appendix \ref{app9:configcoord} for a comparison at different levels of theory).
 The 1D Schr\"{o}dinger equation for the potential energy surface was solved using a finite difference method implemented in the \textsc{brooglie} package\autocite{brooglie} to give the vibrational wavefunctions. 
 The electron-phonon coupling matrix element is given by
 \begin{equation}
@@ -203,37 +205,42 @@ E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon
 \end{equation}
 The total energy of the supercell $E_\mathrm{d}(q)$, the total energy of the pristine lattice $E_\mathrm{b}$ and the iodine chemical potential $\mu_i$ were calculated DFT as outlined in the methods section.
 The defect correction $E_\mathrm{corr}$ consists of two terms - the charged defect correction and a `tilting' correction that is specific to pseudocubic perovskites.
-Both terms are small. The charged defect correction is equal to \SI{X}{eV}. This is due to the high dielectric constant of MAPI (, from Ref. []) that allows effective ionic screening of charged defects. The point defects themselves have a maximum charge of one which also leads to small charged defect corrections.
-The tilting correction is a new correction introduced in this work and particular to pseudocubic perovskites. All of the defect formation energies are referenced to a pristine lattice energy. The pristine lattice in the pseudocubic phase corresponds to a time average and is not the minimum energy structure.
-% tilting correction results: 
-    %We expect the tilting correction to scale linearly with supercell size
-    %See work published in Ruoxi's thesis
-    %270/37 = 7.5 ~ 8 which is to be expected as supercell is 8* bigger
-    %We expect reduction of 2*37meV for 192 supercell = 0.074eV
-     % Schematic of what is happening Although small, important as exponential term.
+Both terms are small. The charged defect correction is equal to \SI{-0.057}{eV}. This is due to the high static dielectric constant of MAPI ($\bar{\epsilon_0}=22.67$)\autocite{Brivio2013} that allows effective ionic screening of charged defects. The point defects carry a maximum charge of one which also leads to small charged defect corrections.
 
+The tilting correction is a new correction introduced in this work and particular to pseudocubic perovskites. All of the defect formation energies are referenced to a pristine lattice energy. The geometry of the pristine lattice in the pseudocubic phase corresponds to a time average and is not the minimum energy structure (Figure \ref{tilting_correction}). To calculate the minimum energy geometry the pseudocubic structure can be modemapped along the soft mode at the $R$-point in $q$-space, following the procedure in Section \ref{}. This modemapping procedure is not compatible with the supercell expansion used for this defect calculation, but the correction energy was inferred from modemapping other supercell expansions (Table \ref{modemaptable}).
 
-% negative U characteristic of previous work
-% however two charge states
-%app:7-chargetransition - in line with previuos and shows senstivitiy
-% negative formatin enrgies - how cna be improved
+\begin{table}[h!]\centering
+\begin{tabular}{}\toprule
+supercell expansion&# atoms&tilting correction \\ 
+\midrule
+$2\,\times\,2\,\times\,2$ & 96 & \SI{37}{meV} (calculated)
+$4\,\times\,4\,\times\,4$ & 768 & \SI{270}{meV} (calculated)
+$2\sqrt2\times2\sqrt2\times2$ & 192 & \SI{74}{meV} (predicted) 
+\end{tabular} 
+\caption[Tilting correction for $2\,\times\,2\,\times\,2$ and $4\,\times\,4\,\times\,4$ supercell expansions]{\label{modemaptable} Calculated tilting correction for $2\,\times\,2\,\times\,2$ and $4\,\times\,4\,\times\,4$ supercell expansions. The $4\,\times\,4\,\times\,4$ supercell is eight times larger than the $2\,\times\,2\,\times\,2$ expansion, so we expect the tilting correction to be eight times larger. It is calculated to be 7.5 times larger. The tilting correction for the $2\sqrt2\times2\sqrt2\times2$ expansion used for the defect calculations in this work is predicted to be twice as large as the correction for the$2\,\times\,2\,\times\,2$ supercell. }
+\end{table}
 
+The charge transition diagram is given in Figure \ref{charge_transition_diagram}. 
+As is found in the previous literature\autocite{Du2015,Meggiolaro2018} there is negative-U behaviour, where the (+/0) level is higher in energy than the (0/-) level. This indicates that upon electron trapping there is strong structural relaxation at the defect. The neutral charge state of $\mathrm{I}_\mathrm{i}$ in both orientations is thermodynamically unstable across the Fermi energy range and so we expect this charge state to only be formed after photoexcitation. As in Reference \cite{Meggiolaro2018} the out-of-plane iodine interstitial is found to be lower in energy than the in-plane iodine interstitial.
 
+There is one active charge trapping state in the bandgap -- electron trapping at the $\mathrm{I}_\mathrm{i}^+$.  The (+/-) level corresponds to a two-electron transition and so we expect the cross section for this process to be negligible. This result is in contrast to previous reports, using the same hybrid functional HSE06 and spin-orbit coupling, which find that hole trapping at the negative interstitial is also within the bandgap.
+The charge transition diagram generated using the intermediate metastable structures as outlined in Figure \ref{relaxation_workflow} has two active charge trapping states in the bandgap, as in the previous literature. This higlights how sensitive conclusions drawn from the charge transition diagram are to the defect geometry. The charge transition diagram for the intermediate metastable defects is given in Appendix \ref{app:7-chargetransition}.
 
-% negative U behaviour
-% two electron nature: no trapping
+The formation energy is negative for all defects across the Fermi level range. This is unphysical, as for a stable material it costs energy to create a point defect. The problem arises from the simple approximation used for the chemical potential of iodine, which considers bulk iodine only and no other competing phases such as \ce{PbI2}. The chemical potential used in this defect caluclation provides an upper bound. Considerion of other secondary phases will offer a lower chemical potential, which would increase the interstitial formation energy for all charge states. 
+%comment on fermi level pinning
+
 
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=0.7\columnwidth]{figures/ch6/tilting_correction.png}
-  \caption[Tilting correction for defect formation energies]{An outline of the tilting correction for defect formation energies.}
+  \caption[Tilting correction for defect formation energies]{An outline of the tilting correction used in this work. This is only needed when using the high-symmetry pseudocubic phase to calculate the pristine bulk energy of MAPI.}
 \label{tilting_correction}
 \end{figure}
 
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=0.7\columnwidth]{figures/ch6/charge_transition_HSE.png}
-  \caption[Charge transition diagram for the iodine interstitial defect in MAPI]{Charge transition diagram for the iodine interstitial defect in MAPI.}
+  \caption[Charge transition diagram for the iodine interstitial defect in MAPI]{Charge transition diagram for the iodine interstitial defect in MAPI calculated using the hybrid HSE06 funtional with spin-orbit coupling.}
 \label{charge_transition_diagram}
 \end{figure}
 % need to update defect notation!
@@ -242,47 +249,34 @@ The tilting correction is a new correction introduced in this work and particula
 
 \subsection{Configuration Coordinate diagram}
 
-Collective coordinate Q like previous
+Configuration coordinate diagram for the neutral and negative charge states of the iodine interstitial are given in ...
+This gives the total system energy in various charge states as a function of a single normal mode of the lattice $Q$. 
+The model assumes that the electronic states of the defect interact with only one normal mode of the lattice, and that
+the minimum of each curve corresponds to the equilibrium position of the ions and the electronic ground state. 
+\autocite{alkauskas defect theory and experiment}
+Lattice relaxation after electron capture at the neutral charge state leads to a large shift in the equilibrium position ($\DeltaQ=$).
+This is significantly larger than that found for `killer centres' in CZTS\autocite{Sunghyun} and reflects the strong coupling between the electronic charge state of the defect and the lattic distortion. The large distortion suggests that there will be fast non-radiative transitions at the defect site. \autocite{Stoneham}
 
- The physical  basis of this model for the description of the optical properties of localized centres in solids has been well documented [l01 and is based on the adiabatic Born-Oppenheimer approximation.  The  model assu- mes that the  electronic states  of the centre  interact appreciably with only one normal mode of the lattice Q, and that in the electronic ground state the equilibrium position of the ions is  Q = 0. In the excited electronic state the equilibrium position  is at Q = A, and in general the shape of the potential energy curve differs from that for the ground  state. Both curves are assu- med to be  parabolae i. e.  the vibrations are harmonic. The scheme is  shown in figure 1
- 
- % Plot of the schrodinger solution is in the appendix.
+In this work this is defined as.....similar to previous section...
+% linear interpolation - talk about the need to distort along the inorganic only
+
+The configuration coordinate diagram for this charge capture process has been previously reported in the literature,\cite{Meggiolaro2018} and it is reported that electron trapping at the neutral iodine interstitial proceeds with small geometrical rearrangement. However the structural parameter used here is the root mean square displacement of the two iodine ions involved with bonding, and excludes the large relaxation of the surrounding perovskite structure.
+
+
+%report the harmonic requencies
+%that the CC diagram is incredibly soft and the equivalent harmonic frequency
+Anharmonicity...
+
  
  
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/carrier_capture_digram.png}
-  \caption[Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect]{Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect}
+  \caption[Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect]{(Top)Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces. }
 \label{configuration_coordinate}
 \end{figure}
-
-% talk about the need to distort along the inorganic only
-
- % Calculate S and comment: https://hal.archives-ouvertes.fr/jpa-00213295/document
-
-% include significance of large distortion: it is small if measured one way, large if measured another way. But its actually huge! Significance of this.
-% for lovely discussion see Alkauskas:
-% https://www.osti.gov/pages/servlets/purl/1471061
-%"It might be surprising that this one-dimensional approximation to what is
-%essentially a multi-dimensional problem (where the dimensionality is 3N, N being the number of atoms in the system) is
-%sufficient. The beauty of 1D cc diagrams is that often they are
-%sufficient.51 As discussed in the Appendix, this is particularly the
-%case for defects with strong electron–phonon coupling. In certain
-%cases, the validity of this approximation can be demonstrated rigorously; we discuss one such example in the Appendix."
-
-% Need to make CC diagram. 
-% All the CC diagrams should be referenced to zero.
-% use linear interpolation
-% interpert CC
-% CC diagram with schrodinger solution superimposed.
-% problem with the adiabatic approach and falling to the local minima
 % talk ahout the difference between the photochemistry and equilibrium thermodynamics
-% calculate the harmonic PES to show why the anharmonic is important
 
-%that the CC diagram is incredibly soft and the equivalent harmonic frequency
-
-% Appendix with additional configuration coordinate diagrams:
-% - at different levels of theory.
 
 \subsection{Vibrational properties}
 
@@ -306,9 +300,25 @@ In the previous section the coupling of a  defect to lattice vibrational modes w
 \label{defect_dispersion_IPR}
 \end{figure}
 
+% for lovely discussion see Alkauskas:
+% https://www.osti.gov/pages/servlets/purl/1471061
+%"It might be surprising that this one-dimensional approximation to what is
+%essentially a multi-dimensional problem (where the dimensionality is 3N, N being the number of atoms in the system) is
+%sufficient. The beauty of 1D cc diagrams is that often they are
+%sufficient.51 As discussed in the Appendix, this is particularly the
+%case for defects with strong electron–phonon coupling. In certain
+%cases, the validity of this approximation can be demonstrated rigorously; we discuss one such example in the Appendix."
+
+ % Calculate S and comment: https://hal.archives-ouvertes.fr/jpa-00213295/document
+
 
 \subsection{Carrier capture mechanism and rate}
 
+
+
+
+ 
+ % Plot of the schrodinger solution is in the appendix.
 
 \begin{figure}[h!]   
 \centering
@@ -356,6 +366,10 @@ In the previous section the coupling of a  defect to lattice vibrational modes w
     % The undercoordinated Iions are susceptible to oxidi-zation into volatile bimolecular iodine, I2, the release of which cancause irreversible decomposition of perovskites.
     % https://pubs.rsc.org/en/content/articlepdf/2019/cs/c8cs00853a
 
+ %tabel of eigenstates like on Trello
+
+ % problem with the adiabatic approach and falling to the local minima
+
 \textbf{Summary}
 % everything relies on deect structures. Difficult here.
 % Future work around the interaction between electronic and ionic states.
@@ -375,6 +389,7 @@ In the previous section the coupling of a  defect to lattice vibrational modes w
 %pawpyseed
 %phonopy
 % modemap
+% vesta vectors
 
 \textbf{Acknowledgements}
 
