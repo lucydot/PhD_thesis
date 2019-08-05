@@ -144,7 +144,7 @@ In this section the defect geometry for the neutral, negative and positive charg
 \label{relaxation_workflow}
 \end{figure}
 
-The neutral iodine interstitial $\mathrm{I}_\mathrm{i}$ relaxes to two defect geometries which differ by only \SI{0.04}{\electronvolt} in energy. The lowest energy structure contains a $\mathrm{I}_2^-$ split interstitial with bond length \SI{3.19}{\angstrom} lying out-of-plane along the $c$-axis. This is denoted $\mathrm{I}_\mathrm{i}^{\textrm{OP}}$. The higher energy structure contains a $I_2^-$ split interstitial with bond length \SI{3.24}{\angstrom} and lies in the $ab$-plane. This is denoted $\mathrm{I}_\mathrm{i}^{\textrm{IP}}$. The negative iodine interstitial 
+The neutral iodine interstitial $\mathrm{I}_\mathrm{i}$ relaxes to two defect geometries which differ by only \SI{0.04}{\electronvolt} in energy. The lowest energy structure contains a $\mathrm{I}_2^-$ split interstitial with bond length \SI{3.19}{\angstrom} lying out-of-plane along the $c$-axis. This is denoted $\mathrm{I}_\mathrm{i}^{\textrm{OP}}$. The higher energy structure contains a $\mathrm{I}_2^-$ split interstitial with bond length \SI{3.24}{\angstrom} and lies in the $ab$-plane. This is denoted $\mathrm{I}_\mathrm{i}^{\textrm{IP}}$. The negative iodine interstitial 
 $\mathrm{I}_\mathrm{i}^-$ relaxes to an out-of-plane position along the $c$-axis. It forms a split interstitial around an iodine lattice position with two independently coordinated iodide ions symmetrically bridging two lead atoms. The I--I distance is \SI{3.82}{\angstrom}. As $\mathrm{I}_\mathrm{i}^-$ lies out of plane, we expect potential charge trapping processes to occur between $\mathrm{I}_\mathrm{i}^-$ and $\mathrm{I}_\mathrm{i}^{\textrm{OP}}$. The positive interstitial forms an in-plane trimer structure with bond lengths \SI{2.89}{\angstrom} and \SI{2.95}{\angstrom}. As $\mathrm{I}_\mathrm{i}^+$ lies in-plane, we expect potential charge trapping processes to occur between $\mathrm{I}_\mathrm{i}^+$ and $\mathrm{I}_\mathrm{i}^{\textrm{IP}}$.
 Table \ref{compare_geoms} contains a summary of the defect geometries alongside a comparison to values in the literature.
 
@@ -169,11 +169,11 @@ $\mathrm{I}_\mathrm{i}^\mathrm{IP}$ & in-plane & 3.24 && in-plane & 3.88 && - \\
 \label{relaxation_workflow}
 \end{figure}
 
-The I--I bond length in solid orthorhombic crystalline iodine is \SI{2.67}{\angstrom}, and the additional electron occupies an anti-bonding orbital..
-% https://core.ac.uk/download/pdf/33330041.pdf . - trimer
+Iodine ions are well known to form iodide chains, and the cond lengths are sensitive to charges on the iodine.
+Experimental literature reports that the I--I bond length in solid orthorhombic crystalline iodine is \SI{2.67}{\angstrom}, and this lengthens to \SI{3.23}{\angstrom} upon formation of $\mathrm{I}_2^-$, within \SI{0.05}{\angstrom} of the bonding lengths reported in this work.
 % https://pubs.acs.org/doi/pdf/10.1021/j100265a035?rand=4xteqb9z - h-centre and neutral
-
-%Structure of solid I2 is an orthorhombic zig-zag structure with intramolecular I–I bond lengths of 2.68 Å, and intermolecular I2 distances of 3.56 Å (ref. 24). This value of 2.68 Å can be considered as a primary covalent I–I bond and other forms of iodine chains where I2 donates to the σ* antibonding orbital in a charge transfer complex have significantly larger bond lengths23,25. For example, the triiodide ion, [I3]− in orthorhombic CsI3 has I–I bond lengths of 2.84 Å and 3.04 Å (ref. 26); one slightly higher than seen in covalent I2 and one longer bond possessing most of the additional charge. 
+The asymmetric bonding of the trimer structure is typical of the tri-iodide group $I_3^-$. For example in \ce{CsI_3} the tri-iodide group is asymmetric with interbond distances of \SI{2.82}{\angstrom} and \SI{3.10}{\angstrom}, with the longer bond possessing the majority of the additional charge. 
+% https://core.ac.uk/download/pdf/33330041.pdf . - trimer
 
 % discuss inequivalent iodine
 % include displacement vectors, perhaps in appendix (mention script)
@@ -249,7 +249,7 @@ The formation energy is negative for all defects across the Fermi level range. T
 
 \subsection{Configuration Coordinate diagram}
 
-Configuration coordinate diagram for the neutral and negative charge states of the iodine interstitial are given in ...
+The configuration coordinate diagram for the neutral and negative charge states of the iodine interstitial are given in Figure \ref{configuration_coordinate}.
 This gives the total system energy in various charge states as a function of a single normal mode of the lattice $Q$. 
 The model assumes that the electronic states of the defect interact with only one normal mode of the lattice, and that
 the minimum of each curve corresponds to the equilibrium position of the ions and the electronic ground state. 
@@ -257,17 +257,15 @@ the minimum of each curve corresponds to the equilibrium position of the ions an
 Lattice relaxation after electron capture at the neutral charge state leads to a large shift in the equilibrium position ($\DeltaQ=$).
 This is significantly larger than that found for `killer centres' in CZTS\autocite{Sunghyun} and reflects the strong coupling between the electronic charge state of the defect and the lattic distortion. The large distortion suggests that there will be fast non-radiative transitions at the defect site. \autocite{Stoneham}
 
-In this work this is defined as.....similar to previous section...
+In this work this the configuration coordinate $Q$ is defined as $\sqrt{\sum_i m_i \Del r_i^2}$ ,where the sum is over all inorganic atoms $i$ with mass $m_i$ and displacement from equilibrium $\Del r_i^2$. Summing over all atoms, including those in the organic molecule $CH3NH3$, led to unphysical energies as the linear interpolation does not reflect the rotation of the organic cation between charge states. The potential energy surface generated using a summation over all atomic displacements is given in Appendix \ref{app:9-configcoord}.
 % linear interpolation - talk about the need to distort along the inorganic only
 
-The configuration coordinate diagram for this charge capture process has been previously reported in the literature,\cite{Meggiolaro2018} and it is reported that electron trapping at the neutral iodine interstitial proceeds with small geometrical rearrangement. However the structural parameter used here is the root mean square displacement of the two iodine ions involved with bonding, and excludes the large relaxation of the surrounding perovskite structure.
+The configuration coordinate diagram for this charge capture process has been previously reported in the literature,\cite{Meggiolaro2018} and it is reported that electron trapping at the neutral iodine interstitial proceeds with small geometrical rearrangement. However the structural parameter used here is the root mean square displacement (RMSD) of the two iodine ions involved with bonding, and excludes the large relaxation of the surrounding perovskite structure. This definition applied to the relaxed structures used in this work gives \SI{0.073}{\angstrom}, which appears close to that given in Figure 2 of Reference \cite{Meggiolaro2018}.
 
+The lower part of Figure \ref{configuration_coordinate} compares the anharmonic potential energy surface (PES) to the harmonic PES. The 1D schro\"{o}dinger equation is solved for the anharmonic PES to give quantised energly levels. The curvature of the harmonic potential energy surface is denoted $\hbar\omega_0$ and is equal to the difference in energy between the two lowest phonon eigenstates. In Figure \ref{configuration_coordinate} we see that the harmonic PES fits well to the DFT energies either side of the equilibrium point, as we would expect. The potential energy surface of the neutral and negative charge states are extremely soft; for $\mathrm{I}_\mathrm{i}^-$ $\hbar\omega_0=$\SI{6.6}{meV} and for $\mathrm{I}_\mathrm{i}^\mathrm{OP}=$\SI{6.6}{meV}. Phonon modes at this energy will lie in the optical band of the bulk MAPI phonon modes and will be active at room temperature.
 
-%report the harmonic requencies
-%that the CC diagram is incredibly soft and the equivalent harmonic frequency
-Anharmonicity...
+Figure \ref{configuration_coordinate} highlights the importance of considering anharmonic potential energy surfaces to describe charge capture at the iodine intersitital in MAPI. The $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ and $\mathrm{I}_\mathrm{i}^-+\textrm{e}+\textrm{h}$ harmonic potential energy surfaces (lower panel) intercept at an energy $\approx$\SI{0.5}{eV} above the equilibrium energy for $\mathrm{I}_\mathrm{i}^-+\textrm{e}+\textrm{h}$, and this leads to a carrier capture coefficient four orders of magnitude smaller than that calculated for the anharmonic surfaces (Section \ref{finalsection}).
 
- 
  
 \begin{figure}[h!]   
 \centering
@@ -312,12 +310,12 @@ In the previous section the coupling of a  defect to lattice vibrational modes w
  % Calculate S and comment: https://hal.archives-ouvertes.fr/jpa-00213295/document
 
 
-\subsection{Carrier capture mechanism and rate}
+\subsection{Carrier capture mechanism and rate} \label{finalsection}
 
 
 
 
- 
+ At room temperature the carrier capture coefficient is
  % Plot of the schrodinger solution is in the appendix.
 
 \begin{figure}[h!]   
@@ -379,6 +377,9 @@ In the previous section the coupling of a  defect to lattice vibrational modes w
 % open questions around interface and recomgination" JS Park, It has been reported that grain boundaries do not act as charge recombination centres (Edri nanoletters 2014,14,1000-1004)
 %  This poses a challenge for computational modelling as processes over a range of time and length scales are coupled together. 
 % interested in minority carrier capture, but roughly equal holes and electronis in perovskite??? so both of interest. holes are slightly more bountiful, so wrt limiting current collection, it is hole capture.
+
+% importance of anharmoniciyu
+% accuracy of the 1D configuration coordinate
 
 
 
