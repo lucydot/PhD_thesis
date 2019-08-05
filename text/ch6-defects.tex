@@ -167,7 +167,7 @@ $\mathrm{I}_\mathrm{i}^\mathrm{IP}$ & in-plane & 3.24 && in-plane & 3.88 && - \\
 \label{relaxation_workflow}
 \end{figure}
 
-For the neutral iodine interstitial the I--I bond length is plotted against total energy in Figure \ref{}. As the I--I bond length decreases there is a reduction in total energy. The I--I bond length in solid orthorhombic crystalline iodine is \SI{2.67}{\angstrom}, and the additional electron occupies an anti-bonding orbital..
+The I--I bond length in solid orthorhombic crystalline iodine is \SI{2.67}{\angstrom}, and the additional electron occupies an anti-bonding orbital..
 % https://core.ac.uk/download/pdf/33330041.pdf . - trimer
 % https://pubs.acs.org/doi/pdf/10.1021/j100265a035?rand=4xteqb9z - h-centre and neutral
 
@@ -196,19 +196,39 @@ For the bond lengths found in the MAPI host (\SI{3.19}{\angstrom}), the three lo
 
 \subsection{Defect formation energies} \label{ss:dfe}
 
-%bandgap 1.58 - experiments, previous calclulations (de angelis SI)
-% formula
-% negative U
-% defect corections very small: do sxdefectalign output in appendix
-% using previously published dielectric for ionic?
+The formation energy of a defect in charge state $q$ is given by
+
+\begin{equation} \label{eqn_formation_energy}
+E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_\mathrm{F}) + E_\mathrm{corr}.
+\end{equation}
+The total energy of the supercell $E_\mathrm{d}(q)$, the total energy of the pristine lattice $E_\mathrm{b}$ and the iodine chemical potential $\mu_i$ were calculated DFT as outlined in the methods section.
+The defect correction $E_\mathrm{corr}$ consists of two terms - the charged defect correction and a `tilting' correction that is specific to pseudocubic perovskites.
+Both terms are small. The charged defect correction is equal to \SI{X}{eV}. This is due to the high dielectric constant of MAPI (, from Ref. []) that allows effective ionic screening of charged defects. The point defects themselves have a maximum charge of one which also leads to small charged defect corrections.
+The tilting correction is a new correction introduced in this work and particular to pseudocubic perovskites. All of the defect formation energies are referenced to a pristine lattice energy. The pristine lattice in the pseudocubic phase corresponds to a time average and is not the minimum energy structure.
 % tilting correction results: 
     %We expect the tilting correction to scale linearly with supercell size
     %See work published in Ruoxi's thesis
     %270/37 = 7.5 ~ 8 which is to be expected as supercell is 8* bigger
     %We expect reduction of 2*37meV for 192 supercell = 0.074eV
      % Schematic of what is happening Although small, important as exponential term.
+
+
+% negative U characteristic of previous work
+% however two charge states
+%app:7-chargetransition - in line with previuos and shows senstivitiy
+% negative formatin enrgies - how cna be improved
+
+
+
 % negative U behaviour
 % two electron nature: no trapping
+
+\begin{figure}[h!]   
+\centering
+  \includegraphics[width=0.7\columnwidth]{figures/ch6/tilting_correction.png}
+  \caption[Tilting correction for defect formation energies]{An outline of the tilting correction for defect formation energies.}
+\label{tilting_correction}
+\end{figure}
 
 \begin{figure}[h!]   
 \centering
@@ -218,7 +238,7 @@ For the bond lengths found in the MAPI host (\SI{3.19}{\angstrom}), the three lo
 \end{figure}
 % need to update defect notation!
 
-%app:7-chargetransition
+
 
 \subsection{Configuration Coordinate diagram}
 
@@ -337,6 +357,7 @@ In the previous section the coupling of a  defect to lattice vibrational modes w
     % https://pubs.rsc.org/en/content/articlepdf/2019/cs/c8cs00853a
 
 \textbf{Summary}
+% everything relies on deect structures. Difficult here.
 % Future work around the interaction between electronic and ionic states.
 %  Themolecular iodide defects discussed here are not necessarily staticcarrier traps, because the halides that form the corner-sharingperovskite framework support reasonable rates of ion transport.Room-temperature diffusion is expected for the V-center, whichcould proceed in a pathway akin to vacancy-mediated diffusion.
 % Transport of the H-center would require an interstitialcymechanism, which has also been predicted to be low energy inhalide perovskites.12The slow motion of trapped holes wouldadd a further layer to the complexity of the temporal response ofperovskite solar cells to light soaking and bias voltages (alsoevident in quantum dot photovoltaics13). Given the polyanionnature of iodine (e.g., charged I2up to I16complexes) and theflexibility of the perovskite structure, the formation of largercharged molecular aggregates is also possible for the iodideperovskites. Such polyanion inclusions in a crystal would beredox active and could facilitate additional electron or holetrapping, which is a fertile line of research for future studie
