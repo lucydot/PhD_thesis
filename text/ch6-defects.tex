@@ -26,6 +26,8 @@ However historically there has been increased research emphasis on the electroni
 With recent advances in first principles modelling \autocite{Alkauskas2014}%also sunghyun's paper an dalkauskas review 
 and the growth in available computing power\autocite{}
 it is now possible to calculate from first principles the coupling strength between the electronic states of the defect and bulk phonons to predict the rate of carrier capture and recombination for systems of interest. 
+% This combines both the high temperature classical picture where transition from one PES to another has arrheius like bhevaiour propotional to e^-(E_a/KT) and quantum tunneling bheaviour.
+%The moethodology was intrduced by shi and wang in 2012, built on by alkauskas and implemented recently for anharmonic materials by S. Kim.
 This methodology has been recently applied to \ce{CZTS} where it has been found that the sulfur vacancy provides a site for fast non-radiative recombination.
 
 Hybrid halide perovskite materials are often classed in the literature as `defect tolerant' materials with low concentration of killer defects. This is for two reasons. 
@@ -125,7 +127,7 @@ The anharmonic potential energy surface was generated from fitting a spline of o
 The potential energy surfaces reported in the main text are calculated using the HSE06 functional with spin-orbit coupling. However it was found that the shape of the potential energy surface is largely independent of the level of theory used (see Appendix \ref{app9:configcoord} for a comparison at different levels of theory).
 The 1D Schr\"{o}dinger equation for the potential energy surface was solved using a finite difference method implemented in the \textsc{brooglie} package\autocite{brooglie} to give the vibrational wavefunctions. 
 The electron-phonon coupling matrix element is given by
-\begin{equation}
+\begin{equation} \label{epcouplingterm}
     W_{if} = (\epsilon_f-\epsilon_i)\langle\psi_i|\frac{\partial\psi_f}{\partial Q}\rangle,
 \end{equation}
 where the single particle wavefunction of the initial (final) charge state is given by $\psi_i$ ($\psi_f$) and has an eigenstate energy of $\epsilon_i$ ($\epsilon_f$). The \textsc{pawpyseed} package\autocite{pawpyseed} was used to derive the orthogonal wavefunctions from the  pseudo wavefunctions and perform the overlap integrals in real space.
@@ -191,6 +193,7 @@ Whereas in the previous chapter we considered a large polaron, in this chapter w
   \caption[Spin localisation and optical excitation at the H-centre defect in MAPI]{A) Change in local equatorial environment around Pb in a lead halide perovskite upon formation of a H-centre defect. The H-centre is formed from a lattice iodide and interstitial iodide. The I--I interatomic spacing of ca. \SI{4.5}{\angstrom} in the perfect lattice decreases to a bond length of \SI{3.2}{\angstrom} upon dimer formation. Figure adapted with permission from an original prepared by Aron Walsh. B)  The difference between the density of the two spin channels in a spin-polarised calculation is plotted to show spin localisation around the H-centre defect in MAPI. C) Optical excitation energies as a function of dimer bond length for the iodine dimer in MAPI.}
 \label{spin_localisation}
 \end{figure}
+%include updated TDDFT results
 
 The H-centre is a ``molecule-in-a-crystal'' defect where the host weakly perturbs the $I_2^-$ molecular ion.
 This allows consideration of the optically excited states using a dielectric embedding approach.\autocite 
@@ -271,11 +274,12 @@ S = \frac{E}{\hbar\omega_1}.
 The Huang-Rhys factor for lattice relaxation after electron capture at the neutral interstitial is X. This is firmly in the strong coupling limit, $S>>1$. The large value for $\Delta Q$  and Haung-Rhys factor suggests that there will be fast non-radiative transitions at the defect site. \autocite{Stoneham}
 \autocite{alkauskas theory and experimetn}
 \autocite https://pdfs.semanticscholar.org/0a30/ebcb3c77c99d4f8c835afc5b6611264e06c8.pdf
+\autocitte{https://hal.archives-ouvertes.fr/jpa-00213295/document}
 % need to add terms to the diagram, including energy step term
 
-The configuration coordinate diagram for this charge capture process has been previously reported in the literature,\cite{Meggiolaro2018} and it is reported that electron trapping at the neutral iodine interstitial proceeds with small geometrical rearrangement. However the structural parameter used in this work is the root mean square displacement (RMSD) of the two iodine ions involved with bonding, and excludes the large relaxation of the surrounding perovskite structure. This definition applied to the relaxed structures used in this work gives \SI{0.073}{\angstrom}, which appears close to that given in Figure 2 of Reference \cite{Meggiolaro2018}. %conlucsion here - importatnt to include all distortions
+The configuration coordinate diagram for this charge capture process has been previously reported in the literature,\cite{Meggiolaro2018} and it is reported that electron trapping at the neutral iodine interstitial proceeds with small geometrical rearrangement. However the structural parameter used in this work is the root mean square displacement (RMSD) of the two iodine ions involved with bonding, and excludes the large relaxation of the surrounding perovskite structure. This definition applied to the relaxed structures used in this work gives \SI{0.073}{\angstrom}, which appears close to that given in Figure 2 of Reference \cite{Meggiolaro2018}. In ignoring the wider structural reorganisation and considering only the distortion to the bonding iodine, Meggiolaro et al. infer that the rate of radiative recombination will compete with non-radiative recombination. Figure \ref{configuration_coordinate} of this work demonstrates that this is not the case and that the large distortion of the surrounding lattice will prevent radiative recombination of the electron and hole.%conlucsion here - importatnt to include all distortions
 
-The lower part of Figure \ref{configuration_coordinate} compares the anharmonic potential energy surface (PES) to the harmonic PES. The 1D schro\"{o}dinger equation is solved for the anharmonic PES to give quantised energly levels. The curvature of the harmonic potential energy surface is denoted $\hbar\omega_0$ and is equal to the difference in energy between the two lowest phonon eigenstates. In Figure \ref{configuration_coordinate} we see that the harmonic PES fits well to the DFT energies either side of the equilibrium point, as we would expect. The potential energy surface of the neutral and negative charge states are extremely soft; for $\mathrm{I}_\mathrm{i}^-$ $\hbar\omega_0=$\SI{6.6}{meV} and for $\mathrm{I}_\mathrm{i}^\mathrm{OP}=$\SI{6.6}{meV}. Phonon modes at this energy will lie in the optical band of the bulk MAPI phonon modes and will be active at room temperature.
+The lower part of Figure \ref{configuration_coordinate} compares the anharmonic potential energy surface (PES) to the harmonic PES. The 1D schro\"{o}dinger equation is solved for the anharmonic PES to give quantised energly levels. The curvature of the harmonic potential energy surface is denoted $\hbar\omega_0$ and is equal to the difference in energy between the two lowest phonon eigenstates. In Figure \ref{configuration_coordinate} we see that the harmonic PES fits well to the DFT energies either side of the equilibrium point, as we would expect. The potential energy surface of the neutral and negative charge states are extremely soft; for $\mathrm{I}_\mathrm{i}^-$ $\hbar\omega_0=$\SI{6.6}{meV} (\SI{1.59}{\tera\hertz}) and for $\mathrm{I}_\mathrm{i}^\mathrm{OP}=$\SI{4.7}{meV} (\SI{1.14}{\tera\hertz}). Phonon modes at this energy will lie in the optical band of the bulk MAPI phonon modes and will be active at room temperature.
 
 Figure \ref{configuration_coordinate} highlights the importance of considering anharmonic potential energy surfaces to describe charge capture at the iodine intersitital in MAPI. The $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ and $\mathrm{I}_\mathrm{i}^-+\textrm{e}+\textrm{h}$ harmonic potential energy surfaces (lower panel) intercept at an energy $\approx$\SI{0.5}{eV} above the equilibrium energy for $\mathrm{I}_\mathrm{i}^-+\textrm{e}+\textrm{h}$, and this leads to a carrier capture coefficient four orders of magnitude smaller than that calculated for the anharmonic surfaces (Section \ref{finalsection}).
 
@@ -312,30 +316,19 @@ The IPR is calculated from the harmonic phonon eigenvectors $e_i$ of the system.
 \end{equation}
 where N is the number of phonon modes. It gives a measure of how many atoms the phonon is distributed over. For example, for a chain of four atoms, a delocalised acoustic mode will have an $\textrm{IPR}=4$. At the other extreme, a phonon mode whose polarisation displaces only one atom will have an $\textrm{IPR}=1$.
 The IPR of the gamma point phonon modes for the pristine and defective crystals are given in Figure \ref{defect_dispersion_IPR}c.
-To allow for comparison, the 
-For both the perfect and defective lattice the IPR of the acoustic
-Figure \ref{defect_dispersion_IPR}c demonstrates that a large number of localised phonon modes are introduced by the defect.
+To allow for comparison, the IPR of the pristine lattice has been renormalised to give a maximum value of 97 for fully delocalised modes.
+For both the perfect and defective lattice the IPR of the acoustic modes are equal to 97, so that they are completely delocalised, as is expected.
+Figure \ref{defect_dispersion_IPR}c supports the conclusions drawn from the phonon dispersion; upon introduction of the defect each phonon mode of the pristine lattice `explodes' into multiple non-degenerate phonon modes of increased localisation.
+Figure \ref{defect_dispersion_IPR}d splits the contribution to the phonon mode energy by element type. 
+Lower energy phonon modes up to \SI{10{THz} include contributions from the I and Pb species, whilst the higher energy modes consist of vibrations from the light species associate with the \ce{CH3NH3PbI3}.
 
-The 
-
-
-6.6meV=1.59THz.
-Can split by atom contribution. See that I and Pb, heavier elements, are at lower energies as might be expected.
-Can also locate which phonon modes have contrbutions from the two bonding iodine that form the H-centre.
-Phonon mode is animated and available on youtube at.
-Find that this is at a frequency of x, almost equal to the harmonic frwquency calculated for the negatively charge PES
-This suggests that the approximation of a 1D PES is accuratae in this instance. 
-% for lovely discussion see Alkauskas:
-% https://www.osti.gov/pages/servlets/purl/1471061
-%"It might be surprising that this one-dimensional approximation to what is
-%essentially a multi-dimensional problem (where the dimensionality is 3N, N being the number of atoms in the system) is
-%sufficient. The beauty of 1D cc diagrams is that often they are
-%sufficient.51 As discussed in the Appendix, this is particularly the
-%case for defects with strong electron–phonon coupling. In certain
-%cases, the validity of this approximation can be demonstrated rigorously; we discuss one such example in the Appendix."
-
-electron-phonon coupling at the site is S, which corresponds to the the large region,
- % Calculate S and comment: https://hal.archives-ouvertes.fr/jpa-00213295/document
+The contribution to the phonon mode energy can also be analysed by indidual atomic contributions.
+The complete set of 291 phonon modes for the defective crystal is filtered to find that with the largest contribution from the two iodine interstitials associated with $\textrm{I}_2-$ defect bonding. This is a localised mode with an $\textrm{IPR}=21.4$ and a frequency of 1.59THz.
+An animation of the phonon mode, generated using the ascii-phonons package,\autocite{} is available at \url{https://bit.ly/MAPI_phonon}.
+This frequency is equal to the frequency of the harmonic potential energy surface of the negative iodine interstitial calculated in Section \ref{ch6:ccd}.
+This is evidence that the single configuration coordinate $Q$ provides a good approximation to the accepting modes (modes that take up the electronic energy) of the charge transition.
+As discussed in a paper by Alkauskas et al.,\autocite it may be surprising that a one-dimensional approximation to a multi-dimensional probem is sufficient, but this is particularly the case for defects with strong electron-phonon coupling.
+We have shown in section \ref{ch5:ccd} that electron-phonon coupling is large, and the normal mode phonon calculations verify that the 1D configuration coordinate is a good approximation for the iodine interstitial defect in MAPI.
 
  %discuss limits - promoting and accepting modes
 
@@ -356,7 +349,7 @@ electron-phonon coupling at the site is S, which corresponds to the the large re
 
 \subsection{Carrier capture mechanism and rate} \label{finalsection}
 
-To calculate a carrier capture coefficient the electron-phonon coupling term must be calculated.
+In Section \ref{ch6:ccd} we used the extent of lattice relaxation on charge capture, $\Delta Q$, and the Huang-Rhys factor, $S$, as proxies to indicate the extent of electron phonon coupling. In this section the electron phonon coupling matrix element (Equation \ref{epcouplingterm}) calculated from first principles is given.
 % how carrier capture is calculated - alkauskas.
 % importance of suitable starting state and state to capture into
  % problem with the adiabatic approach and falling to the local minima
@@ -398,10 +391,13 @@ This is combined with the vibrational wavefunctions (see methods)
  % we add to this that any positively charged will be converted to negative
  
  % need to be very careful to draw conlcusions quickly. OTerh forms of bulk transport.
+ % for pathways that have not been considered, which compete: this gives a lower bound which shows it is fast. Same for PBEsol level of theory for the EP coupling.
 % Have to be very careful in conclusions:
 	%Limitations of this work
            % - consideration of +/neutral charge trapping
            % - differences with earlier work: MD run? everything relies on defect structures. Difficult here.
+           % sensitivity analysis. 
+
            % iodine chains-  polyanions
            % oncentration is sensitive to the device fabricationprocesses and perovskite compositions.60,65–71For example,perovskite precursors withnon-stoichiometric PbI2and MAI ratiocould induce extended defects with different types of defects andalso change the formation energy of point defects.18,60,67Thermalannealing for a longer period of time or at higher temperaturescan also result in the evaporationoforganiccationsandhalides,leaving undercoordinated Pb2+ions at surface or forming PbI2. ie, not at equilbirium.
 
@@ -428,10 +424,18 @@ This is combined with the vibrational wavefunctions (see methods)
 
 
 
+%%feedback:
+%-include all units in plots, remove I_i when mean I_I.
+%stoneham talks avout metastable defects lasting longer than the life of the universe
+% discuss unusual features of the defect bandstructure (numerical noise from the FFT grid, and tilting)
+% Ned to inclue cm^3
 
+# SEND PUCK THE INFO ABUT MAPI
 
 \textbf{Data access statement}
 % I need to publish my structures!
+% Also IPR analysis would be useful (as a notebook you can run?)
+
 % displacement vectors
 % carrier capture code
 %pawpyseed
