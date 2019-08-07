@@ -83,9 +83,9 @@ To validate the single mode approximation used in this work, the normal phonon m
 
 \subsection{Defect formation energies} \label{method:dfe}
 
-The atomic and electronic structure of defects were calculated from first-principles within the framework of DFT. The projector-augmented wave (PAW) method\autocite{Blochl1994} was used as implemented in a GPU port of \textsc{VASP}.\autocite{Kresse1996a} Projection operators were optimised in real-space within an accuracy of \SI{0.02}{\milli\electronvolt} per atom. The wave functions were expanded in plane waves up to an energy cutoff of \SI{400}{\electronvolt} and a $2\! \times\! 2\! \times\! 2$ gamma centred Monkhorst-Pack mesh was used for the Brillouin zone integration.
+The atomic and electronic structure of the iodine interstitial was calculated from first-principles within the framework of DFT. The projector-augmented wave (PAW) method\autocite{Blochl1994} was used as implemented in a GPU port of \textsc{VASP}.\autocite{Kresse1996a} Projection operators were optimised in real-space within an accuracy of \SI{0.02}{\milli\electronvolt} per atom. The wave functions were expanded in plane waves up to an energy cutoff of \SI{400}{\electronvolt} and a $2\! \times\!2\!\times\! 2$ gamma centred Monkhorst-Pack mesh was used for the Brillouin zone integration.
 
-The interstitial was placed in a 192-atom supercell built from the $2\sqrt2\times2\sqrt2\times2$ expansion of the 12-atom cubic unit cell, using the transformation matrix $m_t$:
+The interstitial was placed in a 192-atom supercell built from an expansion of the 12-atom pseudo-cubic unit cell, using the transformation matrix $m_t$:
 $$
 m_t = \begin{bmatrix}
 2 & -2 & 0 \\
@@ -93,12 +93,12 @@ m_t = \begin{bmatrix}
 0 & 0 & 2 \\
 \end{bmatrix}
 $$
-For the atomic relaxations a spin-polarised calculation with the PBEsol functional was used.\autocite{Perdew2008a} The internal atomic coordinates were relaxed until the force acting on each atom was less than \SI{0.01}{eV}. 
+For the atomic relaxations a spin-polarised calculation with the PBEsol functional was used.\autocite{Perdew2008a} The internal atomic coordinates were relaxed until the force acting on each atom was less than \SI{0.01}{\electronvolt\per\angstrom}. 
 
-For the electronic relaxations the hybrid exchange-correlation functional of Heyd-Scuseria-Ernzerhof (HSE06) was used.\autocite{Heyd2004a,Heyd2005a} The amount of exact Hartree-Fock exchange (mixing parameter) was adjusted to 0.43 to reproduce the correct bandgap and allow comparison with the previous literature.\autocite{Meggiolaro2018,Du2015} 
-Spin-orbit coupling was included in the calculation.
-To reduce the computational expense the wavefunctions were first converged using a single point calculation at the gamma point for the Fock exchange, followed by a convergence using the full $2\! \times\! 2\! \times\! 2$ Monkhorst-Pack mesh. At each step total energies were converged to within \SI{10E-5}{\electronvolt}.
-The defect formation energy was calculated using the methodology outlined in Sections \ref{defectformation} and \ref{corrections}. The image charge-correction developed by Freysoldt, Neugebauer and Van de Walle, and implemented in \textsc{sxdefectalign} was applied. A further ``octahedral tilting'' correction was applied to account for the perfect structure being a time-averaged equilibrium structure. This correction is discussed further in Section \ref{ss:dfe}.
+For the electronic relaxations the hybrid exchange-correlation functional of Heyd-Scuseria-Ernzerhof (HSE06) was used.\autocite{Heyd2004a,Heyd2005a} The amount of exact Hartree-Fock exchange was adjusted to 0.43 to reproduce the correct bandgap and allow comparison with the previous literature.\autocite{Meggiolaro2018,Du2015} 
+ Spin-orbit coupling was included in the calculation.
+To reduce the computational expense the wavefunctions were first converged using a single point calculation at the gamma point for the Fock exchange, followed by convergence using the full $2\!\times\!2\!\times\!2$ Monkhorst-Pack mesh. At each step the total energy was converged to within \SI{1E-5}{\electronvolt}.
+The defect formation energy was calculated using the methodology outlined in Sections \ref{defectformation} and \ref{corrections}. The image charge-correction developed by Freysoldt, Neugebauer and Van de Walle, and implemented in \textsc{sxdefectalign},\autocite{sxdefectalign} was applied. A further `octahedral tilting' correction was applied to account for the pristine reference structure being a time-averaged equilibrium structure. This correction is discussed further in Section \ref{ss:dfe}.
 
 %Ionic relaxation at HSE06 confirms that there is very little distortion from PBEsol relaxed structure.
 % Perfect structure confirmed stable from a phonon calculation.
@@ -106,27 +106,25 @@ The defect formation energy was calculated using the methodology outlined in Sec
 
 \subsection{Lattice dynamics}
 
-The negative interstital was placed in a $2\! \times\! 2\! \times\! 2$ supercell expansion of the perfect cubic lattice. The resulting supercell contains 93 atoms. Atomic relaxations were computed within the Kohn-Sham DFT formalism as implemented in the \textsc{VASP} code\autocite{Kresse1996a} and using the PBEsol functional. The wave functions were expanded in plane waves up to an energy cutoff of \SI{700}{\electronvolt} and a $2\! \times\! 2\! \times\! 2$ gamma centred Monkhorst-Pack mesh was used for Brillouin zone integration.  Projection operators were optimised in reciprocal space and forces converged to within \SI{0.01}{eV} per atom.
+The negative interstital was placed in a $2\!\times\!2\!\times\!2$ supercell expansion of the pristine pseudo-cubic lattice. The resulting supercell contains 93 atoms. Atomic relaxations were computed within the Kohn-Sham DFT formalism as implemented in the \textsc{VASP} code\autocite{Kresse1996a} and using the PBEsol functional. The wave functions were expanded in plane waves up to an energy cutoff of \SI{700}{\electronvolt} and a $2\! \times\! 2\! \times\! 2$ gamma centred Monkhorst-Pack mesh was used for Brillouin zone integration.  Projection operators were optimised in reciprocal space and forces converged to within \SI{0.01}{\electronvolt\per\angstrom} per atom.
 
-Harmonic lattice-dynamics calculations were performed with the \textsc{Phonopy} package.\autocite{Togo2015}
-Displacement steps of \SI{0.01}{\angstrom} were used to evaluate the second-order force-constant matrix using the finite-displacement method (582 displacements).
-Forces were computed using \textsc{VASP}.
-The valence wavefunctions were expanded in a plane-wave basis set with a \SI{800}{\electronvolt} cut-off and the exchange and correlation interactions between electrons were modelled using the PBEsol exchange-correlation functional.\autocite{Perdew2008a}
-The electronic Brillouin zone was evaluated using a $2\! \times\! 2\! \times\! 2$ gamma centred Monkhorst-Pack mesh, and a total-energy convergence criterion of $10^{-8}\textrm{eV}$ was used.
+Harmonic lattice-dynamics calculations were performed with the \textsc{Phonopy} package.\autocite{Togo2015} Displacement steps of \SI{0.01}{\angstrom} were used to evaluate the second-order force-constant matrix using the finite-displacement method (582 displacements).
+Forces were computed using \textsc{VASP} using the PBEsol exchange-correlation functional.\autocite{Perdew2008a}.
+The valence wavefunctions were expanded in a plane-wave basis set with a \SI{700}{\electronvolt} cut-off. The electronic Brillouin zone was evaluated using a $2\!\times\!2\!\times\!2$ gamma centred Monkhorst-Pack mesh and a total-energy convergence criterion of $10^{-8}\textrm{eV}$.
 
 \subsection{Carrier capture coefficient}
 
-The procedure follows static coupling theory as implemented by Alkauskas et al.\autocite{Alkauskas2014} and recently extended to anharmonic potential energy surfaces by Kim et al. in the \textsc{carriercapture.jl} package.\autocite{Kim2019}
-The capture coefficient is derived by considering the first order of electron phonon coupling and using the one-dimensional approximation so that the problem reduces to a single phonon mode $Q$. For carrier capture from an initial state $i$ to a final state $f$, the carrier capture coefficient is given by
+The procedure follows static coupling theory as implemented by Alkauskas et al.\autocite{Alkauskas2014} and recently extended to anharmonic potential energy surfaces by Kim et al. in the \textsc{carriercapture.jl} package.\autocite{carriercapture,Kim2019}
+The capture coefficient is derived by considering electron phonon coupling at first order and using a one-dimensional approximation so that the problem reduces to a single phonon mode $Q$. For carrier capture from an initial state $i$ to a final state $f$, the carrier capture coefficient is given by
 \begin{equation} \label{carriercapteqn}
     C_p = V\frac{2\pi}{\hbar}gW_{if}^2\sum_m\omega_m\sum_n|\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle^2\times (\Delta E+m\hbar\Omega_i-n\hbar\Omega_f),
 }
 \end{equation}
-where $V$ is the supercell volume, $g$ is the energetic degeneracy of the final state, $W_{if}$ is the electron-phonon coupling matrix element, $\omega_m$ is the thermal occupation of the vibrational state $m$, $\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle$ is the overlap of the vibrational wavefunctions $\chi$ and $\delta(\Delta E+m\hbar\Omega_i-n\hbar\Omega_f)$ ensures that there is conservation of energy. In practice the $\delta$ term is replaced by a smearing function, for the calculations in this study this is a gaussian function of width \SI{0.01}{\electronvolt}.
-The total energies and wavefunctions of the iodine interstitial in a neutral and negative charge state, for the fully relaxed and distorted geometries, were calculated using the parameters outlined in Section \ref{method:dfe}. Total energies were calculated using the HSE06 hybrid exchange-correlation functional with spin-orbit coupling, whilst single particle wavefunctions for the electron-phonon coupling matrix were calculated using the PBEsol functional.
-It was found that the shape of the potential energy surface is largely independent of the level of theory used (see Appendix \ref{app9:configcoord} for a comparison at different levels of theory).
+where $V$ is the supercell volume, $g$ is the energetic degeneracy of the final state, $W_{if}$ is the electron-phonon coupling matrix element, $\omega_m$ is the thermal occupation of the vibrational state $m$, $\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle$ is the overlap of the vibrational wavefunctions $\chi$ and $\delta(\Delta E+m\hbar\Omega_i-n\hbar\Omega_f)$ ensures that there is conservation of energy. In practice the $\delta$ term is replaced by a smearing function; for the calculations in this study this is a gaussian function of width \SI{0.01}{\electronvolt}.
+The total energies and wavefunctions of the iodine interstitial in a neutral and negative charge state, for the equilibrium and distorted geometries, were calculated using the parameters outlined in Section \ref{method:dfe}. Total energies were calculated using the HSE06 hybrid exchange-correlation functional with spin-orbit coupling, whilst single particle wavefunctions for the electron-phonon coupling matrix were calculated using the PBEsol functional.
+We found that the shape of the potential energy surface is largely independent of the level of theory used (see Appendix \ref{app:9-configcoord} for a comparison at different levels of theory).
 The anharmonic potential energy surface was generated from fitting a spline of order 4, as implemented in the \textsc{dierckx.jl} package,\autocite{dierckx} to the DFT total energies. 
-We consider electron capture from the neutral charge state to the negative charge state which has a singly energy-degenerate final state.
+We consider electron capture from the neutral charge state to the negative charge state which has a singly energy-degenerate geometry.
 
 The 1D Schr\"{o}dinger equation for the potential energy surface was solved using a finite difference method implemented in the \textsc{brooglie} package\autocite{brooglie} to give the vibrational wavefunctions. 
 The electron-phonon coupling matrix element is given by
@@ -141,7 +139,7 @@ Further details of  the  methodology  can  be  found  in  the  literature.\autoc
 
 \subsection{Defect geometry}
 
-In this section the defect geometry for the neutral, negative and positive charge states of the iodine interstitial is given. Structures were relaxed from MAPI in the pseudocubic phase. This was chosen as a starting geometry so that no preference was given to a particular combination of octahedral tilts. The hybrid halide perovskite structure was found to have a number of local minima and multiple relaxations were required to break symmetry and reach a global minimum. To calculate accurate values of $\Delta Q$, the amplitude of distortion along phonon mode $Q$ between charge states, the negative and positive charge states are found by relaxing from the neutral charge state geometry. The atomic relaxation procedure is outlined in Figure \ref{relaxation_workflow}.
+In this section the defect geometry for the neutral, negative and positive charge states of the iodine interstitial is given. Structures were relaxed from MAPI in the pseudo-cubic phase. This was chosen as a starting geometry so that no preference was given to a particular combination of octahedral tilts. The hybrid halide perovskite structure was found to have a number of local minima and multiple relaxations were required to break symmetry and reach a global minimum. To calculate accurate values of $\Delta Q$, the amplitude of distortion along phonon mode $Q$ between charge states, the negative and positive charge states are found by relaxing from the neutral charge state geometry. The atomic relaxation procedure is outlined in Figure \ref{relaxation_workflow}.
 
 \begin{figure}[h!]
 \centering
@@ -211,10 +209,10 @@ The formation energy of a defect in charge state $q$ is given by
 E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_\mathrm{F}) + E_\mathrm{corr}.
 \end{equation}
 The total energy of the supercell $E_\mathrm{d}(q)$, the total energy of the pristine lattice $E_\mathrm{b}$ and the iodine chemical potential $\mu_i$ were calculated DFT as outlined in the methods section.
-The defect correction $E_\mathrm{corr}$ consists of two terms - the charged defect correction and a `tilting' correction that is specific to pseudocubic perovskites.
+The defect correction $E_\mathrm{corr}$ consists of two terms - the charged defect correction and a `tilting' correction that is specific to pseudo-cubic perovskites.
 Both terms are small. The charged defect correction is equal to \SI{-0.057}{eV}. This is due to the high static dielectric constant of MAPI ($\bar{\epsilon_0}=22.67$)\autocite{Brivio2013} that allows effective ionic screening of charged defects. The point defects carry a maximum charge of one which also leads to small charged defect corrections.
 
-The tilting correction is a new correction introduced in this work and particular to pseudocubic perovskites. All of the defect formation energies are referenced to a pristine lattice energy. The geometry of the pristine lattice in the pseudocubic phase corresponds to a time average and is not the minimum energy structure (Figure \ref{tilting_correction}). To calculate the minimum energy geometry the pseudocubic structure can be modemapped along the soft mode at the $R$-point in $q$-space, following the procedure in Section \ref{}. This modemapping procedure is not compatible with the supercell expansion used for this defect calculation, but the correction energy was inferred from modemapping other supercell expansions (Table \ref{modemaptable}).
+The tilting correction is a new correction introduced in this work and particular to pseudo-cubic perovskites. All of the defect formation energies are referenced to a pristine lattice energy. The geometry of the pristine lattice in the pseudo-cubic phase corresponds to a time average and is not the minimum energy structure (Figure \ref{tilting_correction}). To calculate the minimum energy geometry the pseudo-cubic structure can be modemapped along the soft mode at the $R$-point in $q$-space, following the procedure in Section \ref{}. This modemapping procedure is not compatible with the supercell expansion used for this defect calculation, but the correction energy was inferred from modemapping other supercell expansions (Table \ref{modemaptable}).
 
 \begin{table}[h!]\centering
 \begin{tabular}{lll}\toprule
@@ -241,7 +239,7 @@ The formation energy is negative for all defects across the Fermi level range. T
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=0.7\columnwidth]{figures/ch6/tilting_correction.png}
-  \caption[Tilting correction for defect formation energies]{An outline of the tilting correction used in this work. The green line is a schematic of the double well potential typical of pseduocubic perovskite structures. This correction is only needed when using the high-symmetry pseudocubic phase to calculate the pristine bulk energy of MAPI.}
+  \caption[Tilting correction for defect formation energies]{An outline of the tilting correction used in this work. The green line is a schematic of the double well potential typical of pseduocubic perovskite structures. This correction is only needed when using the high-symmetry pseudo-cubic phase to calculate the pristine bulk energy of MAPI.}
 \label{tilting_correction}
 \end{figure}
 %need to change wordin: energy of calculation....
