@@ -68,9 +68,15 @@ The configuration coordinate is a collective phonon mode describing the displace
 Their model predicts that electron (hole) trapping at positively (negatively) charged defect states will result in the formation of a metastable neutral charge state, and that radiative electron trapping at the neutral defect will compete with non-radiative electron trapping.
 However the rate of electron capture is not calculated, and the motion of the defect species around lattice equilibrium positions is assumed to be harmonic.
 
-In this chapter the neutral iodine interstitial is considered. This defect is predicted to form a split-interstitial defect with self-trapped hole ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{i}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$). The hole induces the formation of a bond between two halide ions, producing an open-shell molecular dimer called a H-centre.
+In this chapter the non-radiative electron capture rate at the neutral iodine interstitial is calculated based on a multiphonon single-mode carrier capture model.  The non-radiative electron capture process is illutrated in Figure \ref{capture_process} as a band diagram. First, the properties of the charged iodine interstitial defects in their equilibrium positions are calculated. The neutral interstitial defect is predicted to form a split-interstitial defect with self-trapped hole ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{i}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$). The hole induces the formation of a bond between two halide ions, producing an open-shell molecular dimer called a H-centre. On electron capture the molecular bond is broken and the iodine move apart, accompanied by extensive reorganisation of the surrounding lattice. Second, the anharmonic potential energy surface along a single configuration coordinate is combined with an electron-coupling term to give an electron capture coefficient at the neutral defect.
 % H-center defect castner and kanzig.
-The electron-phonon coupling matrix element is calculated and combined with anhamornic potential energy surfaces to give a rate for non-radiative electron capture at the H-centre (neutral) defect. In addition, all harmonic phonon modes of the defective supercell are analysed to validate the one dimensional configuration coordinate model.
+In addition, all harmonic phonon modes of the defective supercell are analysed to validate the one dimensional configuration coordinate model used to calculate the electron capture rate.
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.7\columnwidth]{figures/ch6/capture_process.png}
+  \caption[Non-radiative electron capture process at an iodine interstitial defect]{Non-radiative electron capture process at a neutral iodine interstitial defect. $\Delta E$ is the ionization energy of the acceptor and $Q$ is a configuration coordinate.}
+\end{figure}
 
 %De Angelis work suggests radiative pathway between the neutral and negative charge state, we find a non-radiative pathway.
 % we give carrier capture rate
@@ -118,13 +124,16 @@ The electronic Brillouin zone was evaluated using a $2\! \times\! 2\! \times\! 2
 
 The procedure follows static coupling theory as implemented by Alkauskas et al.\autocite{Alkauskas2014} and recently extended to anharmonic potential energy surfaces by Kim et al. in the \textsc{carriercapture.jl} package.\autocite{Kim2019}
 The capture coefficient is derived by considering the first order of electron phonon coupling and using the one-dimensional approximation so that the problem reduces to a single phonon mode $Q$. For carrier capture from an initial state $i$ to a final state $f$, the carrier capture coefficient is given by
-\begin{equation}
+\begin{equation} \label{carriercapteqn}
     C_p = V\frac{2\pi}{\hbar}gW_{if}^2\sum_m\omega_m\sum_n|\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle^2\times (\Delta E+m\hbar\Omega_i-n\hbar\Omega_f),
+}
 \end{equation}
 where $V$ is the supercell volume, $g$ is the energetic degeneracy of the final state, $W_{if}$ is the electron-phonon coupling matrix element, $\omega_m$ is the thermal occupation of the vibrational state $m$, $\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle$ is the overlap of the vibrational wavefunctions $\chi$ and $\delta(\Delta E+m\hbar\Omega_i-n\hbar\Omega_f)$ ensures that there is conservation of energy. In practice the $\delta$ term is replaced by a smearing function, for the calculations in this study this is a gaussian function of width \SI{0.01}{\electronvolt}.
 The total energies and wavefunctions of the iodine interstitial in a neutral and negative charge state, for the fully relaxed and distorted geometries, were calculated using the parameters outlined in Section \ref{method:dfe}. Total energies were calculated using the HSE06 hybrid exchange-correlation functional with spin-orbit coupling, whilst single particle wavefunctions for the electron-phonon coupling matrix were calculated using the PBEsol functional.
+It was found that the shape of the potential energy surface is largely independent of the level of theory used (see Appendix \ref{app9:configcoord} for a comparison at different levels of theory).
 The anharmonic potential energy surface was generated from fitting a spline of order 4, as implemented in the \textsc{dierckx.jl} package,\autocite{dierckx} to the DFT total energies. 
-The potential energy surfaces reported in the main text are calculated using the HSE06 functional with spin-orbit coupling. However it was found that the shape of the potential energy surface is largely independent of the level of theory used (see Appendix \ref{app9:configcoord} for a comparison at different levels of theory).
+We consider electron capture from the neutral charge state to the negative charge state which has a singly energy-degenerate final state.
+
 The 1D Schr\"{o}dinger equation for the potential energy surface was solved using a finite difference method implemented in the \textsc{brooglie} package\autocite{brooglie} to give the vibrational wavefunctions. 
 The electron-phonon coupling matrix element is given by
 \begin{equation} \label{epcouplingterm}
@@ -259,6 +268,7 @@ The configuration coordinate diagram for the neutral and negative charge states 
 This gives the total system energy in various charge states as a function of a single normal mode of the lattice $Q$. 
 The model assumes that the electronic states of the defect interact with only one normal mode of the lattice, and that
 the minimum of each curve corresponds to the equilibrium position of the ions and the electronic ground state. 
+The excited state of the system corresponds to the neutral defect with a photogenerated electron in the conduction band and hole in the valence band. The ground state corresponds to the negatively charged defect with a hole in the valence band.
 \autocite{alkauskas defect theory and experiment}
 
 In this work this the configuration coordinate $Q$ is defined as $\sqrt{\sum_i m_i \Del r_i^2}$ ,where the sum is over all inorganic atoms $i$ with mass $m_i$ and displacement from equilibrium $\Del r_i^2$. Summing over all atoms, including those in the organic molecule $CH3NH3$, led to unphysical energies as the linear interpolation does not reflect the rotation of the organic cation between charge states. The potential energy surface generated using a summation over all atomic displacements is given in Appendix \ref{app:9-configcoord}.
@@ -330,8 +340,6 @@ This is evidence that the single configuration coordinate $Q$ provides a good ap
 As discussed in a paper by Alkauskas et al.,\autocite it may be surprising that a one-dimensional approximation to a multi-dimensional probem is sufficient, but this is particularly the case for defects with strong electron-phonon coupling.
 We have shown in section \ref{ch5:ccd} that electron-phonon coupling is large, and the normal mode phonon calculations verify that the 1D configuration coordinate is a good approximation for the iodine interstitial defect in MAPI.
 
- %discuss limits - promoting and accepting modes
-
 
 \begin{figure}[h!]   
 \centering
@@ -347,14 +355,24 @@ We have shown in section \ref{ch5:ccd} that electron-phonon coupling is large, a
 \label{defect_dispersion_IPR}
 \end{figure}
 
-\subsection{Carrier capture mechanism and rate} \label{finalsection}
+\subsection{Carrier capture coefficient} \label{finalsection}
 
-In Section \ref{ch6:ccd} we used the extent of lattice relaxation on charge capture, $\Delta Q$, and the Huang-Rhys factor, $S$, as proxies to indicate the extent of electron phonon coupling. In this section the electron phonon coupling matrix element (Equation \ref{epcouplingterm}) calculated from first principles is given.
-% how carrier capture is calculated - alkauskas.
-% importance of suitable starting state and state to capture into
- % problem with the adiabatic approach and falling to the local minima
-% then the eigenvalues with distortion and overlap/gradient of overalpt....
-% EP at PBEsol level of theory
+In Section \ref{ch6:ccd} we used the extent of lattice relaxation on charge capture, $\Delta Q$, and the Huang-Rhys factor, $S$, as proxies to indicate the extent of electron phonon coupling. In this section we consider the electron phonon coupling matrix element (Equation \ref{epcouplingterm}) calculated from first principles and combine this with the solutions to the Schro\"{o}dinger for the anharmonic potential energy surfaces in Section \ref{ch6:cc} to calculate the electron capture coefficient at the neutral iodine interstitial. The electron capture coefficient $C_p$ determines the rate of electron capture $R_p$ via the following equation
+\begin{equation}
+R_p=C_pN_te
+\end{equation}
+%check that this consistent with earlier notation
+where $N_t$ is the density of neutral defect traps and $e$ is the electron density.
+
+During electron capture, a delocalised electron in the valence band is captured to a localised defect state. It is important that there is a single particle level in the bulk band gap for geometry $Q_0$ in Equation \ref{epcouplingterm}. There is an empty electronic defect state in the band gap at the equilibrium geometry for the neutral charge state (Figure \ref{eigenvalues}) and so this is chosen as $Q_0$.
+\autocite{Alkauskas 2014}
+In Figure \ref{eigenvalues} we see that as the lattice geometry is distorted towards that of the negative charge state the empty defect state decreases in energy until it is in the valence band and in the geometry of the negative charge state it is in the valence band and occupied by an electron. 
+The change in overlap of the wavefunctions at the valence band minimum $\phi_i$ and unoccupied defect wavefunction $\phi_f$ gives a value of \SI{0.0036}{\electronvolt\per\amu\tothe{1/2}\per\angstrom} for the electron-phonon coupling matrix element.
+It is possible to estimate the electron-phonon coupling term using an estimate of the degree of localisation of $\phi_i$ and $\phi_f$. For strong electron phonon coupling $W_if$ corresponds to 
+\begin{equation}
+W_{if} \approx \frac{\Delta E}{\Delta Q}\sqrt{\frac{M_d}{M_b}}
+\end{equation}
+where $M_b$ is the number of atoms in the supercell and $M_d$ is the number of atoms the defect state is localised on. $W_{if}\approx0.0037$ is obtained and so electron-phonon coupling for the single mode $Q$ is very strong.
 
 \begin{figure}[h!]   
 \centering
@@ -362,12 +380,12 @@ In Section \ref{ch6:ccd} we used the extent of lattice relaxation on charge capt
   \caption[ ]{}
 \label{eigenvalues}
 \end{figure}
+%might need to label geometries
 
-This is combined with the vibrational wavefunctions (see methods)
- % Plot of the schrodinger solution is in the appendix.
+Combining the electron-phonon coupling term with solutions to the schrodinger equation for the neutral and negative charge state anharmonic potential energy surfaces as in Equation \ref{carriercapteqn}, the carrier capture coefficient at room temperature is \SI{1.2}{\centimetre\cubed\per\second}.
+The large lattice distortion associated with charge capture suppresses radiative recombination, and the so non-radiative transition will be the dominant process.
+\autocite{theory of defects in solids}
 
- At room temperature the carrier capture coefficient is
-% emphasise that the carrier capture rate (EP coupling) is high
 
 \begin{figure}[h!]   
 \centering
@@ -375,20 +393,24 @@ This is combined with the vibrational wavefunctions (see methods)
   \caption[Rate of electron capture at the ]{Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect}
 \label{carrier_capture_rate}
 \end{figure}
+%tabel of eigenstates like on Trello
 
 
 
 
-% The results show that neutral to negative but not the other way round. one way street
-% the neutral OP will convert into negative on a short time scale via a non-radiative recombination route.
-% but the negative is harmless and no charge capture is possible from it. due to large relaxation on electron capture.
-% neutral not thermodynamically stable but formed from positive. 
+\textbf{Summary}
+
+The results show that electron capture at a neutral H-centre defect is fast, and that this process is a `one way street': due to the strong relaxation of the surrounding lattice, once a negative defect is formed it is both thermodynamically stable and stable under light irradiation.
+The neutral defect is metastable and will be formed only after photoexcitation. The results demonstrate that it cannot be formed from hole capture at a negative charge state, but the existing literature predicts that hole capture from the positive charge state is possible. Further calculations are needed to confirm this, and future work could apply the methodology developed here to this process. 
 
 % this conclusion is consistent with p-type doping from seebeck coefficient whihc could be attributed to negatively charge interstitials
 %https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6269531/#CR39
 
  % Thi is in agreement with a model for improved performance after light soaking that it is correlated with ion migration: https://www.nature.com/articles/ncomms11683
  % we add to this that any positively charged will be converted to negative
+
+
+
  
  % need to be very careful to draw conlcusions quickly. OTerh forms of bulk transport.
  % for pathways that have not been considered, which compete: this gives a lower bound which shows it is fast. Same for PBEsol level of theory for the EP coupling.
@@ -405,9 +427,6 @@ This is combined with the vibrational wavefunctions (see methods)
     % Consideration of other NRR (2) impurities,such as Li+from Spiro-OMETAD, Au from deposited electrodes,and many others from the raw materials,30,31(3) two-dimensionalextended defects, including grain boundaries and surfacedefects,32,33(4) three-dimensional defects, like lead clusters
     % open questions around interface and recomgination" JS Park, It has been reported that grain boundaries do not act as charge recombination centres (Edri nanoletters 2014,14,1000-1004)
     % https://pubs.rsc.org/en/content/articlepdf/2019/cs/c8cs00853a
-
- %tabel of eigenstates like on Trello
-\textbf{Summary}
 % brief summary
 	% importance of anharmoniciy
 	% localised states
@@ -436,14 +455,17 @@ This is combined with the vibrational wavefunctions (see methods)
 % I need to publish my structures!
 % Also IPR analysis would be useful (as a notebook you can run?)
 
+open source codes
 % displacement vectors
 % carrier capture code
 %pawpyseed
 %phonopy
 % modemap
 % vesta vectors
+% juliaphonons
 
 \textbf{Acknowledgements}
 
 Calculations were performed on the SiSu supercomputer at the IT Center for Science (CSC), Finland, via the Partnership for Advanced Computing in Europe (PRACE) project no. 13DECI0317/IsoSwitch.
+Stoneham, Alkauskas, Subghyun Kim.
 % Need to include TDDFT at start thesis
