@@ -8,6 +8,14 @@ So rap is no big thang, I was created in the void
 
 \chapter{\label{ch:6-defects}H-centre defects}
 
+
+
+%%feedback:
+%-include all units in plots, remove I_i when mean I_I.
+%stoneham talks avout metastable defects lasting longer than the life of the universe
+% discuss unusual features of the defect bandstructure (numerical noise from the FFT grid, and tilting)
+% Need to inclue cm^3
+
 \section{Introduction}
 
 Until this point we have considered a lattice with perfect translational symmetry and no missing or extra atoms. However at finite temperature a crystalline material always contains point defects, as the cost in lattice energy is balanced by the increase in configurational entropy.
@@ -400,69 +408,30 @@ The large lattice distortion associated with charge capture suppresses radiative
 
 \textbf{Summary}
 
-The results show that electron capture at a neutral H-centre defect is fast, and that this process is a `one way street': due to the strong relaxation of the surrounding lattice, once a negative defect is formed it is both thermodynamically stable and stable under light irradiation.
-The neutral defect is metastable and will be formed only after photoexcitation. The results demonstrate that it cannot be formed from hole capture at a negative charge state, but the existing literature predicts that hole capture from the positive charge state is possible. Further calculations are needed to confirm this, and future work could apply the methodology developed here to this process. 
+The main conclusion of this study that electron capture at a neutral H-centre defect is fast, and that this process is a `one way street': due to the strong relaxation of the surrounding lattice, once a negative defect is formed it is both thermodynamically stable and stable under light irradiation.
+The neutral defect is metastable and will be formed only after photoexcitation. The results demonstrate that the neutral defect cannot be formed from hole capture at a negative charge state, but the existing literature predicts that hole capture from the positive charge state is possible. Further calculations are needed to confirm this, and future work could apply the methodology developed here to this process. 
 
-% this conclusion is consistent with p-type doping from seebeck coefficient whihc could be attributed to negatively charge interstitials
+The results are consistent with the p-type doping observed in MAPI, which could be attributed to negatively charged interstitials, and the photo-induced `brightening'of perovskite photoluminsecence that is attributed to a reduction in trap state density.
 %https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6269531/#CR39
+%https://www.nature.com/articles/ncomms11683
+However we must be very careful in extrapolating to results beyond the bounds of this study,
+as the model is limited in scope and the hybrid halide perovskites are complex materials. 
+For example, it could be that there are other charge trapping mechanisms simultaneously occuring that involve longer polyiodide chains, lithium from the p-doped hole transporting material Spiro-OMETAD, or Au from the deposited electrodes. There are also open questions around charge trapping at the grain boundaries and surfaces.
+%https://pubs.rsc.org/en/content/articlepdf/2019/cs/c8cs00853a
 
- % Thi is in agreement with a model for improved performance after light soaking that it is correlated with ion migration: https://www.nature.com/articles/ncomms11683
- % we add to this that any positively charged will be converted to negative
-
-
-
- 
- % need to be very careful to draw conlcusions quickly. OTerh forms of bulk transport.
- % for pathways that have not been considered, which compete: this gives a lower bound which shows it is fast. Same for PBEsol level of theory for the EP coupling.
-% Have to be very careful in conclusions:
-	%Limitations of this work
-           % - consideration of +/neutral charge trapping
-           % - differences with earlier work: MD run? everything relies on defect structures. Difficult here.
-           % sensitivity analysis. 
-
-           % iodine chains-  polyanions
-           % oncentration is sensitive to the device fabricationprocesses and perovskite compositions.60,65–71For example,perovskite precursors withnon-stoichiometric PbI2and MAI ratiocould induce extended defects with different types of defects andalso change the formation energy of point defects.18,60,67Thermalannealing for a longer period of time or at higher temperaturescan also result in the evaporationoforganiccationsandhalides,leaving undercoordinated Pb2+ions at surface or forming PbI2. ie, not at equilbirium.
-
-    % multiple explanations: the negative p-type doping could be fromX,Y or Z. NRR not from point defects but from  
-    % Consideration of other NRR (2) impurities,such as Li+from Spiro-OMETAD, Au from deposited electrodes,and many others from the raw materials,30,31(3) two-dimensionalextended defects, including grain boundaries and surfacedefects,32,33(4) three-dimensional defects, like lead clusters
-    % open questions around interface and recomgination" JS Park, It has been reported that grain boundaries do not act as charge recombination centres (Edri nanoletters 2014,14,1000-1004)
-    % https://pubs.rsc.org/en/content/articlepdf/2019/cs/c8cs00853a
-% brief summary
-	% importance of anharmoniciy
-	% localised states
-    % accuracy of the 1D configuration coordinate
-    % one way street
-% limitations of approach
-% Future work around the interaction between electronic and ionic states.
-%  Themolecular iodide defects discussed here are not necessarily staticcarrier traps, because the halides that form the corner-sharingperovskite framework support reasonable rates of ion transport.Room-temperature diffusion is expected for the V-center, whichcould proceed in a pathway akin to vacancy-mediated diffusion.
-% Transport of the H-center would require an interstitialcymechanism, which has also been predicted to be low energy inhalide perovskites.12The slow motion of trapped holes wouldadd a further layer to the complexity of the temporal response ofperovskite solar cells to light soaking and bias voltages (alsoevident in quantum dot photovoltaics13). Given the polyanionnature of iodine (e.g., charged I2up to I16complexes) and theflexibility of the perovskite structure, the formation of largercharged molecular aggregates is also possible for the iodideperovskites. Such polyanion inclusions in a crystal would beredox active and could facilitate additional electron or holetrapping, which is a fertile line of research for future studie
-% interstitcalicy - sam stranks paper
-
-%  This poses a challenge for computational modelling as processes over a range of time and length scales are coupled together. 
-% interested in minority carrier capture, but roughly equal holes and electronis in perovskite??? so both of interest. holes are slightly more bountiful, so wrt limiting current collection, it is hole capture.
-
-
-
-%%feedback:
-%-include all units in plots, remove I_i when mean I_I.
-%stoneham talks avout metastable defects lasting longer than the life of the universe
-% discuss unusual features of the defect bandstructure (numerical noise from the FFT grid, and tilting)
-% Ned to inclue cm^3
-
-# SEND PUCK THE INFO ABUT MAPI
+The results provide guidance for future studies of charge trapping in the hybrid halide perovskites.
+We have shown that lattice anharmonicity is significant and that harmonic potential energy surfaces could lead to carrier capture coefficients that are many orders of magnitude too small (or large).
+We have also found that the electron-phonon coupling term is large and this has two important consequences. Firstly, the relaxation of the whole lattice, not only the bonding atoms, must be considered in our calculations.
+Secondly, for the electron capture process considered here, the single mode approximation is valid and the configuration coordinate $Q$ provides a good approximation to the accepting modes of negative iodine interstitial.
 
 \textbf{Data access statement}
-% I need to publish my structures!
-% Also IPR analysis would be useful (as a notebook you can run?)
 
-open source codes
-% displacement vectors
-% carrier capture code
-%pawpyseed
-%phonopy
-% modemap
-% vesta vectors
-% juliaphonons
+The crystal structures for the iodine interstitial in the negative, neutral and positive charge states reported in this chapter are available 
+in an online repository.\autocite{}
+The Inverse Participation Ratio (IPR) of the phonon modes can be calculated using the \textsc{JuliaPhonons} package available at.
+The IPR data for the negative iodine interstitial, alongside the analysis steps taken to generate the results in this paper are available at \url{https://github.com/lucydot/MAPI_iodine_vibrations}
+Carrier capture rates can be calculated using a package available at,%carriercapture
+and the displacement between defect geometries can be visualised using .%vestavectors
 
 \textbf{Acknowledgements}
 
