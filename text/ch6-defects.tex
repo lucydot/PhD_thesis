@@ -6,92 +6,78 @@ So rap is no big thang, I was created in the void
   \qauthor{---  Grip Grand, \textit{Conservation of Matter}}
 \end{savequote}
 
-\chapter{\label{ch:6-defects}H-centre defects}
+\chapter{\label{ch:6-defects}Electron capture at H-centre defects}
 
 
 
 %%feedback:
-%-include all units in plots, remove I_i when mean I_I.
-%stoneham talks avout metastable defects lasting longer than the life of the universe
-% discuss unusual features of the defect bandstructure (numerical noise from the FFT grid, and tilting)
-% Need to inclue cm^
+% Need to include cm^3
+
 
 \section{Introduction}
 
 Until this point we have considered a lattice with perfect translational symmetry and no missing or extra atoms. However at finite temperature a crystalline material always contains point defects, as the cost in lattice energy is balanced by the increase in configurational entropy.
-In this chapter we consider the iodine interstitial defect and predict that it will form a split-interstitial defect with self-trapped hole ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{i}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$). The vibrational properties of the defect are studied to i) confirm the validity of the 1D configurational coordinate approach and ii) predict the electron capture coefficient at this defect site.
+In this chapter we consider the iodine interstitial defect and predict that it will form a split-interstitial defect with self-trapped hole. The vibrational properties of the defect are studied to i) confirm the validity of the 1D configurational coordinate approach and ii) predict the electron capture coefficient at this defect site.
 
-As outlined briefly in Section \ref{recombination} we are often interested in semiconductor defects that form electronic states in the bandgap, as these can provide sites for fast non-radiative transitions such as minority carrier trapping and electron-hole recombination, both of which limit the photovoltaic efficiency of solar cell absorber materials. Such is the impact of these defects that special names have been coined to describe them - Marshall Stoneham uses the term `killer centre' whilst William Shockley in his Nobel Lecture uses the term `deathnium'.\autocite{}
-Stoneham lists the defect types that may act as `killer centres'. Two of four in the list relate to the vibrational properties of the defect lattice:
+As outlined briefly in Section \ref{recombination} we are often interested in semiconductor defects that form electronic states in the bandgap, as these can provide sites for fast non-radiative transitions such as minority carrier trapping and electron-hole recombination, both of which limit the photovoltaic efficiency of solar cell absorber materials. Such is the impact of these defects that special names have been coined to describe them - Marshall Stoneham uses the term `killer centre' whilst William Shockley in his Nobel Lecture uses the term `deathnium'.\autocite{shockley}
+Stoneham lists the defect types that may act as killer centres. Two of four in the list relate to the vibrational properties of the defect lattice:
 
 \begin{displayquote}
-``2. Defects with favorable vibrational properties, that is, with large-amplitude modes promoting the transitions, and large-energy modes to take up the electronic energy.
+2. Defects with favorable vibrational properties, that is, with large-amplitude modes promoting the transitions, and large-energy modes to take up the electronic energy.
 
-3.  Defects with very strong coupling to lattice distortions such as certain dislocations and some vacancy centers.''
+3.  Defects with very strong coupling to lattice distortions such as certain dislocations and some vacancy centers.
 \end{displayquote}
 
-However historically there has been increased research emphasis on the electronic properties of `killer centres', as the calculations required to predict the vibrational properties of imperfect crystals from first principles are computationally demanding.
-With recent advances in first principles modelling \autocite{Alkauskas2014}%also sunghyun's paper an dalkauskas review 
-and the growth in available computing power\autocite{}
+However historically there has been increased research emphasis on the electronic properties of killer centres, as the calculations required to predict the vibrational properties of imperfect crystals from first principles are more computationally demanding.
+With recent advances in first principles modelling \autocite{Alkauskas2014,Alkauskas2016} and the growth in available computing power,\autocite{top500}
 it is now possible to calculate from first principles the coupling strength between the electronic states of the defect and bulk phonons to predict the rate of carrier capture and recombination for systems of interest. 
 % This combines both the high temperature classical picture where transition from one PES to another has arrheius like bhevaiour propotional to e^-(E_a/KT) and quantum tunneling bheaviour.
 %The moethodology was intrduced by shi and wang in 2012, built on by alkauskas and implemented recently for anharmonic materials by S. Kim.
-This methodology has been recently applied to \ce{CZTS} where it has been found that the sulfur vacancy provides a site for fast non-radiative recombination.
+This methodology has been recently applied to \ce{CZTS} where it has been found that the sulfur vacancy provides a site for fast non-radiative recombination.\autocite{Kim2018}
 
-Hybrid halide perovskite materials are often classed in the literature as `defect tolerant' materials with low concentration of killer defects. This is for two reasons. 
+Hybrid halide perovskite materials are often classed in the literature as `defect tolerant' materials with a low concentration of killer defects. This is for two reasons. 
 Firstly, good device performance can be achieved using a low-temperature solution processing method which is expected to form a thin film with a high concentration of defects. 
 %For example, the $V_\mathrm{oc}$ deficit for solution processed hybrid halide perovskite materials can be as low as \SI{0.5}{\volts}, compared to 
 %http://www.nature.com/articles/srep06071
-Secondly, theoretical calculations show that Schottky and Frenkel point defects form at high concentrations, but that they form electronic states either in the electronic bands or at shallow energies in the bandgap ($< \mathrm{kT}$ from the band edge) and so are unlikely to contribute to non-radiative recombination.
-%Self-Regulation Mechanism for Charged Point Defects in Hybrid Halide Perovskites** Aron Walsh,* 
-%  (http://pubs.acs.org/doi/ipdf/10.1021/jz500370k)
-Amongst the native non-stochiometric defects in MAPI the iodine interstitial is predicted to be the only stable and active trap species.
-%cite de angelis
+Secondly, theoretical calculations show that Schottky and Frenkel point defects form at high concentrations, but that they form electronic states either in the electronic bands or at shallow energies in the bandgap ($< \mathrm{kT}$ from the band edge), so are unlikely to contribute to non-radiative recombination.\autocite{Walsh2014b} 
+Amongst the native non-stochiometric defects in MAPI the iodine interstitial is predicted to be the only stable and active trap species.\autocite{Meggiolaro2018}
 % Several studies42,43 have taken advantage of absorption and emission reciprocity relationships in complete solar cells to show that the predominant contribution to the deficit in VOC from its ideal value under solar illumination is a low EQEEL value. This indicates that most carriers recombine non-radiatively. These relationships have been recently explored in mixed-cation, mixed-halide perovskites, concluding that the EQEEL is limited by SRH recombination in devices with state-of-the-art power conversion efficiency44. % https://www.nature.com/articles/nenergy2016149
 
 
 
-The halide sub-lattice is also associated with ionic migration, with iodine ions being the dominant mobile species in MAPI. %The nature of ion conduction in methylammonium lead iodide: a multimethod approach
-Experimental evidence points to a coupling between the electronic and ionic states, and various models exist which link trapping at the iodine ion with phase segregation and hysterisis in hybrid halide perovskites.
+The halide sub-lattice is also associated with ionic migration, with iodine ions being the dominant mobile species in MAPI.\autocite{Senocrate2017} 
+Experimental evidence points to a coupling between the electronic and ionic states, and various models exist which link trapping at the iodine ion with phase segregation and hysterisis in hybrid halide perovskites.\autocite{dequilettes2016}
 This has motivated the recent research interest in the point defect properties of halide perovskites, and in the properties of the iodine interstitial in particular.
 % talk about photoinduced brightening as it will come in again later: https://www.nature.com/articles/ncomms11683
 % Even though the shallow level point defects donot contribute to non-radiative recombination, their ionic natureenables them to migrate within an electric field.
 % comment that this is not just for deep but for shallow also
 
-Point defects in hybrid halide perovskites are a challenge to model from first principles. Due to the organic cation the structure is low symmetry and there are three inequivalent iodine sites. The atomic lattice is soft and distorts easily, often requiring hundreds of ionic steps to achieve force convergence. 
-Previous calculations in the literature demonstrate that the defect formation energies are sensitive to the level of theory used; hybrid functionals with spin-orbit coupling predict electrically active charge states of the iodine interstitial that are not found at lower levels of theory.
+Point defects in hybrid halide perovskites are challenging to model from first principles. Due to the organic cation the structure is low symmetry and there are three inequivalent iodine sites. The atomic lattice is soft and distorts easily, often requiring hundreds of ionic steps to achieve force convergence. 
+Previous calculations in the literature demonstrate that the defect formation energies are sensitive to the level of theory used; hybrid functionals with spin-orbit coupling predict electrically active trap states that are not found at lower levels of theory.
 %mao hua du
-Furthermore, comparison with experiment remains a challenge. Capacitive techniques including Deep Level Transient Spectroscopy (DLTS) and Thermal Admittance Spectroscopy (TAS) have been used to identify defect concentrations and trap levels in the halide perovskites.
-Defects have been observed with energies at \SI{0.17}{\electronvolt}, \SI{0.20}{\electronvolt} and \SI{0.17}{\electronvolt}, \SI{0.35}{\electronvolt} above valence band edge using DLTS and TAS respectively.
-%https://aip.scitation.org/doi/10.1063/1.4995970
-However capacitive features associated with the mobile ionic species, rather than electronic defect dynamics, can ``present spectra with overlapping or even ``fake'' peaks'', and it has been suggested charactiersiations with bias and light perturbations should be used to confirm the results from DLTS and TAS.
-%https://pubs.acs.org/doi/abs/10.1021/acs.jpclett.9b00601
-
+Furthermore, comparison with experimental results remains a challenge. Capacitive techniques including Deep Level Transient Spectroscopy (DLTS) and Thermal Admittance Spectroscopy (TAS) have been used to identify defect concentrations and trap levels in the halide perovskites.
+Defects have been observed with energies at \SI{0.17}{\electronvolt}, \SI{0.20}{\electronvolt} above valence band edge using DLTS\autocite{rosenberg2017} and \SI{0.17}{\electronvolt}, \SI{0.35}{\electronvolt} using TAS.
+However capacitive features associated with the mobile ionic species, rather than electronic defect dynamics, can ``present spectra with overlapping or even ``fake'' peaks''.\autocite{Almora2019}
 % http://pubs.acs.org/doi/abs/10.1021/acs.jpclett.5b00953 " TSC study: a peak at around T = 191 K is assigned to trap states with activation energies of around 500 meV but with a rather low concentration of 1 × 1021 m–3."
 
-Published defect formation energies predict that the neutral iodine interstitial is metastable at all fermi levels across the bandgap.
+Published defect formation energies predict that the neutral iodine interstitial is metastable at all fermi levels across the bandgap.\autocite{Du2015,Meggiolaro2018}
 However charge trapping at defect sites can result in the formation of metastable defects.
-Meggiolaro et al.\autocite{} use a configuration coordinate diagram to outline the expected charge trapping processes at the iodine interstitial. 
-The configuration coordinate is a collective phonon mode describing the displacement between the relevant charge states and reduces the vibrational problem to one dimension.
-Their model predicts that electron (hole) trapping at positively (negatively) charged defect states will result in the formation of a metastable neutral charge state, and that radiative electron trapping at the neutral defect will compete with non-radiative electron trapping.
-However the rate of electron capture is not calculated, and the motion of the defect species around lattice equilibrium positions is assumed to be harmonic.
+Meggiolaro et al. outline the expected charge trapping processes at the iodine interstitial using a configuration coordinate diagram.\autocite{Meggiolaro2018}
+The configuration coordinate is a collective phonon mode describing the displacement between charge states and reduces the vibrational problem to one dimension.
+Their model predicts that electron (hole) trapping at the positive (negative) charge state will result in the formation of a metastable neutral defect, and that radiative electron trapping at the neutral defect will compete with non-radiative electron trapping.
+However the rate of electron capture is not calculated, and the motion of the defect species is assumed to be harmonic.
 
-In this chapter the non-radiative electron capture rate at the neutral iodine interstitial is calculated based on a multiphonon single-mode carrier capture model.  The non-radiative electron capture process is illutrated in Figure \ref{capture_process} as a band diagram. First, the properties of the charged iodine interstitial defects in their equilibrium positions are calculated. The neutral interstitial defect is predicted to form a split-interstitial defect with self-trapped hole ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{i}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$). The hole induces the formation of a bond between two halide ions, producing an open-shell molecular dimer called a H-centre. On electron capture the molecular bond is broken and the iodine move apart, accompanied by extensive reorganisation of the surrounding lattice. Second, the anharmonic potential energy surface along a single configuration coordinate is combined with an electron-coupling term to give an electron capture coefficient at the neutral defect.
-% H-center defect castner and kanzig.
-In addition, all harmonic phonon modes of the defective supercell are analysed to validate the one dimensional configuration coordinate model used to calculate the electron capture rate.
-
-\begin{figure}[h!]
-\centering
-  \includegraphics[width=0.7\columnwidth]{figures/ch6/capture_process.png}
-  \caption[Non-radiative electron capture process at an iodine interstitial defect]{Non-radiative electron capture process at a neutral iodine interstitial defect. $\Delta E$ is the ionization energy of the acceptor and $Q$ is a configuration coordinate.}
-\end{figure}
-
+In this chapter the non-radiative electron capture rate at the neutral iodine interstitial is calculated based on a multiphonon single-mode carrier capture model.  %The non-radiative electron capture process is illutrated in Figure \ref{capture_process} as a band diagram. 
+First, the electronic structure of the iodine interstitial in the neutral, negative and positive charge states is calculated. The neutral charge state is predicted to form a split-interstitial defect with self-trapped hole ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{I}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$). The hole induces the formation of a bond between two iodine ions, producing an open-shell molecular dimer called a H-centre.\autocite{Castner1957} On electron capture the molecular bond is broken and the iodine move apart, accompanied by extensive reorganisation of the surrounding lattice. 
+To calculate the electron capture coefficient, anharmonic potential energy surfaces for the neutral and negative charge states are combined with an electron-coupling term.
+To validate the single mode approximation used in this work, the normal phonon modes of the defective supercell are analysed to identify those associated with the electron capture process.
+%\begin{figure}[h!]
+%\centering
+%  \includegraphics[width=0.7\columnwidth]{figures/ch6/capture_process.png}
+%  \caption[Non-radiative electron capture process at an iodine interstitial defect]{Non-radiative electron capture process at a neutral iodine interstitial defect. $\Delta E$ is the ionization energy of the acceptor and $Q$ is a configuration coordinate.}
+%\end{figure}
 %De Angelis work suggests radiative pathway between the neutral and negative charge state, we find a non-radiative pathway.
 % we give carrier capture rate
-
-%. The presence of localized modes are 
-demonstrated by the inverse participation ratio 
-
 
 \section{Methods}
 
@@ -172,7 +158,7 @@ Table \ref{compare_geoms} contains a summary of the defect geometries alongside 
 \begin{tabular}{llllllll}\toprule
 \phantom{abcd}&\multicolumn{2}{c}{This work} &\phantom{a} &\multicolumn{2}{c}{Meggiolaro et al., Ref. \cite{Meggiolaro2018}}&\phantom{a} & Du, Ref. \cite{Du2015} \\
 \cline{2-3} \cline{5-6} \cline{8-8}
-& orientation & I--I bond length && orientation & I--I bond length && orientation \\  
+& orientation & I--I bond length ($\angstrom$) && orientation & I--I bond length ($\angstrom$) && orientation \\  
 \midrule
 $\mathrm{I}_\mathrm{i}^-$ &  out-of-plane & 3.82  &&  out-of-plane & 3.89 && in-plane \\
 $\mathrm{I}_\mathrm{i}^+$ & in-plane & 2.89/2.95 && in-plane & ave. 2.95 && in-plane \\
@@ -185,7 +171,7 @@ $\mathrm{I}_\mathrm{i}^\mathrm{IP}$ & in-plane & 3.24 && in-plane & 3.88 && - \\
 \begin{figure}[h!]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/defect_geometries.png}
-  \caption[Defect geometries of the $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ defects in MAPI]{Defect geometries of the $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ defects in MAPI. IP indicates that the defect is lying in the $ab$-plane. OP indicates that the defect is lying along the $c$-axis.}
+  \caption[Defect geometries of the $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ defects in MAPI]{Defect geometries of the $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ defects in MAPI. IP indicates that the defect is lying in the $ab$-plane. OP indicates that the defect is lying along the $c$-axis. All distances are in $\angstrom$.}
 \label{relaxation_workflow}
 \end{figure}
 
@@ -232,11 +218,11 @@ The tilting correction is a new correction introduced in this work and particula
 
 \begin{table}[h!]\centering
 \begin{tabular}{lll}\toprule
-supercell expansion&\# atoms&tilting correction \\ 
+supercell expansion&\# atoms&tilting correction (meV) \\ 
 \midrule
-$2\,\times\,2\,\times\,2$ & 96 & \SI{37}{meV} (calculated) \\
-$4\,\times\,4\,\times\,4$ & 768 & \SI{270}{meV} (calculated) \\
-$2\sqrt2\times2\sqrt2\times2$ & 192 & \SI{74}{meV} (predicted) \\
+$2\,\times\,2\,\times\,2$ & 96 & 37 (calculated) \\
+$4\,\times\,4\,\times\,4$ & 768 & 270 (calculated) \\
+$2\sqrt2\times2\sqrt2\times2$ & 192 & 74 (predicted) \\
 \bottomrule
 \end{tabular} 
 \caption[Tilting correction for $2\,\times\,2\,\times\,2$ and $4\,\times\,4\,\times\,4$ supercell expansions]{\label{modemaptable} Calculated tilting correction for $2\,\times\,2\,\times\,2$ and $4\,\times\,4\,\times\,4$ supercell expansions. The $4\,\times\,4\,\times\,4$ supercell is eight times larger than the $2\,\times\,2\,\times\,2$ expansion, so we expect the tilting correction to be eight times larger. It is calculated to be 7.5 times larger. The tilting correction for the $2\sqrt2\times2\sqrt2\times2$ expansion used for the defect calculations in this work is twice as large as the correction for the $2\,\times\,2\,\times\,2$ supercell. }
@@ -359,7 +345,7 @@ We have shown in section \ref{ch5:ccd} that electron-phonon coupling is large, a
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/defect_dispersion_IPR.png}
-  \caption[Phonon dispersion and Inverse Participation Ratio of a MAPI crystal containing $\mathbf{I}_i^{-}$]{Phonon dispersion and Inverse Participation Ratio of a MAPI crystal containing $\mathrm{I}_i^{-}$}
+  \caption[Phonon dispersion and Inverse Participation Ratio of a MAPI crystal containing $\mathbf{I}_i^{-}$]{A) Harmonic phonon dispersion of the pristine lattice. The imaginary modes near the gamma point are the result of numerical noise from the sampling size of the fast fourier transform grid, and the imaginary modes at $R$ and $M$ correspond to the tilting of the inorganic octahedra. B) Harmonic phonon dispersion of a MAPI crystal containing $\mathrm{I}_i^{-}$} C) The Inverse Participation Ratio of a MAPI crystal containing $\mathrm{I}_i^{-}$} D) Contribution to phonon mode energy by atomic species.
 \label{defect_dispersion_IPR}
 \end{figure}
 
