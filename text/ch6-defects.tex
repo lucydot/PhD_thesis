@@ -248,46 +248,38 @@ The final thing to note is that the defect formation energies are negative acros
 
 \subsection{Configuration coordinate diagram} \label{ch6:ccd}
 
-Charge trapping between the neutral and negative charge states of the iodine interstitial can be described using a configuration coordinate diagram (Figure \ref{configuration_coordinate}).\autocite{Alkauskas2016}
-This gives the total system energy as a function of a single mode $Q$. 
+Charge trapping between the neutral and negative charge states of the iodine interstitial can be described using a configuration coordinate diagram (Figure \ref{configuration_coordinate}), which gives the total system energy as a function of a single mode $Q$.\autocite{Alkauskas2016} 
 The model assumes that the electronic states of the defect interact with only one phonon mode of the lattice, and that
 the minimum of each curve corresponds to the equilibrium position of the ions and the electronic ground state. 
 To model electron trapping at the neutral charge state, the excited state of the system corresponds to the neutral defect with a photo-generated electron in the conduction band and hole in the valence band, and the ground state corresponds to the negatively charged defect with a hole in the valence band.
-Hole trapping at the negative charge state is not possible due to the large energetic barrier of ca. \SI(1}{\electronvolt}.
+Hole trapping at the negative charge state is not possible due to the large energetic barrier of ca. \SI{1}{\electronvolt}.
 
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/carrier_capture_digram.png}
-  \caption[Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect]{(Top) Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces. }
+  \caption[Configuration coordinate diagram describing carrier capture between negative and neutral charge states of the iodine interstitial defect]{(Top) Configuration coordinate diagram describing carrier capture between the negative and neutral charge states of the iodine interstitial defect. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces. To model electron trapping at the neutral charge state, the excited state of the system corresponds to the neutral defect with a photo-generated electron in the conduction band and hole in the valence band, and the ground state corresponds to the negatively charged defect with a hole in the valence band. }
 \label{configuration_coordinate}
 \end{figure}
 % talk ahout the difference between the photochemistry and equilibrium thermodynamics
 
-In this work this the configuration coordinate $Q$ is defined as $\sqrt{\sum_i m_i \Del r_i^2}$ ,where the sum is over all inorganic atoms $i$ with mass $m_i$ and displacement from equilibrium $\Del r_i^2$. Summing over all atoms, including those in the organic molecule $CH3NH3$, led to unphysical energies as the linear interpolation does not reflect the rotation of the organic cation between charge states. The potential energy surface generated using a summation over all atomic displacements is given in Appendix \ref{app:9-configcoord}.
-% linear interpolation - talk about the need to distort along the inorganic only
 
-Lattice relaxation after electron capture at the neutral charge state leads to a large shift in the equilibrium position ($\DeltaQ=$).
-This is significantly larger than that found for `killer centres' in CZTS\autocite{Sunghyun} and reflects the strong coupling between the electronic charge state of the defect and the lattic distortion. 
-Another parameter commonly used to classify defects by electron-phonon coupling strength is the Huang-Rhys factor $S$.
-This is a dimensionless parameter that quantifies the number of phonons emitted during an optical transition. For a harmonic potential energy surface the Huang-Rhys factor is given by 
+In this work this the configuration coordinate $Q$ is defined as $\sqrt{\sum_i m_i \Del r_i^2}$ ,where the sum is over all inorganic atoms $i$ with mass $m_i$ and a displacement from equilibrium of $\Del r_i$. Summing over all atoms, including those in the organic methylammonium molecule, led to unphysical energies as the linear interpolation does not capture the rotation of the organic cation between charge states. The potential energy surface generated using a summation over all atomic displacements is given in Appendix \ref{app:9-configcoord}.
+
+Lattice relaxation after electron capture leads to a large shift in the equilibrium position ($\Delta Q=$ \SI{46}{\electronvolt\per amu\tothe{1/2}\per\angstrom}).
+This is double that found for non-radiative recombination centres in CZTS\autocite{Kim2018} and reflects the strong coupling between the electronic charge state of the defect and the lattice distortion. 
+Another parameter commonly used to classify defects by electron-phonon coupling strength is the Huang-Rhys factor $S$ which quantifies the number of phonons emitted during an optical transition. For a harmonic potential energy surface the Huang-Rhys factor is given by 
 \begin{equation}
-S = \frac{E}{\hbar\omega_1}.
+S = \frac{E}{\hbar\omega}.
 \end{equation}
-The Huang-Rhys factor for lattice relaxation after electron capture at the neutral interstitial is X. This is firmly in the strong coupling limit, $S>>1$. The large value for $\Delta Q$  and Haung-Rhys factor suggests that there will be fast non-radiative transitions at the defect site. \autocite{Stoneham}
-\autocite{alkauskas theory and experimetn}
-\autocite https://pdfs.semanticscholar.org/0a30/ebcb3c77c99d4f8c835afc5b6611264e06c8.pdf
-\autocitte{https://hal.archives-ouvertes.fr/jpa-00213295/document}
-% need to add terms to the diagram, including energy step term
+The Huang-Rhys factor for lattice relaxation after electron capture at the neutral interstitial is 361.7. This is in the strong coupling limit where $S\gg1$. The large lattice distortion and Huang-Rhys factor suggests that there will be fast non-radiative transitions at the defect site.\autocite{Hayes1985,Hughes1967}
 
-The configuration coordinate diagram for this charge capture process has been previously reported in the literature,\cite{Meggiolaro2018} and it is reported that electron trapping at the neutral iodine interstitial proceeds with small geometrical rearrangement. However the structural parameter used in this work is the root mean square displacement (RMSD) of the two iodine ions involved with bonding, and excludes the large relaxation of the surrounding perovskite structure. This definition applied to the relaxed structures used in this work gives \SI{0.073}{\angstrom}, which appears close to that given in Figure 2 of Reference \cite{Meggiolaro2018}. In ignoring the wider structural reorganisation and considering only the distortion to the bonding iodine, Meggiolaro et al. infer that the rate of radiative recombination will compete with non-radiative recombination. Figure \ref{configuration_coordinate} of this work demonstrates that this is not the case and that the large distortion of the surrounding lattice will prevent radiative recombination of the electron and hole.%conlucsion here - importatnt to include all distortions
+The configuration coordinate diagram for this charge capture process has been previously reported by Meggiolaro et al.,\autocite{Meggiolaro2018} where it was found that electron trapping at the neutral iodine interstitial proceeds with a small geometrical rearrangement. However the structural parameter used was the root mean square displacement (RMSD) of the two iodine ions involved with bonding, which excludes the large relaxation of the surrounding perovskite structure. The same RMSD definition applied to the defect geometries in this work gives a lattice distortion of \SI{0.073}{\angstrom}, which appears close to that given in Figure 2 of Reference \cite{Meggiolaro2018}. By considering only the distortion to the bonding iodine and ignoring the wider structural reorganisation Meggiolaro et al. infer that the rate of radiative recombination will compete with non-radiative recombination. Figure \ref{configuration_coordinate} of this work demonstrates that this is not the case and that the large distortion of the surrounding lattice will prevent radiative electron capture at the defect.
 
-The lower part of Figure \ref{configuration_coordinate} compares the anharmonic potential energy surface (PES) to the harmonic PES. The 1D schro\"{o}dinger equation is solved for the anharmonic PES to give quantised energly levels. The curvature of the harmonic potential energy surface is denoted $\hbar\omega_0$ and is equal to the difference in energy between the two lowest phonon eigenstates. In Figure \ref{configuration_coordinate} we see that the harmonic PES fits well to the DFT energies either side of the equilibrium point, as we would expect. The potential energy surface of the neutral and negative charge states are extremely soft; for $\mathrm{I}_\mathrm{i}^-$ $\hbar\omega_0=$\SI{6.6}{meV} (\SI{1.59}{\tera\hertz}) and for $\mathrm{I}_\mathrm{i}^\mathrm{OP}=$\SI{4.7}{meV} (\SI{1.14}{\tera\hertz}). Phonon modes at this energy will lie in the optical band of the bulk MAPI phonon modes and will be active at room temperature.
+The lower part of Figure \ref{configuration_coordinate} compares the anharmonic potential energy surface (PES) to the harmonic PES. The curvature of the harmonic potential energy surface is equal to the difference in energy between the two lowest phonon eigenstates of the anharmonic PES. In Figure \ref{configuration_coordinate} we see that the harmonic PES fits well to the DFT energies either side of the equilibrium structure, as we would expect. The potential energy surfaces of the neutral and negative charge states are extremely soft; for the neutral charge state $\hbar\omega=$\SI{4.7}{meV} (\SI{1.14}{\tera\hertz}) and for the negative charge state $\hbar\omega_0=$\SI{6.6}{meV} (\SI{1.59}{\tera\hertz}). Phonon modes at this energy will lie in the optical band of the MAPI lattice modes and will be occupied at room temperature.
 
-Figure \ref{configuration_coordinate} highlights the importance of considering anharmonic potential energy surfaces to describe charge capture at the iodine intersitital in MAPI. The $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ and $\mathrm{I}_\mathrm{i}^-+\textrm{e}+\textrm{h}$ harmonic potential energy surfaces (lower panel) intercept at an energy $\approx$\SI{0.5}{eV} above the equilibrium energy for $\mathrm{I}_\mathrm{i}^-+\textrm{e}+\textrm{h}$, and this leads to a carrier capture coefficient four orders of magnitude smaller than that calculated for the anharmonic surfaces (Section \ref{finalsection}).
+Figure \ref{configuration_coordinate} highlights the importance of using anharmonic potential energy surfaces to describe charge capture at the iodine intersitital in MAPI. The harmonic potential energy surfaces for the excited and ground state intercept at an energy ca. \SI{0.5}{eV} above the excited state equilibrium energy, and this leads to a carrier capture coefficient four orders of magnitude smaller than that calculated for the anharmonic surfaces (values for the coefficient are given in Section \ref{finalsection}).
 
-
-
-\subsection{Vibrational properties of MAPI:$\mathrm{I}_\mathrm{i}^-$}
+\subsection{Vibrational properties of MAPI:$\mathbf{I}_\mathbf{i}^\mathbf{-}$}
 
 In the previous section the coupling of the iodine interstitial to a single vibrational mode was considered without reference to harmonic phonon modes of the crystal.
 In this section the normal phonon modes of the crystal with a $\mathrm{I}_\mathrm{i}^-$ defect are calculated and analysed.
