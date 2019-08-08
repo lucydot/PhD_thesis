@@ -195,7 +195,7 @@ The H-centre is a `molecule-in-a-crystal' defect where the host weakly perturbs 
 This allows us to consider the optically excited states using a dielectric embedding approach.
 A collaborator, Rachel Crespo-Otero, has computed the optically excited states of the H-centre defect as a function of bond lengths using time-dependent DFT including relativistic effects (Figure \ref{spin_localisation}c).\autocite{Whalley2017b} 
 %For a bond lengths found in the MAPI host (\SI{3.19}{\angstrom}), the three lowest excited states occur at \SI{}{\electronvolt} (symmetry-allowed), \SI{}{\electronvolt} (forbidden), and \SI{}{\electronvolt} (symmetry-allowed). Two optically allowed transitions fall in the visible−ultraviolet range, and a sub-band gap absorption band at ca. \SI{}{\electronvolts} should be observable in long-wavelength absorption measurements if present in sufficient concentration.
-For a bond length of \SI{3.28}{\angstrom}, the three lowest excited states occur at \SI{1.26}{\electronvolt} (symmetry-allowed), \SI{1.90}{\electronvolt} (forbidden), and \SI{3.70}{\electronvolt} (symmetry-allowed). Two optically allowed transitions fall in the visible−ultraviolet range, and a sub-band gap absorption band at ca. \SI{1.3}{\electronvolt} should be observable in long-wavelength absorption measurements if present in sufficient concentration.
+For a bond length of \SI{3.28}{\angstrom}, the three lowest excited states occur at \SI{1.26}{\electronvolt} (symmetry-allowed), \SI{1.90}{\electronvolt} (forbidden), and \SI{3.70}{\electronvolt} (symmetry-allowed). Two optically allowed transitions fall in the visible-ultraviolet range, and a sub-band gap absorption band at ca. \SI{1.3}{\electronvolt} should be observable in long-wavelength absorption measurements if present in sufficient concentration.
 
 \subsection{Defect formation energies} \label{ss:dfe}
 
@@ -327,22 +327,21 @@ As discussed by Alkauskas et al.,\autocite{Alkauskas2014} it may be surprising t
 
 \subsection{Electron capture coefficient} \label{finalsection}
 
-In Section \ref{ch6:ccd} we used the extent of lattice relaxation on charge capture, $\Delta Q$, and the Huang-Rhys factor, $S$, as proxies to indicate the extent of electron phonon coupling. In this section we consider the electron phonon coupling matrix element (Equation \ref{epcouplingterm}) calculated from first principles and combine this with the solutions to the Schro\"{o}dinger for the anharmonic potential energy surfaces in Section \ref{ch6:cc} to calculate the electron capture coefficient at the neutral iodine interstitial. The electron capture coefficient $C_p$ determines the rate of electron capture $R_p$ via the following equation
+In Section \ref{ch6:ccd} we used the lattice relaxation $\Delta Q$ and Huang-Rhys factor $S$ as proxies for the electron-phonon coupling term. In this section we combine the electron-phonon coupling term (Equation \ref{epcouplingterm}) calculated from first principles with anharmonic vibrational wavefunctions to calculate the electron capture coefficient at the neutral iodine interstitial. The electron capture coefficient $C_p$ determines the rate of electron capture $R_p$ via the following equation
 \begin{equation}
 R_p=C_pN_te
 \end{equation}
 %check that this consistent with earlier notation
 where $N_t$ is the density of neutral defect traps and $e$ is the electron density.
 
-During electron capture, a delocalised electron in the valence band is captured to a localised defect state. It is important that there is a single particle level in the bulk band gap for geometry $Q_0$ in Equation \ref{epcouplingterm}. There is an empty electronic defect state in the band gap at the equilibrium geometry for the neutral charge state (Figure \ref{eigenvalues}) and so this is chosen as $Q_0$.
-\autocite{Alkauskas 2014}
-In Figure \ref{eigenvalues} we see that as the lattice geometry is distorted towards that of the negative charge state the empty defect state decreases in energy until it is in the valence band and in the geometry of the negative charge state it is in the valence band and occupied by an electron. 
-The change in overlap of the wavefunctions at the valence band minimum $\phi_i$ and unoccupied defect wavefunction $\phi_f$ gives a value of \SI{0.0036}{\electronvolt\per\amu\tothe{1/2}\per\angstrom} for the electron-phonon coupling matrix element.
-It is possible to estimate the electron-phonon coupling term using an estimate of the degree of localisation of $\phi_i$ and $\phi_f$. For strong electron phonon coupling $W_if$ corresponds to 
+During electron capture, a delocalised electron in the valence band is captured to a localised defect state, so it is important that there is a single particle level in the bulk band gap for the geometry $Q_0$ in Equation \ref{epcouplingterm}.\autocite{Alkauskas2014} There is an empty electronic defect state in the band gap at the equilibrium geometry for the neutral charge state (Figure \ref{eigenvalues}) and so this is chosen as $Q_0$.
+In Figure \ref{eigenvalues} we also see that as the lattice geometry is distorted towards that of the negative charge state the empty defect state decreases in energy until it is in the valence band. 
+The inner product of the wavefunctions at the valence band minimum $\phi_i$ and unoccupied defect level $\phi_f$ are calculated at various $Q$-values and substituted into Equation \ref{carriercapteqn} to give a value of \SI{0.0036}{\electronvolt\per amu\tothe{1/2}\per\angstrom} for the electron-phonon coupling matrix element.
+It is possible to estimate the electron-phonon coupling term using an estimate for the degree of localisation of $\phi_i$ and $\phi_f$. For strong electron phonon coupling $W_{if}$ corresponds to 
 \begin{equation}
-W_{if} \approx \frac{\Delta E}{\Delta Q}\sqrt{\frac{M_d}{M_b}}
+W_{if} \approx \frac{\Delta E}{\Delta Q}\sqrt{\frac{M_d}{M_b}},
 \end{equation}
-where $M_b$ is the number of atoms in the supercell and $M_d$ is the number of atoms the defect state is localised on. $W_{if}\approx0.0037$ is obtained and so electron-phonon coupling for the single mode $Q$ is very strong.
+where $M_b$ is the number of atoms in the supercell and $M_d$ is the number of atoms the defect state is localised around. For our system $W_{if}\approx0.0037$ and so electron-phonon coupling for the single mode $Q$ is very strong.
 
 \begin{figure}[h!]   
 \centering
@@ -352,10 +351,8 @@ where $M_b$ is the number of atoms in the supercell and $M_d$ is the number of a
 \end{figure}
 %might need to label geometries
 
-Combining the electron-phonon coupling term with solutions to the schrodinger equation for the neutral and negative charge state anharmonic potential energy surfaces as in Equation \ref{carriercapteqn}, the carrier capture coefficient at room temperature is \SI{1.2}{\centimetre\cubed\per\second}.
-The large lattice distortion associated with charge capture suppresses radiative recombination, and the so non-radiative transition will be the dominant process.
-\autocite{theory of defects in solids}
-
+Combining the electron-phonon coupling term with the anharmonic vibrational wavefunctions as in Equation \ref{carriercapteqn} gives a carrier capture coefficient of \SI{1.2E-10}{\centi\metre\cubed\per\second} at room temperature.
+The large lattice distortion associated with charge capture suppresses radiative recombination, and the so this fast non-radiative transition will be the dominant process.
 
 \begin{figure}[h!]   
 \centering
@@ -365,38 +362,31 @@ The large lattice distortion associated with charge capture suppresses radiative
 \end{figure}
 %tabel of eigenstates like on Trello
 
-
-
-
 \textbf{Summary}
 
-The main conclusion of this study that electron capture at a neutral H-centre defect is fast, and that this process is a `one way street': due to the strong relaxation of the surrounding lattice, once a negative defect is formed it is both thermodynamically stable and stable under light irradiation.
-The neutral defect is metastable and will be formed only after photo-excitation. The results demonstrate that the neutral defect cannot be formed from hole capture at a negative charge state, but the existing literature predicts that hole capture from the positive charge state is possible. Further calculations are needed to confirm this, and future work could apply the methodology developed here to this process. 
+The main conclusion of this study is that electron capture at a H-centre is fast, and that this process is a `one way street': due to the strong relaxation of the surrounding lattice, once a negative defect is formed it is both thermodynamically stable and stable under light irradiation.
+The results demonstrate that the H-centre is metastable and will be formed only after photo-excitation. The H-centre cannot be formed from hole capture at a negative charge state, but the existing literature predicts that hole capture from the positive charge state is possible. Further calculations are needed to confirm this, and future work could apply the methodology outlined here to this process. 
 
-The results are consistent with the p-type doping observed in MAPI, which could be attributed to negatively charged interstitials, and the photo-induced `brightening'of perovskite photoluminsecence that is attributed to a reduction in trap state density.
+The results are consistent with the p-type doping observed in MAPI, which could be attributed to negatively charged interstitials,\autocite{Li2018} and the photo-induced `brightening' of perovskite photoluminsecence that is attributed to a reduction in trap state density.\autocite{dequilettes2016}
 %https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6269531/#CR39
 %https://www.nature.com/articles/ncomms11683
 However we must be very careful in extrapolating to results beyond the bounds of this study,
-as the model is limited in scope and the hybrid halide perovskites are complex materials. 
-For example, it could be that there are other charge trapping mechanisms simultaneously occuring that involve longer polyiodide chains, lithium from the p-doped hole transporting material Spiro-OMETAD, or Au from the deposited electrodes. There are also open questions around charge trapping at the grain boundaries and surfaces.
-%https://pubs.rsc.org/en/content/articlepdf/2019/cs/c8cs00853a
+as the model is limited in scope and hybrid halide perovskites are complex materials. 
+For example, it could be that there are other charge trapping mechanisms simultaneously occuring that involve e.g. longer polyiodide chains, lithium from the p-doped hole transporting material Spiro-OMETAD or Au from the deposited electrodes. There are also open questions around charge trapping at the grain boundaries and surfaces.\autocite{Chen2019}
 
 The results provide guidance for future studies of charge trapping in the hybrid halide perovskites.
-We have shown that lattice anharmonicity is significant and that harmonic potential energy surfaces could lead to carrier capture coefficients that are many orders of magnitude too small (or large).
+We have shown that lattice anharmonicity is significant and that harmonic potential energy surfaces can lead to carrier capture coefficients that are many orders of magnitude too small (or large).
 We have also found that the electron-phonon coupling term is large and this has two important consequences. Firstly, the relaxation of the whole lattice, not only the bonding atoms, must be considered in our calculations.
-Secondly, for the electron capture process considered here, the single mode approximation is valid and the configuration coordinate $Q$ provides a good approximation to the accepting modes of negative iodine interstitial.
+Secondly, for the electron capture process considered here, the single mode approximation is valid and the configuration coordinate $Q$ provides a good approximation to the accepting modes of the negative iodine interstitial.
 
 \textbf{Data access statement}
 
-The crystal structures for the iodine interstitial in the negative, neutral and positive charge states reported in this chapter are available 
-in an online repository.\autocite{}
-The Inverse Participation Ratio (IPR) of the phonon modes can be calculated using the \textsc{JuliaPhonons} package available at.
-The IPR data for the negative iodine interstitial, alongside the analysis steps taken to generate the results in this paper are available at \url{https://github.com/lucydot/MAPI_iodine_vibrations}
-Carrier capture rates can be calculated using a package available at,%carriercapture
-and the displacement between defect geometries can be visualised using .%vestavectors
+The crystal structures for the iodine interstitial in the negative, neutral and positive charge states reported in this chapter are available
+in an online repository.\autocite{WMD}
+The IPR data for the negative iodine interstitial, alongside the analysis steps taken to generate the results in this paper are also available in an online repository.\autocite{IPRMAPI} 
+The Inverse Participation Ratio (IPR) of the phonon modes can be calculated using the \textsc{juliaphonons} package\autocite{juliaphonons}
+and the carrier capture rates can be calculated using the \textsc{carriercapture.jl} package.\autocite{carriercapture}
 
 \textbf{Acknowledgements}
 
-Calculations were performed on the SiSu supercomputer at the IT Center for Science (CSC), Finland, via the Partnership for Advanced Computing in Europe (PRACE) project no. 13DECI0317/IsoSwitch.
-Stoneham, Alkauskas, Subghyun Kim.
-% Need to include TDDFT at start thesis
+Calculations were performed on the SiSu supercomputer at the IT Center for Science (CSC), Finland, via the Partnership for Advanced Computing in Europe (PRACE) project no. \\13DECI0317/IsoSwitch. I thank Sunghyun Kim, Ji-Sang Park, Sam Hood and Puck Van Gerwen for our weekly defect discussions which have clarified my understanding of non-radiative recombination.
