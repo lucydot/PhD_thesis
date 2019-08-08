@@ -19,7 +19,7 @@ So rap is no big thang, I was created in the void
 Until this point we have considered a lattice with perfect translational symmetry and no missing or extra atoms. However at finite temperature a crystalline material always contains point defects, as the cost in lattice energy is balanced by the increase in configurational entropy.
 In this chapter we consider the iodine interstitial defect and predict that it will form a split-interstitial defect with self-trapped hole. The vibrational properties of the defect are studied to i) confirm the validity of the 1D configurational coordinate approach and ii) predict the electron capture coefficient at this defect site.
 
-As outlined briefly in Section \ref{recombination} we are often interested in semiconductor defects that form electronic states in the bandgap, as these can provide sites for fast non-radiative transitions such as minority carrier trapping and electron-hole recombination, both of which limit the photovoltaic efficiency of solar cell absorber materials. Such is the impact of these defects that special names have been coined to describe them - Marshall Stoneham uses the term `killer centre' whilst William Shockley in his Nobel Lecture uses the term `deathnium'.\autocite{shockley}
+As outlined briefly in Section \ref{recombination} we are often interested in semiconductor defects that form electronic states in the bandgap, as these can provide sites for fast non-radiative transitions such as minority carrier trapping and electron-hole recombination, both of which limit the photovoltaic efficiency of solar cell absorber materials. Such is the impact of these defects that special names have been coined to describe them - Marshall Stoneham uses the term `killer centre'\autocite{Hayes1985} whilst William Shockley in his Nobel Lecture uses the term `deathnium'.\autocite{shockley}
 Stoneham lists the defect types that may act as killer centres. Two of four in the list relate to the vibrational properties of the defect lattice:
 
 \begin{displayquote}
@@ -328,7 +328,7 @@ As discussed by Alkauskas et al.,\autocite{Alkauskas2014} it may be surprising t
 \subsection{Electron capture coefficient} \label{finalsection}
 
 In Section \ref{ch6:ccd} we used the lattice relaxation $\Delta Q$ and Huang-Rhys factor $S$ as proxies for the electron-phonon coupling term. In this section we combine the electron-phonon coupling term (Equation \ref{epcouplingterm}) calculated from first principles with anharmonic vibrational wavefunctions to calculate the electron capture coefficient at the neutral iodine interstitial. The electron capture coefficient $C_p$ determines the rate of electron capture $R_p$ via the following equation
-\begin{equation}
+\begin{equation} \label{rateeqn}
 R_p=C_pN_te
 \end{equation}
 %check that this consistent with earlier notation
@@ -346,7 +346,7 @@ where $M_b$ is the number of atoms in the supercell and $M_d$ is the number of a
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/eigs.png}
-  \caption[ ]{}
+  \caption[ ]{Evolution of MAPI:$\mathrm{I}_\mathrm{i}^-$ Kohn-Sham eigenstates as the lattice geometry is deformed along coordinate $Q$.  Solid and empty circles represent occupied and unoccupied states, respectively.}
 \label{eigenvalues}
 \end{figure}
 %might need to label geometries
@@ -357,7 +357,7 @@ The large lattice distortion associated with charge capture suppresses radiative
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/carrier_capture_rate.png}
-  \caption[Rate of electron capture at the ]{Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect}
+  \caption[Electron capture coefficient of the H-centre defect in MAPI]{Electron capture coefficient of the H-centre defect in MAPI. This determines the rate of carrier capture via Equation \ref{rateeqn} in the main text.}
 \label{carrier_capture_rate}
 \end{figure}
 %tabel of eigenstates like on Trello
