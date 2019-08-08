@@ -180,8 +180,8 @@ The asymmetric bonding of the trimer structure is a typical feature of the tri-i
 % include displacement vectors, perhaps in appendix (mention script)
 
 \subsection{Charge localisation} \label{ss:chglocal}
-The neutral iodine interstitial forms a spin-radical with a self-trapped hole, as demonstrated in the spin-density plot, Figure \ref{spin_localisation}B.
-The hole induces the formation of a bond between two iodine ions, producing a molecular dimer called a H-centre (Figure \ref{spin_localisation}A). The formation of a H-centre is a well-established process, and has been studied in metal halide crystals since the 1950s.\autocite{Castner1957} In Figure \ref{spin_localisation}B we see that there is some charge delocalisation across the outer halogens, as has been found for H-centres in the alkali halides.\autocite{Shluger1995}
+The neutral iodine interstitial forms a spin-radical with a self-trapped hole, as demonstrated in the spin-density plot, Figure \ref{spin_localisation}b.
+The hole induces the formation of a bond between two iodine ions, producing a molecular dimer called a H-centre (Figure \ref{spin_localisation}a). The formation of a H-centre is a well-established process, and has been studied in metal halide crystals since the 1950s.\autocite{Castner1957} In Figure \ref{spin_localisation}b we see that there is some charge delocalisation across the outer halogens, as has been found for H-centres in the alkali halides.\autocite{Shluger1995}
 Whereas in the previous chapter we considered a large polaron, in this chapter we are studying a small polaron formed by the self trapped hole.
 
 \begin{figure}[h!]   %includes H-centre schematic
@@ -201,15 +201,19 @@ For a bond length of \SI{3.28}{\angstrom}, the three lowest excited states occur
 \subsection{Defect formation energies} \label{ss:dfe}
 
 The formation energy of a defect in charge state $q$ is given by
-
 \begin{equation} \label{eqn_formation_energy}
 E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_\mathrm{F}) + E_\mathrm{corr}.
 \end{equation}
 The total energy of the supercell $E_\mathrm{d}(q)$, the total energy of the pristine lattice $E_\mathrm{b}$ and the iodine chemical potential $\mu_i$ were calculated DFT as outlined in the methods section.
-The defect correction $E_\mathrm{corr}$ consists of two terms - the charged defect correction and a `tilting' correction that is specific to pseudo-cubic perovskites.
-Both terms are small. The charged defect correction is equal to \SI{-0.057}{eV}. This is due to the high static dielectric constant of MAPI ($\bar{\epsilon_0}=22.67$)\autocite{Brivio2013} that allows effective ionic screening of charged defects. The point defects carry a maximum charge of one which also leads to small charged defect corrections.
+The defect correction $E_\mathrm{corr}$ consists of two terms - the image charge correction for charged defects and a `tilting' correction that is specific to pseudo-cubic perovskites.
+The image charge correction is \SI{-0.057}{eV}. The static dielectric constant of MAPI is large ($\bar{\epsilon_0}=22.67$)\autocite{Brivio2013} and so the lattice can effectively screen charged defects, in addition the point defects in this study have a maximum charge of one and the supercell is relatively large (193 atoms). These factors lead to a small image charge correction.
 
-The tilting correction is a new correction introduced in this work and particular to pseudo-cubic perovskites. All of the defect formation energies are referenced to a pristine lattice energy. The geometry of the pristine lattice in the pseudo-cubic phase corresponds to a time average and is not the minimum energy structure (Figure \ref{tilting_correction}). To calculate the minimum energy geometry the pseudo-cubic structure can be modemapped along the soft mode at the $R$-point in $q$-space, following the procedure in Section \ref{}. This modemapping procedure is not compatible with the supercell expansion used for this defect calculation, but the correction energy was inferred from modemapping other supercell expansions (Table \ref{modemaptable}).
+\begin{figure}[h!]   
+\centering
+  \includegraphics[width=0.9\columnwidth]{figures/ch6/tilting_correction.png}
+  \caption[Tilting correction for the pseudo-cubic perovskite lattice]{A schematic of the tilting correction used in this work. The green line is the double well potential energy surface that is typical of pseudo-cubic perovskite structures. This correction to defect formation energy is only needed when using the high-symmetry pseudo-cubic perovskite phase to calculate the pristine bulk energy.}
+\label{tilting_correction}
+\end{figure}
 
 \begin{table}[h!]\centering
 \begin{tabular}{lll}\toprule
@@ -220,45 +224,46 @@ $4\,\times\,4\,\times\,4$ & 768 & 270 (calculated) \\
 $2\sqrt2\times2\sqrt2\times2$ & 192 & 74 (predicted) \\
 \bottomrule
 \end{tabular} 
-\caption[Tilting correction for $2\,\times\,2\,\times\,2$ and $4\,\times\,4\,\times\,4$ supercell expansions]{\label{modemaptable} Calculated tilting correction for $2\,\times\,2\,\times\,2$ and $4\,\times\,4\,\times\,4$ supercell expansions. The $4\,\times\,4\,\times\,4$ supercell is eight times larger than the $2\,\times\,2\,\times\,2$ expansion, so we expect the tilting correction to be eight times larger. It is calculated to be 7.5 times larger. The tilting correction for the $2\sqrt2\times2\sqrt2\times2$ expansion used for the defect calculations in this work is twice as large as the correction for the $2\,\times\,2\,\times\,2$ supercell. }
+
+The tilting correction is a new correction introduced in this work and is particular to the pseudo-cubic perovskites. All of the defect formation energies are referenced to a pristine lattice energy. The geometry of the pristine lattice in the pseudo-cubic phase corresponds to a time average and is not the minimum energy structure (Figure \ref{tilting_correction}). To calculate the minimum energy geometry the pseudo-cubic structure can be distorted along the soft mode at the $R$-point in $q$-space. This `modemapping' procedure\autocite{Skelton2016a} is not compatible with the supercell expansion used for the 197-atom supercell, but the correction energy can be inferred from modemapping other supercell expansions (Table \ref{modemaptable}).
+
+\caption[Tilting corrections for supercell expansions of the pseudo-cubic perovskite lattice]{\label{modemaptable} Tilting corrections for supercell expansions of the pseudo-cubic perovskite lattice. The 768-atom supercell is eight times larger than the 96-atom supercell, so we expect the tilting correction to be eight times larger. It is calculated to be 7.5 times larger. The tilting correction for the 192-atom expansion, which cannot be calculated directly, is twice as large as the correction for the 96-atom supercell. }
 \end{table}
 
 The charge transition diagram is given in Figure \ref{charge_transition_diagram}. 
-As is found in the previous literature\autocite{Du2015,Meggiolaro2018} there is negative-U behaviour, where the (+/0) level is higher in energy than the (0/-) level. This indicates that upon electron trapping there is strong structural relaxation at the defect. The neutral charge state of $\mathrm{I}_\mathrm{i}$ in both orientations is thermodynamically unstable across the Fermi energy range and so we expect this charge state to only be formed after photoexcitation. As in Reference \cite{Meggiolaro2018} the out-of-plane iodine interstitial is found to be lower in energy than the in-plane iodine interstitial.
-
-There is one active charge trapping state in the bandgap -- electron trapping at the $\mathrm{I}_\mathrm{i}^+$.  The (+/-) level corresponds to a two-electron transition and so we expect the cross section for this process to be negligible. This result is in contrast to previous reports, using the same hybrid functional HSE06 and spin-orbit coupling, which find that hole trapping at the negative interstitial is also within the bandgap.
-The charge transition diagram generated using the intermediate metastable structures as outlined in Figure \ref{relaxation_workflow} has two active charge trapping states in the bandgap, as in the previous literature. This higlights how sensitive conclusions drawn from the charge transition diagram are to the defect geometry. The charge transition diagram for the intermediate metastable defects is given in Appendix \ref{app:7-chargetransition}.
-
-The formation energy is negative for all defects across the Fermi level range. This is unphysical, as for a stable material it costs energy to create a point defect. The problem arises from the simple approximation used for the chemical potential of iodine, which considers bulk iodine only and no other competing phases such as \ce{PbI2}. The chemical potential used in this defect caluclation provides an upper bound. Considerion of other secondary phases will offer a lower chemical potential, which would increase the interstitial formation energy for all charge states. 
-%comment on fermi level pinning
-
-
-\begin{figure}[h!]   
-\centering
-  \includegraphics[width=0.7\columnwidth]{figures/ch6/tilting_correction.png}
-  \caption[Tilting correction for defect formation energies]{An outline of the tilting correction used in this work. The green line is a schematic of the double well potential typical of pseduocubic perovskite structures. This correction is only needed when using the high-symmetry pseudo-cubic phase to calculate the pristine bulk energy of MAPI.}
-\label{tilting_correction}
-\end{figure}
-%need to change wordin: energy of calculation....
+As is found in the previous literature\autocite{Du2015,Meggiolaro2018} there is negative-U behaviour, where the (+/0) transition level is higher in energy than the (0/-) transition. This indicates that on electron trapping there is a strong structural relaxation around the defect. The neutral charge state in both orientations is thermodynamically unstable across the Fermi energy range and is formed after photo-excitation. As in Reference \cite{Meggiolaro2018} the out-of-plane neutral charge state is lower in energy than the in-plane neutral charge state.
 
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=0.7\columnwidth]{figures/ch6/charge_transition_HSE.png}
-  \caption[Charge transition diagram for the iodine interstitial defect in MAPI]{Charge transition diagram for the iodine interstitial defect in MAPI calculated using the hybrid HSE06 funtional with spin-orbit coupling.}
+  \caption[Charge transition diagram for the iodine interstitial defect in MAPI]{Charge transition diagram for the iodine interstitial defect in MAPI, calculated using the hybrid HSE06 funtional with spin-orbit coupling. IP indicates that the defect is lying in the $ab$-plane and OP indicates that the defect is lying along the $c$-axis.}
 \label{charge_transition_diagram}
 \end{figure}
 % need to update defect notation!
 
+There is one active charge trapping level in the bandgap, corresponding to electron trapping at $\mathrm{I}_\mathrm{i}^+$.  The (+/-) level corresponds to a two-electron transition and we assume that the cross section for this process is negligible. This result is in contrast to previous reports which find that there are two active charge trapping levels in the bandgap -- electron trapping at $\mathrm{I}_\mathrm{i}^+$ and hole trapping at $\mathrm{I}_\mathrm{i}^-$.
+The charge transition diagram generated using the intermediate higher energy structures (Figure \ref{relaxation_workflow}) reproduces the results in the literature. This highlights how sensitive the defect energetics are to defect geometry. The charge transition diagram for the intermediate higher-energy defect structures is given in Appendix \ref{app:7-chargetransition}.
 
+The final thing to note is that the defect formation energies are negative across the Fermi level range. This is unphysical, as for a thermodynamically stable material it costs lattice energy to create a point defect. The problem arises from the simple approximation used for the chemical potential of iodine, which considers bulk iodine only and no other competing phases such as \ce{PbI2}. As a result, the chemical potential used in this defect calculation provides an upper bound. Consideration of other secondary phases would produce a lower chemical potential and increase the defect formation energy for all charge states. 
+%comment on fermi level pinning
 
-\subsection{Configuration Coordinate diagram} \label{ch6:ccd}
+\subsection{Configuration coordinate diagram} \label{ch6:ccd}
 
 The configuration coordinate diagram for the neutral and negative charge states of the iodine interstitial are given in Figure \ref{configuration_coordinate}.
 This gives the total system energy in various charge states as a function of a single normal mode of the lattice $Q$. 
 The model assumes that the electronic states of the defect interact with only one normal mode of the lattice, and that
 the minimum of each curve corresponds to the equilibrium position of the ions and the electronic ground state. 
-The excited state of the system corresponds to the neutral defect with a photogenerated electron in the conduction band and hole in the valence band. The ground state corresponds to the negatively charged defect with a hole in the valence band.
+The excited state of the system corresponds to the neutral defect with a photo-generated electron in the conduction band and hole in the valence band. The ground state corresponds to the negatively charged defect with a hole in the valence band.
 \autocite{alkauskas defect theory and experiment}
+
+\begin{figure}[h!]   
+\centering
+  \includegraphics[width=1.0\columnwidth]{figures/ch6/carrier_capture_digram.png}
+  \caption[Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect]{(Top)Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces. }
+\label{configuration_coordinate}
+\end{figure}
+% talk ahout the difference between the photochemistry and equilibrium thermodynamics
+%include sketch like "configuration coordinate diagram"
 
 In this work this the configuration coordinate $Q$ is defined as $\sqrt{\sum_i m_i \Del r_i^2}$ ,where the sum is over all inorganic atoms $i$ with mass $m_i$ and displacement from equilibrium $\Del r_i^2$. Summing over all atoms, including those in the organic molecule $CH3NH3$, led to unphysical energies as the linear interpolation does not reflect the rotation of the organic cation between charge states. The potential energy surface generated using a summation over all atomic displacements is given in Appendix \ref{app:9-configcoord}.
 % linear interpolation - talk about the need to distort along the inorganic only
@@ -282,18 +287,9 @@ The lower part of Figure \ref{configuration_coordinate} compares the anharmonic 
 
 Figure \ref{configuration_coordinate} highlights the importance of considering anharmonic potential energy surfaces to describe charge capture at the iodine intersitital in MAPI. The $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ and $\mathrm{I}_\mathrm{i}^-+\textrm{e}+\textrm{h}$ harmonic potential energy surfaces (lower panel) intercept at an energy $\approx$\SI{0.5}{eV} above the equilibrium energy for $\mathrm{I}_\mathrm{i}^-+\textrm{e}+\textrm{h}$, and this leads to a carrier capture coefficient four orders of magnitude smaller than that calculated for the anharmonic surfaces (Section \ref{finalsection}).
 
- 
-\begin{figure}[h!]   
-\centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch6/carrier_capture_digram.png}
-  \caption[Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect]{(Top)Configuration coordinate diagram for carrier capture between negative and neutral charge states of the iodine interstitial defect. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces. }
-\label{configuration_coordinate}
-\end{figure}
-% talk ahout the difference between the photochemistry and equilibrium thermodynamics
-%include sketch like "configuration coordinate diagram"
 
 
-\subsection{Vibrational properties of the defect lattice}
+\subsection{Vibrational properties of MAPI:$\mathrm{I}_\mathrm{i}^-$}
 
 In the previous section the coupling of the iodine interstitial to a single vibrational mode was considered without reference to harmonic phonon modes of the crystal.
 In this section the normal phonon modes of the crystal with a $\mathrm{I}_\mathrm{i}^-$ defect are calculated and analysed.
@@ -390,7 +386,7 @@ The large lattice distortion associated with charge capture suppresses radiative
 \textbf{Summary}
 
 The main conclusion of this study that electron capture at a neutral H-centre defect is fast, and that this process is a `one way street': due to the strong relaxation of the surrounding lattice, once a negative defect is formed it is both thermodynamically stable and stable under light irradiation.
-The neutral defect is metastable and will be formed only after photoexcitation. The results demonstrate that the neutral defect cannot be formed from hole capture at a negative charge state, but the existing literature predicts that hole capture from the positive charge state is possible. Further calculations are needed to confirm this, and future work could apply the methodology developed here to this process. 
+The neutral defect is metastable and will be formed only after photo-excitation. The results demonstrate that the neutral defect cannot be formed from hole capture at a negative charge state, but the existing literature predicts that hole capture from the positive charge state is possible. Further calculations are needed to confirm this, and future work could apply the methodology developed here to this process. 
 
 The results are consistent with the p-type doping observed in MAPI, which could be attributed to negatively charged interstitials, and the photo-induced `brightening'of perovskite photoluminsecence that is attributed to a reduction in trap state density.
 %https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6269531/#CR39
