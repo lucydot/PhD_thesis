@@ -115,11 +115,11 @@ The valence wavefunctions were expanded in a plane-wave basis set with a \SI{700
 \subsection{Carrier capture coefficient}
 
 The procedure follows static coupling theory as implemented by Alkauskas et al.\autocite{Alkauskas2014} and recently extended to anharmonic potential energy surfaces by Kim et al. in the \textsc{carriercapture.jl} package.\autocite{carriercapture,Kim2019}
-The capture coefficient is derived by considering electron phonon coupling at first order and using a one-dimensional approximation so that the problem reduces to a single phonon mode $Q$. For carrier capture from an initial state $i$ to a final state $f$, the carrier capture coefficient is given by
+The capture coefficient is derived by considering electron phonon coupling at first order and using a one-dimensional approximation so that the problem reduces to a single phonon mode $Q$. For electron capture from an initial state i to a final state f, the carrier capture coefficient is given by
 \begin{equation} \label{carriercapteqn}
-    C_p = V\frac{2\pi}{\hbar}gW_{if}^2\sum_m\omega_m\sum_n|\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle^2\times (\Delta E+m\hbar\Omega_i-n\hbar\Omega_f),
+    C_n = V\frac{2\pi}{\hbar}gW_\textrm{if}^2\sum_m\omega_m\sum_n|\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle^2\times (\Delta E+m\hbar\Omega_\textrm{i}-n\hbar\Omega_\textrm{f}),
 \end{equation}
-where $V$ is the supercell volume, $g$ is the energetic degeneracy of the final state, $W_{if}$ is the electron-phonon coupling matrix element, $\omega_m$ is the thermal occupation of the vibrational state $m$, $\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle$ is the overlap of the vibrational wavefunctions $\chi$ and $\delta(\Delta E+m\hbar\Omega_i-n\hbar\Omega_f)$ ensures that there is conservation of energy. In practice the $\delta$ term is replaced by a smearing function; for the calculations in this study this is a gaussian function of width \SI{0.01}{\electronvolt}.
+where $V$ is the supercell volume, $g$ is the energetic degeneracy of the final state, $W_\textrm{if}$ is the electron-phonon coupling matrix element, $\omega_m$ is the thermal occupation of the vibrational state $m$, $\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle$ is the overlap of the vibrational wavefunctions $\chi$ and $\delta(\Delta E+m\hbar\Omega_\textrm{i}-n\hbar\Omega_\textrm{f})$ ensures that there is conservation of energy. In practice the $\delta$ term is replaced by a smearing function; for the calculations in this study this is a gaussian function of width \SI{0.01}{\electronvolt}.
 The total energies and wavefunctions of the iodine interstitial in a neutral and negative charge state, for the equilibrium and distorted geometries, were calculated using the parameters outlined in Section \ref{method:dfe}. Total energies were calculated using the HSE06 hybrid exchange-correlation functional with spin-orbit coupling, whilst single particle wavefunctions for the electron-phonon coupling matrix were calculated using the PBEsol functional.
 We found that the shape of the potential energy surface is largely independent of the level of theory used (see Appendix \ref{app:9-configcoord} for a comparison at different levels of theory).
 The anharmonic potential energy surface was generated from fitting a spline of order 4, as implemented in the \textsc{dierckx.jl} package,\autocite{dierckx} to the DFT total energies. 
@@ -128,9 +128,9 @@ We consider electron capture from the neutral charge state to the negative charg
 The 1D Schr\"{o}dinger equation for the potential energy surface was solved using a finite difference method implemented in the \textsc{brooglie} package\autocite{brooglie} to give the vibrational wavefunctions. 
 The electron-phonon coupling matrix element is given by
 \begin{equation} \label{epcouplingterm}
-    W_{if} = (\epsilon_f-\epsilon_i)\langle\psi_i|\frac{\partial\psi_f}{\partial Q}\rangle,
+    W_\textrm{if} = (\epsilon_\textrm{f}-\epsilon_\textrm{i})\langle\psi_\textrm{i}|\frac{\partial\psi_\textrm{f}}{\partial Q}\rangle,
 \end{equation}
-where the single particle wavefunction of the initial (final) charge state is given by $\psi_i$ ($\psi_f$) and has an eigenstate energy of $\epsilon_i$ ($\epsilon_f$). The \textsc{pawpyseed} package\autocite{pawpyseed} was used to derive the orthogonal wavefunctions from the  pseudo wavefunctions and perform the overlap integrals in real space.
+where the single particle wavefunction of the initial (final) charge state is given by $\psi_\textrm{i}$ ($\psi_\textrm{f}$) and has an eigenstate energy of $\epsilon_\textrm{i}$ ($\epsilon_\textrm{f}$). The \textsc{pawpyseed} package\autocite{pawpyseed} was used to derive the orthogonal wavefunctions from the  pseudo wavefunctions and perform the overlap integrals in real space.
 Further details of  the  methodology  can  be  found  in  the  literature.\autocite{Alkauskas2014} 
 % confirmed that coupling away from band edge is reduced (0.002 CBM and 0.0099 VBM)
 
@@ -162,13 +162,13 @@ $\mathrm{I}_\mathrm{i}^+$ & in-plane & 2.89/2.95 && in-plane & 2.95 average && i
 $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ & out-of-plane & 3.19 && out-of-plane & 3.24 && - \\
 $\mathrm{I}_\mathrm{i}^\mathrm{IP}$ & in-plane & 3.24 && in-plane & 3.88 && - \\
 \end{tabular} 
-\caption[Defect orientation and bond length of the $\mathrm{I}_\mathrm{i}^+$, $\mathrm{I}_\mathrm{i}^-$, $\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ defects in MAPI]{\label{compare_geoms}Defect orientation and bond length of the $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ defects in MAPI, with a comparison to computational results in the literature. The bond lengths are given in $\AA$.}
+\caption[Defect orientation and bond length of $\mathrm{I}_\mathrm{i}^+$, $\mathrm{I}_\mathrm{i}^-$, $\mathrm{I}_\mathrm{i}^\mathrm{IP}$ $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ in MAPI]{\label{compare_geoms}Defect orientation and bond length of $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ in MAPI, with a comparison to computational results in the literature. The bond lengths are given in $\AA$.}
 \end{table}
 
 \begin{figure}[h!]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/defect_geometries.png}
-  \caption[Defect geometries of the $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ defects in MAPI]{Defect geometries of the $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ defects in MAPI. IP indicates that the defect is lying in the $ab$-plane. OP indicates that the defect is lying along the $c$-axis. All distances are measured in $\AA$.}
+  \caption[Defect geometries of $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ in MAPI]{Defect geometries of $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ in MAPI. IP indicates that the defect is lying in the $ab$-plane. OP indicates that the defect is lying along the $c$-axis. All distances are measured in $\AA$.}
 \label{relaxation_workflow}
 \end{figure}
 
@@ -186,7 +186,7 @@ Whereas in the previous chapter we considered a large polaron, in this chapter w
 \begin{figure}[h!]   %includes H-centre schematic
 \centering
   \includegraphics[width=0.9\columnwidth]{figures/ch6/spin_localisation.png}
-  \caption[Spin localisation and optical excitation at the H-centre defect in MAPI]{A) Change in local equatorial environment around Pb in a lead halide perovskite upon formation of a H-centre defect. The H-centre is formed from a lattice iodide and interstitial iodide. The I--I interatomic spacing of ca. \SI{4.5}{\angstrom} in the perfect lattice decreases to a bond length of \SI{3.2}{\angstrom} upon dimer formation. Figure adapted with permission from an original prepared by Aron Walsh. B)  The difference between the density of the two spin channels in a spin-polarised calculation is plotted to show spin localisation around the H-centre defect in MAPI. C) Optical excitation energies as a function of dimer bond length for the iodine dimer in MAPI. The bond length is given in $\AA$.}
+  \caption[Spin localisation and optical excitation of the H-centre defect in MAPI]{A) Change in local equatorial environment around Pb in a lead halide perovskite upon formation of a H-centre defect. The H-centre is formed from a lattice iodide and interstitial iodide. The I--I interatomic spacing of ca. \SI{4.5}{\angstrom} in the perfect lattice decreases to a bond length of \SI{3.2}{\angstrom} upon dimer formation. Figure adapted with permission from an original prepared by Aron Walsh. B)  The difference between the density of the two spin channels in a spin-polarised calculation is plotted to show spin localisation around the H-centre defect in MAPI. C) Optical excitation energies as a function of dimer bond length for the iodine dimer in MAPI. The bond length is given in $\AA$.}
 \label{spin_localisation}
 \end{figure}
 %include updated TDDFT results
@@ -256,7 +256,7 @@ Hole trapping at the negative charge state is not possible due to the large ener
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/carrier_capture_digram.png}
-  \caption[Configuration coordinate diagram describing carrier capture between negative and neutral charge states of the iodine interstitial defect]{(Top) Configuration coordinate diagram describing carrier capture between the negative and neutral charge states of the iodine interstitial defect. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces. To model electron trapping at the neutral charge state, the excited state of the system corresponds to the neutral defect with a photo-generated electron in the conduction band and hole in the valence band, and the ground state corresponds to the negatively charged defect with a hole in the valence band. }
+  \caption[Configuration coordinate diagram describing carrier capture between the negative and neutral charge states]{(Top) Configuration coordinate diagram describing carrier capture between the negative and neutral charge states of the iodine interstitial defect. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces. To model electron trapping at the neutral charge state, the excited state of the system corresponds to the neutral defect with a photo-generated electron in the conduction band and hole in the valence band, and the ground state corresponds to the negatively charged defect with a hole in the valence band.}
 \label{configuration_coordinate}
 \end{figure}
 % talk ahout the difference between the photochemistry and equilibrium thermodynamics
@@ -278,7 +278,7 @@ The lower part of Figure \ref{configuration_coordinate} compares the anharmonic 
 
 Figure \ref{configuration_coordinate} highlights the importance of using anharmonic potential energy surfaces to describe charge capture at the iodine intersitital in MAPI. The harmonic potential energy surfaces for the excited and ground state intercept at an energy ca. \SI{0.5}{eV} above the excited state equilibrium energy, and this leads to a carrier capture coefficient four orders of magnitude smaller than that calculated for the anharmonic surfaces (values for the coefficient are given in Section \ref{finalsection}).
 
-\subsection{Vibrational properties of MAPI:$\mathbf{I}_\mathbf{i}^\mathbf{-}$}
+\subsection{Vibrational properties of the negative charge state}
 
 In the previous section the coupling of the iodine interstitial to a single vibrational mode was considered without reference to normal phonon modes of the crystal.
 In this section the harmonic phonon modes of MAPI:$\mathrm{I}_\mathrm{i}^-$ are calculated and analysed.
@@ -301,7 +301,7 @@ When an iodine interstitial is introduced the translational symmetry of the crys
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/defect_dispersion_IPR.png}
-  \caption[Phonon dispersion and Inverse Participation Ratio of a MAPI crystal containing $\mathbf{I}_i^{-}$]{A) Harmonic phonon dispersion of the pristine lattice. The imaginary modes near the gamma point are the result of numerical noise, and the imaginary modes at $R$ and $M$ correspond to tilting of the inorganic octahedra. B) Harmonic phonon dispersion of MAPI:$\mathrm{I}_i^{-}$ C) The Inverse Participation Ratio of a MAPI:$\mathrm{I}_i^{-}$ D) Contribution to phonon mode energy by atomic species.}
+  \caption[Phonon dispersion and Inverse Participation Ratio of MAPI:$\mathrm{I}_\mathrm{i}^{-}$]{A) Harmonic phonon dispersion of the pristine lattice. The imaginary modes near the gamma point are the result of numerical noise, and the imaginary modes at $R$ and $M$ correspond to tilting of the inorganic octahedra. B) Harmonic phonon dispersion of MAPI:$\mathrm{I}_\textrm{i}^{-}$ C) The Inverse Participation Ratio of a MAPI:$\mathrm{I}_\textrm{i}^{-}$ D) Contribution to phonon mode energy by atomic species.}
 \label{defect_dispersion_IPR}
 \end{figure}
 
@@ -327,26 +327,26 @@ As discussed by Alkauskas et al.,\autocite{Alkauskas2014} it may be surprising t
 
 \subsection{Electron capture coefficient} \label{finalsection}
 
-In Section \ref{ch6:ccd} we used the lattice relaxation $\Delta Q$ and Huang-Rhys factor $S$ as proxies for the electron-phonon coupling term. In this section we combine the electron-phonon coupling term (Equation \ref{epcouplingterm}) calculated from first principles with anharmonic vibrational wavefunctions to calculate the electron capture coefficient at the neutral iodine interstitial. The electron capture coefficient $C_p$ determines the rate of electron capture $R_p$ via the following equation
+In Section \ref{ch6:ccd} we used the lattice relaxation $\Delta Q$ and Huang-Rhys factor $S$ as proxies for the electron-phonon coupling term. In this section we combine the electron-phonon coupling term (Equation \ref{epcouplingterm}) calculated from first principles with anharmonic vibrational wavefunctions to calculate the electron capture coefficient at the neutral iodine interstitial. The electron capture coefficient $C_n$ determines the rate of electron capture $R_n$ via the following equation
 \begin{equation} \label{rateeqn}
-R_p=C_pN_te
+R_n=C_nN_tn
 \end{equation}
 %check that this consistent with earlier notation
-where $N_t$ is the density of neutral defect traps and $e$ is the electron density.
+where $N_t$ is the density of neutral defect traps and $n$ is the electron density.
 
 During electron capture, a delocalised electron in the valence band is captured to a localised defect state, so it is important that there is a single particle level in the bulk band gap for the geometry $Q_0$ in Equation \ref{epcouplingterm}.\autocite{Alkauskas2014} There is an empty electronic defect state in the band gap at the equilibrium geometry for the neutral charge state (Figure \ref{eigenvalues}) and so this is chosen as $Q_0$.
 In Figure \ref{eigenvalues} we also see that as the lattice geometry is distorted towards that of the negative charge state the empty defect state decreases in energy until it is in the valence band. 
-The inner product of the wavefunctions at the valence band minimum $\phi_i$ and unoccupied defect level $\phi_f$ are calculated at various $Q$-values and substituted into Equation \ref{carriercapteqn} to give a value of \SI{0.0036}{\electronvolt\per amu\tothe{1/2}\per\angstrom} for the electron-phonon coupling matrix element.
-It is possible to estimate the electron-phonon coupling term using an estimate for the degree of localisation of $\phi_i$ and $\phi_f$. For strong electron phonon coupling $W_{if}$ corresponds to 
+The inner product of the wavefunctions at the valence band minimum $\phi_\textrm{i}$ and unoccupied defect level $\phi_\textrm{f}$ are calculated at various $Q$-values and substituted into Equation \ref{carriercapteqn} to give a value of \SI{0.0036}{\electronvolt\per amu\tothe{1/2}\per\angstrom} for the electron-phonon coupling matrix element.
+It is possible to estimate the electron-phonon coupling term using an estimate for the degree of localisation of $\phi_\textrm{i}$ and $\phi_\textrm{f}$. For strong electron phonon coupling $W_\textrm{if}$ corresponds to 
 \begin{equation}
-W_{if} \approx \frac{\Delta E}{\Delta Q}\sqrt{\frac{M_d}{M_b}},
+W_\textrm{if} \approx \frac{\Delta E}{\Delta Q}\sqrt{\frac{M_d}{M_b}},
 \end{equation}
-where $M_b$ is the number of atoms in the supercell and $M_d$ is the number of atoms the defect state is localised around. For our system $W_{if}\approx0.0037$ and so electron-phonon coupling for the single mode $Q$ is very strong.
+where $M_b$ is the number of atoms in the supercell and $M_d$ is the number of atoms the defect state is localised around. For our system $W_\textrm{if}\approx0.0037$ and so electron-phonon coupling for the single mode $Q$ is very strong.
 
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/eigs.png}
-  \caption[ ]{Evolution of MAPI:$\mathrm{I}_\mathrm{i}^-$ Kohn-Sham eigenstates as the lattice geometry is deformed along coordinate $Q$.  Solid and empty circles represent occupied and unoccupied states, respectively.}
+  \caption[Evolution of MAPI:$\mathrm{I}_\mathrm{i}^-$ Kohn-Sham eigenstates]{Evolution of MAPI:$\mathrm{I}_\mathrm{i}^-$ Kohn-Sham eigenstates as the lattice geometry is deformed along coordinate $Q$.  Solid and empty circles represent occupied and unoccupied states, respectively.}
 \label{eigenvalues}
 \end{figure}
 %might need to label geometries
@@ -357,7 +357,7 @@ The large lattice distortion associated with charge capture suppresses radiative
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/carrier_capture_rate.png}
-  \caption[Electron capture coefficient of the H-centre defect in MAPI]{Electron capture coefficient of the H-centre defect in MAPI. This determines the rate of carrier capture via Equation \ref{rateeqn} in the main text.}
+  \caption[Electron capture coefficient of the H-centre defect]{Electron capture coefficient of the H-centre defect in MAPI. This determines the rate of carrier capture via Equation \ref{rateeqn} in the main text.}
 \label{carrier_capture_rate}
 \end{figure}
 %tabel of eigenstates like on Trello
