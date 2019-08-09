@@ -36,7 +36,7 @@
 \newlength{\textbaselineskip}
 
 \setlength{\singlebaselineskip}{\baselineskip}
-\setlength{\frontmatterbaselineskip}{17pt plus1pt minus1pt}
+\setlength{\frontmatterbaselineskip}{18pt plus2pt minus1pt}
 \setlength{\textbaselineskip}{22pt plus2pt}
 
 \newcommand{\submittedtext}{{A thesis submitted for the degree of}}
@@ -250,10 +250,10 @@
 % own page and is set out in verse format.
 
 \newenvironment{dedication}
-{\begin{alwayssingle}
+{
   \thispagestyle{empty}
   \vspace*{\fill} \begin{center}}
-{\end{center}\vspace*{\fill}\vspace*{\fill} \end{alwayssingle}}
+{\end{center}\vspace*{\fill}\vspace*{\fill}}
 
 
 % ACKNOWLEDGEMENTS
@@ -266,12 +266,12 @@
 
 
 \newenvironment{acknowledgements}%
-{   \begin{alwayssingle}\chapter*{Acknowledgements}
+{   \chapter*{Acknowledgements}
     \addcontentsline{toc}{chapter}{Acknowledgements}
     \chaptermark{Acknowledgements}
-	\setlength{\baselineskip}{\frontmatterbaselineskip}
+	
 }
-{\end{alwayssingle}}
+
 
 
 %ABSTRACT
@@ -281,52 +281,49 @@
 %i.e. tabbed in at both sides, and on its own page.
 
 \renewenvironment{abstract}%
-{   \begin{alwayssingle}\chapter*{Abstract}
-   \setlength{\baselineskip}{\frontmatterbaselineskip}}
-{\end{alwayssingle}}
+{   \chapter*{Abstract}
+   }
+
 
 
 %LW - COPYRIGHT
 
 \renewenvironment{copyright}%
-{   \begin{alwayssingle}\chapter*{Copyright}
+{   \chapter*{Copyright}
     \addcontentsline{toc}{chapter}{Copyright}
-   \setlength{\baselineskip}{\frontmatterbaselineskip}}
-{\end{alwayssingle}}
+   }
 
 %LW - DECLARATION
 
 \newenvironment{declaration}%
-{   \begin{alwayssingle}\chapter*{Statement of Authorship}
+{   \chapter*{Statement of Authorship}
     \addcontentsline{toc}{chapter}{Statement of Authorship}
-   \setlength{\baselineskip}{\frontmatterbaselineskip}
     \setlength{\parindent}{0pt}
     \setlength{\parskip}{2pt}
 }
-{\end{alwayssingle}}
+
 
 %LW - PUBLICATIONS
 
 \newenvironment{publications}%
-{   \begin{alwayssingle}\chapter*{Publications}
+{   \chapter*{Publications}
     \addcontentsline{toc}{chapter}{Publications}
-   \setlength{\baselineskip}{\frontmatterbaselineskip}
     \setlength{\parindent}{0pt}
 }
-{\end{alwayssingle}}
+
 
 %LW - closing remarks
 
 \newenvironment{closing}%
-{   \begin{alwayssingle}\chapter*{Closing Remarks}
+{   \chapter*{Closing Remarks}
     \addcontentsline{toc}{chapter}{Closing Remarks}
-   \setlength{\baselineskip}{\frontmatterbaselineskip}}
-{\end{alwayssingle}}
+   }
+
 
 %The abstractseparate environment is for running of a page with the abstract
 %on including title and author etc as required to be handed in separately
 
-\newenvironment{abstractseparate} {\newgeometry{margin=3.3cm}\thispagestyle{empty}\begin{alwayssingle}
+\newenvironment{abstractseparate} {\newgeometry{margin=3.3cm}\thispagestyle{empty}
  \begin{center}
     {\Large \bfseries \@title \par}
 \ifmasterssubmission
@@ -351,7 +348,7 @@
   \end{center}
 \vspace{1ex}
    \setlength{\baselineskip}{\z@}}
-{\vfill\end{alwayssingle}\restoregeometry}
+{\vfill\restoregeometry}
 
 
 %ROMANPAGES
@@ -488,4 +485,5 @@
 
 % JEM: combine all of the commands you run before appendices start
 \newcommand{\startappendices}
-  {\appendix\adjustmtc\noappendicestocpagenum\addappheadtotoc\appendixpage}
+  {\appendix\addappheadtotoc\appendixpage}
+

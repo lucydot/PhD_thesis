@@ -57,7 +57,7 @@
 % generating a PDF to send to the printer!
 
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
-\fancyfoot[C]{\emph{DRAFT Printed on \today}}  
+%\fancyfoot[C]{\emph{DRAFT Printed on \today}}  
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
@@ -185,9 +185,10 @@
 %\setlength{\textbaselineskip}{22pt plus2pt}
 % This is closer spacing (about 1.5-spaced) that you might prefer for your personal copies:
 \setlength{\textbaselineskip}{18pt plus2pt minus1pt}
+%\linespread{1.3}
 
 % You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
-\setlength{\frontmatterbaselineskip}{17pt plus1pt minus1pt}
+%\setlength{\frontmatterbaselineskip}{17pt plus1pt minus1pt}
 
 % Leave this line alone; it gets things started for the real document.
 \setlength{\baselineskip}{\textbaselineskip}
@@ -320,20 +321,65 @@
 % Starts lettered appendices, adds a heading in table of contents, and adds a
 %    page that just says "Appendices" to signal the end of your main text.
 \startappendices
-% Add or remove any appendices you'd like here:
-%\include{text/appendix-2}
-%\include{text/appendix-3}
-%\include{text/appendix-1}
-%\include{text/appendix-6}
-%\include{text/appendix-4}
-%\include{text/appendix-7}
-%\include{text/appendix-9}
-%\include{text/appendix-5}
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand\thefigure{\thesection.\arabic{figure}} 
+\renewcommand\thetable{\thesection.\arabic{table}} 
 
 
+\section{\label{app:2-bandstructures}DFT bandstructures for PV materials}
+\setcounter{figure}{0}  
+\input{text/appendix-2}
 
-%% include exchange correlation functional , alpha value on defect formation energy
+\clearpage
 
+\section{\label{app:2-sampling}Effective mass and $k$-point spacing}
+\setcounter{figure}{0}  
+\setcounter{table}{0}  
+\input{text/appendix-3}
+
+\clearpage
+
+\section{\label{app:1-effmass}\textsc{effmass}: An effective mass package}
+\setcounter{figure}{0}  
+\setcounter{table}{0}  
+\input{text/appendix-1}
+
+\clearpage
+
+\section{\label{app:6-SCcompare}Bandgap deformation potential and supercell size}
+\setcounter{figure}{0}  
+\setcounter{table}{0}  
+\input{text/appendix-6}
+
+\clearpage
+
+\section{\label{app:2-diffusion}Diffusion equation for a hot sphere}
+\setcounter{figure}{0}  
+\setcounter{table}{0}  
+\input{text/appendix-4}
+
+\clearpage
+
+\section{\label{app:7-chargetransition}Charge transition diagram for $\mathrm{I}_\mathrm{i}$}
+\setcounter{figure}{0}  
+\setcounter{table}{0}  
+\input{text/appendix-7}
+
+\clearpage
+
+\section{\label{app:9-configcoord}Additional $\mathrm{I}_\mathrm{i}$ potential energy surfaces}
+\setcounter{figure}{0}  
+\setcounter{table}{0}  
+\input{text/appendix-9}
+
+\clearpage
+
+\section{\label{app:5-copyright}Copyright permissions}
+\setcounter{figure}{0}  
+\setcounter{table}{0}  
+\input{text/appendix-5}
+
+\clearpage
 %%%%% REFERENCES
 
 % JEM: Quote for the top of references (just like a chapter quote if you're using them).  Comment to skip.
