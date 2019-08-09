@@ -283,17 +283,17 @@ U_\textrm{SRH} = \frac{np-n_\textrm{i}^2}{\tau_\textrm{n,SRH}(p+p_\textrm{t})+\t
 where $n$ ($p$) is the density of electrons (holes), $n_i$ is the intrinsic carrier density and $n_\mathrm{t}$ ($p_\mathrm{t}$) is the value of the electron (hole) density when the electron Fermi level is equal to the trap level $E_\mathrm{t}$: 
 \begin{align}
 n_\mathrm{t} &= n_\mathrm{i}e^{\frac{(E_\mathrm{t}-E_\mathrm{c})}{k_\mathrm{B}T}} \\
-n_\mathrm{p} &= n_\mathrm{i}e^{\frac{(E_\mathrm{v}-E_\mathrm{t})}{k_\mathrm{B}T}},
+p_\mathrm{t} &= n_\mathrm{i}e^{\frac{(E_\mathrm{v}-E_\mathrm{t})}{k_\mathrm{B}T}},
 \end{align}
 where $E_\mathrm{c}$ and $E_\mathrm{v}$ are the energies of the CBM and VBM respectively. The recombination rate has a maximum when the rates of hole capture and electron capture are comparable. This happens when the trap level is in the middle of the bandgap, and $n_\mathrm{t} = p_\mathrm{t}$. % note here that deep state not needed: czts : https://pubs.acs.org/doi/pdf/10.1021/acsenergylett.7b01313
 
 $\tau_\textrm{n,SRH}$ ($\tau_\textrm{p,SRH}$) is the electron (hole) lifetime. For a trap density $N_\mathrm{t}$, mean thermal electron (hole) velocity $v_\mathrm{n
 }$ ($v_\mathrm{p}$) and electron (hole) capture cross section $\sigma_\mathrm{n}$ ($\sigma_p$), the lifetimes can be approximated as 
 \begin{align}
-\tau_\textrm{n,SRH} &= \frac{1}{v_\mathrm{n}\sigma_\mathrm{n}N_\mathrm{t}} \\
-\tau_\textrm{p,SRH} &= \frac{1}{v_\mathrm{p}\sigma_\mathrm{p}N_\mathrm{t}}.
+\tau_\textrm{n,SRH} &= \frac{1}{\langle v_\mathrm{n}\rangle\sigma_\mathrm{n}N_\mathrm{t}} \\
+\tau_\textrm{p,SRH} &= \frac{1}{\langle v_\mathrm{p}\rangle\sigma_\mathrm{p}N_\mathrm{t}}.
 \end{align}
-The standard approach for calculating the trap density from first principles is give in Chapter\ \ref{ch:3-methods}, and a method for calculating the capture cross section is outlined in the Chapter\ \ref{ch:6-defects}.
+The standard approach for calculating the trap density from first principles is give in Chapter\ \ref{ch:3-methods}, and a method for calculating the capture coefficient is outlined in the Chapter\ \ref{ch:6-defects}.
 
 \subsubsection{Experimental measurements of recombination rates} \label{exprecombo}
 

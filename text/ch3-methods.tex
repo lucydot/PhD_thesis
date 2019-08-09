@@ -314,7 +314,7 @@ The final classification is into electrically active and electrically benign def
 
 \subsection{Energetics of defect formation} \label{defectformation}
 
-The equilibrium concentration of defects $n$ at a fixed temperature and pressure is given by the density that minimizes free energy.
+In the dilute limit, the equilibrium concentration of defects $n$ at a fixed temperature and pressure is given by the density that minimizes free energy.
 \begin{equation} \label{defectconcentration}
     n = N_\mathrm{sites} \exp \left(-\frac{\Delta G}{k_\mathrm{B} \mathrm{T}} \right),
 \end{equation}
@@ -323,7 +323,7 @@ where $\Delta G$ is the Gibbs free energy of defect formation. The Gibbs free en
 E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_\mathrm{F}) + E_\mathrm{corr},
 \end{equation}
 where $E_\mathrm{d}(q)$ is the total energy of the supercell with a defect of charge $q$ and $E_\mathrm{b}$ is the total energy of the perfect bulk. 
-$E_\mathrm{corr}$ is a correction energy that is only needed for charged defects and is discussed Section \ref{corrections}.
+$E_\mathrm{corr}$ is a correction energy that is needed when using a finite-sized supercell and is discussed Section \ref{corrections}.
 The remaining terms describe the energy needed to add or remove atoms or electrons.
 $\mu_i$ is the chemical potential of atom $i$ and $n_i$ is the number of atoms that are added or removed.
 The chemical potential can be adjusted to describe different growth conditions; if the growth conditions are rich for species $i$ then $\mu_i$ will be low.
@@ -342,7 +342,7 @@ The charge transition level is equivalent to thermal ionization energy, the ener
   \label{CdTeformation}
 \end{figure}%cite https://iopscience.iop.org/article/10.1088/1742-6596/720/1/012031/pdf
 
-Defect levels deep in the bandgap correspond to localised wavefunctions. Carrier capture processes to these defect states are often associated with a large lattice distortion. Shallow defect levels (within thermal energy $k_\mathrm{B}T$ of the valence or conduction band) correspond to delocalised, hydrogenic-like defect wavefunctions. 
+Deep carrier traps have a defect level towards the middle of the bandgap and produce localised wavefunctions. Carrier capture processes to these defect states are often associated with a large lattice distortion. Shallow defect levels (within thermal energy $k_\mathrm{B}T$ of the valence or conduction band) produce delocalised, hydrogenic-like defect wavefunctions. 
 % - defect energies theoretical founsations - mott littleton (1938)  - a way to calculate E the defecct energy as knew the hopping rate expression, but didnt know E. only experimental input is dielectric constant.see special 1988 issue.
 %  The other problem is that is dependent upon the chemical potential which is difficult to monitor.
 
@@ -388,7 +388,7 @@ However a system this size is computationally intractable, especially considerin
 
 A number of correction schemes have been developed to deal with these issues; a brief historical overview is given below. These schemes are designed to be used as a post-processing step and provide a value for the $E_{corr}$ term in Eqn.\ref{eqn_formation_energy}. A more complete description of these issues can be found in References \cite{durrant2018} and \cite{Vinichenko2017}.
 
-The Leslie Gillan correction\autocite{Leslie1985} $E^\mathrm{LG}$ models the defect charge $q$ as a point charge interacting with its periodic images through an isotropic dielectric medium. 
+The Leslie Gillan correction $E^\mathrm{LG}$ models the defect charge $q$ as a point charge interacting with its periodic images through an isotropic dielectric medium.\autocite{Leslie1985}
 This correction takes a simple analytic form that depends on the charge state  $q$, static dielectric constant $\epsilon_0$, separation between defect images $L$ and the Madelung constant $\alpha_m$, which is determined by the lattice geometry:
 \begin{equation}
     E^\mathrm{LG} = \frac{q^2\alpha_{m}}{2\epsilon L}.
@@ -428,7 +428,7 @@ Other material properties which are only accessible via lattice dynamics include
 
 For atomic motion at small amplitudes around the potential energy minimum it is common to use the harmonic approximation, where the atom moves as if it is connected by a spring to its neighbouring atoms (Figure \ref{harmonicregime}). This is discussed in Section \ref{harmonicapprox}. At larger vibration amplitudes, and to understand processes relating to the creation and annihilation of phonons, we must consider anharmonic motion, and this is considered in Section \ref{anharmonicapprox}.
 
-These motions are determined by the force on each atom. For simple systems, for example a one-dimensional diatomic chain, we can calculate atomic position as a function of time analytically. Otherwise methods such as DFT can be used to build a force constant matrix which, after some post-processing steps, gives the eigenvectors (direction) and frequencies of motion. This is discussed in Section \ref{finitedisplacement}. As in the previous sections of this chapter, we use the Born-Oppenheimer approximation and assume that the equilibrium positions in a crystal are the minima of the potential energy surface when the electron and nuclear motion are decoupled.
+These motions are determined by the force on each atom. For simple systems, for example a one-dimensional diatomic chain, we can calculate atomic position as a function of time analytically. Otherwise methods such as DFT can be used to build a force constant matrix which, after some post-processing steps, gives the eigenvectors (direction and amplitude) and eigenvalues (frequencies of motion). This is discussed in Section \ref{finitedisplacement}. As in the previous sections of this chapter, we use the Born-Oppenheimer approximation and assume that the equilibrium positions in a crystal are the minima of the potential energy surface when the electron and nuclear motion are decoupled.
 
 \begin{figure}[h]
 \centering
@@ -494,7 +494,7 @@ where it is assumed that the structure is relaxed and forces are equal to zero s
 &=\sum_j\frac{1}{2}\tilde{M}\dot{Q}_j^2+\sum_{j}\frac{1}{2}\tilde{\textbf{A}}_{j}Q_j^2,
 \end{align}
 where the linear transformation has cast coordinates $x$ into $Q$.
-The general solution to this system of equations for an $N$-atom unit cell in three dimensions is a superposition of $3N$ normal modes of vibration, each with its own frequency and eigenvector.
+The general solution to this system of equations for $N$-atoms in three dimensions is a superposition of $3N$ normal modes of vibration, each with its own frequency and eigenvector.
 To calculate the normal modes Newton's second law, $F=ma$, is applied. For crystalline solids we take advantage of symmetry and seek normal modes $\textbf{e}(\textbf{k},t)$ that for a chosen wavevector $\textbf{k}$ are a linear combination of a relative displacement within the unit cell ($\textbf{u}_0(i,\textbf{k})$), a phase that depends on the origin $\textbf{R}_I$ of cell $I$ ($\textrm{exp}(i\textbf{k}\cdot \textbf{R}_I)$), and an oscillation in time of well defined frequency $\omega(\textbf{k})$ ($\textrm{exp}(i\omega(\textbf{k})t)$):
 \begin{equation} \label{normalmodes}
 \textbf{e}(\textbf{k},t) = \textbf{u}_0(i,\textbf{k})\textrm{exp}(i\textbf{k}\cdot\textbf{R}_I)\textrm{exp}(i\omega(\textbf{k})t).
@@ -526,7 +526,7 @@ The discrete (quantised) unit of energy $\hbar\omega(\textbf{k})$ is a phonon qu
 \subsection{Anharmonicity} \label{anharmonicapprox}
 
 Anharmonic atomic motion is described by the higher order terms in Equation \ref{taylorexpansion}.
-The third order term accounts for phonon-phonon scattering which, due to the conservation of energy and momentum, is a three particle process (Figure \ref{thermalconductivity}).\autocite{Lundstrom2000}
+The third order term accounts for phonon-phonon scattering which, due to the conservation of energy and momentum, is a three particle process (Figure \ref{anharmonicity}).\autocite{Lundstrom2000}
 
 The linear boltzmann transport equation (LBTE) describes a thermodynamic system out of equilibrium. Solving the LBTE under the single mode relaxation time approximation gives an expression for the lattice thermal conductivity $\kappa$. %cite https://arxiv.org/pdf/1501.00691.pdf
 The phonon-phonon scattering rate determines the phonon lifetime $\tau_\lambda$ which is a key quantity in the expression for $\kappa$:
@@ -555,7 +555,7 @@ Chapter \ref{ch:5-epcoupling} calculates the coupling between the anharmonic dou
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch3/anharmonicity.png}
   \caption[3-phonon processes and anharmonic potential energy surfaces]{A) Energy and momentum are conserved during the creation or annihilation of phonons, so these are three-phonon processes (or higher); B) Some materials, such as silicon (Si) are well-described by a harmonic potential energy surface at typical solar cell operating temperatures. However other materials with dynamic disorder, such as the organic and inorganic perovskite halides, have highly anharmonic double well potentials.}
-  \label{harmonicregime}
+  \label{anharmonicity}
 \end{figure}  %include phonon-phonon scattering schematic? the third regime where important is given in the other figure, at high temperature %cite ruoxi work
 
 
@@ -563,7 +563,7 @@ Chapter \ref{ch:5-epcoupling} calculates the coupling between the anharmonic dou
 \subsection{Finite displacement method} \label{finitedisplacement}
 
 There are a number of ways to calculate the second order force constant matrix in Equation \ref{forceconstant} including: the finite displacement method; density functional perturbation theory; ab-initio molecular dynamics and compressed sensing lattice dynamics.
-In this work the finite displacement method (also known as the direct or supercell method) is used: a single atom is displaced a small distance from its energetic minimum and there is a self-consistent electronic structure optimisation to calculate the resultant forces. The maximum number of displacements for a system with $N$ atoms is $6N$, although this is reduced through symmetry. 
+In this work the finite displacement method (also known as the direct or supercell method) is used: a single atom is displaced a small distance from its energetic minimum and there is a self-consistent electronic structure optimisation to calculate the resultant forces. The maximum number of displacements for a system with $N$ atoms in the unit cell is $6N$, although this is reduced through symmetry. 
 To consider phonon wavelengths greater than the unit cell length a supercell is required, and all forces must be well converged (typically to less than \SI{0.01}{\electronvolt\per\angstrom}).
 
 %negatives of this approach: no long range forces beyond hte supercell (polar materials), no anharmonicity .  %positive - highly parallelisable
@@ -592,7 +592,7 @@ To consider phonon wavelengths greater than the unit cell length a supercell is 
 
 In this chapter I have introduced the key concepts that underly DFT, and the post-processing steps required to calculate the defect and vibrational properties of a crystal. 
 Much of solid state physics is built upon the idea of a translationally invariant crystal, so it should come as little surprise that additional steps are needed to describe defects that break translational symetry and work against the fundamental assumptions of the theoretical framework.
-In contrast, phonons at the gamma point preserve the underlying crystal symmetry, but additional steps are needed to build the force constant matrix from multiple DFT calculations.
+In contrast, phonons at the gamma point preserve the underlying translational symmetry, but additional steps are needed to build the force constant matrix from multiple DFT calculations.
 In this chapter I have presented the defect and vibrational calculations separately. However in Chapter \ref{ch:6-defects} I also combine the two approaches, and calculate the vibrational properties of the iodine interstitial defect in MAPI. 
 %A discussion about how a point defect perturbs the vibrational sub-system of a bulk material is included in that final chapter.
 %: LW - could we add here that solid state physics of crystalline materials is not really built for defects as they assume perfect translational symmetry, which the defects break ---> which makes modelling defects a continuing challenge for theory and simulation (as we are working "against" the fundamental assumptions of the framework).
