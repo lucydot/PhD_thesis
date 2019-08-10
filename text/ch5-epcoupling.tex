@@ -134,7 +134,7 @@ A Monkhorst-Pack \textit{k}-point grid, with a $\Gamma$-centered $6 \times 6 \ti
 A total-energy convergence criterion of $10^{-8}$ eV during the electronic minimisation was found to be necessary to remove noise in the absolute electronic eigenvalues.
 A least-squares polynomial fit using the \textsc{Python} library \textsc{Numpy} was applied to the symmetrised data.
 
-The Cartesian displacement of atoms in a $N_a$ atom unit cell for a phonon mode with amplitude $Q$ scales as $\frac{Q}{\sqrt{N_a}}$.\autocite{} %link to phonopy documentation here
+The Cartesian displacement of atoms in a $N_a$ atom unit cell for a phonon mode with amplitude $Q$ scales as $\frac{Q}{\sqrt{N_a}}$. %link to phonopy documentation here
 However, as evidenced and discussed further in Appendix \ref{app:6-SCcompare}, the average bandgap for a given temperature does not scale with supercell size.
 
 \subsection{Classical model for hot carrier cooling}
@@ -381,7 +381,7 @@ observed for halide perovskites.
 \textbf{Data Access Statement}
 
 The crystal structures and phonon data are available at \url{https://github.com/WMD-group/Phonons}, 
-and can be processed using the \textsc{Phonopy} package available from \url{http://atztogo.github.io/phonopy} and the \textsc{Modemap} package available from \url{https://github.com/jmskelton/ModeMap}. For visualising the phonon modes the \textsc{ascii phonons} package available at \url{https://github.com/ajjackson/ascii-phonons} can be used. The phonon dispersion can be plotted using the \textsc{sumo} package.\autocite{sumo2018}
+and can be processed using the \textsc{Phonopy}\autocite{Togo2015} and  \textsc{Modemap}\autocite{ModeMap} packages. For visualising the phonon modes the \textsc{ascii phonons} package can be used.\autocite{asciiphonons} The phonon dispersion can be plotted using the \textsc{sumo} package.\autocite{sumo2018}
 
 Data files and Jupyter notebooks outlining the calculation steps for hot carrier cooling are available as a repository on GitHub at \url{https://github.com/WMD-group/hot-carrier-cooling}.
 

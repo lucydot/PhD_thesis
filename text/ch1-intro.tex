@@ -41,18 +41,18 @@ One way to reduce the rate of climate change is to generate energy through proce
 \begin{displayquote}
 “[the solar cell] may mark the beginning of a new era, leading eventually to the realization of one of mankind’s most cherished dreams –- the harnessing of the almost limitless energy of the sun for the uses of civilization.”
 \end{displayquote}
-An average solar flux density of $1361\,\textrm{Wm}^{-2}$ reaches the earth's atmosphere each second, which is almost $10^4$ times larger than any other external energy source.\autocite{Kopp2011} A quick back-of-the-envelope calculation shows that if we assume a sunlight to electricity conversion efficiency of 40\% (achievable using concentrated solar power) and zero transmission loss, we could meet the world's electricity demands ($22\,\textrm{PWh}$ in 2015\autocite{IEA2017}) by covering an area equivalent to Northumberland county ($5000\,\textrm{km}^2$) with photovoltaic solar panels.
+An average solar flux density of $1361\,\textrm{Wm}^{-2}$ reaches the earth's atmosphere each second, which is almost $10^4$ times larger than any other external energy source.\autocite{Kopp2011} A quick back-of-the-envelope calculation shows that if we assume a sunlight to electricity conversion efficiency of 40\% (achievable using concentrated solar power) and zero transmission loss, we could meet the world's electricity demands ($22\,\textrm{PWh}$ in 2015)\autocite{IEA2017} by covering an area equivalent to Northumberland county ($5000\,\textrm{km}^2$) with photovoltaic solar panels.
 %$46400\,Wm^{-2}$ is the absolute limit if we consider concentrator cell architectures (section \ref{SQlimit}). 
 %
 %The cost of PV installations is increasingly due to the infrastructure around the solar cell: for example, module encapsulation and installation\autocite{Green2016}. As a consequence, improving the efficiency of a device is the way to lower costs: with an increasing efficiency, a decreasing area is required to produce an equal amount of power, and all of the costs that scale with area are reduced. For new devices to succeed they must be able to match or exceed the efficiency of silicon.
 However to harness this power we must be able to convert sunlight into electrical energy at a competitive price and at scale. Photovoltaic efficiency is key to price reduction as there are significant costs that scale with area,\autocite{Fraunhofer2015,Green2016} and a higher efficiency module can deliver the same energy for a smaller area.
 
-The first photovoltaic devices could transform sunlight into electrical energy with an efficiency of around 6\%. The computing boom of the 1980s encouraged large investment into silicon research and  silicon cells with 20\% efficiency were reported in 1986.\autocite{Blakers1986} Since 1980 costs have decreased at an average rate of 10\% per year\autocite{Farmer2016} (Fig.\ \ref{module_price}) and the global market is growing, from a capacity of 1.9 GW in 2005 to 102 GW in 2016.\autocite{Jager-Waldau2017}
+The first photovoltaic devices could transform sunlight into electrical energy with an efficiency of around 6\%. The computing boom of the 1980s encouraged large investment into silicon research and  silicon cells with 20\% efficiency were reported in 1986.\autocite{Blakers1986} Since 1980 the cost to generate photovoltaic electricity decreased at an average rate of 10\% per year\autocite{Farmer2016} and is now comparable with the cost to generate electricity from nuclear and coal (Figure \ref{module_price}). This price reduction is driven by an increasing global photovoltaics market, which has grown from a capacity of \SI{1.9}{\giga\watt} in 2005 to \SI{102}{\giga\watt} in 2016.\autocite{Jager-Waldau2017}
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=0.6\columnwidth]{figures/ch1/solarcost.png}
-  \caption[Historic costs of renewable energy generation]{Historic cost of renewable energy generation. The cost of solar energy (green) has been decreasing year on year and is now comparable with the cost of energy generated from nuclear power and coal.\autocite{Farmer2016}}
+  \includegraphics[width=1.0\columnwidth]{figures/ch1/solarcost.png}
+  \caption[Historic cost of renewable energy generation]{Historic cost of renewable energy generation. The levelised cost of energy (LCOE) is an estimate of the total electricity cost, including payback of the initial investment and operating costs. The LCOE of solar energy has been decreasing year on year and is now comparable with the LCOE of energy generated from nuclear power and coal. The data is taken from a mean average across all sources in the Open Energy Information transparent costs database.\autocite{OpenEI}}
   \label{module_price}
 \end{figure}
 % https://www.ise.fraunhofer.de/content/dam/ise/de/documents/publications/studies/AgoraEnergiewende_Current_and_Future_Cost_of_PV_Feb2015_web.pdf
@@ -60,7 +60,6 @@ The first photovoltaic devices could transform sunlight into electrical energy w
 % https://www.greentechmedia.com/articles/read/pv-solar-costs-have-fallen-10-per-year-since-1980#gs.HkfY3X4
 % Schematic idea: GWP installed per year as a funnel (bottmoo 1980, top currrent) but also split into colour by material type. Shows growth in diversity as well as overall.
 % the levelized cost of energy by PV has dropped dramatically: see schematic: WEF Renewable Infrastructure Investment Handbook
-% https://openei.org/apps/TCDB/transparent_cost_database THIS IS A GREAT DATABASE FOR COMPARISON - use to generate own version of the schematic in WEF
 %- 100MW in china is largest installed, top solar plants: http://www.pvresources.com/en/top50pv.php
 
 In the UK the growth in renewable energy has led to a decreasing dependence on fossil fuels. The UK had it's first day without coal in 2017\autocite{Brown2017} and ran for three days without coal in 2018.\autocite{Vaughan2018} There appears to be a growing political will to take advantage of renewable energy; the first UK National Infrastructure Assessment recommends halting the development of nuclear power stations and diverting investment into solar and wind energy generation instead.\autocite{NIA2018} This switch away from nuclear energy is projected to be at no cost to the consumer.
@@ -213,7 +212,7 @@ The principle of detailed balance states that at equilibrium each microscopic pr
 \begin{figure}[h]
 \centering
    \includegraphics[width=1.0\columnwidth]{figures/ch1/SQlimit.jpg}
-   \caption[AM1.5 spectral intensity and Shockley-Queisser efficiency]{(A) The AM1.5 spectrum. Photons below the bandgap are not absorbed, whilst energy is lost from above bandgap photons via carrier thermalisation. (B) The Shockley-Queisser efficiency of a single bandgap solar cell under AM1.5 illumination (thick black line). Also included are the top cell efficiencies for various PV materials. Reprinted with permission from the work of Polman et al.\autocite{Polman2016}}
+   \caption[AM1.5 spectral intensity and Shockley-Queisser efficiency]{(A) The AM1.5 spectrum. Photons below the bandgap are not absorbed, whilst energy is lost from above bandgap photons via carrier thermalisation. (B) The Shockley-Queisser efficiency of a single bandgap solar cell under AM1.5 illumination (thick black line). Also included are the top cell efficiencies for various PV materials. From the work of Polman et al.\autocite{Polman2016} Reprinted with permission from AAAS.\autocite{AAASpermission}}
    \label{SQlimit}
 \end{figure}
 %https://www.sciencemag.org/help/reprints-and-permissions
@@ -297,13 +296,12 @@ The standard approach for calculating the trap density from first principles is 
 \subsubsection{Experimental measurements of recombination rates} \label{exprecombo}
 
 Carrier lifetimes and recombination rates are difficult to measure experimentally as ultra fast optical and electronic sensors are needed to capture transient behaviour, and this must be done in conditions relavant to photovoltaic performance. Time resolved photoluminscence (TRPL) and photoconductivity measurements are used to infer the recombination rates for each recombination pathway.
-Each pathway scales differently with carrier concentration, as specified by the following rate equation:
+Each pathway scales differently with carrier concentration, as specified by the following rate equation:\autocite{Herz2016}
 \begin{equation}
 \frac{d n}{d t} = G -k_1n -k_2n^2 -k_3n^3 
 \end{equation}
 where $G$ is the rate of electron-hole generation, $k_1$ is the rate constant for SRH recombination, $k_2$ is the rate constant for radiative recombination and $k_3$ is the rate constant for Auger recombination. SRH recombination via a trap state is a one particle process that scales linearly with the carrier concentration. Radiative recombination is a two particle process that depends on the electron density and hole density, so scales quadratically with carrier concentration. Auger recombination requires three particles and scales cubically.
 TRPL uses short laser pulses to excite excess electrons and holes which then decay via recombination or carrier extraction at an interface. Exponential curves are fitted to the TRPL signal at different laser fluences to extract carrier lifetimes. In general, for solar cells operating under 1.5AM illumination, second order SRH recombination is the dominant recombination mechanism.
-% 
 % https://www-herz.physics.ox.ac.uk/publications/Herz16a.pdf
 % https://aip.scitation.org/doi/10.1063/1.4891595
 % https://www.nanoge.org/proceedings/ABXPV/58c15c889c168f501d8b9aa2
