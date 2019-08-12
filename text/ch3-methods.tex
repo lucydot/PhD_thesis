@@ -43,7 +43,7 @@ The Schr\"{o}dinger equation describes the wavefunction $\Psi$ of a quantum mech
 \begin{equation} \label{singleparticle}
 \left[\frac{-\hbar^2}{2m}\nabla^2+v_\textrm{ext}(\textbf{r})\right]\Psi(\textbf{r}) = E\Psi(\textbf{r}),
 \end{equation}
-where the first term in the bracket corresponds to the kinetic energy and the second term corresponds to the potential energy. For a single particle in a simple potential, such as the ``particle in a box'' system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). In this case, the Schr\"{o}dinger equation takes the form:
+where the first term in the bracket corresponds to the kinetic energy and the second term corresponds to the potential energy. For a single particle in a simple potential, such as the particle in a box system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). In this case, the Schr\"{o}dinger equation takes the form:
 \begin{equation}
 \left[\frac{-\hbar^2}{2m}\sum_{i=1}^N\nabla_i^2+\sum_{i=1}^Nv_{\textrm{ext}}(\textbf{r}_i)+\sum_{i<j}^N\frac{q_iq_j}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}\right]\Psi(\textbf{r}_i) = E\Psi(\textbf{r}_i),
 \end{equation}
@@ -100,7 +100,7 @@ The Kohn-Sham theorem shows that for any interacting system with ground state de
 \subsection{DFT in practice}
 
 \subsubsection{Exchange-correlation functionals}
-To use Kohn-Sham DFT we must approximate the exchange-correlation functional, and there is a growing list of functionals at varying levels of complexity. John Perdew proposed ``Jacob's Ladder'' as a way to categorise these functionals (Figure \ref{jladder}). As a general rule, more accurate functionals are constructed by including more parameters and variables.
+To use Kohn-Sham DFT we must approximate the exchange-correlation functional, and there is a growing list of functionals at varying levels of complexity. John Perdew proposed `Jacob's Ladder' as a way to categorise these functionals (Figure \ref{jladder}). As a general rule, more accurate functionals are constructed by including more parameters and variables.
 
 \begin{figure}[h]
 \centering
@@ -297,7 +297,7 @@ The first way to classify defects is via their dimensionality. 0-dimensional poi
 
 0-dimensional point defects are the subject of Chapter \ref{ch:6-defects}. Point defects can be further split into extrinsic or intrinsic defects. Extrinsic point defects (also known as impurities) are a different species from that of the host. These defects may be added intentionally (for example, to increase electrical conductivity) or unintentionally (as a result of the fabrication method). Intrinsic point defects are associated with the host species.
 
-Point defects can also be classified as non-stochiometric or stochiometric. Non-stochiometric defects include interstitials (where an additional atom occupies a site that is unoccupied in the perfect lattice), vacancies (missing atoms) and antisites (where an atom occupies a site that would have been occupied by another species in the perfect lattice). Interstitials can have a `split' structure, in which two atoms are split symmetrically around a single lattice site. Stochiometric defects include Frenkel pairs and Shottky pairs. Stochiometric and non-stochiometric point defects are illustrated in Figure \ref{classification}.
+Point defects can also be classified as non-stochiometric or stochiometric. Non-stochiometric defects include interstitials (where an additional atom occupies a site that is unoccupied in the perfect lattice), vacancies (missing atoms) and antisites (where an atom occupies a site that would have been occupied by another species in the perfect lattice). Interstitials can have a split structure, in which two atoms are split symmetrically around a single lattice site. Stochiometric defects include Frenkel pairs and Shottky pairs. Stochiometric and non-stochiometric point defects are illustrated in Figure \ref{classification}.
 
 \begin{figure}[h]
 \centering
@@ -382,7 +382,7 @@ The charge state of a defect can affect a number of defect properties including 
 However, due to the long range nature of the Coulomb interaction, understanding the properties of charged defects is a challenge for DFT with periodic boundary conditions.
 There are two issues to resolve: 
 Firstly, charged defects can interact with their periodic images; 
-Secondly, a homogeneous `jellium' background charge is introduced to ensure overall charge neutrality and results in an unknown shift to the average electrostatic potential. 
+Secondly, a homogeneous jellium background charge is introduced to ensure overall charge neutrality and results in an unknown shift to the average electrostatic potential. 
 These are finite-size effects that only a very large, almost infinite, supercell would overcome.
 However a system this size is computationally intractable, especially considering that higher levels of theory (for example, hybrid functionals) are often required to calculate accurate total energies.
 

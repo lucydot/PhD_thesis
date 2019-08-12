@@ -57,7 +57,7 @@ Previous calculations in the literature demonstrate that the defect formation en
 %mao hua du
 Furthermore, comparison with experimental results remains a challenge. Capacitive techniques including Deep Level Transient Spectroscopy (DLTS) and Thermal Admittance Spectroscopy (TAS) have been used to identify defect concentrations and trap levels in the halide perovskites.
 Defects have been observed with energies at \SI{0.17}{\electronvolt}, \SI{0.20}{\electronvolt} above valence band edge using DLTS\autocite{rosenberg2017} and \SI{0.17}{\electronvolt}, \SI{0.35}{\electronvolt} using TAS.
-However capacitive features associated with the mobile ionic species, rather than electronic defect dynamics, can ``present spectra with overlapping or even ``fake'' peaks''.\autocite{Almora2019}
+However capacitive features associated with the mobile ionic species, rather than electronic defect dynamics, can `present spectra with overlapping or even ``fake'' peaks'.\autocite{Almora2019}
 % http://pubs.acs.org/doi/abs/10.1021/acs.jpclett.5b00953 " TSC study: a peak at around T = 191 K is assigned to trap states with activation energies of around 500 meV but with a rather low concentration of 1 × 1021 m–3."
 
 Published defect formation energies predict that the neutral iodine interstitial is metastable at all fermi levels across the bandgap.\autocite{Du2015,Meggiolaro2018}
@@ -162,13 +162,13 @@ $\mathrm{I}_\mathrm{i}^+$ & in-plane & 2.89/2.95 && in-plane & 2.95 average && i
 $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ & out-of-plane & 3.19 && out-of-plane & 3.24 && - \\
 $\mathrm{I}_\mathrm{i}^\mathrm{IP}$ & in-plane & 3.24 && in-plane & 3.88 && - \\
 \end{tabular} 
-\caption[Defect orientation and bond length of $\mathrm{I}_\mathrm{i}^+$, $\mathrm{I}_\mathrm{i}^-$, $\mathrm{I}_\mathrm{i}^\mathrm{IP}$ $\mathrm{I}_\mathrm{i}^\mathrm{OP}$]{\label{compare_geoms}Defect orientation and bond length of $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ in MAPI, with a comparison to computational results in the literature. The bond lengths are given in $\AA$.}
+\caption[Defect orientation and bond length of $\mathrm{I}_\mathrm{i}^+$, $\mathrm{I}_\mathrm{i}^-$ and $\mathrm{I}_\mathrm{i}^0$]{\label{compare_geoms}Defect orientation and bond length of $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ in MAPI, with a comparison to computational results in the literature. The bond lengths are given in $\AA$.}
 \end{table}
 
 \begin{figure}[h!]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/defect_geometries.png}
-  \caption[Defect geometries of $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$]{Defect geometries of $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ in MAPI. IP indicates that the defect is lying in the $ab$-plane. OP indicates that the defect is lying along the $c$-axis. All distances are measured in $\AA$.}
+  \caption[Defect geometries of $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$ and $\mathrm{I}_\mathrm{i}^0$]{Defect geometries of $\mathrm{I}_\mathrm{i}^+$,$\mathrm{I}_\mathrm{i}^-$,$\mathrm{I}_\mathrm{i}^\mathrm{IP}$ and $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ in MAPI. IP indicates that the defect is lying in the $ab$-plane. OP indicates that the defect is lying along the $c$-axis. All distances are measured in $\AA$.}
 \label{relaxation_workflow}
 \end{figure}
 
@@ -204,7 +204,7 @@ The formation energy of a defect in charge state $q$ is given by
 E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_\mathrm{F}) + E_\mathrm{corr}.
 \end{equation}
 The total energy of the supercell $E_\mathrm{d}(q)$, the total energy of the pristine lattice $E_\mathrm{b}$ and the iodine chemical potential $\mu_i$ were calculated DFT as outlined in the methods section.
-The defect correction $E_\mathrm{corr}$ consists of two terms - the image charge correction for charged defects and a `tilting' correction that is specific to pseudo-cubic perovskites.
+The defect correction $E_\mathrm{corr}$ consists of two terms - the image charge correction for charged defects and a tilting correction that is specific to pseudo-cubic perovskites.
 The image charge correction is \SI{-0.057}{eV}. The static dielectric constant of MAPI is large ($\bar{\epsilon_0}=22.67$)\autocite{Brivio2013} and so the lattice can effectively screen charged defects, in addition the point defects in this study have a maximum charge of one and the supercell is relatively large (193 atoms). These factors lead to a small image charge correction.
 
 \begin{figure}[h!]   
@@ -256,7 +256,7 @@ Hole trapping at the negative charge state is not possible due to the large ener
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/carrier_capture_digram.png}
-  \caption[Configuration coordinate diagram for carrier capture between $\mathrm{I}_\mathrm{i}^-$ and $\mathrm{I}_\mathrm{i}$]{(Top) Configuration coordinate diagram describing carrier capture between the negative and neutral charge states of the iodine interstitial defect. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces. To model electron trapping at the neutral charge state, the excited state of the system corresponds to the neutral defect with a photo-generated electron in the conduction band and hole in the valence band, and the ground state corresponds to the negatively charged defect with a hole in the valence band.}
+  \caption[Configuration coordinate diagram for carrier capture between $\mathrm{I}_\mathrm{i}^-$ and $\mathrm{I}_\mathrm{i}^0$]{(Top) Configuration coordinate diagram describing carrier capture between the negative and neutral charge states of the iodine interstitial defect. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces. To model electron trapping at the neutral charge state, the excited state of the system corresponds to the neutral defect with a photo-generated electron in the conduction band and hole in the valence band, and the ground state corresponds to the negatively charged defect with a hole in the valence band.}
 \label{configuration_coordinate}
 \end{figure}
 % talk ahout the difference between the photochemistry and equilibrium thermodynamics
@@ -315,7 +315,7 @@ where N is the number of phonon modes. This provides a measure of how many atoms
 The IPR of the gamma point phonon modes for the pristine crystal and MAPI:$\mathrm{I}_\mathrm{i}^-$ are given in Figure \ref{defect_dispersion_IPR}c.
 To allow for comparison, the IPR of the pristine lattice has been renormalised to give a maximum value of 97 for the fully delocalised modes.
 For the perfect and defect lattice the IPR of the acoustic modes are 97, so that they are completely delocalised, as is expected.
-Figure \ref{defect_dispersion_IPR}c supports the conclusions drawn from the phonon dispersion; after introduction of an iodine interstitial each phonon mode of the pristine lattice `explodes' into multiple non-degenerate phonon modes of increased localisation.
+Figure \ref{defect_dispersion_IPR}c supports the conclusions drawn from the phonon dispersion; after introduction of an iodine interstitial each phonon mode of the pristine lattice splits into multiple non-degenerate phonon modes of increased localisation.
 Figure \ref{defect_dispersion_IPR}d splits the contribution to the phonon mode energy by element type. 
 Lower energy phonon modes up to \SI{10}{THz} include contributions from the I and Pb species, whilst the higher energy modes describe vibrations of the light atomic species associated with the methylammonium molecule.
 
@@ -346,7 +346,7 @@ where $M_b$ is the number of atoms in the supercell and $M_d$ is the number of a
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/eigs.png}
-  \caption[Evolution of $\mathrm{I}_\mathrm{i}$ Kohn-Sham eigenstates]{Evolution of MAPI:$\mathrm{I}_\mathrm{i}^-$ Kohn-Sham eigenstates as the lattice geometry is deformed along coordinate $Q$.  Solid and empty circles represent occupied and unoccupied states, respectively.}
+  \caption[Evolution of the H-centre Kohn-Sham eigenstates]{Evolution of MAPI:$\mathrm{I}_\mathrm{i}^-$ Kohn-Sham eigenstates as the lattice geometry is deformed along coordinate $Q$.  Solid and empty circles represent occupied and unoccupied states, respectively.}
 \label{eigenvalues}
 \end{figure}
 %might need to label geometries
