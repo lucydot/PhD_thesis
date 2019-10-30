@@ -353,8 +353,18 @@ After light absorption, a bound electron-hole pair (exciton) is created. The ele
 
 \textbf{High carrier mobility}
 
-Some materials may have suitable optical properties but are unable to transport the photogenerated charge efficiently to the contact layers. Carrier mobility quantifies how quickly an electron or hole can move through a material when pulled by an electric charge. 
-Light carrier effective masses (high band dispersions) correspond to higher mobilities. However light effective masses are not sufficient in themselves as there are various scattering channels to consider: lattice scattering, carrier-carrier scattering and defect scattering. The most significant scattering mechanisms in a PV material are lattice scattering and ionized defect scattering.
+Some materials may have suitable optical properties but are unable to transport the photogenerated charge efficiently to the contact layers. Carrier mobility $\mu$ quantifies how quickly an electron or hole can move through a material when pulled by an electric field; it is the magnitude of the carrier drift velocity $v$ per unit electric field $E$\autocite{Kittel2005},
+\begin{equation} \label{driftmobility}
+\mu = \frac{|v|}{E}.
+\end{equation}
+At the macroscopic level Equation \ref{driftmobility} results from averaging over a large number of possible carrier trajectories. In the classical Drude model the carriers are free (the effect of the ion core potential is ignored), independant (the electron-electron Coloumb interaction is ignored) and they accelerate until colliding with a static ion core. For a carrier with charge $q$ and mass $m$ the mobility is given by\autocite{Kittel2005}
+\begin{equation} \label{micromobility}
+\mu=\frac{q\tau}{m},
+\end{equation}
+where $\tau$ is the relaxation time between scattering events.
+The Drude-Sommerfield model extends the Drude model to treat the electrons as quantum mechanical particles that obey Fermi statistics and the Pauli Exclusion Principle. Using this model the same expression for mobility is derived. Note that the for some scattering mechanisms the relaxation time is not independant of the effective mass and this will lead to a more complex relationship between effective mass and mobility, as explored further in Chapter \ref{ch:4-effmass}.
+
+In Equation \ref{micromobility} we see that light carrier effective masses (high band dispersions) correspond to higher mobilities. However light effective masses are not sufficient in themselves as there are various scattering channels to consider: lattice scattering, carrier-carrier scattering and defect scattering. The most significant scattering mechanisms in a PV material are lattice scattering and ionized defect scattering. 
 A high dielectric constant is beneficial to carrier mobility as the rate of ionized defect scattering is proportional to $\frac{1}{\epsilon^2}$. The composition of the material is also important -- for example, vacancies in gallium nitride (Ga$^{3+}$N$^{3-}$) carry a larger charge and have a larger scattering cross section than vacancies in MAPI (\ce{CH_3NH_3}$^{1+}$Pb$^{2+}$I$^{1+}_3$).
 
 
