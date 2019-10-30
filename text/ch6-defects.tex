@@ -8,8 +8,8 @@ So rap is no big thang, I was created in the void
 
 \chapter{\label{ch:6-defects}Electron capture at H-centre defects}
 
-
-
+Excerpts of this chapter are adapted from
+\href{https://doi.org/10.1021/acsenergylett.7b00995}{Whalley, L. D., Crespo-Otero, R. and Walsh, A. (2017). H-Center and V-Center Defects in Hybrid Halide Perovskites. \textit{ACS Energy Letters}, 2(12), pp.2713-2714.} © 2017 American Chemical Society 
 %%feedback:
 % Need to include cm^3
 
@@ -53,10 +53,10 @@ This has motivated the recent research interest in the point defect properties o
 % comment that this is not just for deep but for shallow also
 
 Point defects in hybrid halide perovskites are challenging to model from first principles. Due to the organic cation the structure is low symmetry and there are three inequivalent iodine sites. The atomic lattice is soft and distorts easily, often requiring hundreds of ionic steps to achieve force convergence. 
-Previous calculations in the literature demonstrate that the defect formation energies are sensitive to the level of theory used; hybrid functionals with spin-orbit coupling predict electrically active trap states that are not found at lower levels of theory.
+Previous calculations reported in the literature demonstrate that the defect formation energies are sensitive to the level of theory used; hybrid functionals with spin-orbit coupling predict electrically active trap states that are not found at lower levels of theory.
 %mao hua du
 Furthermore, comparison with experimental results remains a challenge. Capacitive techniques including Deep Level Transient Spectroscopy (DLTS) and Thermal Admittance Spectroscopy (TAS) have been used to identify defect concentrations and trap levels in the halide perovskites.
-Defects have been observed with energies at \SI{0.17}{\electronvolt}, \SI{0.20}{\electronvolt} above valence band edge using DLTS\autocite{rosenberg2017} and \SI{0.17}{\electronvolt}, \SI{0.35}{\electronvolt} using TAS.
+Defects have been observed with energies at \SI{0.17}{\electronvolt} and \SI{0.20}{\electronvolt} above the valence band edge using DLTS\autocite{rosenberg2017} and at \SI{0.17}{\electronvolt} and \SI{0.35}{\electronvolt} using TAS.
 However capacitive features associated with the mobile ionic species, rather than electronic defect dynamics, can `present spectra with overlapping or even ``fake'' peaks'.\autocite{Almora2019}
 % http://pubs.acs.org/doi/abs/10.1021/acs.jpclett.5b00953 " TSC study: a peak at around T = 191 K is assigned to trap states with activation energies of around 500 meV but with a rather low concentration of 1 × 1021 m–3."
 
@@ -68,9 +68,9 @@ Their model predicts that electron (hole) trapping at the positive (negative) ch
 However the rate of electron capture is not calculated, and the motion of the defect species is assumed to be harmonic.
 
 In this chapter the non-radiative electron capture rate at the neutral iodine interstitial is calculated based on a multiphonon single-mode carrier capture model.  %The non-radiative electron capture process is illutrated in Figure \ref{capture_process} as a band diagram. 
-First, the electronic structure of the iodine interstitial in the neutral, negative and positive charge states is calculated. The neutral charge state is predicted to form a split-interstitial defect with self-trapped hole ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{I}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$). The hole induces the formation of a bond between two iodine ions, producing an open-shell molecular dimer called a H-centre.\autocite{Castner1957} On electron capture the molecular bond is broken and the iodine move apart, accompanied by extensive reorganisation of the surrounding lattice. 
+First, the electronic structures of the iodine interstitial in the neutral, negative and positive charge states are calculated. The neutral charge state is predicted to form a split-interstitial defect with self-trapped hole. The hole induces the formation of a bond between two iodine ions, producing an open-shell molecular dimer called a H-centre ($\mathrm{I}_\mathrm{i}^-+\mathrm{I}_\mathrm{I}^-+\mathrm{h}^+ \rightarrow \mathrm{I}_\mathrm{2}^-$).\autocite{Castner1957} Upon electron capture at the H-centre the molecular bond is broken and the iodine move apart, accompanied by an extensive re-organisation of the surrounding lattice. 
 To calculate the electron capture coefficient, anharmonic potential energy surfaces for the neutral and negative charge states are combined with an electron-coupling term.
-To validate the single mode approximation used in this work, the normal phonon modes of the defective supercell are analysed to identify those associated with the electron capture process.
+To validate the single mode approximation used in this work, the normal phonon modes of the defect supercell are analysed to identify those associated with the electron capture process.
 %\begin{figure}[h!]
 %\centering
 %  \includegraphics[width=0.7\columnwidth]{figures/ch6/capture_process.png}
@@ -83,7 +83,7 @@ To validate the single mode approximation used in this work, the normal phonon m
 
 \subsection{Defect formation energy calculations} \label{method:dfe}
 
-The atomic and electronic structure of the iodine interstitial was calculated from first-principles within the framework of DFT. The projector-augmented wave (PAW) method\autocite{Blochl1994} was used as implemented in a GPU port of \textsc{VASP}.\autocite{Kresse1996a} Projection operators were optimised in real-space within an accuracy of \SI{0.02}{\milli\electronvolt} per atom. The wave functions were expanded in plane waves up to an energy cutoff of \SI{400}{\electronvolt} and a $2\! \times\!2\!\times\! 2$ gamma centred Monkhorst-Pack mesh was used for the Brillouin zone integration.
+The atomic and electronic structures of the iodine interstitial were calculated from first-principles within the framework of DFT. The projector-augmented wave (PAW) method\autocite{Blochl1994} was used as implemented in a GPU port of \textsc{VASP}.\autocite{Kresse1996a} Projection operators were optimised in real-space within an accuracy of \SI{0.02}{\milli\electronvolt} per atom. The wave functions were expanded in plane waves up to an energy cutoff of \SI{400}{\electronvolt} and a $2\! \times\!2\!\times\! 2$ gamma centred Monkhorst-Pack mesh was used for the Brillouin zone integration.
 
 The interstitial was placed in a 192-atom supercell built from an expansion of the 12-atom pseudo-cubic unit cell, using the transformation matrix $m_t$:
 $$
@@ -97,8 +97,8 @@ For the atomic relaxations a spin-polarised calculation with the PBEsol function
 
 For the electronic relaxations the hybrid exchange-correlation functional of Heyd-Scuseria-Ernzerhof (HSE06) was used.\autocite{Heyd2004a,Heyd2005a} The amount of exact Hartree-Fock exchange was adjusted to 0.43 to reproduce the correct bandgap and allow comparison with the previous literature.\autocite{Meggiolaro2018,Du2015} 
  Spin-orbit coupling was included in the calculation.
-To reduce the computational expense the wavefunctions were first converged using a single point calculation at the gamma point for the Fock exchange, followed by convergence using the full $2\!\times\!2\!\times\!2$ Monkhorst-Pack mesh. At each step the total energy was converged to within \SI{1E-5}{\electronvolt}.
-The defect formation energy was calculated using the methodology outlined in Sections \ref{defectformation} and \ref{corrections}. The image charge-correction developed by Freysoldt, Neugebauer and Van de Walle, and implemented in \textsc{sxdefectalign},\autocite{sxdefectalign} was applied. A further `octahedral tilting' correction was applied to account for the pristine reference structure being a time-averaged equilibrium structure. This correction is discussed further in Section \ref{ss:dfe}.
+To reduce the computational expense the wavefunctions were first converged using a single point calculation at the gamma point for the Fock exchange, followed by convergence using the full $2\!\times\!2\!\times\!2$ Monkhorst-Pack mesh. At each step the total energy was converged to within \SI{E-5}{\electronvolt}.
+The defect formation energies were calculated using the methodology outlined in Sections \ref{defectformation} and \ref{corrections}. The image charge-correction developed by Freysoldt, Neugebauer and Van de Walle, and implemented in \textsc{sxdefectalign},\autocite{sxdefectalign} was applied. A further `octahedral tilting' correction was applied to account for the pristine reference structure being a time-averaged equilibrium structure. This correction is discussed further in Section \ref{ss:dfe}.
 
 %Ionic relaxation at HSE06 confirms that there is very little distortion from PBEsol relaxed structure.
 % Perfect structure confirmed stable from a phonon calculation.
@@ -110,7 +110,7 @@ The negative interstital was placed in a $2\!\times\!2\!\times\!2$ supercell exp
 
 Harmonic lattice-dynamics calculations were performed with the \textsc{Phonopy} package.\autocite{Togo2015} Displacement steps of \SI{0.01}{\angstrom} were used to evaluate the second-order force-constant matrix using the finite-displacement method (582 displacements).
 Forces were computed using \textsc{VASP} using the PBEsol exchange-correlation functional.\autocite{Perdew2008a}.
-The valence wavefunctions were expanded in a plane-wave basis set with a \SI{700}{\electronvolt} cut-off. The electronic Brillouin zone was evaluated using a $2\!\times\!2\!\times\!2$ gamma centred Monkhorst-Pack mesh and a total-energy convergence criterion of $10^{-8}\textrm{eV}$.
+The valence wavefunctions were expanded in a plane-wave basis set with a \SI{700}{\electronvolt} cut-off. The electronic Brillouin zone was evaluated using a $2\!\times\!2\!\times\!2$ gamma centred Monkhorst-Pack mesh and a total-energy convergence criterion of \SI{E-8}{\electronvolt}.
 
 \subsection{Calculation procedure for the carrier capture coefficient}
 
@@ -173,8 +173,8 @@ $\mathrm{I}_\mathrm{i}^\mathrm{IP}$ & in-plane & 3.24 && in-plane & 3.88 && - \\
 \end{figure}
 
 Iodine ions are well known to form polyiodide chains with bond lengths that are sensitive to the charge on each iodine.
-The I--I bond length in solid orthorhombic crystalline iodine is \SI{2.67}{\angstrom}, which lengthens to \SI{3.23}{\angstrom} upon formation of $\mathrm{I}_2^-$.\autocite{Chen1985} The bonding lengths reported in this work are within \SI{0.05}{\angstrom} of this value.
-The asymmetric bonding of the trimer structure is a typical feature of the tri-iodide group $I_3^-$. For example the tri-iodide group in \ce{CsI_3} has interbond distances of \SI{2.82}{\angstrom} and \SI{3.10}{\angstrom}, with the longer bond possessing the majority of the additional charge.\autocite{Finney1973}
+The I--I bond length in solid orthorhombic crystalline iodine is \SI{2.67}{\angstrom}, which lengthens to \SI{3.23}{\angstrom} upon formation of $\mathrm{I}_2^-$.\autocite{Chen1985} The bond lengths reported in this work are within \SI{0.05}{\angstrom} of this value.
+The asymmetric bonding of the trimer structure is a typical feature of the tri-iodide group $\mathrm{I}_3^-$. For example the tri-iodide group in \ce{CsI_3} has interbond distances of \SI{2.82}{\angstrom} and \SI{3.10}{\angstrom}, with the longer bond possessing the majority of the additional charge.\autocite{Finney1973}
 % discuss inequivalent iodine
 % include displacement vectors, perhaps in appendix (mention script)
 
@@ -191,7 +191,7 @@ Whereas in the previous chapter we considered a large polaron, in this chapter w
 \end{figure}
 %include updated TDDFT results
 
-The H-centre is a `molecule-in-a-crystal' defect where the host weakly perturbs the $I_2^-$ molecular ion.
+The H-centre is a `molecule-in-a-crystal' defect where the host weakly perturbs the $\mathrm{I}_2^-$ molecular ion.
 This allows us to consider the optically excited states using a dielectric embedding approach.
 A collaborator, Rachel Crespo-Otero, has computed the optically excited states of the H-centre defect as a function of bond lengths using time-dependent DFT including relativistic effects (Figure \ref{spin_localisation}c).\autocite{Whalley2017b} 
 %For a bond lengths found in the MAPI host (\SI{3.19}{\angstrom}), the three lowest excited states occur at \SI{}{\electronvolt} (symmetry-allowed), \SI{}{\electronvolt} (forbidden), and \SI{}{\electronvolt} (symmetry-allowed). Two optically allowed transitions fall in the visible−ultraviolet range, and a sub-band gap absorption band at ca. \SI{}{\electronvolts} should be observable in long-wavelength absorption measurements if present in sufficient concentration.
@@ -203,14 +203,14 @@ The formation energy of a defect in charge state $q$ is given by
 \begin{equation} \label{eqn_formation_energy}
 E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon_\mathrm{VBM}+E_\mathrm{F}) + E_\mathrm{corr}.
 \end{equation}
-The total energy of the supercell $E_\mathrm{d}(q)$, the total energy of the pristine lattice $E_\mathrm{b}$ and the iodine chemical potential $\mu_i$ were calculated DFT as outlined in the methods section.
-The defect correction $E_\mathrm{corr}$ consists of two terms - the image charge correction for charged defects and a tilting correction that is specific to pseudo-cubic perovskites.
-The image charge correction is \SI{-0.057}{eV}. The static dielectric constant of MAPI is large ($\bar{\epsilon_0}=22.67$)\autocite{Brivio2013} and so the lattice can effectively screen charged defects, in addition the point defects in this study have a maximum charge of one and the supercell is relatively large (193 atoms). These factors lead to a small image charge correction.
+The total energy of the supercell $E_\mathrm{d}(q)$, the total energy of the pristine lattice $E_\mathrm{b}$ and the iodine chemical potential $\mu_i$ were calculated using DFT, as outlined in the methods section.
+The defect correction $E_\mathrm{corr}$ consists of two terms -- the image charge correction for charged defects and a tilting correction that is specific to pseudo-cubic perovskites.
+The static dielectric constant of MAPI is large ($\bar{\epsilon_0}=22.67$)\autocite{Brivio2013} and so the lattice can effectively screen charged defects, in addition the point defects in this study have a maximum charge of one and the supercell is relatively large (193 atoms). These factors lead to a small image charge correction of \SI{-0.057}{eV}. .
 
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=0.8\columnwidth]{figures/ch6/tilting_correction.png}
-  \caption[Tilting correction for the pseudo-cubic perovskite lattice]{A schematic of the tilting correction used in this work. The green line is the double well potential energy surface that is typical of pseudo-cubic perovskite structures. This correction to defect formation energy is only needed when using the high-symmetry pseudo-cubic perovskite phase to calculate the pristine bulk energy.}
+  \caption[Tilting correction for the pseudo-cubic perovskite lattice]{A schematic of the tilting correction. The green line is a double well potential energy surface that is typical of pseudo-cubic perovskite structures. The tilting correction is only needed when using a high-symmetry pseudo-cubic perovskite phase to calculate the pristine bulk energy.}
 \label{tilting_correction}
 \end{figure}
 
@@ -219,17 +219,17 @@ The image charge correction is \SI{-0.057}{eV}. The static dielectric constant o
 supercell expansion&\# atoms&tilting correction (meV) \\ 
 \midrule
 $2\,\times\,2\,\times\,2$ & 96 & 37 (calculated) \\
-$4\,\times\,4\,\times\,4$ & 768 & 270 (calculated) \\
 $2\sqrt2\times2\sqrt2\times2$ & 192 & 74 (predicted) \\
+$4\,\times\,4\,\times\,4$ & 768 & 270 (calculated) \\
 \bottomrule
 \end{tabular} 
 \caption[Tilting corrections for supercell expansions of the pseudo-cubic perovskite lattice]{\label{modemaptable} Tilting corrections for supercell expansions of the pseudo-cubic perovskite lattice. The 768-atom supercell is eight times larger than the 96-atom supercell, so we expect the tilting correction to be eight times larger. It is calculated to be 7.5 times larger. The tilting correction for the 192-atom expansion, which cannot be calculated directly, is twice as large as the correction for the 96-atom supercell. }
 \end{table}
 
-The tilting correction is a new correction introduced in this work and is particular to the pseudo-cubic perovskites. All of the defect formation energies are referenced to a pristine lattice energy. The geometry of the pristine lattice in the pseudo-cubic phase corresponds to a time average and is not the minimum energy structure (Figure \ref{tilting_correction}). To calculate the minimum energy geometry the pseudo-cubic structure can be distorted along the soft mode at the $R$-point in $q$-space. This `modemapping' procedure\autocite{Skelton2016a} is not compatible with the supercell expansion used for the 197-atom supercell, but the correction energy can be inferred from modemapping other supercell expansions (Table \ref{modemaptable}).
+The tilting correction is a new correction introduced in this work and is particular to the pseudo-cubic perovskites. All of the defect formation energies are referenced to the minimum energy of the pristine lattice. However the geometry of the pristine lattice in the pseudo-cubic phase corresponds to a time average and is not the minimum energy structure (Figure \ref{tilting_correction}). To calculate the minimum energy of the lattice the pseudo-cubic structure can be distorted along the soft mode at the $R$-point in $q$-space. This `modemapping' procedure\autocite{Skelton2016a} is not compatible with the supercell expansion used for the 197-atom supercell, but the correction energy can be inferred from modemapping other supercell expansions (Table \ref{modemaptable}).
 
 The calculated charge transition levels are given in Figure \ref{charge_transition_diagram}. 
-As is found in the previous literature\autocite{Du2015,Meggiolaro2018} there is negative-U behaviour, where the (+/0) transition level is higher in energy than the (0/-) transition. This indicates that on electron trapping there is a strong structural relaxation around the defect. The neutral charge state in both orientations is thermodynamically unstable across the Fermi energy range and is formed after photo-excitation. As in Reference \cite{Meggiolaro2018} the out-of-plane neutral charge state is lower in energy than the in-plane neutral charge state.
+As is found in the previous literature\autocite{Du2015,Meggiolaro2018} there is negative-U behaviour, where the (+/0) transition level is higher in energy than the (0/-) transition. This indicates that upon electron trapping there is a strong structural relaxation around the defect. The neutral charge state in both orientations is thermodynamically unstable across the Fermi energy range and is formed after photo-excitation. As in Reference \cite{Meggiolaro2018} the out-of-plane neutral charge state is lower in energy than the in-plane neutral charge state.
 
 \begin{figure}[h!]   
 \centering
@@ -239,7 +239,7 @@ As is found in the previous literature\autocite{Du2015,Meggiolaro2018} there is 
 \end{figure}
 % need to update defect notation!
 
-There is one active charge trapping level in the bandgap, corresponding to electron trapping at $\mathrm{I}_\mathrm{i}^+$.  The (+/-) level corresponds to a two-electron transition and we assume that the cross section for this process is negligible. This result is in contrast to previous reports which find that there are two active charge trapping levels in the bandgap -- electron trapping at $\mathrm{I}_\mathrm{i}^+$ and hole trapping at $\mathrm{I}_\mathrm{i}^-$.
+There is one active charge trapping level in the bandgap, corresponding to electron trapping at $\mathrm{I}_\mathrm{i}^+$.  The (+/-) level corresponds to a two-electron transition and we assume that the cross section for this process is negligible. Our finding that there is a single active trap level disagrees with previous reports that find there are two active charge trapping levels in the bandgap -- electron trapping at $\mathrm{I}_\mathrm{i}^+$ and hole trapping at $\mathrm{I}_\mathrm{i}^-$.
 The charge transition levels generated using the intermediate higher energy structures (Figure \ref{relaxation_workflow}) reproduce the results in the literature. This highlights how sensitive the defect energetics are to defect geometry. The charge transition levels of the intermediate higher-energy defect structures are given in Appendix \ref{app:7-chargetransition}.
 
 The final thing to note is that the defect formation energies are negative across the Fermi level range. This is unphysical, as for a thermodynamically stable material it costs lattice energy to create a point defect. The problem arises from the simple approximation used for the chemical potential of iodine, which considers bulk iodine only and no other competing phases such as \ce{PbI2}. As a result, the chemical potential used in this defect calculation provides an upper bound. Consideration of other secondary phases would produce a lower chemical potential and increase the defect formation energy for all charge states. 
@@ -256,31 +256,31 @@ Hole trapping at the negative charge state is not possible due to the large ener
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/carrier_capture_digram.png}
-  \caption[Configuration coordinate diagram for carrier capture between $\mathrm{I}_\mathrm{i}^-$ and $\mathrm{I}_\mathrm{i}^0$]{(Top) Configuration coordinate diagram describing carrier capture between the negative and neutral charge states of the iodine interstitial defect. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces. To model electron trapping at the neutral charge state, the excited state of the system corresponds to the neutral defect with a photo-generated electron in the conduction band and hole in the valence band, and the ground state corresponds to the negatively charged defect with a hole in the valence band.}
+  \caption[Configuration coordinate diagram for carrier capture between $\mathrm{I}_\mathrm{i}^-$ and $\mathrm{I}_\mathrm{i}^0$]{(Top) To model electron trapping at the neutral charge state of the iodine interstitial, the excited state of the system corresponds to the neutral defect with a photo-generated electron in the conduction band and hole in the valence band, and the ground state corresponds to the negatively charged defect with a hole in the valence band. The configuration coordinate diagram describes carrier capture between the negative and neutral charge states. The potential energy surfaces are calculated using the hybrid HSE06 functional with spin-orbit coupling. (Bottom) A comparison between the anharmonic and harmonic potential energy surfaces.}
 \label{configuration_coordinate}
 \end{figure}
 % talk ahout the difference between the photochemistry and equilibrium thermodynamics
 
 
-In this work this the configuration coordinate $Q$ is defined as $\sqrt{\sum_i m_i \Delta r_i^2}$ ,where the sum is over all inorganic atoms $i$ with mass $m_i$ and a displacement from equilibrium of $\Delta r_i$. Summing over all atoms, including those in the organic methylammonium molecule, led to unphysical energies as the linear interpolation does not capture the rotation of the organic cation between charge states. The potential energy surface generated using a summation over all atomic displacements is given in Appendix \ref{app:9-configcoord}.
+In this work this the configuration coordinate $Q$ is defined as $\sqrt{\sum_i m_i \Delta r_i^2}$ ,where the sum is over all inorganic atoms $i$ with mass $m_i$ and a displacement from equilibrium of $\Delta r_i$. Summing over all atoms, including those in the organic methylammonium molecule, leads to unphysical energies as the linear interpolation does not capture the rotation of the organic cation between charge states. The potential energy surface generated using a summation over all atomic displacements is given in Appendix \ref{app:9-configcoord}.
 
-Lattice relaxation after electron capture leads to a large shift in the equilibrium position ($\Delta Q=$ \SI{46}{\electronvolt\per amu\tothe{1/2}\per\angstrom}).
+Lattice relaxation after electron capture leads to a large shift in the equilibrium position ($\Delta Q=$ \SI{36}{\electronvolt\per amu\tothe{1/2}\per\angstrom}).
 This is double that found for non-radiative recombination centres in CZTS\autocite{Kim2018} and reflects the strong coupling between the electronic charge state of the defect and the lattice distortion. 
-Another parameter commonly used to classify defects by electron-phonon coupling strength is the Huang-Rhys factor $S$ which quantifies the number of phonons emitted during an optical transition. For a harmonic potential energy surface the Huang-Rhys factor is given by 
+Another parameter used as a proxy for electron-phonon coupling strength is the Huang-Rhys factor $S$ which quantifies the number of phonons emitted during an optical transition. For a harmonic potential energy surface the Huang-Rhys factor is given by 
 \begin{equation}
 S = \frac{E}{\hbar\omega}.
 \end{equation}
 The Huang-Rhys factor for lattice relaxation after electron capture at the neutral interstitial is 361.7. This is in the strong coupling limit where $S\gg1$. The large lattice distortion and Huang-Rhys factor suggests that there will be fast non-radiative transitions at the defect site.\autocite{Hayes1985,Hughes1967}
 
-The configuration coordinate diagram for this charge capture process has been previously reported by Meggiolaro et al.,\autocite{Meggiolaro2018} where it was found that electron trapping at the neutral iodine interstitial proceeds with a small geometrical rearrangement. However the structural parameter used was the root mean square displacement (RMSD) of the two iodine ions involved with bonding, which excludes the large relaxation of the surrounding perovskite structure. The same RMSD definition applied to the defect geometries in this work gives a lattice distortion of \SI{0.073}{\angstrom}, which appears close to that given in Figure 2 of Reference \cite{Meggiolaro2018}. By considering only the distortion to the bonding iodine and ignoring the wider structural reorganisation Meggiolaro et al. infer that the rate of radiative recombination will compete with non-radiative recombination. Figure \ref{configuration_coordinate} of this work demonstrates that this is not the case and that the large distortion of the surrounding lattice will prevent radiative electron capture at the defect.
+The configuration coordinate diagram for this charge capture process has been previously reported by Meggiolaro et al.,\autocite{Meggiolaro2018} where it was found that electron trapping at the neutral iodine interstitial proceeds with a small geometrical rearrangement. However the structural parameter used was the root mean square displacement (RMSD) of the two bonding iodine ions, which excludes the large relaxation of the surrounding perovskite structure. The same RMSD definition applied to the defect geometries in this work gives a lattice distortion of \SI{0.073}{\angstrom}, which appears close to that given in Figure 2 of Reference \cite{Meggiolaro2018}. By considering only the distortions of the bonding iodine, Meggiolaro et al. infer that the rate of radiative recombination will compete with non-radiative recombination. Figure \ref{configuration_coordinate} of this work demonstrates that this is not the case and that the significant structural re-organisation of the surrounding lattice will prevent radiative electron capture at the H-centre.
 
-The lower part of Figure \ref{configuration_coordinate} compares the anharmonic potential energy surface (PES) to the harmonic PES. The curvature of the harmonic potential energy surface is equal to the difference in energy between the two lowest phonon eigenstates of the anharmonic PES. In Figure \ref{configuration_coordinate} we see that the harmonic PES fits well to the DFT energies either side of the equilibrium structure, as we would expect. The potential energy surfaces of the neutral and negative charge states are extremely soft; for the neutral charge state $\hbar\omega=$\SI{4.7}{meV} (\SI{1.14}{\tera\hertz}) and for the negative charge state $\hbar\omega_0=$\SI{6.6}{meV} (\SI{1.59}{\tera\hertz}). Phonon modes at this energy will lie in the optical band of the MAPI lattice modes and will be occupied at room temperature.
+The lower part of Figure \ref{configuration_coordinate} compares the anharmonic potential energy surface (PES) to the harmonic PES. We see that the harmonic PES fits well to the DFT energies either side of the equilibrium structure, as we would expect. The potential energy surfaces of the neutral and negative charge states are extremely soft; for the neutral charge state $\hbar\omega=$\SI{4.7}{meV} (\SI{1.14}{\tera\hertz}) and for the negative charge state $\hbar\omega_0=$\SI{6.6}{meV} (\SI{1.59}{\tera\hertz}). Phonon modes at this energy will lie in the optical band of the MAPI lattice modes and will be occupied at room temperature.
 
 Figure \ref{configuration_coordinate} highlights the importance of using anharmonic potential energy surfaces to describe charge capture at the iodine intersitital in MAPI. The harmonic potential energy surfaces for the excited and ground state intercept at an energy ca. \SI{0.5}{eV} above the excited state equilibrium energy, and this leads to a carrier capture coefficient four orders of magnitude smaller than that calculated for the anharmonic surfaces (values for the coefficient are given in Section \ref{finalsection}).
 
 \subsection{Vibrational properties of the negative charge state}
 
-In the previous section the coupling of the iodine interstitial to a single vibrational mode was considered without reference to normal phonon modes of the crystal.
+In the previous section the coupling of the iodine interstitial to a single vibrational mode was considered without reference to the normal phonon modes of the crystal.
 In this section the harmonic phonon modes of MAPI:$\mathrm{I}_\mathrm{i}^-$ are calculated and analysed.
 The normal phonon modes of a crystal containing a defect can be divided into three kinds: lattice modes (optic and acoustic branches), resonant modes, and local modes (Figure \ref{defect_modes_schematic}).\autocite{Hayes1985}
 The lattice modes are largely unaffected by the defect and are well approximated by the the normal modes of the pristine crystal. They have the same amplitude throughout the crystal, except near the defect where there may be some slight modification. 
@@ -306,7 +306,7 @@ When an iodine interstitial is introduced the translational symmetry of the crys
 \end{figure}
 
 The complexity of the phonon bandstructure makes it difficult to draw conclusions from a visual inspection of the dispersion.
-To identify which modes are associated with the iodine interstitial defect the Inverse Participation Ratio (IPR) is used to quantify the localisation of each phonon mode. 
+To identify which modes are associated with the iodine interstitial defect we use the Inverse Participation Ratio (IPR) to quantify the localisation of each phonon mode. 
 The IPR is calculated from the harmonic phonon eigenvectors $e_i$ of the system and is given by
 \begin{equation}
 \mathrm{IPR} = \frac{\left(\sum_{i=1}^N|e_i|\right)^2}{\sum_{i=1}^N\left(|e_i|\right)^2},
@@ -314,20 +314,20 @@ The IPR is calculated from the harmonic phonon eigenvectors $e_i$ of the system 
 where N is the number of phonon modes. This provides a measure of how many atoms the phonon is distributed over. For example, for a chain of four atoms, a delocalised acoustic mode will have an $\textrm{IPR}=4$. At the other extreme, a phonon mode whose polarisation displaces only one atom will have an $\textrm{IPR}=1$.
 The IPR of the gamma point phonon modes for the pristine crystal and MAPI:$\mathrm{I}_\mathrm{i}^-$ are given in Figure \ref{defect_dispersion_IPR}c.
 To allow for comparison, the IPR of the pristine lattice has been renormalised to give a maximum value of 97 for the fully delocalised modes.
-For the perfect and defect lattice the IPR of the acoustic modes are 97, so that they are completely delocalised, as is expected.
+We find that the acoustic modes in the pristine and defect lattices have an IPR of 97, so that they are completely delocalised across all atoms, as is expected.
 Figure \ref{defect_dispersion_IPR}c supports the conclusions drawn from the phonon dispersion; after introduction of an iodine interstitial each phonon mode of the pristine lattice splits into multiple non-degenerate phonon modes of increased localisation.
 Figure \ref{defect_dispersion_IPR}d splits the contribution to the phonon mode energy by element type. 
 Lower energy phonon modes up to \SI{10}{THz} include contributions from the I and Pb species, whilst the higher energy modes describe vibrations of the light atomic species associated with the methylammonium molecule.
 
-The contribution to the phonon mode energy can also be analysed by individual atomic contributions to find that with the largest contribution from the two iodine interstitials associated with $\textrm{I}_2^-$ bonding. This is a localised mode with an $\textrm{IPR}=21.4$ and a frequency of \SI{1.59}{\tera\hertz}.
+The phonon mode energy can also be analysed by individual atomic contributions to find that with the largest contribution from the two iodine interstitials associated with $\textrm{I}_2^-$ bonding. This is a localised mode with an $\textrm{IPR}=21.4$ and a frequency of \SI{1.59}{\tera\hertz}.
 An animation of the phonon mode, generated using the ascii-phonons package,\autocite{asciiphonons} is available at \url{https://bit.ly/MAPI_phonon}.
 The resonant mode frequency is equal to the frequency of the $\mathrm{I}_\mathrm{i}^-$ harmonic potential energy surface calculated in Section \ref{ch6:ccd}.
 This is evidence that the single configuration coordinate $Q$ provides a good approximation to the accepting modes (modes that take up the electronic energy) of the charge transition.
-As discussed by Alkauskas et al.,\autocite{Alkauskas2014} it may be surprising that a one-dimensional approximation to a multi-dimensional problem is sufficient, but this is particularly the case for defects with strong electron-phonon coupling, such as the iodine interstitial in MAPI.
+As discussed by Alkauskas et al.,\autocite{Alkauskas2014} it may be surprising that a one-dimensional approximation to a multi-dimensional problem is sufficient, but this is often the case for defects with strong electron-phonon coupling, such as the iodine interstitial in MAPI.
 
 \subsection{Electron capture coefficient} \label{finalsection}
 
-In Section \ref{ch6:ccd} we used the lattice relaxation $\Delta Q$ and Huang-Rhys factor $S$ as proxies for the electron-phonon coupling term. In this section we combine the electron-phonon coupling term (Equation \ref{epcouplingterm}) calculated from first principles with anharmonic vibrational wavefunctions to calculate the electron capture coefficient at the neutral iodine interstitial. The electron capture coefficient $C_n$ determines the rate of electron capture $R_n$ via the following equation
+In Section \ref{ch6:ccd} we used the lattice relaxation $\Delta Q$ and Huang-Rhys factor $S$ as proxies for the electron-phonon coupling term. In this section we calculate the electron-phonon coupling term (Equation \ref{epcouplingterm}) from first principles, and use this to predict the coefficient for electron capture at the H-centre. The electron capture coefficient $C_n$ determines the rate of electron capture $R_n$ via the following equation
 \begin{equation} \label{rateeqn}
 R_n=C_nN_tn
 \end{equation}
@@ -341,18 +341,19 @@ It is possible to estimate the electron-phonon coupling term using an estimate f
 \begin{equation}
 W_\textrm{if} \approx \frac{\Delta E}{\Delta Q}\sqrt{\frac{M_d}{M_b}},
 \end{equation}
-where $M_b$ is the number of atoms in the supercell and $M_d$ is the number of atoms the defect state is localised around. For our system $W_\textrm{if}\approx0.0037$ and so electron-phonon coupling for the single mode $Q$ is very strong.
+where $M_b$ is the number of atoms in the supercell and $M_d$ is the number of atoms the defect state is localised around. For our system $W_\textrm{if}\approx0.0048$ and so electron-phonon coupling for the single mode $Q$ is strong.
 
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch6/eigs.png}
-  \caption[Evolution of the H-centre Kohn-Sham eigenstates]{Evolution of MAPI:$\mathrm{I}_\mathrm{i}^-$ Kohn-Sham eigenstates as the lattice geometry is deformed along coordinate $Q$.  Solid and empty circles represent occupied and unoccupied states, respectively.}
+  \caption[Evolution of the H-centre Kohn-Sham eigenstates]{Evolution of H-centre Kohn-Sham eigenstates as the lattice geometry is deformed along coordinate $Q$.  Solid and empty circles represent occupied and unoccupied states, respectively.}
 \label{eigenvalues}
 \end{figure}
 %might need to label geometries
 
-Combining the electron-phonon coupling term with the anharmonic vibrational wavefunctions as in Equation \ref{carriercapteqn} gives a carrier capture coefficient of \SI{1.2E-10}{\centi\metre\cubed\per\second} at room temperature.
-The large lattice distortion associated with charge capture suppresses radiative recombination, and the so this fast non-radiative transition will be the dominant process.
+Combining the electron-phonon coupling term with the anharmonic vibrational wavefunctions, as in Equation \ref{carriercapteqn}, gives a carrier capture coefficient of \SI{1.2E-10}{\centi\metre\cubed\per\second} at room temperature.
+Radiative carrier capture can compete with non-radiative carrier capture at the defect, for semiconductors fast radiative capture coefficients are of the order \SI{E-13}{\centi\metre\cubed\per\second}.\autocite{Alkauskas2014}
+For the H-centre in MAPI, the large lattice distortion associated with charge capture suppresses radiative recombination, and as a result non-radiative transitions will be the dominant recombination process.
 
 \begin{figure}[h!]   
 \centering
@@ -364,19 +365,19 @@ The large lattice distortion associated with charge capture suppresses radiative
 
 \textbf{Summary}
 
-The main conclusion of this study is that electron capture at a H-centre is fast, and that this process is a `one way street': due to the strong relaxation of the surrounding lattice, once a negative defect is formed it is both thermodynamically stable and stable under light irradiation.
-The results demonstrate that the H-centre is metastable and will be formed only after photo-excitation. The H-centre cannot be formed from hole capture at a negative charge state, but the existing literature predicts that hole capture from the positive charge state is possible. Further calculations are needed to confirm this, and future work could apply the methodology outlined here to this process. 
+The main conclusion of this study is that electron capture at a H-centre is fast, and that this process is a `one way street': due to a strong relaxation of the surrounding lattice, once a negative defect is formed it is both thermodynamically stable and stable under light irradiation.
+The H-centre is metastable and will be formed only after photo-excitation. We have shown that it cannot be formed from hole capture at a negative charge state, but the existing literature predicts that hole capture from the positive charge state is possible. Further calculations are needed to confirm that hole capture is possible, and future work could apply the methodology outlined here to this process. 
 
-The results are consistent with the p-type doping observed in MAPI, which could be attributed to negatively charged interstitials,\autocite{Li2018} and the photo-induced `brightening' of perovskite photoluminsecence that is attributed to a reduction in trap state density.\autocite{dequilettes2016}
+Our results are consistent with the p-type doping observed in MAPI, which could be attributed to negatively charged interstitials,\autocite{Li2018} and the photo-induced `brightening' of perovskite photoluminsecence that is attributed to a reduction in trap state density.\autocite{dequilettes2016}
 %https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6269531/#CR39
 %https://www.nature.com/articles/ncomms11683
 However we must be very careful in extrapolating to results beyond the bounds of this study,
 as the model is limited in scope and hybrid halide perovskites are complex materials. 
-For example, it could be that there are other charge trapping mechanisms simultaneously occuring that involve e.g. longer polyiodide chains, lithium from the p-doped hole transporting material Spiro-OMETAD or Au from the deposited electrodes. There are also open questions around charge trapping at the grain boundaries and surfaces.\autocite{Chen2019}
+For example, it could be that there are other charge trapping mechanisms simultaneously occuring that involve e.g. longer polyiodide chains, lithium from the p-doped hole transporting material Spiro-OMETAD, or Au from the deposited electrodes. There are also open questions around charge trapping at the grain boundaries and surfaces.\autocite{Chen2019}
 
-The results provide guidance for future studies of charge trapping in the hybrid halide perovskites.
+Our results provide guidance for future studies of charge trapping in the hybrid halide perovskites.
 We have shown that lattice anharmonicity is significant and that harmonic potential energy surfaces can lead to carrier capture coefficients that are many orders of magnitude too small (or large).
-We have also found that the electron-phonon coupling term is large and this has two important consequences. Firstly, the relaxation of the whole lattice, not only the bonding atoms, must be considered in our calculations.
+We have also found that the electron-phonon coupling term is large and this has two important consequences. Firstly, the relaxation of the whole lattice, not only the bonding atoms, must be considered.
 Secondly, for the electron capture process considered here, the single mode approximation is valid and the configuration coordinate $Q$ provides a good approximation to the accepting modes of the negative iodine interstitial.
 
 \textbf{Data access statement}

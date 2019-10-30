@@ -3,7 +3,7 @@ I take lettuce, onions, tomato \\
 Add a dab of mayo plus the fish fillet-o \\
 Appetizing gray matter with a strange platter \\
 The symmetry of energy with chemistry and plasma \\
- \qauthor{--- Edan, \textit{I see colours}} \\
+ \qauthor{--- Edan, \textit{I see colours}} 
 \end{savequote}
 
 %Here we solved a one-dimensional Schr\"odinger equation for the nuclear degree of freedom along the phonon mode, and then combine the resulting thermalised probability density function (which includes zero point fluctuations and quantum tunnelling) with a band-gap deformation potential along this mode. 
@@ -12,6 +12,13 @@ The symmetry of energy with chemistry and plasma \\
 \chapter{\label{ch:5-epcoupling}Electron-phonon and phonon-phonon coupling}
 % see ziman electrons and phonons?
 % https://journals.aps.org/rmp/pdf/10.1103/RevModPhys.89.015003
+
+Excerpts of this chapter and Figures 2--4 are adapted from
+\href{https://doi.org/10.1103/PhysRevB.94.220301}{Whalley, L. D., Skelton, J. M., Frost, J. M. and Walsh, A. (2016). Phonon anharmonicity, lifetimes, and thermal transport in \ce{CH3NH3PbI3} from many-body perturbation theory. \textit{Physical Review B}, 94(22).} © 2016 American Physical Society
+
+Figures 1,5--6 are adapted from
+\href{https://doi.org/10.1021/acsenergylett.7b00862}{Frost, J. M., Whalley, L. D and Walsh, A. (2017). Slow Cooling of Hot Polarons in Halide Perovskite Solar Cells. \textit{ACS Energy Letters}, 2(12), pp.2647-2652.} © 2017 CC-BY
+
 \section{Introduction} \label{ch5:introduction}
 
 % simplest approximation is that there is no coupling. But then mobility too large. In reality scattering (see previous chapter)
@@ -214,12 +221,12 @@ As we distort the pseudo-cubic structure along the $M$ or $R$ phonon modes, the 
 
 Band edge energies as a function of various normal mode distortions have been investigated for the metal halide perovskite \ce{CsPbI3}, which shares the same VBM and CBM orbital character as MAPI.\autocite{McKechnie2018} For displacements along the normal phonon mode corresponding to octahedral twisting (iodine motion) around Pb, there is: i) a significant increase in the CBM energy; ii) a decrease Pb $p$-orbital character at the CBM; iii) an increase in I $p$-orbital character at the CBM. The increase in CBM energy is attributed to a reduction in Pb-$p$ character, as a result of reduced spin-orbit coupling. However tests on MAPI for two different descriptions of electron exchange and correlation and one including spin-orbit coupling, shows similar behaviour with respect to band deformation (Table \ref{ch5allxc} and Figure \ref{Egtheory}). 
 Instead, we attribute the increase in energy to a decrease in orbital overlap between the Pb 6$p$-states, leading to a less dispersive band and decreased band width.
-The increase in the VBM site energy could be attributed to the hybridised Pb 6$p$- and I5$p$ bonding orbitals which lie lower in the valence band,\autocite{Wang2015i} although further calculations to predict the orbital character as a function of phonon mode displacement are needed to confirm this statement.
+The increase in the VBM site energy could be attributed to the hybridised Pb 6$p$- and I5$p$ bonding orbitals which lie lower in the valence band,\autocite{Wang2015i} although further calculations to predict the orbital character as a function of phonon mode displacement are needed to confirm this hypothesis.
 %useful lit: https://pubs.acs.org/doi/full/10.1021/acs.chemmater.6b00968 / https://journals.aps.org/prb/abstract/10.1103/PhysRevB.88.165203
 %could look at Pb-Pb bond length also
 
 \begin{figure}[h] \centering
-\includegraphics[width=0.8\textwidth]{figures/ch5/dos.pdf}
+\includegraphics[width=0.6\textwidth]{figures/ch5/dos.pdf}
 \caption[Total and projected density of states]{\label{ch5pdos}
 Total density of states for \ce{CH3NH3PbI3}, including projections onto I $p$-orbitals and Pb $p$- and $s$-orbitals. Calculation uses the HSE06 exchange-correlation functional and includes spin-orbit coupling. Calculation parameters are those used for the bandstructure calculation in Section \ref{ch4:methods}.
 }
@@ -350,7 +357,7 @@ respectively.
 
 \begin{figure}[h]
 \centering
-  \includegraphics[width=0.7\textwidth]{figures/ch5/f4.png}
+  \includegraphics[width=0.6\textwidth]{figures/ch5/f4.png}
   \caption[Hot carrier cooling rate]{The energy of a large polaron state (starting at \SI{1.2}{\electronvolt} above the conduction band minimum, with a polaron radius of \SI{26.8}{\angstrom}) 
   in \ce{CH3NH3PbI3} as a function of time.
   The slow rate is due to the low thermal conductivity in MAPI ($\kappa=$\SI{0.05}{\watt\per\metre\per\K}). 
@@ -361,19 +368,19 @@ respectively.
 
 To model the third order phonon-phonon scattering processes we consider the polaron as a hot sphere in a continuum of ambient temperature material, which allows us to calculate temperature as a function of time using the heat diffusion equation.
 We consider the low fluence limit where individual photon quanta are absorbed into isolated hot polarons.
-The rate of cooling is determined by the diffusivity ($D$): 
+The rate of cooling is determined by the diffusivity $D$: 
 \begin{equation}
-    D= \frac{\kappa}{\rho C_p}
+    D= \frac{\kappa}{\rho C_p},
 \end{equation} 
 where $\kappa$ is the thermal conductivity, $\rho$ is the density and $C_p$ is the specific heat capacity. 
 
-Heat diffuses from MAPI on the order of 100 ps, whilst for other conductivities the process is much faster, on the order of \SI{100}{\femto\second}. 
+Heat diffuses from MAPI on the order of  \SI{100}{\pico\second}, whilst for other conductivities the process is much faster, on the order of \SI{100}{\femto\second}. 
 This is in agreement with reported experimental values from References \cite{Klein2016} (MAPI), \cite{Zhong2017} (CdTe) and \cite{Rosenwaks1993} (GaAs). 
 Note that at short timescales, measurements of hot carrier cooling in MAPI and \ce{CsPbI3} ($\kappa$ = 0.5) may appear linear due to the slower exponential decay.
 
 \section{Summary}
 
-In this chapter we have introduced the phonon quasi-particle into our description of MAPI. The first consequence of this is that the electronic states couple to the normal mode vibrations of the system. I have quantified the extent of this coupling to two highly anharmonic modes at the $M$ and $R$ points in the Brillouin Zone. These modes, which are occupied at room temperature, have a large amplitude of motion and lead to a bandgap broadening comparable to that found experimentally -- i.e. they play a significant role in the overall electron-phonon coupling of the system.
+In this chapter we have introduced the phonon quasi-particle into our description of MAPI. The first consequence of this is that the electronic states couple to the normal mode vibrations of the system. I have quantified the extent of this coupling to two highly anharmonic phonon modes at the $M$ and $R$ points in the Brillouin Zone. These modes, which are occupied at room temperature, have a large amplitude of motion and lead to a bandgap broadening comparable to that found experimentally -- i.e. they play a significant role in the overall electron-phonon coupling of the system.
 The second consequence of including phonons in our model is that temperature variations in the bulk material lead to heat diffusion. I have shown that a classical heat diffusion model, parameterised using Fr\"{o}lich polaron theory and first-principles calculations, can be used to
 describe the physical process behind the experimentally observed slow hot-carrier cooling rates
 observed for halide perovskites.
@@ -381,7 +388,7 @@ observed for halide perovskites.
 \textbf{Data Access Statement}
 
 The crystal structures and phonon data are available at \url{https://github.com/WMD-group/Phonons}, 
-and can be processed using the \textsc{Phonopy}\autocite{Togo2015} and  \textsc{Modemap}\autocite{ModeMap} packages. For visualising the phonon modes the \textsc{ascii phonons} package can be used.\autocite{asciiphonons} The phonon dispersion can be plotted using the \textsc{sumo} package.\autocite{sumo2018}
+and can be processed using the \textsc{phonopy}\autocite{Togo2015} and  \textsc{modemap}\autocite{ModeMap} packages. For visualising the phonon modes the \textsc{ascii phonons} package can be used.\autocite{asciiphonons} The phonon dispersion can be plotted using the \textsc{sumo} package.\autocite{sumo2018}
 
 Data files and Jupyter notebooks outlining the calculation steps for hot carrier cooling are available as a repository on GitHub at \url{https://github.com/WMD-group/hot-carrier-cooling}.
 

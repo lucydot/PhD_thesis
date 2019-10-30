@@ -7,6 +7,9 @@ Ok, everyone back to the lab, try again.
 
 \chapter{\label{ch:4-effmass}Electronic band non-parabolicity}
 
+The text and figures in this chapter are adapted from
+\href{https://doi.org/10.1103/PhysRevB.99.085207}{Whalley, L. D., Frost, J., Morgan, B. and Walsh, A. (2019). Impact of nonparabolic electronic band structure on the optical and transport properties of photovoltaic materials. \textit{Physical Review B}, 99(8).} © 2019 American Physical Society
+
 \section{Introduction}
 %% Need to include references to the three appendices.
 
@@ -281,11 +284,11 @@ The difference between the calculation methods is greatest for bands with low di
 
 \subsection{Deviations from the expected effective mass trend}
 
-There are two deviations from the expected trends in the effective mass results, Table \ref{largetable}. 
-Firstly; in Table \ref{largetable} we see that the GaAs unweighted heavy-hole mass along [111] is smaller than for [100], while this is the opposite for the other methods. To explain this we should consider the non-parabolicity of the GaAs heavy-hole in the [111] direction (denoted $m_{hh}$[111]). The alpha for parameter for $m_{hh}$[111] is $1.7\,\mathrm{eV}^{-1}$ and so we expect the weighted effective mass to be heavier than the unweighted effective mass (as it samples the heavier states away from band edge). This is confirmed (weighted: $0.53\,m_e$, unweighted: $0.25\,m_e$). Compare this to the alpha parameter for $m_{hh}$[100] which is $0.38\,\mathrm{eV}^{-1}$. This alpha parameter indicates that the dispersion in the [100] direction is near parabolic, and so we would expect the weighted and unweighted masses to be similar. This is also confirmed in our calculations (weighted: $0.32\,m_e$, unweighted: $0.31\,m_e$).
+There are two deviations from the general trends found for the effective mass results presented in Table \ref{largetable}. 
+Firstly, in Table \ref{largetable} we see that the GaAs unweighted heavy-hole mass along [111] is smaller than for [100], while this is the opposite for the other methods. To explain this we should consider the non-parabolicity of the GaAs heavy-hole in the [111] direction (denoted $m_{hh}$[111]). The alpha for parameter for $m_{hh}$[111] is $1.7\,\mathrm{eV}^{-1}$ and so we expect the weighted effective mass to be heavier than the unweighted effective mass (as it samples the heavier states away from band edge). This is confirmed (weighted: $0.53\,m_e$, unweighted: $0.25\,m_e$). Compare this to the alpha parameter for $m_{hh}$[100] which is $0.38\,\mathrm{eV}^{-1}$. This alpha parameter indicates that the dispersion in the [100] direction is near parabolic, and so we would expect the weighted and unweighted masses to be similar. This is also confirmed in our calculations (weighted: $0.32\,m_e$, unweighted: $0.31\,m_e$).
 This means that at band edge $m_{hh}\mathrm{[111]} < m_{hh}\mathrm{[100]}$ but due to high non-parabolicity in the [111] direction, when we use our weighted approach and take into account eigenstates away from band edge, $m_{hh}\mathrm{[111]} > m_{hh}\mathrm{[100]}$.
 
-Secondly; in Table \ref{largetable} we see that the CdTe $m_{hh}$[111] is larger for the unweighted method than for the weighted method. This is not the trend seen for the other materials, nor is it the trend we would expect, as the weighted method samples eigenstates away from band edge where the band (approximated by the Kane dispersion) flattens.
+Secondly, in Table \ref{largetable} we see that the CdTe $m_{hh}$[111] is larger for the unweighted method than for the weighted method. This is not the trend seen for the other materials, nor is it the trend we would expect, as the weighted method samples eigenstates away from band edge where the band (approximated by the Kane dispersion) flattens.
 This deviation indicates that the Kane dispersion is not an accurate approximation for the CdTe heavy hole band in the [111] direction. The Kane dispersion we use to describe the electronic bands is accurate when the transport effective mass grows linearly with the electron eigenstate energy (Equation \ref{kanemass} of main text). This is the case for most band dispersions in this study, however a plot of transport mass against energy for the CdTe heavy hole in the [111] direction shows that the transport mass is almost constant at small energies - this corresponds to a flattening at the top of the valence band (Figure \ref{mt_E_hh}). We compare this to the light hole in the [111] direction, which shows a linear relationship between transport mass and energy (Figure \ref{mt_E_lh}). This light hole has a weighted mass heavier than the unweighted mass (Table \ref{largetable}), as would be expected for an electronic band described by the Kane dispersion.
 %%%% GET RIGHT EQN NUM ABOVE
 
