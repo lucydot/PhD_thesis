@@ -140,10 +140,10 @@ One-dimensional slices through the Brillouin zone are considered so that the eff
 Three approaches are used to calculate the curvature effective mass at the band edge: i) a three point forward finite difference method; ii) an unweighted quadratic least-squares fit\autocite{Vanderwalt2011} to three points; iii) a quadratic least-squares fit, weighted according to the Fermi--Dirac distribution across all points up to energy $10\,\mathrm{k_\mathrm{B}T}$ ($=0.25\,\mathrm{eV}$).
 
 \textit{Finite difference:} \\
-A three point forward finite difference equation is used to calculate the curvature at point $i$:
+A three point forward finite difference equation is used to calculate the curvature at point $i$:\autocite{finitedifferencewebpage}
 
 \begin{equation}
-\frac{\partial^2E}{\partial k^2} = \frac{E_{i+2} - 2E_{i+1} + E_i}{\left|k_{i+1} - k_i\right|},
+\frac{\partial^2E}{\partial k^2} = \frac{E_{i+2} - 2E_{i+1} + E_i}{\left|k_{i+1} - k_i\right|^2},
 \end{equation}
 where $E_\mathrm{i}$ is the energy eigenvalue at position $k_\mathrm{i}$ in reciprocal space. 
 
