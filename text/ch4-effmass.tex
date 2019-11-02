@@ -143,7 +143,7 @@ Three approaches are used to calculate the curvature effective mass at the band 
 A three point forward finite difference equation is used to calculate the curvature at point $i$:\autocite{finitedifferencewebpage}
 
 \begin{equation}
-\frac{\partial^2E}{\partial k^2} = \frac{E_{i+2} - 2E_{i+1} + E_i}{\left|k_{i+1} - k_i\right|^2},
+\left(\frac{\partial^2E}{\partial k^2}\right)_i = \frac{E_{i+2} - 2E_{i+1} + E_i}{\left|k_{i+1} - k_i\right|^2},
 \end{equation}
 where $E_\mathrm{i}$ is the energy eigenvalue at position $k_\mathrm{i}$ in reciprocal space. 
 
@@ -182,7 +182,16 @@ Due to the exponential term in $W_i$, points with an energy difference larger th
 
 \subsubsection{Kane dispersion parameters}
 
-To calculate the parameters for the Kane dispersion a sixth order polynomial is fitted to the DFT calculated electronic band dispersion over an energy range of $0.25\,\mathrm{eV}$. The first derivative of this continuous function is used to determine the transport effective mass. The transport effective mass is plotted against energy to give values for $\alpha$ and the effective mass at the band edge. The dispersion is truncated where the second derivative changes sign as this corresponds to an inflexion point where the Kane dispersion is no longer valid. 
+To calculate the parameters for the Kane dispersion a sixth order polynomial is fitted to the DFT calculated electronic band dispersion
+\begin{equation}
+E = a + bk + ck^2 +dk^3 + ek^4 + fk^5 +gk^6.
+\end{equation}
+As in the parabolic dispersion fit, a least-squares method as implemented in the \textsc{NumPy} Python library minimises the summed square of the residuals and the fit is over an energy range of $0.25\,\mathrm{eV}$. To determine the transport effective mass the first derivative of this continuous function is used 
+\begin{equation}
+\frac{\partial E}{\partial k}=b+ck+dk^2+ek^3+fk^4+gk^5.
+\end{equation} 
+The transport effective mass is plotted against energy to give values for $\alpha$ and the effective mass at the band edge. The dispersion is truncated where the second derivative changes sign as this corresponds to an inflexion point where the Kane dispersion is no longer valid. 
+
 %The alpha values in table \ref{largetable} were calculated from a Kane dispersion fitted over an energy range of minimum 0.09eV.
 
 \subsubsection{Optical effective mass}
