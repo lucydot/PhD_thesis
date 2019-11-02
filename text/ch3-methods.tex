@@ -125,11 +125,6 @@ Strictly, the LDA should only be used for slowly varying densities, however it h
 At the next level of theory, two variables are used to determine the exchange-correlation energy: electron density and the density gradient. Due to their dependence on the GGA functionals are semi-local. The parameters of GGA functionals can be derived from physical constraints (non-empirical, as in the widely used PBE functional), or obtained from fitting procedures (empirical, as in the case of the B88 functional). GGAs improve the over-binding of LDA, but tend to underestimate the bandgap of the material.
 
 
-\textbf{Meta-GGA} 
-
-Meta-GGAs extend the GGA functional to include the non-interacting kinetic energy density as an input variable. This is the calculated from the laplacian of the occupied electron orbitals.
-
-
 \textbf{Hybrid functionals} 
 
 In DFT each electron interacts with itself as the potential derives from the total charge density of the system. This error is particularly pronounced for localised states, after trapping an electron or hole at a defect site for example. Hybrid functionals combine GGA functionals with a proportion of the exact HF exchange energy to partially correct the self-interaction error. The simplest hybrid functional takes the form
@@ -325,9 +320,8 @@ E_\mathrm{f}(q) = E_\mathrm{d}(q) - E_\mathrm{b} - \sum_i \mu_i n_i + q(\epsilon
 where $E_\mathrm{d}(q)$ is the total energy of the supercell with a defect of charge $q$ and $E_\mathrm{b}$ is the total energy of the perfect bulk. 
 $E_\mathrm{corr}$ is a correction energy that is needed when using a finite-sized supercell and is discussed Section \ref{corrections}.
 The remaining terms describe the energy needed to add or remove atoms or electrons.
-$\mu_i$ is the chemical potential of atom $i$ and $n_i$ is the number of atoms that are added or removed.
-The chemical potential can be adjusted to describe different growth conditions; if the growth conditions are poor for species $i$ then $\mu_i$ will be low.
-$E_F$ is the Fermi level of the electrons, referenced to the valence band maximum $\epsilon_\mathrm{VBM}$.
+$\mu_i$ is the chemical potential of atom $i$ and can be adjusted to describe different growth conditions. 
+$n_i$ is the number of atoms that are added or removed and $E_F$ is the Fermi level of the electrons, referenced to the valence band maximum $\epsilon_\mathrm{VBM}$.
 
 The total energies can be calculated using DFT. Convergence criteria for calculations must be tight as, due to the exponential dependence of defect concentration on formation energy, small errors in the energy difference can lead to large errors in the defect concentration.
 
