@@ -93,7 +93,7 @@ m_t = \begin{bmatrix}
 0 & 0 & 2 \\
 \end{bmatrix}
 $$
-This supercell expansion scales the magnitude of the lattice vectors in the $x$, $y$ and $z$ directions by a factor of $2\sqrt{2}$, $2\sqrt{2}$ and $2$ respectively. A 192-atom supercell built from a diagonal transformation matrix would increase errors due to elastic effects; \textit{e.g.} $m_t=\mathrm{diag}(1,2,8)$ would increase the elastic error along the $x$ axis, as the local relaxation extends beyond a single unit cell.
+This supercell expansion scales the magnitude of the lattice vectors in the $x$, $y$ and $z$ directions by a factor of $2\sqrt{2}$, $2\sqrt{2}$ and $2$ respectively. This expansion is more isotropic than a 192-atom supercell built from a diagonal transformation matrix, which would increase errors due to elastic effects. For example, $m_t=\mathrm{diag}(1,2,8)$ would increase the elastic error along the $x$ axis, as the local relaxation extends beyond a single unit cell.
 For the atomic relaxations a spin-polarised calculation with the PBEsol functional was used.\autocite{Perdew2008a} The internal atomic coordinates were relaxed until the force acting on each atom was less than \SI{0.01}{\electronvolt\per\angstrom}. 
 
 For the electronic relaxations the hybrid exchange-correlation functional of Heyd-Scuseria-Ernzerhof (HSE06) was used.\autocite{Heyd2004a,Heyd2005a} The amount of exact Hartree-Fock exchange was adjusted to 0.43 to reproduce the correct bandgap and allow comparison with the previous literature.\autocite{Meggiolaro2018,Du2015} 
@@ -118,7 +118,7 @@ The valence wavefunctions were expanded in a plane-wave basis set with a \SI{700
 The procedure follows static coupling theory as implemented by Alkauskas et al.\autocite{Alkauskas2014} and recently extended to anharmonic potential energy surfaces by Kim et al. in the \textsc{carriercapture.jl} package.\autocite{carriercapture,Kim2019}
 The capture coefficient is derived by considering electron phonon coupling at first order and using a one-dimensional approximation so that the problem reduces to a single phonon mode $Q$. For electron capture from an initial state i to a final state f, the carrier capture coefficient is given by
 \begin{equation} \label{carriercapteqn}
-    C_n = V\frac{2\pi}{\hbar}gW_\textrm{if}^2\sum_m\omega_m\sum_n|\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle^2\times (\Delta E+m\hbar\Omega_\textrm{i}-n\hbar\Omega_\textrm{f}),
+    C_n = V\frac{2\pi}{\hbar}gW_\textrm{if}^2\sum_m\omega_m\sum_n|\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle^2\times \delta(\Delta E+m\hbar\Omega_\textrm{i}-n\hbar\Omega_\textrm{f}),
 \end{equation}
 where $V$ is the supercell volume, $g$ is the energetic degeneracy of the final state, $W_\textrm{if}$ is the electron-phonon coupling matrix element, $\omega_m$ is the thermal occupation of the vibrational state $m$, $\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle$ is the overlap of the vibrational wavefunctions $\chi$ and $\delta(\Delta E+m\hbar\Omega_\textrm{i}-n\hbar\Omega_\textrm{f})$ ensures that there is conservation of energy. In practice the $\delta$ term is replaced by a smearing function; for the calculations in this study this is a gaussian function of width \SI{0.01}{\electronvolt}.
 The total energies and wavefunctions of the iodine interstitial in a neutral and negative charge state, for the equilibrium and distorted geometries, were calculated using the parameters outlined in Section \ref{method:dfe}. Total energies were calculated using the HSE06 hybrid exchange-correlation functional with spin-orbit coupling, whilst single particle wavefunctions for the electron-phonon coupling matrix were calculated using the PBEsol functional.
@@ -335,9 +335,9 @@ R_n=C_nN_tn
 %check that this consistent with earlier notation
 where $N_t$ is the density of neutral defect traps and $n$ is the electron density.
 
-During electron capture, a delocalised electron in the valence band is captured to a localised defect state, so it is important that there is a single particle level in the bulk band gap for the geometry $Q_0$ in Equation \ref{epcouplingterm}.\autocite{Alkauskas2014} There is an empty electronic defect state in the band gap at the equilibrium geometry for the neutral charge state (Figure \ref{eigenvalues}) and so this is chosen as $Q_0$.
+During electron capture, a delocalised electron in the conduction band is captured to a localised defect state, so it is important that there is a single particle level in the bulk band gap for the geometry $Q_0$ in Equation \ref{epcouplingterm}.\autocite{Alkauskas2014} There is an empty electronic defect state in the band gap at the equilibrium geometry for the neutral charge state (Figure \ref{eigenvalues}) and so this is chosen as $Q_0$.
 In Figure \ref{eigenvalues} we also see that as the lattice geometry is distorted towards that of the negative charge state the empty defect state decreases in energy until it is in the valence band. 
-The inner product of the wavefunctions at the valence band minimum $\phi_\textrm{i}$ and unoccupied defect level $\phi_\textrm{f}$ are calculated at various $Q$-values and substituted into Equation \ref{carriercapteqn} to give a value of \SI{0.0036}{\electronvolt\per amu\tothe{1/2}\per\angstrom} for the electron-phonon coupling matrix element.
+The inner product of the wavefunctions at the conduction band minimum $\phi_\textrm{i}$ and unoccupied defect level $\phi_\textrm{f}$ are calculated at various $Q$-values and substituted into Equation \ref{carriercapteqn} to give a value of \SI{0.0036}{\electronvolt\per amu\tothe{1/2}\per\angstrom} for the electron-phonon coupling matrix element.
 It is possible to estimate the electron-phonon coupling term using an estimate for the degree of localisation of $\phi_\textrm{i}$ and $\phi_\textrm{f}$. For strong electron phonon coupling $W_\textrm{if}$ corresponds to 
 \begin{equation}
 W_\textrm{if} \approx \frac{\Delta E}{\Delta Q}\sqrt{\frac{M_d}{M_b}},
@@ -367,7 +367,7 @@ For the H-centre in MAPI, the large lattice distortion associated with charge ca
 \textbf{Summary}
 
 The main conclusion of this study is that electron capture at a H-centre is fast, and that this process is a `one way street': due to a strong relaxation of the surrounding lattice, once a negative defect is formed it is both thermodynamically stable and stable under light irradiation.
-The H-centre is metastable and will be formed only after photo-excitation. We have shown that it cannot be formed from hole capture at a negative charge state, but the existing literature predicts that hole capture from the positive charge state is possible. Further calculations are needed to confirm that hole capture is possible, and future work could apply the methodology outlined here to this process. 
+The H-centre is metastable and will be formed only after photo-excitation. We have shown that it cannot be formed from hole capture at the H-centre in the negative charge state, but the existing literature predicts that electron capture at the positive charge state is possible.\autocite{Meggiolaro2018} Further calculations are needed to confirm that this electron capture process is possible, and future work could apply the methodology outlined here to this process. 
 
 Our results are consistent with the p-type doping observed in MAPI, which could be attributed to negatively charged interstitials,\autocite{Li2018} and the photo-induced `brightening' of perovskite photoluminsecence that is attributed to a reduction in trap state density.\autocite{dequilettes2016}
 %https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6269531/#CR39
@@ -385,7 +385,7 @@ Secondly, for the electron capture process considered here, the single mode appr
 
 The crystal structures for the iodine interstitial in the negative, neutral and positive charge states reported in this chapter are available
 in an online repository.\autocite{WMD}
-The IPR data for the negative iodine interstitial, alongside the analysis steps taken to generate the results in this paper are also available in an online repository.\autocite{IPRMAPI} 
+The IPR data for the negative iodine interstitial, alongside the analysis steps taken to generate the results in this chapter are also available in an online repository.\autocite{IPRMAPI} 
 The Inverse Participation Ratio (IPR) of the phonon modes can be calculated using the \textsc{juliaphonons} package\autocite{juliaphonons}
 and the carrier capture rates can be calculated using the \textsc{carriercapture.jl} package.\autocite{carriercapture}
 
