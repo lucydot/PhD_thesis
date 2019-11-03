@@ -93,6 +93,7 @@ m_t = \begin{bmatrix}
 0 & 0 & 2 \\
 \end{bmatrix}
 $$
+This supercell expansion scales the magnitude of the lattice vectors in the $x$, $y$ and $z$ directions by a factor of $2\sqrt{2}$, $2\sqrt{2}$ and $2$ respectively. A 192-atom supercell built from a diagonal transformation matrix would increase errors due to elastic effects; \textit{e.g.} $m_t=\mathrm{diag}(1,2,8)$ would increase the elastic error along the $x$ axis, as the local relaxation extends beyond a single unit cell.
 For the atomic relaxations a spin-polarised calculation with the PBEsol functional was used.\autocite{Perdew2008a} The internal atomic coordinates were relaxed until the force acting on each atom was less than \SI{0.01}{\electronvolt\per\angstrom}. 
 
 For the electronic relaxations the hybrid exchange-correlation functional of Heyd-Scuseria-Ernzerhof (HSE06) was used.\autocite{Heyd2004a,Heyd2005a} The amount of exact Hartree-Fock exchange was adjusted to 0.43 to reproduce the correct bandgap and allow comparison with the previous literature.\autocite{Meggiolaro2018,Du2015} 
