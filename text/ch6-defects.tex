@@ -127,7 +127,12 @@ The anharmonic potential energy surface was generated from fitting a spline of o
 We consider electron capture from the neutral charge state to the negative charge state which has a singly energy-degenerate geometry.
 
 The 1D Schr\"{o}dinger equation for the potential energy surface was solved using a finite difference method implemented in the \textsc{brooglie} package\autocite{brooglie} to give the vibrational wavefunctions. 
-The electron-phonon coupling matrix element is given by
+Using the one-dimensional approximation discussed above the electron-phonon coupling can be described with a single matrix element\autocite{Alkauskas2014}
+\begin{equation}
+    W_\textrm{if} = \langle\Psi_\textrm{i}|\frac{\partial \hat{H}}{\partial Q}|\Psi_\textrm{f}\rangle,
+\end{equation}
+where $\Psi_{\{i,f\}} are many-electron wavefunctions and $\hat{H}$ is the many-body Hamiltonian of the system.
+We assume that the many-body Hamiltonian and many-electron wavefunctions can be replaced by their single particle counterparts, so that the electron-phonon coupling matrix element is given by\autocite{Alkauskas2014}
 \begin{equation} \label{epcouplingterm}
     W_\textrm{if} = (\epsilon_\textrm{f}-\epsilon_\textrm{i})\langle\psi_\textrm{i}|\frac{\partial\psi_\textrm{f}}{\partial Q}\rangle,
 \end{equation}
