@@ -33,11 +33,36 @@ Phonon-phonon coupling, and how this relates to hot-carrier cooling in MAPI, is 
 
 \subsection{Electron-phonon coupling}
 We have previously considered a system where the electronic and vibrational substates are decoupled. %the full wavefunction product of ht other two.
-However to model electron-phonon interactions we must remove this approximation and employ a Hamiltonian that describres the coupled system. Using the formalism of second-quantisation this Hamiltonian can be expressed in a relatively compact form:\autocite{Giustino2017}
-\begin{equation} \label{HamiltonianEP}
-    \hat{H} = \sum_{n\textbf{k}}\epsilon_{n\textbf{k}}\hat{c}^{\dagger}_{n\textbf{k}}\hat{c}_{n\textbf{k}} + \sum_{\textbf{q}v}\hbar\nu_{\textbf{q}v}(\hat{a}^{\dagger}_{\textbf{q}v}\hat{a}_{\textbf{q}v}+\frac{1}{2})+N_p^{-\frac{1}{2}}\sum_{\substack{\textbf{k},\textbf{q} \\ m,n,v}}g_{mnv}(\textbf{k},\textbf{q})\hat{c}^{\dagger}_{m\textbf{k}+\textbf{q}}\hat{c}_{n\textbf{k}}(\hat{a}_{\textbf{q}v}+\hat{a}^{\dagger}_{-\textbf{q}v}).
+However to model electron-phonon interactions we must remove this approximation and employ a Hamiltonian that describres the coupled system. 
+Within the Born-Oppenheimer approximation the crystal Hamiltonian can be split into three terms:\autocite{Cardona2010}
+\begin{equation}
+	\hat{H} = H_e+H_{ph}+H_{e-ion}.
+\end{equation}}
+The electronic sub-system corresponds to non-interacting band electrons in a periodic lattice with energy $\epsilon_{n\textbf{k}}$. 
+Using the formalism of second-quantisation this electronic Hamiltonian $H_e$ can be expressed in a relatively compact form:\autocite{Giustino2017}
+\begin{equation}
+H_e=\sum_{n\textbf{k}}\epsilon_{n\textbf{k}}\hat{c}^{\dagger}_{n\textbf{k}}\hat{c}_{n\textbf{k}}, 
 \end{equation}
-The first two terms describe the separate electron and phonon sub-systems, and the third term describes the electron-phonon interaction to first order in the atomic atomic displacements. The electron has an energy eigenvalue $\epsilon_{n\textbf{k}}$, which is determined by the crystal momentum $k$ and band $n$. This electron is interacting with a phonon of vibrational frequency $\nu_{\textbf{q}v}$, which is determined by crystal momentum $q$ and branch $v$. The matrix element $g_{mnv}(\textbf{k},\textbf{q})$ determines the strength of the coupling and $N_p$ is the number of unit cells in the supercell. $\hat{a}_{\textbf{q}v}$ and $\hat{a}^{\dagger}_{-\textbf{q}v}$ are the operators that destroy and create phonons, whilst
+where $\hat{c}_{n\textbf{k}}\hat{c}^{\dagger}_{n\textbf{k}}$ is a number operator which tells us how many electrons are in a state with band index $n$ and crystal momentum $k$.
+The lattice sub-system corresponds to non-interacting quantised harmonic vibrations (phonons) with energy $\hbar\nu_{\textbf{q}v}$ and can be expressed in the language of second quantisation as:
+\begin{equation}
+H_{ion} = \sum_{\textbf{q}v}\hbar\nu_{\textbf{q}v}(\hat{a}^{\dagger}_{\textbf{q}v}\hat{a}_{\textbf{q}v}+\frac{1}{2}),
+\end{equation}
+where $\hat{a}_{\textbf{q}v} \hat{a}^{\dagger}_{-\textbf{q}v}$ is a number operator which tells us how many phonons are in a state with branch index $v$ with crystal momentum $q$.
+
+To describe the interaction between the electron and phonon sub-systems it is assumed that the electrons respond instantaneously to the ionic motion.
+This allows the electron-phonon interaction term of the Hamiltonian to be expressed as a Taylor series expansion of the electronic Hamiltonian:\autocite{Cardona2010}
+\begin{equation}
+H_{e-ion} = \sum_j\left(\frac{\partial H_e}{\partial R_j}\right)\rvert_{R_{j0}}\cdot\delta R_j\ldots
+\end{equation}
+where $\delta R_j$ is the displacement of ion $j$ from the equilibrium position $R_{j0}$.
+The zeroth order term is not included as this is the interaction of the electrons with the static lattice and is already included in the electronic Hamiltonian.
+The first order term of the expansion describes the lowest-order process that involves coupling between the electron and phonon sub-system, and corresponds to the scattering of a single electron by a simultaneous creation or annihilation of a single phonon.
+In second quantised form this is:\autocite{Giustino2017}
+\begin{equation} \label{HamiltonianEP}
+H_{e-ion} = N_p^{-\frac{1}{2}}\sum_{\substack{\textbf{k},\textbf{q} \\ m,n,v}}g_{mnv}(\textbf{k},\textbf{q})\hat{c}^{\dagger}_{m\textbf{k}+\textbf{q}}\hat{c}_{n\textbf{k}}(\hat{a}_{\textbf{q}v}+\hat{a}^{\dagger}_{-\textbf{q}v}).
+\end{equation}
+The matrix element $g_{mnv}(\textbf{k},\textbf{q})$ determines the strength of the coupling and $N_p$ is the number of unit cells in the supercell. $\hat{a}_{\textbf{q}v}$ and $\hat{a}^{\dagger}_{-\textbf{q}v}$ are the operators that destroy and create phonons, whilst
 $\hat{c}_{n\textbf{k}}$ and $\hat{c}^{\dagger}_{m\textbf{k}+\textbf{q}}$ are the operators that destroy and create electrons.
 
 Unfortunately Equation \ref{HamiltonianEP} does not tell us how to calculate the electron-phonon matrix $g_{mnv}(\textbf{k},\textbf{q})$. The first expression for the matrix elements was derived by Bl\"{o}ch in 1929:\autocite{Giustino2017}
