@@ -99,7 +99,7 @@ For the atomic relaxations a spin-polarised calculation with the PBEsol function
 For the electronic relaxations the hybrid exchange-correlation functional of Heyd-Scuseria-Ernzerhof (HSE06) was used.\autocite{Heyd2004a,Heyd2005a} The amount of exact Hartree-Fock exchange was adjusted to 0.43 to reproduce the correct bandgap and allow comparison with the previous literature.\autocite{Meggiolaro2018,Du2015} 
  Spin-orbit coupling was included in the calculation.
 To reduce the computational expense the wavefunctions were first converged using a single point calculation at the gamma point for the Fock exchange, followed by convergence using the full $2\!\times\!2\!\times\!2$ Monkhorst-Pack mesh. At each step the total energy was converged to within \SI{E-5}{\electronvolt}.
-The defect formation energies were calculated using the methodology outlined in Sections \ref{defectformation} and \ref{corrections}. The image charge-correction developed by Freysoldt, Neugebauer and Van de Walle, and implemented in \textsc{sxdefectalign},\autocite{sxdefectalign} was applied. A further `octahedral tilting' correction was applied to account for the pristine reference structure being a time-averaged equilibrium structure. This correction is discussed further in Section \ref{ss:dfe}.
+The defect formation energies were calculated using the methodology outlined in Sections \ref{defectformation} and \ref{corrections}. The image charge-correction and potential alignment developed by Freysoldt, Neugebauer and Van de Walle, and implemented in \textsc{sxdefectalign},\autocite{sxdefectalign} was applied. A further `octahedral tilting' correction was applied to account for the pristine reference structure being a time-averaged equilibrium structure. This correction is discussed further in Section \ref{ss:dfe}.
 
 %Ionic relaxation at HSE06 confirms that there is very little distortion from PBEsol relaxed structure.
 % Perfect structure confirmed stable from a phonon calculation.
@@ -123,7 +123,7 @@ The capture coefficient is derived by considering electron phonon coupling at fi
 where $V$ is the supercell volume, $g$ is the energetic degeneracy of the final state, $W_\textrm{if}$ is the electron-phonon coupling matrix element, $\omega_m$ is the thermal occupation of the vibrational state $m$, $\langle\chi_{im}|Q-Q_0|\chi_{fn}\rangle$ is the overlap of the vibrational wavefunctions $\chi$ and $\delta(\Delta E+m\hbar\Omega_\textrm{i}-n\hbar\Omega_\textrm{f})$ ensures that there is conservation of energy. In practice the $\delta$ term is replaced by a smearing function; for the calculations in this study this is a gaussian function of width \SI{0.01}{\electronvolt}.
 The total energies and wavefunctions of the iodine interstitial in a neutral and negative charge state, for the equilibrium and distorted geometries, were calculated using the parameters outlined in Section \ref{method:dfe}. Total energies were calculated using the HSE06 hybrid exchange-correlation functional with spin-orbit coupling, whilst single particle wavefunctions for the electron-phonon coupling matrix were calculated using the PBEsol functional.
 We found that the shape of the potential energy surface is largely independent of the level of theory used (see Appendix \ref{app:9-configcoord} for a comparison at different levels of theory).
-The anharmonic potential energy surface was generated from fitting a spline of order 4, as implemented in the \textsc{dierckx.jl} package,\autocite{dierckx} to the DFT total energies. 
+The anharmonic potential energy surface was generated from fitting a spline of order four, as implemented in the \textsc{dierckx.jl} package,\autocite{dierckx} to the DFT total energies. 
 We consider electron capture from the neutral charge state to the negative charge state which has a singly energy-degenerate geometry.
 
 The 1D Schr\"{o}dinger equation for the potential energy surface was solved using a finite difference method implemented in the \textsc{brooglie} package\autocite{brooglie} to give the vibrational wavefunctions. 
@@ -160,7 +160,7 @@ The all-electron basis set ANO-RCC, optimised for relativistic effects, was used
 In this section the defect geometries of the neutral, negative and positive charge states of the iodine interstitial are given. So that no preference was given to a particular combination of octahedral tilts the starting point for atomic relaxation was MAPI in the pseudo-cubic phase. Upon adding an iodine interstitial the structure was found to have a number of local minima and multiple relaxations between charge states were required to reach a global minimum. To calculate the collective atomic displacement ($\Delta Q$) between charge states accurately the starting point for relaxation of the charged states must be the neutral charge state geometry. The atomic relaxation procedure is outlined in Figure \ref{relaxation_workflow}.
 
 The neutral iodine interstitial $\mathrm{I}_\mathrm{i}$ relaxes to two defect geometries which differ by only \SI{0.04}{\electronvolt} in energy. The lowest energy structure contains a $\mathrm{I}_2^-$ split interstitial that lies out-of-plane (along the $c$-axis) with bond length \SI{3.19}{\angstrom}. This defect is denoted $\mathrm{I}_\mathrm{i}^{\textrm{OP}}$. The higher energy structure contains a $\mathrm{I}_2^-$ split interstitial that lies in the $ab$-plane with bond length \SI{3.24}{\angstrom}. This is denoted $\mathrm{I}_\mathrm{i}^{\textrm{IP}}$. The negative iodine interstitial 
-$\mathrm{I}_\mathrm{i}^-$ relaxes to an out-of-plane position along the $c$-axis. $\mathrm{I}_\mathrm{i}^-$ forms a split interstitial around a lattice iodine site with two independently coordinated iodine ions symmetrically bridging two lead atoms. The I--I distance is \SI{3.82}{\angstrom}. As $\mathrm{I}_\mathrm{i}^-$ lies out-of-plane, we expect potential charge trapping processes to occur between $\mathrm{I}_\mathrm{i}^-$ and $\mathrm{I}_\mathrm{i}^{\textrm{OP}}$. The positive interstitial forms an in-plane trimer structure with bond lengths \SI{2.89}{\angstrom} and \SI{2.95}{\angstrom}. As $\mathrm{I}_\mathrm{i}^+$ lies in-plane, we expect potential charge trapping processes to occur between $\mathrm{I}_\mathrm{i}^+$ and $\mathrm{I}_\mathrm{i}^{\textrm{IP}}$.
+$\mathrm{I}_\mathrm{i}^-$ relaxes to an out-of-plane position along the $c$-axis. $\mathrm{I}_\mathrm{i}^-$ forms a split interstitial around a lattice iodine site with two independently coordinated iodine ions symmetrically bridging two lead atoms. The I--I distance is \SI{3.82}{\angstrom}. As $\mathrm{I}_\mathrm{i}^-$ lies out-of-plane, we expect potential charge trapping processes to occur between $\mathrm{I}_\mathrm{i}^-$ and $\mathrm{I}_\mathrm{i}^{\textrm{OP}}$. The positive interstitial forms an in-plane trimer structure with bond lengths \SI{2.90}{\angstrom} and \SI{2.96}{\angstrom}. As $\mathrm{I}_\mathrm{i}^+$ lies in-plane, we expect potential charge trapping processes to occur between $\mathrm{I}_\mathrm{i}^+$ and $\mathrm{I}_\mathrm{i}^{\textrm{IP}}$.
 Table \ref{compare_geoms} contains a summary of the defect geometries and a comparison to values in the literature.
 
 \begin{table}[h!]\centering
@@ -170,7 +170,7 @@ Table \ref{compare_geoms} contains a summary of the defect geometries and a comp
 & orientation & I--I bond length && orientation & I--I bond length  && orientation \\  
 \midrule
 $\mathrm{I}_\mathrm{i}^-$ &  out-of-plane & 3.82  &&  out-of-plane & 3.89 && in-plane \\
-$\mathrm{I}_\mathrm{i}^+$ & in-plane & 2.89/2.95 && in-plane & 2.95 average && in-plane \\
+$\mathrm{I}_\mathrm{i}^+$ & in-plane & 2.90/2.96 && in-plane & 2.95 average && in-plane \\
 $\mathrm{I}_\mathrm{i}^\mathrm{OP}$ & out-of-plane & 3.19 && out-of-plane & 3.24 && - \\
 $\mathrm{I}_\mathrm{i}^\mathrm{IP}$ & in-plane & 3.24 && in-plane & 3.88 && - \\
 \end{tabular} 
@@ -276,7 +276,7 @@ Hole trapping at the negative charge state is not possible due to the large ener
 
 In this work this the configuration coordinate $Q$ is defined as $\sqrt{\sum_i m_i \Delta r_i^2}$ ,where the sum is over all inorganic atoms $i$ with mass $m_i$ and a displacement from equilibrium of $\Delta r_i$. Summing over all atoms, including those in the organic methylammonium molecule, leads to unphysical energies as the linear interpolation does not capture the rotation of the organic cation between charge states. The potential energy surface generated using a summation over all atomic displacements is given in Appendix \ref{app:9-configcoord}.
 
-Lattice relaxation after electron capture leads to a large shift in the equilibrium position ($\Delta Q=$ \SI{36}{\electronvolt\per amu\tothe{1/2}\per\angstrom}).
+Lattice relaxation after electron capture leads to a large shift in the equilibrium position ($\Delta Q=$ \SI{36}{amu\tothe{1/2}\angstrom}).
 This is double that found for non-radiative recombination centres in CZTS\autocite{Kim2018} and reflects the strong coupling between the electronic charge state of the defect and the lattice distortion. 
 Another parameter used as a proxy for electron-phonon coupling strength is the Huang-Rhys factor $S$ which quantifies the number of phonons emitted during an optical transition. For a harmonic potential energy surface the Huang-Rhys factor is given by 
 \begin{equation}
@@ -288,7 +288,7 @@ The configuration coordinate diagram for this charge capture process has been pr
 
 The lower part of Figure \ref{configuration_coordinate} compares the anharmonic potential energy surface (PES) to the harmonic PES. We see that the harmonic PES fits well to the DFT energies either side of the equilibrium structure, as we would expect. The potential energy surfaces of the neutral and negative charge states are extremely soft; for the neutral charge state $\hbar\omega=$\SI{4.7}{meV} (\SI{1.14}{\tera\hertz}) and for the negative charge state $\hbar\omega_0=$\SI{6.6}{meV} (\SI{1.59}{\tera\hertz}). Phonon modes at this energy will lie in the optical band of the MAPI lattice modes and will be occupied at room temperature.
 
-Figure \ref{configuration_coordinate} highlights the importance of using anharmonic potential energy surfaces to describe charge capture at the iodine intersitital in MAPI. The harmonic potential energy surfaces for the excited and ground state intercept at an energy ca. \SI{0.5}{eV} above the excited state equilibrium energy, and this leads to a carrier capture coefficient four orders of magnitude smaller than that calculated for the anharmonic surfaces (values for the coefficient are given in Section \ref{finalsection}).
+Figure \ref{configuration_coordinate} highlights the importance of using anharmonic potential energy surfaces to describe charge capture at the iodine intersitital in MAPI. The harmonic potential energy surfaces for the excited and ground state intercept at an energy ca. \SI{0.5}{eV} above the excited state equilibrium energy, and this leads to a carrier capture coefficient eight orders of magnitude smaller than that calculated for the anharmonic surfaces (values for the coefficient are given in Section \ref{finalsection}).
 
 \subsection{Vibrational properties of the negative charge state}
 
@@ -302,7 +302,7 @@ Finally, local modes have frequencies that lie outside those of the pristine lat
 \begin{figure}[h!]   
 \centering
   \includegraphics[width=0.4\columnwidth]{figures/ch6/defect_modes_schematic.png}
-  \caption[Classification of normal phonon modes found in a crystal with a defect]{Classification of normal phonon modes found in a crystal with a defect. The lattice modes are largely unaffected by the defect and are well approximated by the normal modes of the pristine crystal. The resonant modes have frequencies that lie within the continuum of lattice modes and local modes have frequencies that lie outside those of the pristine lattice modes.}
+  \caption[Classification of normal phonon modes found in a crystal with a defect]{Classification of normal phonon modes found in a crystal with a defect. The lattice modes are largely unaffected by the defect and are well approximated by the normal modes of the pristine crystal. The resonant modes have frequencies that lie within the continuum of lattice modes and local modes have frequencies that lie outside those of the pristine lattice modes. The schematic is inspired by Figure 2.3 in reference \cite{Hayes1985}.}
 \label{defect_modes_schematic}
 \end{figure}  %add the lattice modes, and change gap to local modes, and dont bother about teh different weights of impurity...
 
@@ -348,8 +348,8 @@ where $N_t$ is the density of neutral defect traps and $n$ is the electron densi
 
 During electron capture, a delocalised electron in the conduction band is captured to a localised defect state, so it is important that there is a single particle level in the bulk band gap for the geometry $Q_0$ in Equation \ref{epcouplingterm}.\autocite{Alkauskas2014} There is an empty electronic defect state in the band gap at the equilibrium geometry for the neutral charge state (Figure \ref{eigenvalues}) and so this is chosen as $Q_0$.
 In Figure \ref{eigenvalues} we also see that as the lattice geometry is distorted towards that of the negative charge state the empty defect state decreases in energy until it is in the valence band. 
-The inner product of the wavefunctions at the conduction band minimum $\phi_\textrm{i}$ and unoccupied defect level $\phi_\textrm{f}$ are calculated at various $Q$-values and substituted into Equation \ref{carriercapteqn} to give a value of \SI{0.0036}{\electronvolt\per amu\tothe{1/2}\per\angstrom} for the electron-phonon coupling matrix element.
-It is possible to estimate the electron-phonon coupling term using an estimate for the degree of localisation of $\phi_\textrm{i}$ and $\phi_\textrm{f}$. For strong electron phonon coupling $W_\textrm{if}$ corresponds to 
+The inner product of the wavefunctions at the conduction band minimum $\phi_\textrm{i}$ and unoccupied defect level $\phi_\textrm{f}$ are calculated at various $Q$-values and substituted into Equation \ref{carriercapteqn} to give a value of \SI{0.0036}{\electronvolt amu\tothe{-1/2}\angstrom\tothe{-1/2}} for the electron-phonon coupling matrix element.
+It is possible to estimate the electron-phonon coupling term using an estimate for the degree of localisation of $\phi_\textrm{i}$ and $\phi_\textrm{f}$. For strong electron phonon coupling $W_\textrm{if}$ corresponds to\autocite{Alkauskas2014} 
 \begin{equation}
 W_\textrm{if} \approx \frac{\Delta E}{\Delta Q}\sqrt{\frac{M_d}{M_b}},
 \end{equation}
