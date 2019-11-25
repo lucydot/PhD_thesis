@@ -34,31 +34,31 @@ Phonon-phonon coupling, and how this relates to hot-carrier cooling in MAPI, is 
 \subsection{Electron-phonon coupling}
 We have previously considered a system where the electronic and vibrational substates are decoupled. %the full wavefunction product of ht other two.
 However to model electron-phonon interactions we must remove this approximation and employ a Hamiltonian that describres the coupled system. 
-Within the Born-Oppenheimer approximation the crystal Hamiltonian can be split into three terms:\autocite{Cardona2010}
+The crystal Hamiltonian can be split into three terms:\autocite{Cardona2010}
 \begin{equation}
-	\hat{H} = H_e+H_{ph}+H_{e-ion}.
+	\hat{H} = H_e+H_{ion}+H_{e-ion}.
 \end{equation}
 The electronic sub-system corresponds to non-interacting band electrons in a periodic lattice with energy $\epsilon_{n\textbf{k}}$. 
 Using the formalism of second-quantisation this electronic Hamiltonian $H_e$ can be expressed in a relatively compact form:\autocite{Giustino2017}
 \begin{equation}
 H_e=\sum_{n\textbf{k}}\epsilon_{n\textbf{k}}\hat{c}^{\dagger}_{n\textbf{k}}\hat{c}_{n\textbf{k}}, 
 \end{equation}
-where $\hat{c}_{n\textbf{k}}\hat{c}^{\dagger}_{n\textbf{k}}$ is a number operator which tells us how many electrons are in a state with band index $n$ and crystal momentum $k$.
+where $\hat{c}_{n\textbf{k}}\hat{c}^{\dagger}_{n\textbf{k}}$ is a number operator which tells us how many electrons are in a state with band index $n$ and crystal momentum $\textbf{k}$.
 The lattice sub-system corresponds to non-interacting quantised harmonic vibrations (phonons) with energy $\hbar\nu_{\textbf{q}v}$ and can be expressed in the language of second quantisation as:
 \begin{equation}
 H_{ion} = \sum_{\textbf{q}v}\hbar\nu_{\textbf{q}v}(\hat{a}^{\dagger}_{\textbf{q}v}\hat{a}_{\textbf{q}v}+\frac{1}{2}),
 \end{equation}
-where $\hat{a}_{\textbf{q}v} \hat{a}^{\dagger}_{-\textbf{q}v}$ is a number operator which tells us how many phonons are in a state with branch index $v$ with crystal momentum $q$.
+where $\hat{a}_{\textbf{q}v} \hat{a}^{\dagger}_{-\textbf{q}v}$ is a number operator which tells us how many phonons are in a state with branch index $v$ with crystal momentum $\mathbf{q}$.
 
 To describe the interaction between the electron and phonon sub-systems it is assumed that the electrons respond instantaneously to the ionic motion.
 This allows the electron-phonon interaction term of the Hamiltonian to be expressed as a Taylor series expansion of the electronic Hamiltonian:\autocite{Cardona2010}
 \begin{equation}
-H_{e-ion} = \sum_j\left(\frac{\partial H_e}{\partial R_j}\right)\rvert_{R_{j0}}\cdot\delta R_j\ldots
+H_{e-ion} = \sum_j\left(\frac{\partial H_e}{\partial R_j}\right)\bigg\rvert_{R_{j0}}\cdot\delta R_j\ldots
 \end{equation}
 where $\delta R_j$ is the displacement of ion $j$ from the equilibrium position $R_{j0}$.
 The zeroth order term is not included as this is the interaction of the electrons with the static lattice and is already included in the electronic Hamiltonian.
 The first order term of the expansion describes the lowest-order process that involves coupling between the electron and phonon sub-system, and corresponds to the scattering of a single electron by a simultaneous creation or annihilation of a single phonon.
-In second quantised form this is:\autocite{Giustino2017}
+In second quantised form electron-phonon coupling term can be expressed as:\autocite{Giustino2017}
 \begin{equation} \label{HamiltonianEP}
 H_{e-ion} = N_p^{-\frac{1}{2}}\sum_{\substack{\textbf{k},\textbf{q} \\ m,n,v}}g_{mnv}(\textbf{k},\textbf{q})\hat{c}^{\dagger}_{m\textbf{k}+\textbf{q}}\hat{c}_{n\textbf{k}}(\hat{a}_{\textbf{q}v}+\hat{a}^{\dagger}_{-\textbf{q}v}).
 \end{equation}
@@ -67,9 +67,9 @@ $\hat{c}_{n\textbf{k}}$ and $\hat{c}^{\dagger}_{m\textbf{k}+\textbf{q}}$ are the
 
 Unfortunately Equation \ref{HamiltonianEP} does not tell us how to calculate the electron-phonon matrix $g_{mnv}(\textbf{k},\textbf{q})$. The first expression for the matrix elements was derived by Bl\"{o}ch in 1929:\autocite{Giustino2017}
 \begin{equation}
-g_{mnv}(\textbf{k},\textbf{q}) = -i\left(\frac{\hbar}{2N_pM_\kappa\nu_{\textbf{q}v}}\right)^{\frac{1}{2}}\textbf{q}\cdot\textbf{e}_{kv}(\textbf{q})V_0,
+g_{mnv}(\textbf{q}) = -i\left(\frac{\hbar}{2N_pM_\kappa\nu_{\textbf{q}v}}\right)^{\frac{1}{2}}\textbf{q}\cdot\textbf{e}_{\kappa v}(\textbf{q})V_0,
 \end{equation}
-where $V_0$ is an average effective potential experienced by the electrons in the crystal, $M_\kappa$ is the mass of the $\kappa$th nucleus and $\textbf{e}_{kv}(\textbf{q})$ is a phonon eigenvector. The expression is independent of $k$ as a result of the approximations used in the derivation; the result is for a monovalent metal with one atom in the unit cell and where the Kohn-Sham wavefunctions can be approximated by free electrons.\autocite{Giustino2017,Wallis1963}%p.92
+where $V_0$ is an average effective potential experienced by the electrons in the crystal, $M_\kappa$ is the mass of the $\kappa$th nucleus and $\textbf{e}_{\kappa v}(\textbf{q})$ is a phonon eigenvector. The expression is derived for a monovalent metal with one atom in the unit cell and where the Kohn-Sham wavefunctions can be approximated by free electrons,\autocite{Giustino2017,Wallace1963} and as a result of this the expression is independent of the electron momentum.%p.92
 
 The electron-phonon coupling term in Equation \ref{HamiltonianEP} contains a summation over all states in the electronic and vibrational Brillouin Zones. Considering all possible states is computationally intractable for many systems of interest, but the problem can be simplified by only considering the terms which make the most dominant contributions. In the case of covalent materials, it is assumed that the dominant interaction is between long wavelength acoustic phonon modes and electronic states. For ionic materials it is assumed that the dominant interaction is with the electric field generated by longitudinal optic phonons.
 
@@ -95,7 +95,7 @@ In this model the effective potential is replaced with
 where $\epsilon_0$,$\epsilon^0$ and $\epsilon^{\infty}$ are the vacuum, static, and high-frequency permittivities respectively.
 
 MAPI is a soft material, with structural distortions and dynamic disorder at room temperature, so electron-phonon interactions are expected to be significant.
-Furthermore, long charge carrier diffusion lengths (up to \SI{10}{\micro\metre}) but modest mobilities (up to \SI{100}{\cm\square\per\volt\second}) in MAPI point to strong electron-phonon interactions.\autocite{Brenner2015} 
+Furthermore, long charge carrier diffusion lengths (up to \SI{10}{\micro\metre}) but modest mobilities (up to \SI{100}{\square\cm\per\volt\per\second}) point to strong electron-phonon interactions.\autocite{Brenner2015} 
 Photoluminescence studies of formamidinium-lead-iodide suggest that acoustic deformation potential scattering makes only a minor contribution to electron-phonon interactions at room temperature,\autocite{Wright2016}
 as there is decreased electron-phonon coupling at temperatures below the relevant LO phonon for Fr\"{o}lich coupling. This suggests that Fr\"{o}lich interactions dominate, and is supported by a theoretical calculation which predicts a LO-phonon limited mobility in line with experiment.\autocite{Frost2017b}
 %A recently developed formalism to study polarons using coupling terms calculated from density functional perturbation theory has confirmed the validity of the Frolich Hamiltonian for large polarons. (giustino)
@@ -144,11 +144,11 @@ In either case, we would expect two timescales to appear experimentally; fast in
 
 \subsection{Lattice dynamics calculations}
 
-Harmonic lattice-dynamics calculations were performed with the \textsc{Phonopy} package.\autocite{Togo2015} Displacement steps of \SI{0.01}{\angstrom} were used to evaluate the second-order force-constant matrix using the finite-displacement method. This is the default displacement step size in the \textsc{Phonopy} package which is equal to that commonly reported in the literature.\autocite{Togo2015,Skelton2017}
+Harmonic lattice-dynamics calculations were performed with the \textsc{Phonopy} package.\autocite{Togo2015} Displacement steps of \SI{0.01}{\angstrom} were used to evaluate the second-order force-constant matrix using the finite-displacement method. This step size is commonly reported in the literature\autocite{Togo2015,Skelton2017} and is the default value in the \textsc{Phonopy} package.
 A $4\! \times\! 4\! \times\! 4$ supercell expansion was used to compute the second-order force constants (72 displacements in a 768-atom cell).
 Forces were computed within the Kohn-Sham density-functional theory (DFT) formalism as implemented in the \textsc{VASP} code,\autocite{Kresse1996a} using the scalar relativistic corrections given in Section \ref{bgdefmethod}.
 The valence wavefunctions were expanded in a plane-wave basis set with a 800 eV cut-off and the exchange and correlation interactions between electrons were modelled using the PBEsol exchange-correlation functional.\autocite{Perdew2008a}
-The electronic Brillouin zone was evaluated at the $\Gamma$-point, and a total-energy convergence criterion of $10^{-8}\textrm{eV}$ was used.
+The electronic Brillouin zone was evaluated at the $\Gamma$-point, and a total-energy convergence criterion of $10^{-8}$ eV was used.
 
 \subsection{Calculation procedure for the bandgap deformation potential} \label{bgdefmethod}
 
@@ -300,7 +300,7 @@ Change in bandgap ($\Delta E_\mathrm{g}$) as a function of the normal-mode coord
 
 \begin{table*}\centering
 \caption[Valence- and conduction-band deformation potentials]{
-Valence- and conduction-band deformation potentials relative to the Pb 3d core energy level obtained from frozen-phonon calculations with three exchange-correlation treatments, \textit{viz.} PBEsol, PBEsol with spin-orbit coupling (SoC), and HSE06. We assume that the deformation potential is quadratic, and provide the coefficient $b$ of a quadratic function $E=bQ^2$ fitted to the band energies given in Figure\ \ref{ch5figs1}.
+Valence- and conduction-band deformation potentials relative to the Pb 3d core energy level obtained from frozen-phonon calculations with three exchange-correlation treatments, \textit{viz.} PBEsol, PBEsol with spin-orbit coupling (SoC), and HSE06. We assume that the deformation potential is quadratic and fit a quadratic function $E=bQ^2$ to the band energies given in Figure\ \ref{ch5figs1}; the values in the table correspond to the coefficient $b$.
 }
 \begin{tabular}{ccccccccc} \label{ch5allxc} \\
 \toprule
@@ -335,7 +335,7 @@ In the previous subsection the coupling between the electronic and vibrational s
 
 \subsubsection{Hot polaron formation}
 The Fr\"{o}lich polaron model has been recently recently applied to MAPI to calculate a polaron mobility from first principles.\autocite{Frost2017b} %Jarvist
-When the polaron coupling is weak the kinetic energy is larger than the polaron binding energy, and the polaron radius is larger than a unit cell -- a large polaron is formed. When the polaron coupling is strong the electron is self-trapped, and the polaron radius is the size of a unit cell or smaller -- a small polaron is formed. The solution to Fr\"{o}lich model in Reference \cite{Frost2017b} gives Fr\"{o}lich coupling constants of $\alpha=2.4$ and $\alpha=2.7$ for the electron and hole in MAPI, respectively. These values fall in the intermediate coupling regime where the large polaron model is valid, and correspond to a polaron radii of $26.8\AA$ for the electron and $25.3\AA$ for the hole, at \SI{300}{\K}.
+When the polaron coupling is weak the kinetic energy is larger than the polaron binding energy, and the polaron radius is larger than a unit cell -- a large polaron is formed. When the polaron coupling is strong the electron is self-trapped, and the polaron radius is the size of a unit cell or smaller -- a small polaron is formed. The solution to the Fr\"{o}lich model in Reference \cite{Frost2017b} gives Fr\"{o}lich coupling constants of $\alpha=2.4$ and $\alpha=2.7$ for the electron and hole in MAPI, respectively. These values fall in the intermediate coupling regime where the large polaron model is valid, and correspond to a polaron radii of $26.8\AA$ for the electron and $25.3\AA$ for the hole, at \SI{300}{\K}.
 Note that the calculated polaron radii are an upper bound, as bulk polaron states are further localised by disorder, point defects and extended defects such as surfaces, interfaces and grain boundaries.
 
 In metals and other materials where the electron-phonon coupling is relatively homogeneous across the electron and phonon sub-systems, above-bandgap electrons cool over a single characteristic time scale.
@@ -344,7 +344,7 @@ For materials where the electron-phonon coupling is heterogeneous, such as polar
 For these materials, the above-bandgap electrons will transfer kinetic energy into the phonon modes which couple strongly to the electron sub-system, and these ``hot'' phonon modes will thermalise to a temperature above that of the remaining bulk modes. A recent computational study across 12 cubic semiconductors found that in each system studied there are hot phonon modes which equilibriate with the electron sub-system rather than with the phonon sub-system.\autocite{Sadasivam2017} This is in contrast to the two-temperature model where all phonons are in thermal equilibrium.
 
 Transient spectroscopic studies\autocite{Klein2016,Price2015,Yang2016e} suggest that a hot photoexcited state persists in hybrid halide perovskites with a characteristic cooling time of up to \SI{100}{\pico\second}.
-We consider the hot photoexcited state to be a Fr\"{o}lich polaron which resonates with a subpopulation of local phonon states; after polaron formation there is initial thermalisation, electron kinetic energy is transferred into the optical phonon modes and a ``hot'' polaron is formed.
+We consider the hot photoexcited state to be a Fr\"{o}lich polaron which resonates with a subpopulation of local phonon states; after polaron formation there is initial thermalisation, electron kinetic energy is transferred into the optical phonon modes and a hot polaron is formed.
 This is a fast picosecond process via the strong Fr\"{o}lich coupling between the charge carrier and localised, polar phonon population. Once fully thermalised, the above bandgap energy is distributed amongst all phonon states associated with the polaron.
 
 %include IPR as proof for cage modes?

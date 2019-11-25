@@ -93,7 +93,7 @@ m_t = \begin{bmatrix}
 0 & 0 & 2 \\
 \end{bmatrix}
 $$
-This supercell expansion scales the magnitude of the lattice vectors in the $x$, $y$ and $z$ directions by a factor of $2\sqrt{2}$, $2\sqrt{2}$ and $2$ respectively. This expansion is more isotropic than a 192-atom supercell built from a diagonal transformation matrix, which would increase errors due to elastic effects. For example, $m_t=\mathrm{diag}(1,2,8)$ would increase the elastic error along the $x$ axis, as the local relaxation extends beyond a single unit cell.
+This supercell expansion scales the magnitude of the lattice vectors in the $x$, $y$ and $z$ directions by a factor of $2\sqrt{2}$, $2\sqrt{2}$ and $2$, respectively. This expansion is more isotropic than the 192-atom supercell built from a diagonal transformation matrix, which would increase errors due to elastic effects. For example, $m_t=\mathrm{diag}(1,2,8)$ would increase the elastic error along the $x$ axis, as the local relaxation extends beyond a single unit cell.
 For the atomic relaxations a spin-polarised calculation with the PBEsol functional was used.\autocite{Perdew2008a} The internal atomic coordinates were relaxed until the force acting on each atom was less than \SI{0.01}{\electronvolt\per\angstrom}. 
 
 For the electronic relaxations the hybrid exchange-correlation functional of Heyd-Scuseria-Ernzerhof (HSE06) was used.\autocite{Heyd2004a,Heyd2005a} The amount of exact Hartree-Fock exchange was adjusted to 0.43 to reproduce the correct bandgap and allow comparison with the previous literature.\autocite{Meggiolaro2018,Du2015} 
@@ -127,12 +127,12 @@ The anharmonic potential energy surface was generated from fitting a spline of o
 We consider electron capture from the neutral charge state to the negative charge state which has a singly energy-degenerate geometry.
 
 The 1D Schr\"{o}dinger equation for the potential energy surface was solved using a finite difference method implemented in the \textsc{brooglie} package\autocite{brooglie} to give the vibrational wavefunctions. 
-Using the one-dimensional approximation discussed above the electron-phonon coupling can be described with a single matrix element\autocite{Alkauskas2014}
+Using the one-dimensional approximation discussed above, the electron-phonon coupling can be described with a single matrix element:\autocite{Alkauskas2014}
 \begin{equation}
     W_\textrm{if} = \langle\Psi_\textrm{i}|\frac{\partial \hat{H}}{\partial Q}|\Psi_\textrm{f}\rangle,
 \end{equation}
 where $\Psi_{\{i,f\}}$ are many-electron wavefunctions and $\hat{H}$ is the many-body Hamiltonian of the system.
-We assume that the many-body Hamiltonian and many-electron wavefunctions can be replaced by their single particle counterparts, so that the electron-phonon coupling matrix element is given by\autocite{Alkauskas2014}
+We assume that the many-body Hamiltonian and many-electron wavefunctions can be replaced by their single particle counterparts, so that the electron-phonon coupling matrix element is given by:\autocite{Alkauskas2014}
 \begin{equation} \label{epcouplingterm}
     W_\textrm{if} = (\epsilon_\textrm{f}-\epsilon_\textrm{i})\langle\psi_\textrm{i}|\frac{\partial\psi_\textrm{f}}{\partial Q}\rangle,
 \end{equation}
@@ -142,7 +142,7 @@ Further details of the methodology can be found in the literature.\autocite{Alka
 
 \subsection{Calculation procedure for the optically excited states}
 
-The optically excited states of the $\mathrm{I}_2^-$ defect centres were calculated by Rachel Crespo Otero using the ``molecule in a crystal'' approach. The $\mathrm{I}_2^-$ molecule was embedded in a dielectric medium within the polarizable continuim model. Chloroform was considered as it has a dielectric constant of 4.8 which is close to the high-frequency dielectric constant of Iodine ($\epsilon^\infty=5.0$)\autocite{Leguy2016b}.
+The optically excited states of the $\mathrm{I}_2^-$ defect centres were calculated by Rachel Crespo Otero using the polarizable continuim (``molecule in a crystal'') model. The $\mathrm{I}_2^-$ molecule was embedded in a dielectric medium. Chloroform was considered as it has a dielectric constant of 4.8 which is close to the high-frequency dielectric constant of iodine ($\epsilon^\infty=5.0$).\autocite{Leguy2016b}
 To calculate the optical excitation energies linear-response time-dependent DFT was used as implemented in the Dalton2016 program.\autocite{Aidas2014} The PBE0 functional was used to describe exchange-correlation and relativistic effects were included using the spin-orbit coupling mean-field approach in combination with the Douglas-Kroll method.\autocite{Douglas1974}
 The all-electron basis set ANO-RCC, optimised for relativistic effects, was used for all atoms.
 

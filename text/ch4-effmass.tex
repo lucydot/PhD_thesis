@@ -182,12 +182,12 @@ Due to the exponential term in $W_i$, points with an energy difference larger th
 
 \subsubsection{Kane dispersion parameters}
 
-To calculate the parameters for the Kane dispersion a sixth order polynomial is fitted to the DFT calculated electronic band dispersion
+To calculate the parameters for the Kane dispersion a sixth order polynomial is fitted to the DFT calculated electronic band dispersion;
 \begin{equation}
 E = a + bk + ck^2 +dk^3 + ek^4 + fk^5 +gk^6.
 \end{equation}
 As in the parabolic dispersion fit, a least-squares method as implemented in the \textsc{NumPy} Python library minimises the summed square of the residuals and the fit is over an energy range of $0.25\,\mathrm{eV}$. To determine the transport effective mass the first derivative of this continuous function is used 
-\begin{equation}
+\begin{equation};
 \frac{\partial E}{\partial k}=b+ck+dk^2+ek^3+fk^4+gk^5.
 \end{equation} 
 The transport effective mass is plotted against energy to give values for $\alpha$ and the effective mass at the band edge. The dispersion is truncated where the second derivative changes sign as this corresponds to an inflexion point where the Kane dispersion is no longer valid. 
