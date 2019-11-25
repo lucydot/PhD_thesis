@@ -14,23 +14,41 @@ it's against the laws of physics.
 
 \section{Introduction} 
 
-In this chapter I present the theory and methodology that underlies the work in this thesis. The chapter starts with an introduction to quantum chemistry and Density Functional Theory (DFT): first I introduce the theoretical concepts, then I provide some details about how DFT is implemented in practice. In the second part of the chapter I outline how we can use DFT energies combined with a series of post-processing steps to predict defect formation energies and charge transition levels. The chapter ends with an introduction to the theory of lattice dynamics and how this theory is used to calculate the vibrational properties of a material. 
+In this chapter I present the theory and methodology that underlies the work in this thesis. The chapter starts with an introduction to quantum chemistry and Density Functional Theory (DFT): first I introduce the theoretical concepts, then I provide some details about how DFT is implemented in practice. Later in the chapter I outline how we can use DFT energies combined with a series of post-processing steps to predict defect formation energies and charge transition levels. The chapter ends with an introduction to the theory of lattice dynamics and how this theory is used to calculate the vibrational properties of a material. 
 
 \section{Quantum Chemistry}
 
 \subsection{The Schr\"{o}dinger equation}
 
 A fundamental postulate of quantum mechanics is that for any physical system there is an associated wavefunction that contains all the system information.
-The Schr\"{o}dinger equation describes the wavefunction $\Psi$ of a quantum mechanical system.  Once the Schr\"{o}dinger equation is solved, and a wavefunction is found, all the physical properties for that system follow. To take the simplest possible example, the time-independent non-relativistic Schr\"{o}dinger equation for a single particle can be written as:
-\begin{equation} \label{singleparticle}
-\left[\frac{-\hbar^2}{2m}\nabla^2+v_\textrm{ext}(\textbf{r})\right]\Psi(\textbf{r}) = E\Psi(\textbf{r}),
-\end{equation}
-where the first term in the bracket corresponds to the kinetic energy and the second term corresponds to the potential energy. For a single particle in a simple potential, such as the particle in a box system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). In this case, the Schr\"{o}dinger equation takes the form:
+The Schr\"{o}dinger equation describes the wavefunction $\Psi$ of a quantum mechanical system.  Once the Schr\"{o}dinger equation is solved, and a wavefunction is found, all the physical properties for that system follow. 
+The general form of the many-body Schr\"{o}dinger equation is
 \begin{equation}
-\left[\frac{-\hbar^2}{2m}\sum_{i=1}^N\nabla_i^2+\sum_{i=1}^Nv_{\textrm{ext}}(\textbf{r}_i)+\sum_{i<j}^N\frac{q_iq_j}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}\right]\Psi(\textbf{r}_i) = E\Psi(\textbf{r}_i),
+\hat{H}\Psi(\textbf{R}_I;\textbf{r}_i) = E\Psi(\textbf{R}_I;\textbf{r}_i),
 \end{equation}
-where the third term in the square bracket describes the electrostatic interaction between two particles of charges $q_i$ and $q_j$, and couples the coordinates of the particles together.
+where \Psi(\textbf{R}_I;\textbf{r}_i) is the many-body wavefunction that describes the state of the system with ions $I$ in position $\textbf{R}_I$ and electrons $i$ in position $\textbf{r}_i$.
+The Hamiltonian $\hat{H}$ is an operator corresponding to the sum of the kinetic and potential energies for all particles in a system. To take a simple example system, the time-independent non-relativistic Hamiltonian for a single hydrogen atom is:
+\begin{equation} \label{singleparticle}
+\hat{H} = \frac{-\hbar^2}{2M}\nabla_{\textbf{R}_i}^2+\frac{-\hbar^2}{2m}\nabla_{\textbf{r}_i}^2+\frac{-1}{4\pi\epislon_0d},
+\end{equation}
+where the first term is the kinetic energy of the hydrogen ion with mass $M$ and the second term is the kinetic energy of the electron with mass $m$. The third term is the potential energy due to the interaction between the ion and electron, separated at distance $d$ in a vacuum with permittivity $\epsilon_0$, and is described by a Coulomb term. 
 
+For systems with $N$ ions and $n$ electrons, the Hamiltonian is given by:
+\begin{equation} \label{manybodyH}
+\hat{H} = -\sum_{I=1}^N\frac{\hbar^2}{2M_I}\nabla_{\textbf{R}_i}^2-\sum_{i=1}^n\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}^n\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}-\sum_{i,I}^{n,N}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_j\rvert}+\sum_{I<J}^N\frac{Z_IZ_Je^2}{\lvert\textbf{R}_i-\textbf{R}_j\rvert}.
+\end{equation}
+The first two terms correspond to the kinetic energy of the ions and electrons, respectively. The third term describes the repulsive electrostatic interaction between two electrons with charge $e$, the fourth term describes the attractive electrostatic interaction between an electron and a positively charged ion with charge $Z_I$, and the fifth term describes the repulsive interaction between two ions.
+
+The Born-Oppenheimer approximation can be used to simplify Equation \ref{manybodyH}. This approximation assumes that, because the ions are significantly heavier than the electrons, the ions are moving slowly in space and the electrons can respond instantaneously to any ionic motion. The ions are treated as fixed points, and only the electron sub-system is treated quantum mechanically. 
+Under the Born-Oppenheimer approximation the many-body Hamiltonian becomes:
+
+\begin{equation}
+\hat{H} = -\sum_{i=1}^n\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}^n\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}-\sum_{i,I}^{n,N}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_j\rvert}
+\end{equation}
+
+\subsection{The Hartree and Hartree-Fock approximations}
+
+For a simple system, such as the particle in a box system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). 
 Hartree-Fock methods and Kohn-Sham DFT provide ways to obtain an approximate solution to the Schr\"{o}dinger equation for systems of interest. They do this by mapping the interacting problem onto a non-interacting problem with an effective potential $v_\textrm{ee}(\textbf{r})$. In doing so, the dimensionality of the problem is greatly reduced. Instead of solving one N-dimensional computationally intractable problem, N one-dimensional problems are solved (Figure \ref{decouple}). These methods provide a compromise between accuracy and computational efficiency.
 
 \begin{figure}[h]
@@ -40,9 +58,7 @@ Hartree-Fock methods and Kohn-Sham DFT provide ways to obtain an approximate sol
   \label{decouple}
 \end{figure}
 
-Throughout this chapter, unless stated otherwise, we use the Born-Oppenheimer approximation: the heavy atomic nuclei are treated as fixed points, and we solve the ground state quantum mechanical problem for the electrons only. This reduces the number of degrees of freedom of the system, a tactic that will be used again later in the chapter.
 
-\subsection{The Hartree-Fock equations}
 
 Hartree-Fock (HF) methods introduce the concept of fictitious non-interacting one-electron orbitals $\phi$ as a way of solving the Schr\"{o}dinger equation. The one-electron orbitals are combined using a Slater determinant to produce the HF many-body wavefunction.\autocite{Burke2007} 
 
@@ -53,6 +69,52 @@ Hartree Fock methods account for electron exchange $E_\mathrm{x}$, the repulsion
 
 Hartree-Fock methods do not give an exact solution to the Schr\"{o}dinger equation as the true many body wavefunction is not formed from a simple Slater determinant. As a result of using a Slater determinant, electron correlation is ignored. This is the correlated motion of electrons with anti-parallel spins as a result of their mutual coulombic repulsion.
 % from http://newton.ex.ac.uk/research/qsystems/people/coomer/dft_intro.html
+
+\subsection{Periodicity and Bl\"{o}ch states}
+
+The material studied in this thesis, MAPI, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach and model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that its properties do not depend on size. Born-von Karman (periodic) boundary conditions are used so that the infinite crystal is built from a repeating array of unit cells. There are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal. Any physically significant function of the crystal must have the same periodicity.
+
+In real materials translational symmetry can be broken, for example when there are point defects (as in Chapter \ref{ch:6-defects}). Furthermore, lattice vibrations have a periodicity larger than the unit cell. To model defects or lattice vibrations a supercell is built from multiple unit cells and this is used as the basic repeating unit (Figure \ref{translational}).
+
+\begin{figure}[h]
+\centering
+  \includegraphics[width=0.8\columnwidth]{figures/ch3/supercell.png}
+  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have $\nu>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model longer wavelength phonons. } 
+  \label{translational}
+\end{figure}
+% copy and paste phonon mode across to supercell picture?
+
+When the Schr\"{o}dinger equation is solved for a hydrogen atom the solution gives wavefunctions corresponding to the 1$s$, 2$s$, 2$p$, etc orbitals found in chemistry. When the Schr\"{o}dinger equation is solved for a periodic system, wavefunctions are formed by Bl\"{o}ch functions $\psi_{\textbf{k}}$:\autocite{Hoffmann1987}
+\begin{equation} \label{bloch}
+\psi_{\textbf{k}} = u_\textbf{k}e^{i\textbf{k}\cdot\textbf{r}}.
+\end{equation}   %could do a sketch of the two parts and the resulting part, and the periodic potential
+The Bl\"{o}ch function is formed from the product of a basis function $u_\textbf{k}$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $\textbf k$ is the crystal wave vector which forms a space known as reciprocal space; to understand the physical significance of $\textbf{k}$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$. The electron states can be described as a linear combination of hydrogen 1$s$ orbitals $u_n$ centred at each lattice point:
+
+\begin{equation} \label{1dbloch}
+\psi_k = \sum_nu_ne^{iknL}.
+\end{equation}
+
+$k=0$ corresponds to the lowest energy state, and $k=\frac{\pi}{L}$ corresponds to the highest energy state
+\begin{align}
+\psi_0 &= \sum_nu_ne^0 = u_0 +u_1 +u_2 +u_3 \dots \\
+\psi_{\frac{\pi}{L}} &= \sum_nu_ne^{i\pi n} = u_0 -u_1+u_2-u_3 \dots
+\end{align}
+Between these two extremes there is a continuum of states forming an electronic band (Figure \ref{bands}). 
+
+Returning to the mathematical description of any periodic system, Equation \ref{bloch} substituted into Equation \ref{singleparticle} gives:
+\begin{equation} \label{energyequation}
+\left[\frac{1}{2m}\left(\frac{\hbar}{i}\nabla+\hbar \textbf{k}\right)^2+v_\textrm{ext}(\textbf{r})\right]u_\textbf{k} = E(\textbf{k})u_\textbf{k}.
+\end{equation}
+For any $\textbf{k}$ we can solve Equation \ref{energyequation} with periodic boundary conditions to calculate the electronic bandstructure $E(\textbf{k})$. There are an infinite number of eigenvalues $E_n(\textbf{\textbf{k}})$, where $n$ is used to label a particular eigenvalue (band). As a result of crystal symmetry, $E_n(\textbf{k})$ is periodic and only $k$-vectors within a region of space known as the Brillouin zone ($|\textbf{k}|<\frac{\pi}{a}$) need to be considered.\autocite{Lundstrom2000} 
+%talk about high symmetry points and the naming conventions (greek in zone and latin a boundaries) - choose route through use aflowlib
+
+\begin{figure}[h]
+\centering
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/bands.png}
+  \caption[In-phase and out-of-phase states in an infinite 1D crystal]{(LHS) A one dimensional infinite lattice where the points are labelled $n=0,1,2\ldots$. The point spacing (unit cell length) is $L$, and there is a hydrogen 1$s$ orbital (basis function) $u_n$ centred at each point. The electron states for this system are formed from Bl\"{o}ch functions as given in Equation \ref{1dbloch}. (RHS) $k=0$ corresponds to a low energy in-phase state and $k=\frac{\pi}{L}$ corresponds to a high energy out-of-phase state. Between these two extremes there exists a continuum of states.} 
+  \label{bands}
+\end{figure}
+
 
 \section{Density Functional Theory: basic concepts} \label{DFTtheory}
 
@@ -150,48 +212,7 @@ Closest to heaven is the Random Phase Approximation (RPA), which uses all of the
 
 \subsection{Basis sets}
 
-The material studied in this thesis, MAPI, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach and model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that its properties do not depend on size. Born-von Karman (periodic) boundary conditions are used so that the infinite crystal is built from a repeating array of unit cells. There are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal. Any physically significant function of the crystal must have the same periodicity.
 
-In real materials translational symmetry can be broken, for example when there are point defects (as in Chapter \ref{ch:6-defects}). Furthermore, lattice vibrations have a periodicity larger than the unit cell. To model defects or lattice vibrations a supercell is built from multiple unit cells and this is used as the basic repeating unit (Figure \ref{translational}).
-
-\begin{figure}[h]
-\centering
-  \includegraphics[width=0.8\columnwidth]{figures/ch3/supercell.png}
-  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have $\nu>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model longer wavelength phonons. } 
-  \label{translational}
-\end{figure}
-% copy and paste phonon mode across to supercell picture?
-
-When the Schr\"{o}dinger equation is solved for a hydrogen atom the solution gives wavefunctions corresponding to the 1$s$, 2$s$, 2$p$, etc orbitals found in chemistry. When the Schr\"{o}dinger equation is solved for a periodic system, wavefunctions are formed by Bl\"{o}ch functions $\psi_{\textbf{k}}$:\autocite{Hoffmann1987}
-\begin{equation} \label{bloch}
-\psi_{\textbf{k}} = u_\textbf{k}e^{i\textbf{k}\cdot\textbf{r}}.
-\end{equation}   %could do a sketch of the two parts and the resulting part, and the periodic potential
-The Bl\"{o}ch function is formed from the product of a basis function $u_\textbf{k}$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $\textbf k$ is the crystal wave vector which forms a space known as reciprocal space; to understand the physical significance of $\textbf{k}$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$. The electron states can be described as a linear combination of hydrogen 1$s$ orbitals $u_n$ centred at each lattice point:
-
-\begin{equation} \label{1dbloch}
-\psi_k = \sum_nu_ne^{iknL}.
-\end{equation}
-
-$k=0$ corresponds to the lowest energy state, and $k=\frac{\pi}{L}$ corresponds to the highest energy state
-\begin{align}
-\psi_0 &= \sum_nu_ne^0 = u_0 +u_1 +u_2 +u_3 \dots \\
-\psi_{\frac{\pi}{L}} &= \sum_nu_ne^{i\pi n} = u_0 -u_1+u_2-u_3 \dots
-\end{align}
-Between these two extremes there is a continuum of states forming an electronic band (Figure \ref{bands}). 
-
-Returning to the mathematical description of any periodic system, Equation \ref{bloch} substituted into Equation \ref{singleparticle} gives:
-\begin{equation} \label{energyequation}
-\left[\frac{1}{2m}\left(\frac{\hbar}{i}\nabla+\hbar \textbf{k}\right)^2+v_\textrm{ext}(\textbf{r})\right]u_\textbf{k} = E(\textbf{k})u_\textbf{k}.
-\end{equation}
-For any $\textbf{k}$ we can solve Equation \ref{energyequation} with periodic boundary conditions to calculate the electronic bandstructure $E(\textbf{k})$. There are an infinite number of eigenvalues $E_n(\textbf{\textbf{k}})$, where $n$ is used to label a particular eigenvalue (band). As a result of crystal symmetry, $E_n(\textbf{k})$ is periodic and only $k$-vectors within a region of space known as the Brillouin zone ($|\textbf{k}|<\frac{\pi}{a}$) need to be considered.\autocite{Lundstrom2000} 
-%talk about high symmetry points and the naming conventions (greek in zone and latin a boundaries) - choose route through use aflowlib
-
-\begin{figure}[h]
-\centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/bands.png}
-  \caption[In-phase and out-of-phase states in an infinite 1D crystal]{(LHS) A one dimensional infinite lattice where the points are labelled $n=0,1,2\ldots$. The point spacing (unit cell length) is $L$, and there is a hydrogen 1$s$ orbital (basis function) $u_n$ centred at each point. The electron states for this system are formed from Bl\"{o}ch functions as given in Equation \ref{1dbloch}. (RHS) $k=0$ corresponds to a low energy in-phase state and $k=\frac{\pi}{L}$ corresponds to a high energy out-of-phase state. Between these two extremes there exists a continuum of states.} 
-  \label{bands}
-\end{figure}
 
 In the example of a 1D linear chain, the lattice periodic part of the Bl\"{o}ch function took the form of a hydrogen 1$s$ orbital. For more complex systems, $u_k$ can itself be expanded into a plane wave basis set whose wave vectors $\textbf{G}$ are reciprocal lattice vectors
 \begin{equation}
