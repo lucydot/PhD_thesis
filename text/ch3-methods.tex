@@ -14,29 +14,11 @@ it's against the laws of physics.
 
 \section{Introduction} 
 
-In this chapter I present the theory and methodology that underlies the work in this thesis. The chapter starts with an introduction to Density Functional Theory (DFT): first I introduce the theoretical concepts, then I provide some details about how DFT is implemented in practice. In the second part of the chapter I outline how we can use DFT energies combined with a series of post-processing steps to predict defect formation energies and charge transition levels. The chapter ends with an introduction to the theory of lattice dynamics and how this theory is used to calculate the vibrational properties of a material. 
+In this chapter I present the theory and methodology that underlies the work in this thesis. The chapter starts with an introduction to quantum chemistry and Density Functional Theory (DFT): first I introduce the theoretical concepts, then I provide some details about how DFT is implemented in practice. In the second part of the chapter I outline how we can use DFT energies combined with a series of post-processing steps to predict defect formation energies and charge transition levels. The chapter ends with an introduction to the theory of lattice dynamics and how this theory is used to calculate the vibrational properties of a material. 
 
-\section{Density Functional Theory} \label{DFTtheory}
+\section{Quantum Chemistry}
 
-Density Functional Theory is the most commonly used electronic structure method in condensed matter physics and quantum chemistry. 
-DFT can be used to predict the ground state properties of a material including electron density, total energy, equilibrium structure, vibrational frequencies, and properties relating to differences in total energy, such as defect formation energy or surface energy. 
-As DFT is a ground state theory we are not able to calculate properties relating to excited states and, without further calculations such as those outlined in Section \ref{sec:latticedynamics}, results do not incorporate the effects of temperature. 
-
-The theoretical basis for DFT was established in 1964 through the work of Walter Kohn and Pierre Hohenberg.\autocite{Hohenberg1964} This was further developed by Walter Kohn and Lu Jeu Sham to produce Kohn-Sham DFT.\autocite{Kohn1965} However it was not until the late 1980's approximations to the exchange-correlation functional were built so that DFT could be used in practice. 
-
-There are a growing number of codes that implement DFT. 
-Although some codes aspire to a blackbox approach, with the user protected from the underlying mechanics of DFT, for most systems of interest an understanding of the underlying approximations and parameters used are required for reliable results.
-
-\subsection{Basic concepts} %expand to include more equations, including slater determinant? and E\phi=H\phi.
-
-Firstly, a note on the name. A function accepts one or more numbers as input and produces a number as output. Likewise, a functional accepts one or more \textit{functions} as inputs, and produces a number as output. In DFT the functional is the electron density which is itself a function of space and time.
-
-Throughout this chapter, unless stated otherwise, we use the Born-Oppenheimer approximation: the heavy atomic nuclei are treated as fixed points, and we solve the ground state quantum mechanical problem for the electrons only. This reduces the number of degrees of freedom of the system, a tactic that will be used again later in the chapter.
-
-Although no one single text is followed, concepts for the underlying theory have been taken from References \cite{Burke2007}, \cite{Scuseria05} and \cite{Perdew2010}.
-
-
-\subsubsection{The Schr\"{o}dinger equation}
+\subsection{The Schr\"{o}dinger equation}
 
 A fundamental postulate of quantum mechanics is that for any physical system there is an associated wavefunction that contains all the system information.
 The Schr\"{o}dinger equation describes the wavefunction $\Psi$ of a quantum mechanical system.  Once the Schr\"{o}dinger equation is solved, and a wavefunction is found, all the physical properties for that system follow. To take the simplest possible example, the time-independent non-relativistic Schr\"{o}dinger equation for a single particle can be written as:
@@ -58,7 +40,9 @@ Hartree-Fock methods and Kohn-Sham DFT provide ways to obtain an approximate sol
   \label{decouple}
 \end{figure}
 
-\subsubsection{Hartree-Fock methods}
+Throughout this chapter, unless stated otherwise, we use the Born-Oppenheimer approximation: the heavy atomic nuclei are treated as fixed points, and we solve the ground state quantum mechanical problem for the electrons only. This reduces the number of degrees of freedom of the system, a tactic that will be used again later in the chapter.
+
+\subsection{The Hartree-Fock equations}
 
 Hartree-Fock (HF) methods introduce the concept of fictitious non-interacting one-electron orbitals $\phi$ as a way of solving the Schr\"{o}dinger equation. The one-electron orbitals are combined using a Slater determinant to produce the HF many-body wavefunction.\autocite{Burke2007} 
 
@@ -70,7 +54,26 @@ Hartree Fock methods account for electron exchange $E_\mathrm{x}$, the repulsion
 Hartree-Fock methods do not give an exact solution to the Schr\"{o}dinger equation as the true many body wavefunction is not formed from a simple Slater determinant. As a result of using a Slater determinant, electron correlation is ignored. This is the correlated motion of electrons with anti-parallel spins as a result of their mutual coulombic repulsion.
 % from http://newton.ex.ac.uk/research/qsystems/people/coomer/dft_intro.html
 
-\subsubsection{The Hohenberg-Kohn theorems}
+\section{Density Functional Theory: basic concepts} \label{DFTtheory}
+
+Density Functional Theory is the most commonly used electronic structure method in condensed matter physics and quantum chemistry. 
+DFT can be used to predict the ground state properties of a material including electron density, total energy, equilibrium structure, vibrational frequencies, and properties relating to differences in total energy, such as defect formation energy or surface energy. 
+As DFT is a ground state theory we are not able to calculate properties relating to excited states and, without further calculations such as those outlined in Section \ref{sec:latticedynamics}, results do not incorporate the effects of temperature. 
+
+The theoretical basis for DFT was established in 1964 through the work of Walter Kohn and Pierre Hohenberg.\autocite{Hohenberg1964} This was further developed by Walter Kohn and Lu Jeu Sham to produce Kohn-Sham DFT.\autocite{Kohn1965} However it was not until the late 1980's approximations to the exchange-correlation functional were built so that DFT could be used in practice. 
+
+There are a growing number of codes that implement DFT. 
+Although some codes aspire to a blackbox approach, with the user protected from the underlying mechanics of DFT, for most systems of interest an understanding of the underlying approximations and parameters used are required for reliable results.
+
+%\subsection{Basic concepts} %expand to include more equations, including slater determinant? and E\phi=H\phi.
+
+Firstly, a note on the name. A function accepts one or more numbers as input and produces a number as output. Likewise, a functional accepts one or more \textit{functions} as inputs, and produces a number as output. In DFT the functional is the electron density which is itself a function of space and time.
+
+
+
+Although no one single text is followed, concepts for the underlying theory have been taken from References \cite{Burke2007}, \cite{Scuseria05} and \cite{Perdew2010}.
+
+\subsection{The Hohenberg-Kohn theorems}
 
 The 1964 Hohenberg-Kohn paper\autocite{Hohenberg1964} contains two key results: (i) the ground state electron density uniquely determines the ground state electronic wave function and, following this, all properties of the system; (ii) the true density functional for the electronic energy assumes its minimum for the correct ground-state density. % quote this from? http://publish.uwo.ca/~vstarove/PDF/tacc_chapter24.pdf
 
@@ -92,14 +95,14 @@ In reference \cite{Hohenberg1964} Hohenberg and Kohn also demonstrate that the g
 % Is this right? I don't understand how the two electron wavefunction scales (4^2) - it's discussed in the 14 easy lessons.
 
 
-\subsubsection{The Kohn-Sham theorem} 
+\subsection{The Kohn-Sham formalism} 
 
 The Kohn-Sham theorem shows that for any interacting system with ground state density $\rho(\textbf{\textrm{r}})$ there exists a non-interacting system with the same ground-state $\rho(\textbf{\textrm{r}})$. To find the ground state energy of the real interacting system, the occupation numbers of \textit{fictitious}, non-interacting one-electron orbitals can be optimised. For a non-interacting system we know how to calculate $T\left[\rho\right]$ and this provides a good approximation to the true kinetic energy, so the Kohn-Sham theorem provide a more practical way to apply DFT. However, the exchange-correlation density functional $E_{\textrm{xc}}\left[\rho\right]$ is still not known. Only approximations to this functional can be made, leading to approximations for the electronic density, total energy and other system properties.
 
 
-\subsection{DFT in practice}
+\section{DFT in practice}
 
-\subsubsection{Exchange-correlation functionals}
+\subsection{Exchange-correlation functionals}
 To use Kohn-Sham DFT we must approximate the exchange-correlation functional, and there is a growing list of functionals at varying levels of complexity. John Perdew proposed `Jacob's Ladder' as a way to categorise these functionals (Figure \ref{jladder}). As a general rule, more accurate functionals are constructed by including more parameters and variables.
 
 \begin{figure}[h]
@@ -145,7 +148,7 @@ Closest to heaven is the Random Phase Approximation (RPA), which uses all of the
 % DFT was not designed to calculate bandgaps.
 % - However, since 2000 functionals have been better at giving total energy but they don’t give accurate density: straying away from ab-initio into a fitting exercise: DFT is straying from the path towards an exact functional
 
-\subsubsection{Exploiting symmetry}
+\subsection{Basis sets}
 
 The material studied in this thesis, MAPI, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach and model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that its properties do not depend on size. Born-von Karman (periodic) boundary conditions are used so that the infinite crystal is built from a repeating array of unit cells. There are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal. Any physically significant function of the crystal must have the same periodicity.
 
@@ -190,8 +193,6 @@ For any $\textbf{k}$ we can solve Equation \ref{energyequation} with periodic bo
   \label{bands}
 \end{figure}
 
-\subsubsection{Basis Sets}   %valence bands and conductions bands?
-
 In the example of a 1D linear chain, the lattice periodic part of the Bl\"{o}ch function took the form of a hydrogen 1$s$ orbital. For more complex systems, $u_k$ can itself be expanded into a plane wave basis set whose wave vectors $\textbf{G}$ are reciprocal lattice vectors
 \begin{equation}
 u_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i\textbf{G}\cdot\textbf{r}},
@@ -202,11 +203,13 @@ and the complete expanded Kohn-Sham orbital can be expressed as
 \end{equation}
 As a plane wave is inherently periodic this basis set is often used for extended systems. The software used for the DFT calculations in this thesis, \textsc{VASP}\autocite{Kresse1996}, uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals are more likely to be used.
 
+\subsection{Pseudopotentials}
+
 Sudden changes in electron density are hard to capture using a plane wave basis set; to take an extreme example, the fourier decomposition of a simple top hat in real space requires an infinite summation in reciprocal space. This can be problematic when describing the region around the nucleus where there are strong oscillations in the KS orbitals. However these oscillations are associated with the core electrons which are less important in chemical bonding, and so pseudopotentials - an effective potential without oscillations - can be used. It has been established that for certain systems pseudopotentials are as precise as all-electron calculations.\autocite{Lejaeghere2016}
 %http://helper.ipam.ucla.edu/publications/maws3/maws3_6085.pdf
 %http://davidbowler.github.io/AtomisticSimulations//blog/dft-reliability#R3
 
-\subsubsection{Optimising the atomic and electronic structure}
+\subsection{Optimising the atomic and electronic structure}
 
 In this section the process of optimising the atomic and electronic structure of a system towards the ground-state (minimum energy) configuration is outlined. 
 
@@ -220,7 +223,8 @@ DFT is also used to find the ground state atomic structure. Structures calculate
   \caption[Nested iterative method for geometry optimisation]{Nested iterative method for geometry optimisation. The electronic structure relaxation (dashed lines) is nested within the atomic structure relaxation (solid lines). $v_\textrm{ext}(\textbf{r})$, $v_\textrm{c}(\textbf{r})$ and $v_\textrm{xc}(\textbf{r})$ correspond to the external, classical (electrostatic) and exchange-correlation potentials respectively.} 
   \label{SCF}
 \end{figure}
-\subsubsection{The limits of DFT}
+
+\subsection{The limits of DFT}
 
 
 \textbf{Theoretical limitations} 
