@@ -14,7 +14,7 @@ it's against the laws of physics.
 
 \section{Introduction} 
 
-In this chapter I present the theory and methodology that underlies the work in this thesis. The chapter starts with an introduction to quantum chemistry and Density Functional Theory (DFT): first I introduce the theoretical concepts, then I provide some details about how DFT is implemented in practice. Later in the chapter I outline how we can use DFT energies combined with a series of post-processing steps to predict defect formation energies and charge transition levels. The chapter ends with an introduction to the theory of lattice dynamics and how this theory is used to calculate the vibrational properties of a material. 
+In this chapter I present the theory and methodology that underlies the work in this thesis. The chapter starts with an introduction to quantum chemistry and Density Functional Theory (DFT); first I introduce the theoretical concepts, then I provide some details about how DFT is implemented in practice. Later in the chapter I outline how we can use DFT energies combined with a series of post-processing steps to predict defect formation energies and charge transition levels. The chapter ends with an introduction to the theory of lattice dynamics and how this theory is used to calculate the vibrational properties of a material. 
 
 \section{Quantum Chemistry}
 
@@ -22,20 +22,20 @@ In this chapter I present the theory and methodology that underlies the work in 
 
 A fundamental postulate of quantum mechanics is that for any physical system there is an associated wavefunction that contains all the system information.
 The Schr\"{o}dinger equation describes the wavefunction $\Psi$ of a quantum mechanical system.  Once the Schr\"{o}dinger equation is solved, and a wavefunction is found, all the physical properties for that system follow. 
-The general form of the many-body Schr\"{o}dinger equation is\autocite{Kaxiras2007}
+The general form of the many-body Schr\"{o}dinger equation is:\autocite{Kaxiras2007}
 \begin{equation}
 \hat{H}\Psi(\{\textbf{R}_I\};\{\textbf{r}_i\}) = E\Psi(\{\textbf{R}_I\};\{\textbf{r}_i\}),
 \end{equation}
-where $\Psi(\{\textbf{R}_I\};\{\textbf{r}_i\})$ is the many-body wavefunction that describes the state of the system with ions $\{I\}$ in positions $\{textbf{R}_I\}$ and electrons $\{i\}$ in positions $\{\textbf{r}_i\}$.
+where $\Psi(\{\textbf{R}_I\};\{\textbf{r}_i\})$ is the many-body wavefunction that describes the state of the system with ions $\{I\}$ in positions $\{\textbf{R}_I\}$ and electrons $\{i\}$ in positions $\{\textbf{r}_i\}$.
 The Hamiltonian $\hat{H}$ is an operator corresponding to the sum of the kinetic and potential energies for all particles in a system. To take a simple example system, the time-independent non-relativistic Hamiltonian for a single hydrogen atom is:
 \begin{equation} \label{singleparticle}
-\hat{H} = \frac{-\hbar^2}{2M}\nabla_{\textbf{R}}^2+\frac{-\hbar^2}{2m}\nabla_{\textbf{r}}^2+\frac{-1}{\lvert\textbf{R}-\textbf{r}\rvert},
+\hat{H} = -\frac{\hbar^2}{2M}\nabla_{\textbf{R}}^2-\frac{\hbar^2}{2m}\nabla_{\textbf{r}}^2-\frac{e^2}{\lvert\textbf{R}-\textbf{r}\rvert},
 \end{equation}
 where the first term is the kinetic energy of the hydrogen ion with mass $M$ and the second term is the kinetic energy of the electron with mass $m$. The third term is the potential energy due to the interaction between the ion and electron and is described by a Coulomb term. 
 
 For systems with $N$ ions and $n$ electrons, the Hamiltonian is given by:
 \begin{equation} \label{manybodyH}
-\hat{H} = -\sum_{I=1}^N\frac{\hbar^2}{2M_I}\nabla_{\textbf{R}_i}^2-\sum_{i=1}^n\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}^n\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}-\sum_{i,I}^{n,N}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_j\rvert}+\sum_{I<J}^N\frac{Z_IZ_Je^2}{\lvert\textbf{R}_i-\textbf{R}_j\rvert}.
+\hat{H} = -\sum_{I=1}^N\frac{\hbar^2}{2M_I}\nabla_{\textbf{R}_I}^2-\sum_{i=1}^n\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}^n\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}-\sum_{i}^{n}\sum_{I}^{N}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_i\rvert}+\sum_{I<J}^N\frac{Z_IZ_Je^2}{\lvert\textbf{R}_i-\textbf{R}_j\rvert}.
 \end{equation}
 The first two terms correspond to the kinetic energy of the ions and electrons, respectively. The third term describes the repulsive electrostatic interaction between two electrons with charge $e$, the fourth term describes the attractive electrostatic interaction between an electron and a positively charged ion with charge $Z_I$, and the fifth term describes the repulsive interaction between two ions.
 
@@ -43,40 +43,40 @@ The Born-Oppenheimer approximation can be used to simplify Equation \ref{manybod
 Under the Born-Oppenheimer approximation the many-body Hamiltonian becomes:
 
 \begin{equation}
-\hat{H} = -\sum_{i=1}^n\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}^n\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}-\sum_{i,I}^{n,N}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_j\rvert}
+\hat{H} = -\sum_{i=1}^n\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}^n\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}-\sum_{i}^{n}\sum_{I}^{N}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_i\rvert}.
 \end{equation}
 
 \subsection{The Hartree and Hartree-Fock approximations}
 
-For a simple system, such as the particle in a box system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly for $\Psi(\textbf{r})$. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). 
-Hartree-Fock methods and Kohn-Sham DFT provide ways to obtain an approximate solution to the Schr\"{o}dinger equation for systems of interest. They do this by mapping the interacting problem onto a non-interacting problem with an effective potential $v_\textrm{ee}(\textbf{r})$. In doing so, the dimensionality of the problem is greatly reduced. Instead of solving one N-dimensional computationally intractable problem, N one-dimensional problems are solved (Figure \ref{decouple}). These methods provide a compromise between accuracy and computational efficiency.
+For a simple system, such as the particle in a box system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). 
+Hartree-Fock methods and Kohn-Sham DFT provide ways to obtain an approximate solution to the Schr\"{o}dinger equation for systems of interest. They do this by mapping the interacting problem onto a non-interacting problem with an effective potential. In doing so, the dimensionality of the problem is greatly reduced. Instead of solving one N-dimensional computationally intractable problem, N one-dimensional problems are solved (Figure \ref{decouple}). These methods provide a compromise between accuracy and computational efficiency.
 
 \begin{figure}[h]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch3/decouple.png}
-  \caption[Interacting and non-interacting particle systems]{Schematic outlining the equivalence between a system of interacting particles and a system of non-interacting particles in an effective potential. The underlying idea is that an interaction can be replaced by the equivalent potential. This maps the interacting 3N-dimensional problem onto N 3-dimensional problems. A consequence of this mapping is that the effective potential depends on the electron density which is itself dependent on the effective potential -- a self-consistent set of equations is formed. For the non-interacting case $\phi_i$ is used to denote a single particle wavefunction.} %update so q1q2 in couple term in picture
+  \caption[Interacting and non-interacting particle systems]{Schematic outlining the equivalence between a system of interacting particles and a system of non-interacting particles in an effective potential $v_{ee}$. The underlying idea is that an interaction can be replaced by the equivalent potential. This maps the interacting 3N-dimensional problem onto N 3-dimensional problems. A consequence of this mapping is that the effective potential depends on the electron density which is itself dependent on the effective potential -- a self-consistent set of equations is formed. For the non-interacting case $\phi_i$ is used to denote a single particle wavefunction. $v_{\textrm{ext}}$ describes the interaction between an electron and the surrounding static ions.} %update so q1q2 in couple term in picture
   \label{decouple}
 \end{figure}  %%% NEED TO ADJUST FIGURE
 
-The Hartree approximation assumes that the many-body wavefunction $\Psi(\{\textbf{r}_i\})^H$ is simply a product of independent single electron states $\{\phi_i(\textbf{r}_i)\}$:\autocite{Hartree1928}
+The Hartree approximation assumes that the many-body wavefunction $\Psi^{\textrm{H}}(\{\textbf{r}_i\})$ is simply a product of independent single electron states $\{\phi_i(\textbf{r}_i)\}$:\autocite{Hartree1928}
 \begin{equation}
-\Psi^H(\{\textbf{r}_i\}) = \phi_1(\textbf{r}_1)\phi_2(\textbf{r}_2)\ldots\phi_n(\textbf{r}_n),
+\Psi^{\textrm{H}}(\{\textbf{r}_i\}) = \phi_1(\textbf{r}_1)\phi_2(\textbf{r}_2)\ldots\phi_n(\textbf{r}_n),
 \end{equation}
 
 and the system Hamiltonian becomes the sum over the Hamiltonian of each single electron:
 \begin{align}
-\hat{H} &= \sum_{i=1}^n\left(-\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 - \sum_{I=1}^N\frac{e^2Z_I}{\lvert\textbf{R}_I-\textbf{r}_j\rvert} + v_i\right) \\
-v_i &= \sum_{i<j}^n \int\frac{\rho_j}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}dr_{ij}
-rho_j &= \lvert\phi_j\rvert^2e
+\hat{H} &= \sum_{i=1}^n\left(-\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 - \sum_{I=1}^N\frac{e^2Z_I}{\lvert\textbf{R}_I-\textbf{r}_i\rvert} + V_i^\textrm{H}\right) \\
+V_i^\textrm{H} &= e^2\sum_{j\neq i}^n \int\frac{\rho_j}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}\textrm{d}\textbf{r}_{j} \\
+\rho_j &= \lvert\phi_j\rvert^2.
 \end{align}
 
-where the third term $v_i$ corresponds to the average electrostatic interaction between electron $i$ and all electrons. The approach is called the `mean-field approximation' and $v_i$ is the `Hartree potential'. A self-consistent field method (discussed further in Section \ref{SCFsubsection}) is needed to solve the Schr\"{o}dinger equation for $\Psi^H$, as the Hartree potential depends on the charge density $rho_j$, which itself depends on the single-particle wavefunction $\phi_j$.
+The $V_i^\textrm{H}$ term corresponds to the average electrostatic repulsion between electrons and is called the Hartree potential. A self-consistent field method (discussed further in Section \ref{SCFsubsection}) is needed to solve the Schr\"{o}dinger equation for $\Psi^{\textrm{H}}$, as the Hartree potential depends on the charge density $\rho_j$, which itself depends on the single-particle wavefunction $\phi_j$.
 % INCLUDE HERE THE SELF INTERACTION ERROR?
 %Hartree-Fock (HF) methods introduce the concept of fictitious non-interacting one-electron orbitals $\phi$ as a way of solving the Schr\"{o}dinger equation. The one-electron orbitals are combined using a Slater determinant to produce the HF many-body wavefunction.\autocite{Burke2007} 
 
-The Pauli Exclusion Principle states that the many-body wavefunction of an electron (or any particle with a half-integer spin quantum number) must be antisymmetric with respect to exchange - i.e. the wavefunction must change sign if any two electrons are exchanged.\autocite{Kaxiras2007} The Hartree many-body wavefunction $\Psi^H$ does not obey this rule. However the single electron states $\phi_i$ can be combined to form a Slater determinant,\autocite{Slater1929} which is antisymmetrical with respect to exchange.
+The Pauli Exclusion Principle states that the many-body wavefunction of an electron (or any particle with a half-integer spin quantum number) must be antisymmetric with respect to exchange - i.e. the wavefunction must change sign if any two electrons are exchanged.\autocite{Kaxiras2007} The Hartree many-body wavefunction $\Psi^{\textrm{H}}$ does not obey this rule. However the single electron states $\{\phi_i\}$ can be combined to form a Slater determinant,\autocite{Slater1929} which is antisymmetrical with respect to exchange:
 \begin{equation}
-\Psi(\{\textbf{r}_i\})^{HF} = \frac{1}{\sqrt{N!}}
+\Psi^{\textrm{HF}}(\{\textbf{r}_i\}) = \frac{1}{\sqrt{N!}}
 \begin{vmatrix}
 \phi_1(\textbf{r}_1)&\phi_1(\textbf{r}_2)&\ldots&\phi_1(\textbf{r}_n) \\
 \phi_2(\textbf{r}_1)&\phi_2(\textbf{r}_2)&\ldots&\phi_2(\textbf{r}_n) \\
@@ -84,17 +84,17 @@ The Pauli Exclusion Principle states that the many-body wavefunction of an elect
 \cdot & \cdot & & \cdot \\
 \cdot & \cdot & & \cdot \\
 \phi_n(\textbf{r}_1)&\phi_n(\textbf{r}_2)&\ldots&\phi_n(\textbf{r}_n) \\
-\end{vmatrix}
+\end{vmatrix}.
 \end{equation}
 
-Forming a many-body wavefunction $\Psi(\{\textbf{r}_i\})^{HF}$ from the Slater determinant of independent single particle electron is the Hartree-Fock approximation. To solve the Schr\"{o}dinger equation and find the ground state (lowest energy) solution for $\Psi(\{\textbf{r}_i\})^{HF}$ a variational method can be used.\autocite{Fock1930} In addition, the energy of each single particle state $\epsilon_i$ is minimised with respect to $\phi_i$ and $\{\phi_i\}$ form an orthonormal basis. Applying these principles results in the Hartree-Fock equations\autocite{Fock1930}
+Forming a many-body wavefunction $\Psi^{\textrm{HF}}(\{\textbf{r}_i\})$ from the Slater determinant of single particle states is the Hartree-Fock approximation. To solve the Schr\"{o}dinger equation and find the ground state (lowest energy) solution for $\Psi^{\textrm{HF}}(\{\textbf{r}_i\})$ a variational method can be used.\autocite{Fock1930} In addition, the energy of each single particle state $\epsilon_i$ is minimised with respect to $\phi_i$ and $\{\phi_i\}$ form an orthonormal basis. Applying these principles results in the Hartree-Fock equations:\autocite{Fock1930}
 \begin{align}
-\left[-\frac{\hbar^2}{2m_i}]\nabla_{\textbf{r}_i}^2  -\sum_{i,I}^{n,N}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_j\rvert} &+ v_i\right]\phi_i(\mathbf{r})+\int d\mathbf{r'}V_x(\mathbf{r},\mathbf{r'})\phi_i(\mathbf{r'}) = \epsilon_i\phi_i(\mathbf{r}), \\
-rho_j &= e\sum_{i=1}^n\lvert\phi_i(\mathbf{r})\rvert^2 \\
-V_x(\mathbf{r},mathbf{r'}) &= - \sum_{j=1}^n\frac{\phi_i^*(\mathbf{r'})\phi_j(\mathbf{r})}{\lvert\mathbf{r}-\mathbf{r'}\rvert}
+\bigg[-\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2  -\sum_{I}^{N}\sum_{i}^{n}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_i\rvert} &+ V_i^\textrm{H}\bigg]\phi_i(\mathbf{r}_i)-V_i^\textrm{X}(\mathbf{r}_i,\mathbf{r}_{j})\phi_j(\mathbf{r}_i) = \epsilon_i\phi_i(\mathbf{r}_i), \\
+V_i^\textrm{X}(\mathbf{r}_i,\mathbf{r}_j) &= e^2\sum_{j=1}^n\int \frac{\phi_j^*(\mathbf{r}_j)\phi_i(\mathbf{r}_j)}{\lvert\mathbf{r}_i-\mathbf{r}_j\rvert}\textrm{d}\mathbf{r}_{j}
 \end{align}
+% http://nucleartalent.github.io/Course2ManyBodyMethods/doc/pub/hfock/html/hfock-bs.html
 
-$V_\mathrm{x}$ accounts for the spin exchange interaction between electrons, whereby two identical electrons (i.e. electrons with the same spin and momentum) cannot occupy the same space at the same time. This results in a repulsion between electrons with parallel spins.
+$V_i^\textrm{X}$ accounts for the spin exchange interaction between electrons, whereby two identical electrons (i.e. electrons with the same spin and momentum) cannot occupy the same space at the same time. This results in a repulsion between electrons with parallel spins.
 %IT CANCELS ERROR FROM THE SELF INTERACTION OF THE HARTREE TERM
 
 Hartree-Fock methods build upon the classical mean-field approach of the Hartree approximation to include the quantum spin nature of electrons.
@@ -110,7 +110,7 @@ In real materials translational symmetry can be broken, for example when there a
 \begin{figure}[h]
 \centering
   \includegraphics[width=0.8\columnwidth]{figures/ch3/supercell.png}
-  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have $\nu>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model longer wavelength phonons. } 
+  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have $\lambda>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model longer wavelength phonons. } 
   \label{translational}
 \end{figure}
 % copy and paste phonon mode across to supercell picture?
@@ -119,30 +119,21 @@ When the Schr\"{o}dinger equation is solved for a single atom the solution gives
 \begin{equation} \label{bloch}
 \psi_{\textbf{k}} = u_\textbf{k}e^{i\textbf{k}\cdot\textbf{r}}.
 \end{equation}   %could do a sketch of the two parts and the resulting part, and the periodic potential
-The Bl\"{o}ch function is formed from the product of a basis function $u_\textbf{k}$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $\textbf{k}$ is the crystal wave vector which forms a space known as reciprocal space; to understand the physical significance of $\textbf{k}$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$. The electron states can be described as a linear combination of hydrogen 1$s$ orbitals $u_n$ centred at each lattice point:
+The Bl\"{o}ch function is formed from the product of a basis function $u_\textbf{k}$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $\textbf{k}$ is the crystal wave vector which forms a space known as reciprocal space. To understand the physical significance of $\textbf{k}$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$. The electron states can be described as a linear combination of hydrogen 1$s$ orbitals $u_n$ centred at each lattice point:
 
 \begin{equation} \label{1dbloch}
-\psi_k = \sum_nu_ne^{iknL}.
+\psi_k = \sum_nu_ne^{iknL},
 \end{equation}
 
-$k=0$ corresponds to the lowest energy state, and $k=\frac{\pi}{L}$ corresponds to the highest energy state
-\begin{align}
-\psi_0 &= \sum_nu_ne^0 = u_0 +u_1 +u_2 +u_3 \dots \\
-\psi_{\frac{\pi}{L}} &= \sum_nu_ne^{i\pi n} = u_0 -u_1+u_2-u_3 \dots
-\end{align}
+where $k=0$ corresponds to the lowest energy in-phase state, and $k=\frac{\pi}{L}$ corresponds to the highest energy out-of-phase state.
 Between these two extremes there is a continuum of states forming an electronic band (Figure \ref{bands}). 
-
-Returning to the mathematical description of any periodic system, Equation \ref{bloch} substituted into Equation \ref{singleparticle} gives:
-\begin{equation} \label{energyequation}
-\left[\frac{1}{2m}\left(\frac{\hbar}{i}\nabla+\hbar \textbf{k}\right)^2+v_\textrm{ext}(\textbf{r})\right]u_\textbf{k} = E(\textbf{k})u_\textbf{k}.
-\end{equation}
-For any $\textbf{k}$ we can solve Equation \ref{energyequation} with periodic boundary conditions to calculate the electronic bandstructure $E(\textbf{k})$. There are an infinite number of eigenvalues $E_n(\textbf{\textbf{k}})$, where $n$ is used to label a particular eigenvalue (band). As a result of crystal symmetry, $E_n(\textbf{k})$ is periodic and only $k$-vectors within a region of space known as the Brillouin zone ($|\textbf{k}|<\frac{\pi}{a}$) need to be considered.\autocite{Lundstrom2000} 
+For any $\textbf{k}$ we can solve the Schr\"{o}dinger equation with periodic boundary conditions to calculate the electronic bandstructure $E(\textbf{k})$. There are an infinite number of eigenvalues $E_n(\textbf{\textbf{k}})$, where $n$ is used to label a particular eigenvalue (band). As a result of crystal symmetry, $E_n(\textbf{k})$ is periodic and only $k$-vectors within a region of space known as the Brillouin zone ($|\textbf{k}|<\frac{\pi}{a}$) need to be considered.\autocite{Lundstrom2000} 
 %talk about high symmetry points and the naming conventions (greek in zone and latin a boundaries) - choose route through use aflowlib
 
 \begin{figure}[h]
 \centering
   \includegraphics[width=1.0\columnwidth]{figures/ch3/bands.png}
-  \caption[In-phase and out-of-phase states in an infinite 1D crystal]{(LHS) A one dimensional infinite lattice where the points are labelled $n=0,1,2\ldots$. The point spacing (unit cell length) is $L$, and there is a hydrogen 1$s$ orbital (basis function) $u_n$ centred at each point. The electron states for this system are formed from Bl\"{o}ch functions as given in Equation \ref{1dbloch}. (RHS) $k=0$ corresponds to a low energy in-phase state and $k=\frac{\pi}{L}$ corresponds to a high energy out-of-phase state. Between these two extremes there exists a continuum of states.} 
+  \caption[In-phase and out-of-phase states in an infinite 1D crystal]{(LHS) A one dimensional infinite lattice where the points are labelled $n=0,1,2\ldots$. The point spacing (unit cell length) is $L$, and there is a hydrogen 1$s$ orbital $u_n$ centred at each point. The electron states for this system are formed from Bl\"{o}ch functions as given in Equation \ref{1dbloch}. (RHS) $k=0$ corresponds to a low energy in-phase state and $k=\frac{\pi}{L}$ corresponds to a high energy out-of-phase state. Between these two extremes there exists a continuum of states.} 
   \label{bands}
 \end{figure}
 
@@ -193,7 +184,8 @@ The Kohn-Sham theorem shows that for any interacting system with ground state de
 \section{DFT in practice}
 
 \subsection{Exchange-correlation functionals}
-To use Kohn-Sham DFT we must approximate the exchange-correlation functional, and there is a growing list of functionals at varying levels of complexity. John Perdew proposed `Jacob's Ladder' as a way to categorise these functionals (Figure \ref{jladder}). As a general rule, more accurate functionals are constructed by including more parameters and variables.
+% explain here that Exc is defined by a difference in known energies, as is electron correlation
+To use Kohn-Sham DFT we must approximate the exchange-correlation functional $E_{\textrm{xc}}\left[\rho\right]$, and there is a growing list of functionals at varying levels of complexity. John Perdew proposed `Jacob's Ladder' as a way to categorise these functionals (Figure \ref{jladder}). As a general rule, more accurate functionals are constructed by including more parameters and variables.
 
 \begin{figure}[h]
 \centering
@@ -207,29 +199,41 @@ To use Kohn-Sham DFT we must approximate the exchange-correlation functional, an
 
 At the lowest rung of the ladder is the local density approximation where only one variable, the electron density for an infinitesimal 3-dimensional volume element, is used to calculate the exchange correlation energy. The exchange energy is calculated exactly
 \begin{equation}
-E_{\textrm{LDA,x}}\left[\rho\right] = {-\frac{3}{4}\left(\frac{3}{\pi}\right)^{\frac{1}{3}}\rho^{\frac{4}{3}}\left(\textbf{r}\right)d\textbf{r}},
+E_{\textrm{LDA,x}}\left[\rho\right] = {-\frac{3}{4}\left(\frac{3}{\pi}\right)^{\frac{1}{3}}\int \rho^{\frac{4}{3}}\left(\textbf{r}\right)d\textbf{r}},
 \end{equation}
 and the correlation energy is calculated numerically by fitting to many-body quantum Monte Carlo calculations for an homogeneous electron gas.\autocite{Ceperley1980} %Ceperley and Alder
 Strictly, the LDA should only be used for slowly varying densities, however it has performed surprisingly well for predicting the properties of a variety of atoms, solids and molecules. This is due to a cancellation of errors: LDA underestimates the exchange energy and overestimates the correlation energy.\autocite{Burke2007} However there is a tendency for LDA to overestimate the binding energy and underestimate lattice parameters. This is a particularly pronounced problem in weakly bonded systems.
 
-
 \textbf{Generalised Gradient Approximation}
 
-At the next level of theory, two variables are used to determine the exchange-correlation energy: electron density and the density gradient. Due to their dependence on the GGA functionals are semi-local. The parameters of GGA functionals can be derived from physical constraints (non-empirical, as in the widely used PBE functional), or obtained from fitting procedures (empirical, as in the case of the B88 functional). GGAs improve the over-binding of LDA, but tend to underestimate the bandgap of the material.
-
+At the next level of theory, two variables are used to determine the exchange-correlation energy: electron density and the density gradient. Due to their dependence on the electron density gradient GGA functionals are classed as semi-local. The parameters of GGA functionals can be derived from physical constraints (non-empirical, as in the widely used PBE functional), or obtained from fitting procedures (empirical, as in the case of the B88 functional). GGAs improve the over-binding of LDA, but tend to underestimate the bandgap of the material.
 
 \textbf{Hybrid functionals} 
 
-In DFT each electron interacts with itself as the potential derives from the total charge density of the system. This error is particularly pronounced for localised states, after trapping an electron or hole at a defect site for example. Hybrid functionals combine GGA functionals with a proportion of the exact HF exchange energy to partially correct the self-interaction error. The simplest hybrid functional takes the form
-\begin{equation}
-E_{\textrm{hybrid,xc}}\left[\rho\right] = \alpha E_{\textrm{exact,x}} + \left(1-\alpha\right)E_{\textrm{GGA,xc}}.
+In DFT each electron interacts with itself as the potential derives from the total charge density of the system. This error is particularly pronounced for localised states, after trapping an electron or hole at a defect site for example. Hybrid functionals combine GGA functional exchange-correlation energy $E_{\textrm{GGA,xc}}$ with a proportion of the exact HF exchange energy $E_{\textrm{HF,x}}$ to partially correct the self-interaction error. The simplest hybrid functional takes the form:\autocite{Henderson2008}
+\begin{equation} \label{simplehybrid}
+E_{\textrm{hybrid,xc}}\left[\rho\right] = \alpha E_{\textrm{HF,x}} + \left(1-\alpha\right)E_{\textrm{GGA,xc}}.
 \end{equation}
-In some studies the proportion of exact exchange is tuned to reproduce the property of interest correctly. For example, $\alpha=0.43$ is commonly used to correctly reproduce the bandgap of the hybrid halide perovskite MAPI. %
-% good stuff here incl. schematic: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4892865/#S3title
-% - Linked to Koopman’s linearity:E(N) – E(N-1) = En
-% See Janak 1978. 
+In some studies the proportion of exact exchange is tuned to reproduce the property of interest correctly. For example, $\alpha=0.43$ is commonly used to correctly reproduce the bandgap of the hybrid halide perovskite MAPI.\autocite{Whalley2017} %
 
- 
+Range separated hybrid functionals are a generalisation of the above, without the requirement that $\alpha$ is constant.
+To introduce range separated hybrids more formally we define the exchange-correlation hole $h_\mathrm{xc}$ as:
+\begin{equation}
+h_\mathrm{xc}(\mathbf{r}_1|\mathbf{r}_{12}) = \rho(\mathbf{r}_1|\mathbf{r}_12)-\rho(\mathbf{r}_1),
+\end{equation}
+where $\rho(\mathbf{r}_1|\mathbf{r}_{12})$ is the probability density for simultaneously finding one electron at position $\mathbf{r}_1$ and another electron at a distance of $|\mathbf{r}_{12}|$.
+The term \textit{hole} is used as $h_\mathrm{xc}$ describes a region in space around an electron in which the probability of finding another electron is close to zero.
+
+The exchange-correlation hole for the simple hybrid functional (Equation \ref{simplehybrid}) is:\autocite{Henderson2008}
+\begin{equation}
+h_\mathrm{xc}(\mathbf{r}_1|\mathbf{r}_{12}) = \alpha h_{\textrm{HF,x}}(\mathbf{r}_1|\mathbf{r}_{12})+ \left(1-\alpha\right)h_{\textrm{GGA,x}}(\mathbf{r}_1|\mathbf{r}_{12}),
+\end{equation}
+whereas for range separated hybrid functionals the proportion of exact exchange used to determine the exchange-correlation hole depends upon the distance between the two electrons:\autocite{Henderson2008}
+\begin{equation}
+h_\mathrm{xc}(\mathbf{r}_1|\mathbf{r}_{12}) = \alpha(\mathbf{r}_{12}) h_{\textrm{HF,x}}(\mathbf{r}_1|\mathbf{r}_{12})+ \left(1-\alpha(\mathbf{r}_{12})\right)h_{\textrm{GGA,x}}(\mathbf{r}_1|\mathbf{r}_{12}).
+\end{equation}
+The hybrid functional HSE06\autocite{Heyd2003} is used to generate many of the results in this thesis. This is a screened range-separated functional where the exact exchange is used for small $\mathbf{r}_{12}$ only. 
+
 \textbf{Random Phase Approximation} 
 
 Closest to heaven is the Random Phase Approximation (RPA), which uses all of the Kohn-Sham orbitals (occupied and unoccupied) as input variables. The functionals listed so far are inaccurate when there are significant long range effects, as they have no information about the electron density far from an electron. The RPA is able to correctly predict long-range interactions, such as the van der Waals interaction, between non-overlapping electron orbitals.
