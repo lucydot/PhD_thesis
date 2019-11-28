@@ -197,16 +197,24 @@ To use Kohn-Sham DFT we must approximate the exchange-correlation functional $E_
 
 \textbf{Local Density Approximation} 
 
-At the lowest rung of the ladder is the local density approximation where only one variable, the electron density for an infinitesimal 3-dimensional volume element, is used to calculate the exchange correlation energy. The exchange energy is calculated exactly
+At the lowest rung of the ladder is the local density approximation (LDA) where only one variable, the electron density for an infinitesimal 3-dimensional volume element, is used to calculate the exchange correlation energy:\autocite{Henderson2008}
 \begin{equation}
-E_{\textrm{LDA,x}}\left[\rho\right] = {-\frac{3}{4}\left(\frac{3}{\pi}\right)^{\frac{1}{3}}\int \rho^{\frac{4}{3}}\left(\textbf{r}\right)d\textbf{r}},
+E_{\textrm{LDA,xc}} = \int \textrm{d}\mathbf{r} E_{\textrm{HEG,xc}}\left[\rho\right].
+\end{equation}
+It is assumed that the exchange-correlation energy density $E_{\textrm{HEG,xc}}$ is equal to that of a homogeneous electron gas (HEG) with equal electron density $\rho$. The exchange energy is calculated exactly:\autocite{Henderson2008}
+\begin{equation}
+E_{\textrm{HEG,x}}\left[\rho\right] = {-\frac{3}{4}\left(\frac{6}{\pi}\right)^{\frac{1}{3}} \rho^{\frac{4}{3}}\left(\textbf{r}\right),
 \end{equation}
 and the correlation energy is calculated numerically by fitting to many-body quantum Monte Carlo calculations for an homogeneous electron gas.\autocite{Ceperley1980} %Ceperley and Alder
 Strictly, the LDA should only be used for slowly varying densities, however it has performed surprisingly well for predicting the properties of a variety of atoms, solids and molecules. This is due to a cancellation of errors: LDA underestimates the exchange energy and overestimates the correlation energy.\autocite{Burke2007} However there is a tendency for LDA to overestimate the binding energy and underestimate lattice parameters. This is a particularly pronounced problem in weakly bonded systems.
 
 \textbf{Generalised Gradient Approximation}
 
-At the next level of theory, two variables are used to determine the exchange-correlation energy: electron density and the density gradient. Due to their dependence on the electron density gradient GGA functionals are classed as semi-local. The parameters of GGA functionals can be derived from physical constraints (non-empirical, as in the widely used PBE functional), or obtained from fitting procedures (empirical, as in the case of the B88 functional). GGAs improve the over-binding of LDA, but tend to underestimate the bandgap of the material.
+At the next level of theory (generalised gradient approximation, GGA), two variables are used to determine the exchange-correlation energy: electron density and the density gradient. The LDA energy density is multiplied by a factor $F_\textrm{xc}$ which corrects for system inhomogeneities:\autocite{Henderson2008}
+\begin{equation}
+E_{\textrm{GGA,xc}} = \int \textrm{d}\mathbf{r} E_{\textrm{HEG,xc}}\left[\rho\right]F_\textrm{xc}\left[\rho,\Delta\rho\right].
+\end{equation}
+Due to their dependence on the electron density gradient GGA functionals are classed as semi-local. The parameters of GGA functionals can be derived from physical constraints (non-empirical, as in the widely used PBE functional), or obtained from fitting procedures (empirical, as in the case of the B88 functional). GGAs improve the over-binding of LDA, but tend to underestimate the bandgap of the material.
 
 \textbf{Hybrid functionals} 
 
