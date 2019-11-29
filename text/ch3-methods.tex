@@ -101,7 +101,7 @@ Hartree-Fock methods build upon the classical mean-field approach of the Hartree
 However the Hartree-Fock approximation does not give an exact solution to the Schr\"{o}dinger equation as the true many body wavefunction is not formed from a simple Slater determinant. As a result of using a Slater determinant, electron correlation is ignored. This is the correlated motion of electrons with anti-parallel spins as a result of their mutual coulombic repulsion.
 % from http://newton.ex.ac.uk/research/qsystems/people/coomer/dft_intro.html
 
-\subsection{Periodicity and Bl\"{o}ch states}
+\subsection{Periodicity and Bl\"{o}ch states} \label{periodicitysubsection}
 
 The material studied in this thesis, MAPI, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach and model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that its properties do not depend on size. Born-von Karman (periodic) boundary conditions are used so that the infinite crystal is built from a repeating array of unit cells. There are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal. Any physically significant function of the crystal must have the same periodicity.
 
@@ -203,7 +203,7 @@ E_{\textrm{LDA,xc}} = \int \textrm{d}\mathbf{r} E_{\textrm{HEG,xc}}\left[\rho\ri
 \end{equation}
 It is assumed that the exchange-correlation energy density $E_{\textrm{HEG,xc}}$ is equal to that of a homogeneous electron gas (HEG) with equal electron density $\rho$. The exchange energy is calculated exactly:\autocite{Henderson2008}
 \begin{equation}
-E_{\textrm{HEG,x}}\left[\rho\right] = {-\frac{3}{4}\left(\frac{6}{\pi}\right)^{\frac{1}{3}} \rho^{\frac{4}{3}}\left(\textbf{r}\right),
+E_{\textrm{HEG,x}}\left[\rho\right] = -\frac{3}{4}\left(\frac{6}{\pi}\right)^{\frac{1}{3}} \rho^{\frac{4}{3}}\left(\textbf{r}\right),
 \end{equation}
 and the correlation energy is calculated numerically by fitting to many-body quantum Monte Carlo calculations for an homogeneous electron gas.\autocite{Ceperley1980} %Ceperley and Alder
 Strictly, the LDA should only be used for slowly varying densities, however it has performed surprisingly well for predicting the properties of a variety of atoms, solids and molecules. This is due to a cancellation of errors: LDA underestimates the exchange energy and overestimates the correlation energy.\autocite{Burke2007} However there is a tendency for LDA to overestimate the binding energy and underestimate lattice parameters. This is a particularly pronounced problem in weakly bonded systems.
@@ -250,21 +250,54 @@ Closest to heaven is the Random Phase Approximation (RPA), which uses all of the
 % DFT was not designed to calculate bandgaps.
 % - However, since 2000 functionals have been better at giving total energy but they don’t give accurate density: straying away from ab-initio into a fitting exercise: DFT is straying from the path towards an exact functional
 
-\subsection{Basis sets}
+\subsection{Basis sets} \label{basissetsection}
 
-In the example of a 1D linear chain, the lattice periodic part of the Bl\"{o}ch function took the form of a hydrogen 1$s$ orbital. For more complex systems, $u_k$ can itself be expanded into a plane wave basis set whose wave vectors $\textbf{G}$ are reciprocal lattice vectors
+In Section \ref{periodicitysubsection} the Bl\"{o}ch wavefunction $\psi_k$ was given for a 1D linear chain of hydrogen atoms, and the lattice periodic part of the Bl\"{o}ch function, $u_k$, took the form of a hydrogen 1$s$ orbital. For more complex systems, $u_k$ can itself be expanded into a plane wave basis set whose wave vectors $\textbf{G}$ are reciprocal lattice vectors:
 \begin{equation}
-u_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i\textbf{G}\cdot\textbf{r}},
+u_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i\textbf{G}\cdot\textbf{r}}.
 \end{equation}
-and the complete expanded Kohn-Sham orbital can be expressed as
+This is the Fourier transformation of the wavefunction $\psi_k$ in reciprocal space, and 
+as more terms are added to the Fourier series the electron density is described with increased accuracy.
+Numerical convergence is used to justify the term at which the expansion is truncated and this is discussed further in Section \ref{numericalsubsection}.
+The complete expanded wavefunction can be expressed as:
 \begin{equation} \label{KSeigenstates}
-\psi_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i(\textbf{k+G})\cdot\textbf{r}}.
+\psi_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i(\textbf{k+G})\cdot\textbf{r}},
 \end{equation}
-As a plane wave is inherently periodic this basis set is often used for extended systems. The software used for the DFT calculations in this thesis, \textsc{VASP}\autocite{Kresse1996}, uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals are more likely to be used.
+where we see that the real space wavefunction has been mapped onto a series of plane waves in reciprocal space.
+
+As a plane wave is inherently periodic this basis set is often used for extended systems. The software used for the DFT calculations in this thesis, \textsc{VASP},\autocite{Kresse1996} uses a plane wave basis set. For DFT calculations applied to localised systems, such as molecules or nanoparticles, localised basis sets such as gaussian orbitals are more likely to be used.
 
 \subsection{Pseudopotentials}
 
-Sudden changes in electron density are hard to capture using a plane wave basis set; to take an extreme example, the fourier decomposition of a simple top hat in real space requires an infinite summation in reciprocal space. This can be problematic when describing the region around the nucleus where there are strong oscillations in the KS orbitals. However these oscillations are associated with the core electrons which are less important in chemical bonding, and so pseudopotentials - an effective potential without oscillations - can be used. It has been established that for certain systems pseudopotentials are as precise as all-electron calculations.\autocite{Lejaeghere2016}
+Sudden changes in electron density are hard to capture using a plane wave basis set; to take an extreme example, the fourier decomposition of a simple top hat in real space requires an infinite summation in reciprocal space. This can be problematic when describing the region around the nucleus where, due to the requirement of orthogonality, there are strong oscillations in the DFT wavefunctions. Instead, pseudopotentials - an effective potential which does not lead to oscillations in the wavefunction - can be used. It has been established that for certain systems pseudopotentials are as precise as all-electron calculations.\autocite{Lejaeghere2016}
+
+To develop a pseudopotential for a particular element we consider it as an isolated atom and split the single-particle electron states into a set of valence states $\{\psi^\mathrm{v}\}$ and core states $\{\psi^\mathrm{c}\}$.\autocite{Kaxiras2007} The core states are those which contribute a negligible amount to the total electron density beyond a cutoff radius $r_c$. Both sets of states satisfy the single-particle Schr\"{o}dinger equation for the atom:
+\begin{align} \label{speqn}
+\hat{H}\psi^\mathrm{v} = \epsilon^\mathrm{v}\psi^\mathrm{v} \\
+\hat{H}\psi^\mathrm{c} = \epsilon^\mathrm{c}\psi^\mathrm{c},
+\end{align}
+where $\hat{H}$ contains a potential $V$ which accounts the electron-ion and electron-electron interactions.
+
+A new set of single particle valence states, $\{\tilde{\psi}^\mathrm{v}\}$ can be defined so that they obey the single-particle Schr\"{o}dinger equation above, but now with an additional potential term $\tilde{V}$. 
+The pseudopotential $V_\mathrm{ps}$ is the modified potential which includes this term.
+In addition, the valence states $\{\tilde{\psi}^\mathrm{v}\}$ are constructed so that: 1) they have zero overlap with the core states $\{\psi^\mathrm{c}\}$; 2) their eigenvalues (for the modified Hamiltonian) are equal to $\epsilon^\mathrm{v}$; and 3) the additional $\tilde{V}$ term is repulsive.
+
+The repulsive $\tilde{V}$ term can can be interpreted as the core electrons shielding the valence electrons from the attractive Coulomb potential of the atom. For a mathematical description of the pseudpotential construction process the reader is referred to Chapter 2 of Reference \cite{Kaxiras2007}.
+
+The pseudopotential $V_\mathrm{ps}$ is not unique, and is constructed so that $\{\tilde{\psi}^\mathrm{v}\}$ reproduce the behaviour of $\{\psi^\mathrm{v}\}$ beyond the cutoff radius $r_c$. Within this radius, where the behaviour of the wavefunction does not determine the properties of a solid, $\{\tilde{\psi}^\mathrm{v}\}$ are chosen so that they are smooth and nodeless (Figure \ref{ppfigure}).
+
+\begin{figure}[h]
+\centering
+  \includegraphics[width=0.6\columnwidth]{figures/ch3/ppfigure.png}
+  \caption[Construction of the pseudo-wavefunction and pseudopotential]{Construction of the pseudo-wavefunction $\tilde{\psi}$ and pseudopotential $\tilde{V}$. Within the cutoff radius $r_c$ the pseudo-wavefunction is smooth and nodeless. As a result the pseudopotential is finite and smooth near the origin, instead of having a singularity like the Coulomb potential. Beyond $r_c$ the pseudo-wavefunction and pseudopotential reproduce the atomic wavefunction $\psi$ and Coulomb potential of the ion, respectively.}
+  \label{ppfigure}
+\end{figure}
+
+The key benefits of the pseudopotential method are that: 1) the size of the basis set needed to expand the wavefunctions is reduced (as the strong oscillations within the core region are removed); and 2) it can be combined with the `frozen core' approximation so that the Kohn-Sham equations are solved for the valence electrons only. Both of these features reduce the computational cost of an electronic structure calculation.
+
+There are several flavours of pseudopotential. Norm-conserving pseudopotentials are constructed so that within $r_c$ the norm of $\tilde{\psi}^\mathrm{v}$ is identical to that of the corresponding state $\psi^\mathrm{v}$. This constraint increases the computational cost for first row elements and transition metals. Ultrasoft pseudopotentials (USPP) do not enforce conservation of the norm, which allows for a reduction in basis set size. The projector augmented wave approach combines the pseudopotential method with the linear augmented plane wave method.\autocite{Blochl1994} The resulting pseudopotentials provide access to the full wavefunction (rather than the wavefunction beyond $r_c$) at a cost comparable to the construction of USPP.
+
+
 %http://helper.ipam.ucla.edu/publications/maws3/maws3_6085.pdf
 %http://davidbowler.github.io/AtomisticSimulations//blog/dft-reliability#R3
 
@@ -283,7 +316,7 @@ DFT is also used to find the ground state atomic structure. Structures calculate
   \label{SCF}
 \end{figure}
 
-\subsection{The limits of DFT}
+\subsection{The limits of DFT} \label{numericalsubsection}
 
 
 \textbf{Theoretical limitations} 
@@ -293,7 +326,7 @@ In Section \ref{DFTtheory} the approximations inherent to DFT calculations were 
 \textbf{Numerical limitations} 
 
 There are also approximations that relate to numerical convergence rather than the underlying theory.
-We have seen that the KS orbital are expanded in a basis set. In principle an infinite set may be needed to describe the orbitals, but in practice the basis set must be truncated. The kinetic energy operator is given by $-\frac{\hbar \nabla^2}{2m}$ and when this is applied to the plane wave KS orbitals as given in Equation \ref{KSeigenstates}, we find that the kinetic energy is proportional to $|k+G|^2$; faster oscillations correspond to higher energy. A cutoff energy $\textrm{E}_\textrm{cut}$ is defined so that
+In Section \ref{basissetsection} we expanded the lattice periodic part of a wavefunction into a plane wave basis set. In principle an infinite set may be needed to describe the orbitals, but in practice the basis set must be truncated. The kinetic energy operator is given by $-\frac{\hbar \nabla^2}{2m}$ and when this is applied to the wavefunction $psi_k$ as given in Equation \ref{KSeigenstates}, we find that the kinetic energy is proportional to $|k+G|^2$; faster oscillations correspond to higher energy. A cutoff energy $\textrm{E}_\textrm{cut}$ is defined so that
 \begin{equation}
 \frac{1}{2}|k+G|^2 < \textrm{E}_\textrm{cut}.
 \end{equation}
