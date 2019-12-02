@@ -50,6 +50,8 @@ Under the Born-Oppenheimer approximation the many-body Hamiltonian becomes:\auto
 \hat{H} = -\sum_{i=1}^n\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}^n\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}+\sum_{i}^{n}v_\textrm{ext}(\textbf{r}_i}).
 \end{equation}
 
+
+
 \subsection{The Hartree and Hartree-Fock approximations}
 
 For a simple system, such as the particle in a box system or hydrogen atom, the Schr\"{o}dinger equation can be solved exactly. Unfortunately it is not possible to solve the Schr\"{o}dinger equation exactly for more complex systems, where there are multiple electrons interacting with each other (N-body or many-body systems). 
@@ -70,7 +72,7 @@ The Hartree approximation assumes that the many-body wavefunction $\Psi^{\textrm
 and the system Hamiltonian becomes the sum over the Hamiltonian of each single electron:
 \begin{align}
 \hat{H} &= \sum_{i=1}^n\left(-\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 + v_\mathrm{ext}(\textbf{r}_i}) + v_i^\textrm{H}\right) \\
-v_i^\textrm{H} &= e^2\sum_{j\neq i}^n \int\frac{\rho_j}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}\textrm{d}\textbf{r}_{j} \\
+v_i^\textrm{H} &= e^2\sum_{j\neq i}^n \int\frac{\rho_j}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}\textrm{d}\textbf{r}_{j} \\ \label{singleparticledensity}
 \rho_j &= \lvert\phi_j\rvert^2.
 \end{align}
 
@@ -79,7 +81,7 @@ The $v_i^\textrm{H}$ term corresponds to the average electrostatic repulsion bet
 %Hartree-Fock (HF) methods introduce the concept of fictitious non-interacting one-electron orbitals $\phi$ as a way of solving the Schr\"{o}dinger equation. The one-electron orbitals are combined using a Slater determinant to produce the HF many-body wavefunction.\autocite{Burke2007} 
 
 The Pauli Exclusion Principle states that the many-body wavefunction of an electron (or any particle with a half-integer spin quantum number) must be antisymmetric with respect to exchange - i.e. the wavefunction must change sign if any two electrons are exchanged.\autocite{Kaxiras2007} The Hartree many-body wavefunction $\Psi^{\textrm{H}}$ does not obey this rule. However the single electron states $\{\phi_i\}$ can be combined to form a Slater determinant,\autocite{Slater1929} which is antisymmetrical with respect to exchange:
-\begin{equation}
+\begin{equation} \label{slaterdet}
 \Psi^{\textrm{HF}}(\{\textbf{r}_i\}) = \frac{1}{\sqrt{N!}}
 \begin{vmatrix}
 \phi_1(\textbf{r}_1)&\phi_1(\textbf{r}_2)&\ldots&\phi_1(\textbf{r}_n) \\
@@ -105,41 +107,7 @@ Hartree-Fock methods build upon the classical mean-field approach of the Hartree
 However the Hartree-Fock approximation does not give an exact solution to the Schr\"{o}dinger equation as the true many body wavefunction is not formed from a simple Slater determinant. As a result of using a Slater determinant, electron correlation is ignored. This is the correlated motion of electrons with anti-parallel spins as a result of their mutual coulombic repulsion.
 % from http://newton.ex.ac.uk/research/qsystems/people/coomer/dft_intro.html
 
-\subsection{Periodicity and Bl\"{o}ch states} \label{periodicitysubsection}
 
-The material studied in this thesis, MAPI, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach and model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that its properties do not depend on size. Born-von Karman (periodic) boundary conditions are used so that the infinite crystal is built from a repeating array of unit cells. There are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal. Any physically significant function of the crystal must have the same periodicity.
-
-In real materials translational symmetry can be broken, for example when there are point defects (as in Chapter \ref{ch:6-defects}). Furthermore, lattice vibrations have a periodicity larger than the unit cell. To model defects or lattice vibrations a supercell is built from multiple unit cells and this is used as the basic repeating unit (Figure \ref{translational}).
-
-\begin{figure}[h]
-\centering
-  \includegraphics[width=0.8\columnwidth]{figures/ch3/supercell.png}
-  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have $\lambda>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model longer wavelength phonons. } 
-  \label{translational}
-\end{figure}
-% copy and paste phonon mode across to supercell picture?
-
-When the Schr\"{o}dinger equation is solved for a single atom the solution gives wavefunctions corresponding to the 1$s$, 2$s$, 2$p$, etc orbitals found in chemistry. When the Schr\"{o}dinger equation is solved for a periodic system, wavefunctions are formed by Bl\"{o}ch functions $\psi_{\textbf{k}}$:\autocite{Hoffmann1987}
-\begin{equation} \label{bloch}
-\psi_{\textbf{k}} = u_\textbf{k}e^{i\textbf{k}\cdot\textbf{r}}.
-\end{equation}   %could do a sketch of the two parts and the resulting part, and the periodic potential
-The Bl\"{o}ch function is formed from the product of a basis function $u_\textbf{k}$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $\textbf{k}$ is the crystal wave vector which forms a space known as reciprocal space. To understand the physical significance of $\textbf{k}$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$. The electron states can be described as a linear combination of hydrogen 1$s$ orbitals $u_n$ centred at each lattice point:
-
-\begin{equation} \label{1dbloch}
-\psi_k = \sum_nu_ne^{iknL},
-\end{equation}
-
-where $k=0$ corresponds to the lowest energy in-phase state, and $k=\frac{\pi}{L}$ corresponds to the highest energy out-of-phase state.
-Between these two extremes there is a continuum of states forming an electronic band (Figure \ref{bands}). 
-For any $\textbf{k}$ we can solve the Schr\"{o}dinger equation with periodic boundary conditions to calculate the electronic bandstructure $E(\textbf{k})$. There are an infinite number of eigenvalues $E_n(\textbf{\textbf{k}})$, where $n$ is used to label a particular eigenvalue (band). As a result of crystal symmetry, $E_n(\textbf{k})$ is periodic and only $k$-vectors within a region of space known as the Brillouin zone ($|\textbf{k}|<\frac{\pi}{a}$) need to be considered.\autocite{Lundstrom2000} 
-%talk about high symmetry points and the naming conventions (greek in zone and latin a boundaries) - choose route through use aflowlib
-
-\begin{figure}[h]
-\centering
-  \includegraphics[width=1.0\columnwidth]{figures/ch3/bands.png}
-  \caption[In-phase and out-of-phase states in an infinite 1D crystal]{(LHS) A one dimensional infinite lattice where the points are labelled $n=0,1,2\ldots$. The point spacing (unit cell length) is $L$, and there is a hydrogen 1$s$ orbital $u_n$ centred at each point. The electron states for this system are formed from Bl\"{o}ch functions as given in Equation \ref{1dbloch}. (RHS) $k=0$ corresponds to a low energy in-phase state and $k=\frac{\pi}{L}$ corresponds to a high energy out-of-phase state. Between these two extremes there exists a continuum of states.} 
-  \label{bands}
-\end{figure}
 
 \section{Density Functional Theory: basic concepts} \label{DFTtheory}
 
@@ -163,19 +131,33 @@ The potentials -- external ($v_\mathrm{ext}$), coulomb ($v_i^H$) and exchange ($
 
 First, Hohenberg and Kohn proved that the electron density is uniquely defined for a given external potential (electron-ion interaction). Their proof uses \textit{reductio ad adsurdum}; they first assume that two different external potentials can lead to the same density, and then show that this assumption leads to an impossible contradiction.\autocite{Burke2007} 
 Second, we know that as the external potential is the only thing that differs from system to system, it is this which uniquely determines the system wavefunction. It follows that the electron density $\rho(\textbf{r})$ uniquely determines the system wavefunction and all derived properties, including the total energy $E$ of the system:\autocite{Kaxiras2007}
-\begin{equation}
-E\left[\rho(\textbf{r})\right]=\int v_{\textrm{ext}}(\textbf{r})\rho(\textbf{r})d\textbf{r}+T\left[\rho(\textbf{r})\right]+J\left[\rho(\textbf{r})\right]+E_{\textrm{xc}}\left[\rho(\textbf{r})\right],   
-\end{equation}
+\begin{align}
+E\left[\rho(\textbf{r})\right]&=\int v_{\textrm{ext}}(\textbf{r})\rho(\textbf{r})d\textbf{r}+T\left[\rho(\textbf{r})\right]+J\left[\rho(\textbf{r})\right]+E_{\textrm{xc}}\left[\rho(\textbf{r})\right] \\
+&=\int v_{\textrm{ext}}(\textbf{r})\rho(\textbf{r})d\textbf{r}+F\left[\rho(\textbf{r})\right],   
+\end{align}
 where $T\left[\rho\right]$, $J\left[\rho\right]$ and $E_\textrm{xc}\left[\rho\right]$ describe the kinetic, classical electrostatic and exchange-correlation energies respectively. 
-For a fixed number of electrons the functional $F\left[\rho(\textbf{r})\right]=T\left[\rho(\textbf{r})\right]+J\left[\rho(\textbf{r})\right]+E_{\textrm{xc}}\left[\rho(\textbf{r})\right]$ is universal, and the only thing that varies between systems is the external potential. The problem is that the exact form of $F\left[\rho(\textbf{r})\right]$ is unknown.
+For a fixed number of electrons the functional $F\left[\rho(\textbf{r})\right]$ is universal, and the only thing that varies between systems is the external potential. The problem is that the exact form of this functional is unknown.
 
 Finally, Hohenberg and Kohn demonstrated that the energy functional $E\left[\rho(\textbf{r})\right]$ is minimised for the correct ground state density corresponding to $v_\mathrm{ext}(\textbf{r})$.\autocite{Hohenberg1964}
 
-\subsection{The Kohn-Sham formalism} 
+\subsection{The Kohn-Sham formalism} \label{KSformalismsubsection}
 
-The Kohn-Sham (KS) formalism provides a practical way to apply the Hohenberg-Kohn theorem. The KS theorem shows that for any interacting system with ground state density $\rho(\textbf{\textrm{r}})$ there exists a non-interacting system with the same ground-state $\rho(\textbf{\textrm{r}})$. To find the ground state energy of the real interacting system, the occupation numbers of \textit{fictitious}, non-interacting one-electron orbitals can be optimised. For a non-interacting system we know how to calculate the kinetic energy $T\left[\rho\right]$ and this provides a good approximation to the true kinetic energy. However, the exchange-correlation density functional $E_{\textrm{xc}}\left[\rho\right]$ is still not known. Only approximations to this functional can be made, leading to approximations for the electronic density, total energy and other system properties.
+The Kohn-Sham (KS) formalism provides a practical way to apply the Hohenberg-Kohn theorem. The KS theorem shows that for any \textit{interacting} system with ground state density $\rho(\textbf{\textrm{r}})$ there exists a \textit{non-interacting} system with the same ground-state $\rho(\textbf{\textrm{r}})$. To find the ground state energy of the real interacting system, the occupation numbers of fictitious, non-interacting single electron orbitals can be optimised. This allows for a `divide and conquer' approach to the problem of specifying $F\left[\rho(\textbf{r})\right]$, as for the non-interacting system we can calculate some of the terms exactly.
 
-The advantage of this approach is that the electron density has a lower dimensionality than the N-electron wavefunction (Figure \ref{dimensions}).\autocite{Perdew2010,Kohn1999} The problem is that although the Hohenberg-Kohn theorem tells us that the terms $T\left[\rho\right]$ and $E_{\textrm{xc}}\left[\rho\right]$ exist, they are unknown and must be approximated.
+We exploit the fact that the orbitals are non-interacting to build the many-body wavefunction $\Psi(\{\textbf{r}_i\})$ as a Slater determinant of single particle orbitals (as in Equation \ref{slaterdet}). The functional $F\left[\rho(\textbf{r})\right]$ can then be expressed as:\autocite{Kaxiras2007}
+\begin{equation}
+F\left[\rho(\textbf{r})\right] = T\left[\rho(\textbf{r})\right] + \frac{e^2}{2}\int\int\frac{\rho(\textbf{r}_i)\rho(\textbf{r}_j)}{\lvert\mathbf{r}_i-\mathbf{r}_j\rvert}\textrm{d}\mathbf{r}_{i}\textrm{d}\mathbf{r}_{j} + E_\mathrm{xc}[\rho(\textbf{r})\right].
+\end{equation}
+For a non-interacting system we know how to calculate the kinetic energy $T\left[\rho(\textbf{r})\right]$. The second term is the Coulomb interaction and by definition the term left, $E_{\textrm{xc}}\left[\rho(\textbf{r})\right]$, accounts for exchange and correlation interactions.
+Through a variational argument the single particle Kohn-Sham equations can also be derived:\autocite{Kaxiras2007}
+\begin{equation} \label{KSequations}
+\bigg\left[-\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2+v_{\textrm{ext}}(\textbf{r})+ {e^2}\int\frac{\rho(\textbf{r}_i)}{\lvert\mathbf{r}_i-\mathbf{r}_j\rvert}\textrm{d}\mathbf{r}_{j}+\frac{\delta E_{\textrm{xc}}\left[\rho(\textbf{r})\right]}{\delta \left[\rho(\textbf{r})\right] } \bigg\right]\phi_i(\textbf{r})=\epsilon_i\phi_i(\textbf{r})
+\end{equation} 
+The Coloumb and exchange-correlation terms are a function of electron density, which is in turn a function of the single particle orbitals $\phi_i(\textbf{r})$ (Equation \ref{singleparticledensity}), and so a self-consistent iterative method can be used to find $\phi_i(\textbf{r})$. The non-interacting single particle orbitals that form the solution of Equation \ref{KSequations} are the Kohn-Sham orbitals. These are not the `true' single electron orbitals, but the set of orbitals that reproduce the ground state density of the system. 
+
+The first key strength of Kohn-Sham DFT is that \textit{in principle} the effects of electron exchange and correlation are fully accounted for. However in practice only approximations to the exchange-correlation functional can be made, leading to approximations for the electronic density, total energy and other system properties. This is discussed further in the following subsection.
+The second key strength is that we are dealing with the electron density. This has a lower dimensionality than the many-body electron wavefunction (Figure \ref{dimensions}) and allows for more efficient computation.\autocite{Perdew2010,Kohn1999} 
+
 
 \begin{figure}[h]
 \centering
@@ -211,7 +193,8 @@ It is assumed that the exchange-correlation energy density $E_{\textrm{HEG,xc}}$
 E_{\textrm{HEG,x}}\left[\rho\right] = -\frac{3}{4}\left(\frac{6}{\pi}\right)^{\frac{1}{3}} \rho^{\frac{4}{3}}\left(\textbf{r}\right),
 \end{equation}
 and the correlation energy is calculated numerically by fitting to many-body quantum Monte Carlo calculations for an homogeneous electron gas.\autocite{Ceperley1980} %Ceperley and Alder
-Strictly, the LDA should only be used for slowly varying densities, however it has performed surprisingly well for predicting the properties of a variety of atoms, solids and molecules. This is due to a cancellation of errors: LDA underestimates the exchange energy and overestimates the correlation energy.\autocite{Burke2007} However there is a tendency for LDA to overestimate the binding energy and underestimate lattice parameters. This is a particularly pronounced problem in weakly bonded systems.
+Exchange and correlation effects are inherently non-local, and so we should not expect the LDA to give accurate results.  
+However it has performed surprisingly well for predicting the properties of a variety of atoms, solids and molecules. This is due to a cancellation of errors: LDA underestimates the exchange energy and overestimates the correlation energy.\autocite{Burke2007} However there is a tendency for LDA to overestimate the binding energy and underestimate lattice parameters. This is a particularly pronounced problem in weakly bonded systems.
 
 \textbf{Generalised Gradient Approximation}
 
@@ -255,15 +238,50 @@ Closest to heaven is the Random Phase Approximation (RPA), which uses all of the
 % DFT was not designed to calculate bandgaps.
 % - However, since 2000 functionals have been better at giving total energy but they don’t give accurate density: straying away from ab-initio into a fitting exercise: DFT is straying from the path towards an exact functional
 
+\subsection{Periodicity and Bl\"{o}ch states} \label{periodicitysubsection}
+
+The material studied in this thesis, MAPI, is a crystalline solid. Although we want to understand the properties of a finite piece of material, we use the standard approach and model the finite crystal as an infinite crystal. This is acceptable if the crystal piece is large enough so that its properties do not depend on size. Born-von Karman (periodic) boundary conditions are used so that the infinite crystal is built from a repeating array of unit cells. There are an infinite number of unit cells of different shapes and sizes that can be used to build an infinite crystal. Any physically significant function of the crystal must have the same periodicity.
+
+When the Schr\"{o}dinger equation is solved for a single atom the solution gives wavefunctions corresponding to the 1$s$, 2$s$, 2$p$, etc orbitals found in chemistry. When the Schr\"{o}dinger equation is solved for a periodic system, wavefunctions are formed by Bl\"{o}ch functions $\psi_{\textbf{k}}$:\autocite{Hoffmann1987}
+\begin{equation} \label{bloch}
+\psi_{\textbf{k}} = u_\textbf{k}e^{i\textbf{k}\cdot\textbf{r}}.
+\end{equation}   %could do a sketch of the two parts and the resulting part, and the periodic potential
+The Bl\"{o}ch function is formed from the product of a basis function $u_\textbf{k}$ with the same periodicity as the crystal lattice, and a plane wave $e^{i\textbf{k}\cdot\textbf{r}}$. $\textbf{k}$ is the crystal wave vector which forms a space known as reciprocal space. To understand the physical significance of $\textbf{k}$ we consider an infinite 1D chain of hydrogen atoms separated at distance $L$. The electron states can be described as a linear combination of hydrogen 1$s$ orbitals $u_n$ centred at each lattice point:
+
+\begin{equation} \label{1dbloch}
+\psi_k = \sum_nu_ne^{iknL},
+\end{equation}
+
+where $k=0$ corresponds to the lowest energy in-phase state, and $k=\frac{\pi}{L}$ corresponds to the highest energy out-of-phase state.
+Between these two extremes there is a continuum of states forming an electronic band (Figure \ref{bands}). 
+For any $\textbf{k}$ we can solve the Schr\"{o}dinger equation with periodic boundary conditions and use this to calculate the electronic bandstructure $E(\textbf{k})$. There are an infinite number of eigenvalues $E_n(\textbf{\textbf{k}})$, where $n$ is used to label a particular eigenvalue (band). As a result of crystal symmetry, $E_n(\textbf{k})$ is periodic and only $k$-vectors within a region of space known as the Brillouin zone ($|\textbf{k}|<\frac{\pi}{a}$) need to be considered.\autocite{Lundstrom2000} 
+%talk about high symmetry points and the naming conventions (greek in zone and latin a boundaries) - choose route through use aflowlib
+
+\begin{figure}[h]
+\centering
+  \includegraphics[width=1.0\columnwidth]{figures/ch3/bands.png}
+  \caption[In-phase and out-of-phase states in an infinite 1D crystal]{(LHS) A one dimensional infinite lattice where the points are labelled $n=0,1,2\ldots$. The point spacing (unit cell length) is $L$, and there is a hydrogen 1$s$ orbital $u_n$ centred at each point. The electron states for this system are formed from Bl\"{o}ch functions as given in Equation \ref{1dbloch}. (RHS) $k=0$ corresponds to a low energy in-phase state and $k=\frac{\pi}{L}$ corresponds to a high energy out-of-phase state. Between these two extremes there exists a continuum of states.} 
+  \label{bands}
+\end{figure}
+
+In real materials translational symmetry can be broken, for example when there are point defects (as in Chapter \ref{ch:6-defects}). Furthermore, lattice vibrations have a periodicity larger than the unit cell. To model defects or lattice vibrations a supercell is built from multiple unit cells and this is used as the basic repeating unit cell (Figure \ref{translational}).
+
+\begin{figure}[h]
+\centering
+  \includegraphics[width=0.8\columnwidth]{figures/ch3/supercell.png}
+  \caption[Translational symmetry and supercell construction]{(LHS) An infinite crystal is built from a repeating unit cell of length $L$. Point defects (marked with an `x') break translational symmetey in real crystals and care must be taken when modelling these as neighbouring defects can interact with each other in an unphysical way. In addition, vibrational modes can have $\lambda>L$ (sine wave). (RHS) A supercell of length $M=2L$ can be built to reduce defect-defect interactions and model longer wavelength phonons. } 
+  \label{translational}
+\end{figure}
+
 \subsection{Basis sets} \label{basissetsection}
 
-In Section \ref{periodicitysubsection} the Bl\"{o}ch wavefunction $\psi_k$ was given for a 1D linear chain of hydrogen atoms, and the lattice periodic part of the Bl\"{o}ch function, $u_k$, took the form of a hydrogen 1$s$ orbital. For more complex systems, $u_k$ can itself be expanded into a plane wave basis set whose wave vectors $\textbf{G}$ are reciprocal lattice vectors:
+In the previous section the Bl\"{o}ch wavefunction $\psi_k$ was given for a 1D linear chain of hydrogen atoms, and the lattice periodic part of the Bl\"{o}ch function, $u_k$, took the form of a hydrogen 1$s$ orbital. For more complex systems $u_k$ can itself be expanded into a plane wave basis set:
 \begin{equation}
 u_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i\textbf{G}\cdot\textbf{r}}.
 \end{equation}
-This is the Fourier transformation of the wavefunction $\psi_k$ in reciprocal space, and 
-as more terms are added to the Fourier series the electron density is described with increased accuracy.
-Numerical convergence is used to justify the term at which the expansion is truncated and this is discussed further in Section \ref{numericalsubsection}.
+For this basis set the wave vectors $\textbf{G}$ correspond to reciprocal lattice vectors and $u_\textbf{k}$ is the Fourier transformation of the wavefunction $\psi_k$ in reciprocal space. 
+As more terms are added to the Fourier series the electron density is described with increased accuracy.
+Numerical convergence is used to justify the term at which the expansion is truncated (this is discussed further in Section \ref{numericalsubsection}).
 The complete expanded wavefunction can be expressed as:
 \begin{equation} \label{KSeigenstates}
 \psi_\textbf{k} = \sum_\textbf{G}c_{\textbf{k},\textbf{G}}e^{i(\textbf{k+G})\cdot\textbf{r}},
@@ -310,9 +328,9 @@ There are several flavours of pseudopotential. Norm-conserving pseudopotentials 
 
 In this section the process of optimising the atomic and electronic structure of a system towards the ground-state (minimum energy) configuration is outlined. 
 
-As discussed in Section \ref{DFTtheory}, the potential $v_\textrm{ee}$ is dependent on the electron density $\rho$, which is itself dependent on $v_\textrm{ee}$. Therefore an iterative approach called the Self Consistent Field method is used to calculate the ground-state electronic structure (Figure \ref{SCF}, dashed section). An initial guess for the density $\rho(\textbf{r})$ is given by a superposition of the atomic charge densities. This is used to calculate the potential and solve the KS equations, which gives a new $\rho(\textbf{r})$. This process continues until there is convergence within a given energy tolerance. Various optimisation routines are provided in DFT codes for finding the ground state configuration, including the conjugate gradient scheme, Davidson Scheme and RMM-DIIS.
+As outlined in Section \ref{KSformalismsubsection}, the Coulomb and exchange-correlation potentials are dependent on the electron density $\rho(\mathbf{r})$, which is itself dependent on the potentials. Therefore an iterative approach called the self consistent field method is used to calculate the ground-state electronic structure (Figure \ref{SCF}, dashed section). An initial guess for the density $\rho(\textbf{r})$ is given by a superposition of the atomic charge densities. This is used to calculate the potential and solve the KS equations, which gives a new $\rho(\textbf{r})$. This process continues until there is convergence within a given energy tolerance. Various optimisation routines are provided in DFT codes for finding the ground state configuration, including the conjugate gradient scheme, Davidson Scheme and RMM-DIIS.
 
-DFT is also used to find the ground state atomic structure. Structures calculated from X-ray Diffraction data are used as a starting guess, so that finding the energetic minimum becomes a local optimisation problem. Atoms in the systems are displaced (either the internal coordinates of the unit cell or the unit cell parameters themselves are adjusted) and the electronic structure for that geometry is solved self-consistently. This process repeats until the forces on each atom are zero to within a given tolerance (Figure \ref{SCF}). 
+DFT is also used to find the ground state atomic structure. Structures inferred from X-ray diffraction data are used as a starting guess, so that finding the energetic minimum becomes a local optimisation problem. Atoms in the systems are displaced (either the internal coordinates of the unit cell or the unit cell parameters themselves are adjusted) and the electronic structure for that geometry is solved self-consistently. This process repeats until the forces on each atom are zero to within a given tolerance (Figure \ref{SCF}). 
 
 \begin{figure}[h]
 \centering
