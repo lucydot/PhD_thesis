@@ -16,7 +16,7 @@ it's against the laws of physics.
 
 In this chapter I present the theory and methodology that underlies the work in this thesis. The chapter starts with an introduction to quantum chemistry and Density Functional Theory (DFT); first I introduce the theoretical concepts, then I provide some details about how DFT is implemented in practice. Later in the chapter I outline how we can use DFT energies combined with a series of post-processing steps to predict defect formation energies and charge transition levels. The chapter ends with an introduction to the theory of lattice dynamics and how this theory is used to calculate the vibrational properties of a material. 
 
-\section{Quantum Chemistry}
+\section{Quantum chemistry}
 
 \subsection{The Schr\"{o}dinger equation}
 
@@ -33,17 +33,21 @@ The Hamiltonian $\hat{H}$ is an operator corresponding to the sum of the kinetic
 \end{equation}
 where the first term is the kinetic energy of the hydrogen ion with mass $M$ and the second term is the kinetic energy of the electron with mass $m$. The third term is the potential energy due to the interaction between the ion and electron and is described by a Coulomb term. 
 
-For systems with $N$ ions and $n$ electrons, the Hamiltonian is given by:
+For systems with $N$ ions and $n$ electrons, the Hamiltonian is given by:\autocite{Kaxiras2007}
 \begin{equation} \label{manybodyH}
 \hat{H} = -\sum_{I=1}^N\frac{\hbar^2}{2M_I}\nabla_{\textbf{R}_I}^2-\sum_{i=1}^n\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}^n\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}-\sum_{i}^{n}\sum_{I}^{N}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_i\rvert}+\sum_{I<J}^N\frac{Z_IZ_Je^2}{\lvert\textbf{R}_i-\textbf{R}_j\rvert}.
 \end{equation}
-The first two terms correspond to the kinetic energy of the ions and electrons, respectively. The third term describes the repulsive electrostatic interaction between two electrons with charge $e$, the fourth term describes the attractive electrostatic interaction between an electron and a positively charged ion with charge $Z_I$, and the fifth term describes the repulsive interaction between two ions.
+The first two terms correspond to the kinetic energy of the ions and electrons, respectively. The third term describes the repulsive electrostatic interactions between two electrons with charge $e$ and the fifth term describes the repulsive interactions between two ions. The fourth term describes the attractive electrostatic interactions between an electron and positively charged ion with charge $Z_I$. The following expression will be used to simplify this term:
+\begin{equation}
+v_\textrm{ext}(\textbf{r}_i}) = -\sum_I^N\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_i\rvert},
+\end{equation}
+where v_\textrm{ext} is the external potential felt by an electron. 
 
-The Born-Oppenheimer approximation can be used to simplify Equation \ref{manybodyH}.\autocite{Born1927} This approximation assumes that, because the ions are significantly heavier than the electrons, the ions are moving slowly in space and the electrons can respond instantaneously to any ionic motion. The ions are treated as fixed points, and only the electron sub-system is treated quantum mechanically. 
-Under the Born-Oppenheimer approximation the many-body Hamiltonian becomes:
+The Born-Oppenheimer approximation can be used to simplify Equation \ref{manybodyH}.\autocite{Born1927} This approximation assumes that, because the ions are significantly heavier than the electrons, the ions are moving slowly in space and the electrons can respond instantaneously to any ionic motion. The ions are treated as fixed points and the ion kinetic energy term in Equation \ref{manybodyH} is zero. Only the electron sub-system is treated quantum mechanically and so we can neglect the ion-ion term in Equation \ref{manybodyH} as it is independent of the electronic degrees of freedom.
+Under the Born-Oppenheimer approximation the many-body Hamiltonian becomes:\autocite{Kaxiras2007}
 
 \begin{equation}
-\hat{H} = -\sum_{i=1}^n\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}^n\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}-\sum_{i}^{n}\sum_{I}^{N}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_i\rvert}.
+\hat{H} = -\sum_{i=1}^n\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}^n\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}+\sum_{i}^{n}v_\textrm{ext}(\textbf{r}_i}).
 \end{equation}
 
 \subsection{The Hartree and Hartree-Fock approximations}
@@ -65,12 +69,12 @@ The Hartree approximation assumes that the many-body wavefunction $\Psi^{\textrm
 
 and the system Hamiltonian becomes the sum over the Hamiltonian of each single electron:
 \begin{align}
-\hat{H} &= \sum_{i=1}^n\left(-\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 - \sum_{I=1}^N\frac{e^2Z_I}{\lvert\textbf{R}_I-\textbf{r}_i\rvert} + V_i^\textrm{H}\right) \\
-V_i^\textrm{H} &= e^2\sum_{j\neq i}^n \int\frac{\rho_j}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}\textrm{d}\textbf{r}_{j} \\
+\hat{H} &= \sum_{i=1}^n\left(-\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2 + v_\mathrm{ext}(\textbf{r}_i}) + v_i^\textrm{H}\right) \\
+v_i^\textrm{H} &= e^2\sum_{j\neq i}^n \int\frac{\rho_j}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}\textrm{d}\textbf{r}_{j} \\
 \rho_j &= \lvert\phi_j\rvert^2.
 \end{align}
 
-The $V_i^\textrm{H}$ term corresponds to the average electrostatic repulsion between electrons and is called the Hartree potential. A self-consistent field method (discussed further in Section \ref{SCFsubsection}) is needed to solve the Schr\"{o}dinger equation for $\Psi^{\textrm{H}}$, as the Hartree potential depends on the charge density $\rho_j$, which itself depends on the single-particle wavefunction $\phi_j$.
+The $v_i^\textrm{H}$ term corresponds to the average electrostatic repulsion between electrons and is called the Hartree potential. A self-consistent field method (discussed further in Section \ref{SCFsubsection}) is needed to solve the Schr\"{o}dinger equation for $\Psi^{\textrm{H}}$, as the Hartree potential depends on the charge density $\rho_j$, which itself depends on the single-particle wavefunction $\phi_j$.
 % INCLUDE HERE THE SELF INTERACTION ERROR?
 %Hartree-Fock (HF) methods introduce the concept of fictitious non-interacting one-electron orbitals $\phi$ as a way of solving the Schr\"{o}dinger equation. The one-electron orbitals are combined using a Slater determinant to produce the HF many-body wavefunction.\autocite{Burke2007} 
 
@@ -89,12 +93,12 @@ The Pauli Exclusion Principle states that the many-body wavefunction of an elect
 
 Forming a many-body wavefunction $\Psi^{\textrm{HF}}(\{\textbf{r}_i\})$ from the Slater determinant of single particle states is the Hartree-Fock approximation. To solve the Schr\"{o}dinger equation and find the ground state (lowest energy) solution for $\Psi^{\textrm{HF}}(\{\textbf{r}_i\})$ a variational method can be used.\autocite{Fock1930} In addition, the energy of each single particle state $\epsilon_i$ is minimised with respect to $\phi_i$ and $\{\phi_i\}$ form an orthonormal basis. Applying these principles results in the Hartree-Fock equations:\autocite{Fock1930}
 \begin{align}
-\bigg[-\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2  -\sum_{I}^{N}\sum_{i}^{n}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_i\rvert} &+ V_i^\textrm{H}\bigg]\phi_i(\mathbf{r}_i)-V_i^\textrm{X}(\mathbf{r}_i,\mathbf{r}_{j})\phi_j(\mathbf{r}_i) = \epsilon_i\phi_i(\mathbf{r}_i), \\
-V_i^\textrm{X}(\mathbf{r}_i,\mathbf{r}_j) &= e^2\sum_{j=1}^n\int \frac{\phi_j^*(\mathbf{r}_j)\phi_i(\mathbf{r}_j)}{\lvert\mathbf{r}_i-\mathbf{r}_j\rvert}\textrm{d}\mathbf{r}_{j}
+\bigg[-\frac{\hbar^2}{2m_i}\nabla_{\textbf{r}_i}^2  + v_\mathrm{ext}(\textbf{r}_i}) &+ v_i^\textrm{H}\bigg]\phi_i(\mathbf{r}_i)-v_i^\textrm{X}(\mathbf{r}_i,\mathbf{r}_{j})\phi_j(\mathbf{r}_i) = \epsilon_i\phi_i(\mathbf{r}_i), \\
+v_i^\textrm{X}(\mathbf{r}_i,\mathbf{r}_j) &= e^2\sum_{j=1}^n\int \frac{\phi_j^*(\mathbf{r}_j)\phi_i(\mathbf{r}_j)}{\lvert\mathbf{r}_i-\mathbf{r}_j\rvert}\textrm{d}\mathbf{r}_{j}
 \end{align}
 % http://nucleartalent.github.io/Course2ManyBodyMethods/doc/pub/hfock/html/hfock-bs.html
 
-$V_i^\textrm{X}$ accounts for the spin exchange interaction between electrons, whereby two identical electrons (i.e. electrons with the same spin and momentum) cannot occupy the same space at the same time. This results in a repulsion between electrons with parallel spins.
+$v_i^\textrm{X}$ accounts for the spin exchange interaction between electrons, whereby two identical electrons (i.e. electrons with the same spin and momentum) cannot occupy the same space at the same time. This results in a repulsion between electrons with parallel spins.
 %IT CANCELS ERROR FROM THE SELF INTERACTION OF THE HARTREE TERM
 
 Hartree-Fock methods build upon the classical mean-field approach of the Hartree approximation to include the quantum spin nature of electrons.
@@ -139,33 +143,39 @@ For any $\textbf{k}$ we can solve the Schr\"{o}dinger equation with periodic bou
 
 \section{Density Functional Theory: basic concepts} \label{DFTtheory}
 
-Density Functional Theory is the most commonly used electronic structure method in condensed matter physics and quantum chemistry. 
-DFT can be used to predict the ground state properties of a material including electron density, total energy, equilibrium structure, vibrational frequencies, and properties relating to differences in total energy, such as defect formation energy or surface energy. 
+Density Functional Theory (DFT) is the most commonly used electronic structure method in condensed matter physics and quantum chemistry. The principle underlying DFT is that any ground state property of an interacting system can be determined by the electron density of a non-interacting system. We avoid specifying the form of the many-body wavefunction all together and no longer need to start with an approximation to the many-body wavefunction, as in the Hartree-Fock approach. Instead, the many-body effects of electron exchange and correlation are included as a functional of electron density.
+
+DFT can be used to predict material properties including electron density, total energy, equilibrium structure, vibrational frequencies, and properties relating to differences in total energy, such as defect formation energy or surface energy. 
 As DFT is a ground state theory we are not able to calculate properties relating to excited states and, without further calculations such as those outlined in Section \ref{sec:latticedynamics}, results do not incorporate the effects of temperature. 
 
-The theoretical basis for DFT was established in 1964 through the work of Walter Kohn and Pierre Hohenberg.\autocite{Hohenberg1964} This was further developed by Walter Kohn and Lu Jeu Sham to produce Kohn-Sham DFT.\autocite{Kohn1965} However it was not until the late 1980's approximations to the exchange-correlation functional were built so that DFT could be used in practice. 
+The theoretical basis for DFT was established in 1964 through the work of Walter Kohn and Pierre Hohenberg.\autocite{Hohenberg1964} This was further developed by Walter Kohn and Lu Jeu Sham to produce Kohn-Sham DFT.\autocite{Kohn1965} However it was not until the late 1980's that approximations to the exchange-correlation functional were built so that DFT could be used in practice. 
 
 There are a growing number of codes that implement DFT. 
 Although some codes aspire to a blackbox approach, with the user protected from the underlying mechanics of DFT, for most systems of interest an understanding of the underlying approximations and parameters used are required for reliable results.
 
-%\subsection{Basic concepts} %expand to include more equations, including slater determinant? and E\phi=H\phi.
-
-Firstly, a note on the name. A function accepts one or more numbers as input and produces a number as output. Likewise, a functional accepts one or more \textit{functions} as inputs, and produces a number as output. In DFT the functional is the electron density which is itself a function of space and time.
-
-Although no one single text is followed, concepts for the underlying theory have been taken from References \cite{Burke2007}, \cite{Scuseria05} and \cite{Perdew2010}.
+Finally, a note on the name. A function accepts one or more numbers as input and produces a number as output. Likewise, a functional accepts one or more \textit{functions} as inputs, and produces a number as output. In DFT the functional is the electron density which is itself a function of space and time.
 
 \subsection{The Hohenberg-Kohn theorems}
 
-The 1964 Hohenberg-Kohn paper\autocite{Hohenberg1964} contains two key results: (i) the ground state electron density uniquely determines the ground state electronic wave function and, following this, all properties of the system; (ii) the true density functional for the electronic energy assumes its minimum for the correct ground-state density. % quote this from? http://publish.uwo.ca/~vstarove/PDF/tacc_chapter24.pdf
+The 1964 Hohenberg-Kohn paper\autocite{Hohenberg1964} contains two key results: (i) the ground state electron density uniquely determines the ground state electronic wave function and, following this, all properties of the system; (ii) the true density functional for the electronic energy assumes its minimum for the correct ground-state density.\autocite{Scuseria05}
 
-The potentials (external, coulomb and exchange) in Hartree-Fock methods determine the properties of a system. Hohenberg and Kohn demonstrate that the electron density $\rho$ can be used instead to uniquely characterise the system; rather than solving the Schr\"{o}dinger equation for the wavefunction, we can solve it for the electron density. The total energy $E\left[\rho\right]$ can be expressed as
+The potentials -- external ($v_\mathrm{ext}$), coulomb ($v_i^H$) and exchange ($v_i^X$) -- in Hartree-Fock methods determine the properties of a system. Hohenberg and Kohn demonstrated that the electron density $\rho$ can be used to uniquely characterise the system and rather than solving the Schr\"{o}dinger equation for the wavefunction, we can solve it for the electron density.
+
+First, Hohenberg and Kohn proved that the electron density is uniquely defined for a given external potential (electron-ion interaction). Their proof uses \textit{reductio ad adsurdum}; they first assume that two different external potentials can lead to the same density, and then show that this assumption leads to an impossible contradiction.\autocite{Burke2007} 
+Second, we know that as the external potential is the only thing that differs from system to system, it is this which uniquely determines the system wavefunction. It follows that the electron density $\rho(\textbf{r})$ uniquely determines the system wavefunction and all derived properties, including the total energy $E$ of the system:\autocite{Kaxiras2007}
 \begin{equation}
- E\left[\rho\right]=\int v_{\textrm{ext}}(\textbf{r})\rho(\textbf{r})d\textbf{r}+T\left[\rho\right]+J\left[\rho\right]+E_{\textrm{xc}}\left[\rho\right],   
+E\left[\rho(\textbf{r})\right]=\int v_{\textrm{ext}}(\textbf{r})\rho(\textbf{r})d\textbf{r}+T\left[\rho(\textbf{r})\right]+J\left[\rho(\textbf{r})\right]+E_{\textrm{xc}}\left[\rho(\textbf{r})\right],   
 \end{equation}
 where $T\left[\rho\right]$, $J\left[\rho\right]$ and $E_\textrm{xc}\left[\rho\right]$ describe the kinetic, classical electrostatic and exchange-correlation energies respectively. 
-For a fixed number of electrons the functional $F\left[\rho\right]=T\left[\rho\right]+J\left[\rho\right]+E_{\textrm{xc}}\left[\rho\right]$ is universal, and the only thing that varies between systems is the external potential (determined by the electron-nuclei interaction). 
+For a fixed number of electrons the functional $F\left[\rho(\textbf{r})\right]=T\left[\rho(\textbf{r})\right]+J\left[\rho(\textbf{r})\right]+E_{\textrm{xc}}\left[\rho(\textbf{r})\right]$ is universal, and the only thing that varies between systems is the external potential. The problem is that the exact form of $F\left[\rho(\textbf{r})\right]$ is unknown.
 
-In reference \cite{Hohenberg1964} Hohenberg and Kohn also demonstrate that the ground state energy can be found variationally; the density that minimises the total energy is the true ground state density. This formalism has the advantage that the electron density has a lower dimensionality than the N-electron wavefunction (Figure \ref{dimensions}). The problem is that although the Hohenberg-Kohn theorem tells us that the terms $T\left[\rho\right]$ and $E_{\textrm{xc}}\left[\rho\right]$ exist, they are unknown and must be approximated.
+Finally, Hohenberg and Kohn demonstrated that the energy functional $E\left[\rho(\textbf{r})\right]$ is minimised for the correct ground state density corresponding to $v_\mathrm{ext}(\textbf{r})$.\autocite{Hohenberg1964}
+
+\subsection{The Kohn-Sham formalism} 
+
+The Kohn-Sham (KS) formalism provides a practical way to apply the Hohenberg-Kohn theorem. The KS theorem shows that for any interacting system with ground state density $\rho(\textbf{\textrm{r}})$ there exists a non-interacting system with the same ground-state $\rho(\textbf{\textrm{r}})$. To find the ground state energy of the real interacting system, the occupation numbers of \textit{fictitious}, non-interacting one-electron orbitals can be optimised. For a non-interacting system we know how to calculate the kinetic energy $T\left[\rho\right]$ and this provides a good approximation to the true kinetic energy. However, the exchange-correlation density functional $E_{\textrm{xc}}\left[\rho\right]$ is still not known. Only approximations to this functional can be made, leading to approximations for the electronic density, total energy and other system properties.
+
+The advantage of this approach is that the electron density has a lower dimensionality than the N-electron wavefunction (Figure \ref{dimensions}).\autocite{Perdew2010,Kohn1999} The problem is that although the Hohenberg-Kohn theorem tells us that the terms $T\left[\rho\right]$ and $E_{\textrm{xc}}\left[\rho\right]$ exist, they are unknown and must be approximated.
 
 \begin{figure}[h]
 \centering
@@ -174,11 +184,6 @@ In reference \cite{Hohenberg1964} Hohenberg and Kohn also demonstrate that the g
   \label{dimensions}
 \end{figure}
 % Is this right? I don't understand how the two electron wavefunction scales (4^2) - it's discussed in the 14 easy lessons.
-
-
-\subsection{The Kohn-Sham formalism} 
-
-The Kohn-Sham theorem shows that for any interacting system with ground state density $\rho(\textbf{\textrm{r}})$ there exists a non-interacting system with the same ground-state $\rho(\textbf{\textrm{r}})$. To find the ground state energy of the real interacting system, the occupation numbers of \textit{fictitious}, non-interacting one-electron orbitals can be optimised. For a non-interacting system we know how to calculate $T\left[\rho\right]$ and this provides a good approximation to the true kinetic energy, so the Kohn-Sham theorem provide a more practical way to apply DFT. However, the exchange-correlation density functional $E_{\textrm{xc}}\left[\rho\right]$ is still not known. Only approximations to this functional can be made, leading to approximations for the electronic density, total energy and other system properties.
 
 
 \section{DFT in practice}
@@ -227,7 +232,7 @@ In some studies the proportion of exact exchange is tuned to reproduce the prope
 Range separated hybrid functionals are a generalisation of the above, without the requirement that $\alpha$ is constant.
 To introduce range separated hybrids more formally we define the exchange-correlation hole $h_\mathrm{xc}$ as:
 \begin{equation}
-h_\mathrm{xc}(\mathbf{r}_1|\mathbf{r}_{12}) = \rho(\mathbf{r}_1|\mathbf{r}_12)-\rho(\mathbf{r}_1),
+h_\mathrm{xc}(\mathbf{r}_1|\mathbf{r}_{12}) = \rho(\mathbf{r}_1|\mathbf{r}_{12})-\rho(\mathbf{r}_1),
 \end{equation}
 where $\rho(\mathbf{r}_1|\mathbf{r}_{12})$ is the probability density for simultaneously finding one electron at position $\mathbf{r}_1$ and another electron at a distance of $|\mathbf{r}_{12}|$.
 The term \textit{hole} is used as $h_\mathrm{xc}$ describes a region in space around an electron in which the probability of finding another electron is close to zero.
