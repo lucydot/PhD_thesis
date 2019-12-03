@@ -326,8 +326,25 @@ The pseudopotential $V_\mathrm{ps}$ is not unique, and is constructed so that $\
 
 The key benefits of the pseudopotential method are that: 1) the size of the basis set needed to expand the wavefunctions is reduced (as the strong oscillations within the core region are removed); and 2) it can be combined with the `frozen core' approximation so that the Kohn-Sham equations are solved for the valence electrons only. Both of these features reduce the computational cost of an electronic structure calculation.
 
-There are several flavours of pseudopotential. Norm-conserving pseudopotentials are constructed so that within $r_c$ the norm of $\tilde{\psi}^\mathrm{v}$ is identical to that of the corresponding state $\psi^\mathrm{v}$. This constraint increases the computational cost for first row elements and transition metals. Ultrasoft pseudopotentials (USPP) do not enforce conservation of the norm, which allows for a reduction in basis set size. The projector augmented wave approach combines the pseudopotential method with the linear augmented plane wave method.\autocite{Blochl1994} The resulting pseudopotentials provide access to the full wavefunction (rather than the wavefunction beyond $r_c$) at a cost comparable to the construction of USPP.
+There are several flavours of pseudopotential. Norm-conserving pseudopotentials are constructed so that within $r_c$ the norm of $\tilde{\psi}^\mathrm{v}$ is identical to that of the corresponding state $\psi^\mathrm{v}$. This constraint increases the computational cost for first row elements and transition metals. Ultrasoft pseudopotentials (USPP) do not enforce conservation of the norm, which allows for a reduction in basis set size. 
 
+A separate approach to the problem of rapidly oscillating wavefunctions near the nuclei is the Augmented Plane Wave (APW) method. For this method space is split into two regions; one region inside an atom-centred sphere, and one region outside the sphere. Wavefunctions are defined as atom-like partial waves inside the sphere, and plane waves beyond the sphere. The functions are chosen so that they are continuous at the boundary.
+
+The DFT software used for the calculations reported in this thesis is \textsc{VASP}, which implements the projector augmented wave (PAW) approach. PAW combines the pseudopotential method with the APW method and was developed in 1994 by Bl\"{o}chl.\autocite{Blochl1994} A linear transformation $\hat{T}$ is defined to transform the pseudo wavefunction $\tilde{\phi}$ to the all-electron KS wavefunction $\phi$:\autocite{Rostgaard2009}
+\begin{equation}
+\phi = \hat{T}\tilde{\phi}.
+\end{equation}
+$\phi$ is smooth beyond the region $\Omega_R$ enclosing an atom with index $R$, so $\hat{T}$ is chosen to modify the wavefunction close to the nuclei only:\autocite{Rostgaard2009}
+\begin{equation}
+\hat{T} = 1+\sum_R \hat{T}^R,
+\end{equation}
+where $\hat{T}^R$ is non-zero only within the spherical region $\Omega_R$.
+
+Unlike the pseudopotential method, where information about the all-electron wavefunction close to the nuclei is lost, the PAW method provides a way to calculate all-electron properties from $\tilde{\phi}$. For an all-electron operator $\hat{A}$, the equivalent pseudo operator $\tilde{A}$ is:\autocite{Rostgaard2009}
+\begin{equation}
+\tilde{A} = \hat{T}^\dagger\hat{A}\hat{T},
+\end{equation}
+where $\hat{T}^\dagger$ is the conjugate transport of $\hat{T}$.
 
 %http://helper.ipam.ucla.edu/publications/maws3/maws3_6085.pdf
 %http://davidbowler.github.io/AtomisticSimulations//blog/dft-reliability#R3
