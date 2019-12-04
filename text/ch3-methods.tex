@@ -37,9 +37,9 @@ where the first term is the kinetic energy of the hydrogen ion with mass $M_1$ a
 
 For systems with multiple ions and electrons, the Hamiltonian is given by:\autocite{Kaxiras2007}
 \begin{equation} \label{manybodyH}
-\hat{H} = -\sum_{I}\frac{\hbar^2}{2M_I}\nabla_{\textbf{R}_I}^2-\sum_{i}\frac{\hbar^2}{2m_e}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}-\sum_{i}\sum_{I}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_i\rvert}+\sum_{I<J}\frac{Z_IZ_Je^2}{\lvert\textbf{R}_i-\textbf{R}_j\rvert}.
+\hat{H} = -\sum_{I}\frac{\hbar^2}{2M_I}\nabla_{\textbf{R}_I}^2-\sum_{i}\frac{\hbar^2}{2m_e}\nabla_{\textbf{r}_i}^2 +\sum_{i<j}\frac{e^2}{\lvert\textbf{r}_i-\textbf{r}_j\rvert}-\sum_{i}\sum_{I}\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}_i\rvert}+\sum_{I<J}\frac{Z_IZ_Je^2}{\lvert\textbf{R}_I-\textbf{R}_J\rvert}.
 \end{equation}
-The first two terms correspond to the kinetic energy of the ions and electrons, respectively. The third term describes the repulsive electrostatic interactions between two electrons with charge $e$ and the fifth term describes the repulsive interactions between ions of charge $Z_Ie$ and $Z_Je$. The fourth term describes the attractive electrostatic interactions between an electron and positively charged ion with charge $Z_I$. The following expression will be used to simplify the latter term:
+The first two terms correspond to the kinetic energy of the ions and electrons, respectively. The third term describes the repulsive electrostatic interactions between two electrons with charge $e$ and the fifth term describes the repulsive interactions between ions of charge $Z_Ie$ and $Z_Je$. The fourth term describes the attractive electrostatic interactions between an electron and positively charged ion. The following expression will be used to simplify the latter term:
 \begin{equation}
 v_\textrm{ext}(\textbf{r}) = -\sum_I\frac{Z_Ie^2}{\lvert\textbf{R}_I-\textbf{r}\rvert},
 \end{equation}
@@ -82,7 +82,7 @@ v_i^\textrm{H}(\textbf{r}) &= e^2\sum_{j\neq i} \int\frac{\rho_j(\textbf{r}')}{\
 \rho_j &= \lvert\phi_j\rvert^2.
 \end{align}
 
-The $v_i^\textrm{H}(\textbf{r})$ term corresponds to the average electrostatic repulsion between electrons and is called the Hartree potential. A self-consistent field method (discussed further in Section \ref{SCFsubsection}) is needed to solve the time-independent Schr\"{o}dinger equation $\hat{h}_i\phi_i=\epsilon_i\phi_i$ for $\phi_i$, as the Hartree potential depends on the charge density $\rho_j$, which itself depends on the single-particle wavefunction $\phi_j$. 
+The $v_i^\textrm{H}$ term corresponds to the average electrostatic repulsion between electrons and is called the Hartree potential. A self-consistent field method (discussed further in Section \ref{SCFsubsection}) is needed to solve the time-independent Schr\"{o}dinger equation $\hat{h}_i\phi_i=\epsilon_i\phi_i$ for $\phi_i$, as the Hartree potential depends on the charge density $\rho_j$, which itself depends on the single-particle wavefunction $\phi_j$. 
 
 % INCLUDE HERE THE SELF INTERACTION ERROR?
 %Hartree-Fock (HF) methods introduce the concept of fictitious non-interacting one-electron orbitals $\phi$ as a way of solving the Schr\"{o}dinger equation. The one-electron orbitals are combined using a Slater determinant to produce the HF many-body wavefunction.\autocite{Burke2007} 
@@ -134,7 +134,7 @@ Finally, a note on the name. A function accepts one or more numbers as input and
 
 The 1964 Hohenberg-Kohn paper\autocite{Hohenberg1964} contains two key results: (i) the ground state electron density uniquely determines the ground state electronic wave function and, following this, all properties of the system; (ii) the true density functional for the electronic energy assumes its minimum for the correct ground-state density.\autocite{Scuseria05}
 
-The potentials -- external ($v_\mathrm{ext}$), coulomb ($v_i^H$) and exchange ($v_i^X$) -- in Hartree-Fock methods determine the properties of a system. Hohenberg and Kohn demonstrated that the electron density $\rho$ can be used to uniquely characterise the system and rather than solving the Schr\"{o}dinger equation for the wavefunction, we can solve it for the electron density.
+The potentials -- external ($v_\mathrm{ext}$), coulomb ($v_i^H$) and exchange ($v_i^X$) -- in Hartree-Fock methods determine the properties of a system. Hohenberg and Kohn demonstrated that the electron density can be used to uniquely characterise the system and rather than solving the Schr\"{o}dinger equation for the wavefunction, we can solve it for the electron density.
 
 First, Hohenberg and Kohn proved that the electron density is uniquely defined for a given external potential (electron-ion interaction). Their proof uses \textit{reductio ad adsurdum}; they first assume that two different external potentials can lead to the same density, and then show that this assumption leads to an impossible contradiction.\autocite{Burke2007} 
 Second, we know that as the external potential is the only thing that differs from system to system, it is this which uniquely determines the system wavefunction. It follows that the electron density $\rho(\textbf{r})$ uniquely determines the system wavefunction and all derived properties, including the total energy $E$ of the system:\autocite{Kaxiras2007}
@@ -326,11 +326,12 @@ The pseudopotential $V_\mathrm{ps}$ is not unique, and is constructed so that $\
 
 The key benefits of the pseudopotential method are that: 1) the size of the basis set needed to expand the wavefunctions is reduced (as the strong oscillations within the core region are removed); and 2) it can be combined with the `frozen core' approximation so that the Kohn-Sham equations are solved for the valence electrons only. Both of these features reduce the computational cost of an electronic structure calculation.
 
-There are several flavours of pseudopotential. Norm-conserving pseudopotentials are constructed so that within $r_c$ the norm of $\tilde{\psi}^\mathrm{v}$ is identical to that of the corresponding state $\psi^\mathrm{v}$. This constraint increases the computational cost for first row elements and transition metals. Ultrasoft pseudopotentials (USPP) do not enforce conservation of the norm, which allows for a reduction in basis set size. 
+There are several flavours of pseudopotential. Norm-conserving pseudopotentials are constructed so that within $r_c$ the norm of $\tilde{\psi}^\mathrm{v}$ is identical to that of the corresponding state $\psi^\mathrm{v}$. This constraint increases the computational cost for first row elements and transition metals. Ultrasoft pseudopotentials (USPP)\autocite{Vanderbilt1990} do not enforce conservation of the norm, which allows for a reduction in basis set size. 
 
-A separate approach to the problem of rapidly oscillating wavefunctions near the nuclei is the Augmented Plane Wave (APW) method. For this method space is split into two regions; one region inside an atom-centred sphere, and one region outside the sphere. Wavefunctions are defined as atom-like partial waves inside the sphere, and plane waves beyond the sphere. The functions are chosen so that they are continuous at the boundary.
+A separate approach to the problem of rapidly oscillating wavefunctions near the nuclei is the Augmented Plane Wave (APW) method.\autocite{Andersen1975} For this method space is split into two regions; one region inside an atom-centred sphere, and one region outside the sphere. Wavefunctions are defined as atom-like partial waves inside the sphere, and plane waves beyond the sphere. The functions are chosen so that they are continuous at the boundary.
 
-The DFT software used for the calculations reported in this thesis is \textsc{VASP}, which implements the projector augmented wave (PAW) approach. PAW combines the pseudopotential method with the APW method and was developed in 1994 by Bl\"{o}chl.\autocite{Blochl1994} A linear transformation $\hat{T}$ is defined to transform the pseudo wavefunction $\tilde{\phi}$ to the all-electron KS wavefunction $\phi$:\autocite{Rostgaard2009}
+The DFT software \textsc{VASP} was used for the calculations reported in this thesis. 
+\textsc{VASP} implements the projector augmented wave (PAW) approach, which is a generalisation of both USPP and the APW method.\autocite{Blochl1994} A linear transformation $\hat{T}$ is defined to transform the pseudo wavefunction $\tilde{\phi}$ to the all-electron KS wavefunction $\phi$:\autocite{Rostgaard2009}
 \begin{equation}
 \phi = \hat{T}\tilde{\phi}.
 \end{equation}
