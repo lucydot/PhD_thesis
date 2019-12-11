@@ -1,0 +1,65 @@
+# Qi and Qf [amu^(1/2)*Å] define the domain over which the potentials will be solved (Q ∈ [Qi, Qf]), discretised in `NQ` steps
+Qi: 0
+Qf: 80
+NQ: 1400
+
+# PLOT INPUT
+# defining plot axes limits for the E vs Q (solving potentials) and the C vs 1/T (carrier capture rate vs inverse temperature) plots
+plot:
+    Qmin: 0
+    Qmax: 80
+    Emin: -0.2
+    Emax: 3.7
+    Cmin: 1E-30
+    Cmax: 1E-2
+    invTmin: 1
+    invTmax: 17
+
+# POTENTIAL INPUT
+# potential:    contains all information about a given potential including name
+# data:         may be entered as Q and E values or loaded from csv files. If
+#               from file, each potential is read assuming Q and E in columns 1 and 2 respectively.
+# nev:          the number of energy levels to be solved for the potentials (eigenstates).
+# E0:           energy offset of potential minimum with respoect to zero [eV]
+# function:     defines the type and the parameters of function used to fit the potential
+
+# spline and bspline: bspline assumes the data is uniformly spaced on the grid
+potentials:
+    - potential:
+        name: $\mathrm{I}_\mathrm{i}^-+\mathrm{h}$
+        data: potential_negative_h.csv
+        nev: 530
+        E0: 0
+        function:
+            type: harmonic
+            params:
+                hw: 0.0066
+        color:  "#2166ac"
+    - potential:
+        name: $\mathrm{I}_\mathrm{i}$
+        data: potential_neutral.csv
+        nev: 300
+        E0: 0.2512
+        function:
+            type: harmonic
+            params:
+                hw: 0.0047
+        color: "#b2182b"
+    - potential:
+        name: $\mathrm{I}_\mathrm{i}+\mathrm{e}+\mathrm{h}$
+        data: potential_neutral_e_h.csv
+        nev: 180
+        E0: 1.6958
+        function:
+            type: harmonic
+            params:
+                hw: 0.0047
+        color: "#b2182b"
+
+findcross:
+    - crossing:
+        pot_name_1: $\mathrm{I}_\mathrm{i}^-+\mathrm{h}$
+        pot_name_2: $\mathrm{I}_\mathrm{i}$
+    - crossing:
+        pot_name_1: $\mathrm{I}_\mathrm{i}^-+\mathrm{h}$
+        pot_name_2: $\mathrm{I}_\mathrm{i}+\mathrm{e}+\mathrm{h}$
