@@ -1,3 +1,7 @@
+# Lucy Whalley's thesis
+
+To produce this thesis I adapted the ICLThesis latex template (for details see the text, which I copied from the original repo)
+
 # ICLThesis
 
 **ICLThesis** is an adapted form of the **OxThesis** below.
